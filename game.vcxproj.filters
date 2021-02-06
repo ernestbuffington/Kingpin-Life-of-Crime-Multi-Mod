@@ -23,7 +23,7 @@
       <Filter>Kingpin Multi Mod\Mods\Koogle Bot Source</Filter>
     </ClCompile>
     <ClCompile Include="g_hitmen_mod.c">
-      <Filter>Kingpin Multi Mod\Mods\Hitmen</Filter>
+      <Filter>Kingpin Multi Mod\Mods\Hitmen Mod</Filter>
     </ClCompile>
     <ClCompile Include="p_hook.c">
       <Filter>Kingpin Multi Mod\Mods\Hook</Filter>
@@ -128,7 +128,58 @@
       <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
     </ClCompile>
     <ClCompile Include="file_process_botmatch_ini.c">
-      <Filter>Kingpin Multi Mod\Mods\Botmatch</Filter>
+      <Filter>Kingpin Multi Mod\Mods\Botmatch Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="file_process_bloodmoney_ini.c">
+      <Filter>Kingpin Multi Mod\Mods\Blood Money Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="file_process_assault_ini.c">
+      <Filter>Kingpin Multi Mod\Mods\Assault Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="file_botmen_ini.c">
+      <Filter>Kingpin Multi Mod\Mods\Botmen Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="file_comp_ini.c">
+      <Filter>Kingpin Multi Mod\Mods\Monkey Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="file_coop_ini.c">
+      <Filter>Kingpin Multi Mod\Mods\Coop Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="file_curse_ini.c">
+      <Filter>Kingpin Multi Mod\Mods\Curse Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="file_dogmod_ini.c">
+      <Filter>Kingpin Multi Mod\Mods\Dog Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="file_genocide_ini.c">
+      <Filter>Kingpin Multi Mod\Mods\Genocide Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="file_godfather_ini.c">
+      <Filter>Kingpin Multi Mod\Mods\GodFather Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="file_hitmen_ini.c">
+      <Filter>Kingpin Multi Mod\Mods\Hitmen Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="file_hitmen_teams_ini.c">
+      <Filter>Kingpin Multi Mod\Mods\Hitmen Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="file_insanity_ini.c">
+      <Filter>Kingpin Multi Mod\Mods\Insanity Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="file_gunrace_ini.c">
+      <Filter>Kingpin Multi Mod\Mods\Gunrace Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="file_insomnia_ini.c">
+      <Filter>Kingpin Multi Mod\Mods\Insomnia Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="file_kpq2_ini.c">
+      <Filter>Kingpin Multi Mod\Mods\KPQ2 Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="file_kpz_ini.c">
+      <Filter>Kingpin Multi Mod\Mods\KPZ Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="file_sgm_ini.c">
+      <Filter>Kingpin Multi Mod\Mods\SGM Mod</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -209,9 +260,6 @@
     <Filter Include="Kingpin Multi Mod\Mods\Monkey Mod">
       <UniqueIdentifier>{5e9fd048-abab-48a9-a143-b7c879aca136}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Kingpin Multi Mod\Mods\Hitmen">
-      <UniqueIdentifier>{f97dd27b-f9b3-4396-8455-8d776bb71ca4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Kingpin Multi Mod\Mods\Hook">
       <UniqueIdentifier>{2fcd7dce-da2e-4207-908a-a3116d5c83cb}</UniqueIdentifier>
     </Filter>
@@ -227,8 +275,53 @@
     <Filter Include="Kingpin Multi Mod\Mods\Snap Chase Cam">
       <UniqueIdentifier>{ad38b418-da21-4f51-9e66-2aff67015331}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Kingpin Multi Mod\Mods\Botmatch">
+    <Filter Include="Kingpin Multi Mod\Mods\Blood Money Mod">
+      <UniqueIdentifier>{ce940ab1-c7dc-40ae-b010-a26b07f68690}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod\Mods\Assault Mod">
+      <UniqueIdentifier>{0c8c0377-78c3-4627-8679-4d500036bb24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod\Mods\Coop Mod">
+      <UniqueIdentifier>{c2b7ae95-1373-4bef-9c19-1af86569dd8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod\Mods\Curse Mod">
+      <UniqueIdentifier>{7cf0f35f-68a8-4591-b352-6c40dc133a25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod\Mods\Dog Mod">
+      <UniqueIdentifier>{ff4c2cc1-118b-4b09-9475-b8d064e40d21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod\Mods\Genocide Mod">
+      <UniqueIdentifier>{e45d7d8c-5922-4144-a7ae-d742bcc163ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod\Mods\Hitmen Mod">
+      <UniqueIdentifier>{f97dd27b-f9b3-4396-8455-8d776bb71ca4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod\Mods\Botmatch Mod">
       <UniqueIdentifier>{2b0cf580-582e-4003-964e-2b2d18f6784b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod\Mods\Botmen Mod">
+      <UniqueIdentifier>{7f2a7a98-e826-4e51-8b25-d62d8de67b75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod\Mods\GodFather Mod">
+      <UniqueIdentifier>{2f6355c3-6f5d-4e58-98a5-0b6f4e5f2835}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod\Mods\Gunrace Mod">
+      <UniqueIdentifier>{d38407c1-254e-4471-8ab5-5ee9ef6fe7f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod\Mods\Insanity Mod">
+      <UniqueIdentifier>{63813d27-45cf-40de-b83d-257e1d8c435f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod\Mods\Insomnia Mod">
+      <UniqueIdentifier>{33ecda17-0c0a-4908-af1b-5bd3cb832039}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod\Mods\KPQ2 Mod">
+      <UniqueIdentifier>{11ba4e08-eed8-40b5-9729-b97dab5d1ffb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod\Mods\KPZ Mod">
+      <UniqueIdentifier>{5b9bc43f-227f-4c97-98ac-ed97cd32eb62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod\Mods\SGM Mod">
+      <UniqueIdentifier>{aeff1a19-23c7-4401-9901-392c5464dc70}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

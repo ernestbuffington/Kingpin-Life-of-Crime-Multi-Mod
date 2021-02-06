@@ -46,7 +46,7 @@ int		num_object_bounds=0;
 object_bounds_t	*g_objbnds[MAX_OBJECT_BOUNDS];
 
 // Multi Mod add
-cvar_t *mod;
+cvar_t *current_mod;
 // Multi Mod end
 
 //cvar_t	*deathmatch;

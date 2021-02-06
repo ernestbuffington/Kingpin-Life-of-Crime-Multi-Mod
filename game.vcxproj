@@ -318,7 +318,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="file.c" />
+    <ClCompile Include="file_botmen_ini.c" />
+    <ClCompile Include="file_comp_ini.c" />
+    <ClCompile Include="file_coop_ini.c" />
+    <ClCompile Include="file_curse_ini.c" />
+    <ClCompile Include="file_dogmod_ini.c" />
+    <ClCompile Include="file_genocide_ini.c" />
+    <ClCompile Include="file_godfather_ini.c" />
+    <ClCompile Include="file_gunrace_ini.c" />
+    <ClCompile Include="file_hitmen_ini.c" />
+    <ClCompile Include="file_hitmen_teams_ini.c" />
+    <ClCompile Include="file_insanity_ini.c" />
+    <ClCompile Include="file_insomnia_ini.c" />
+    <ClCompile Include="file_kpq2_ini.c" />
+    <ClCompile Include="file_kpz_ini.c" />
+    <ClCompile Include="file_process_assault_ini.c" />
+    <ClCompile Include="file_process_bloodmoney_ini.c" />
     <ClCompile Include="file_process_botmatch_ini.c" />
+    <ClCompile Include="file_sgm_ini.c" />
     <ClCompile Include="g_ai.c" />
     <ClCompile Include="g_cast.c" />
     <ClCompile Include="g_chase.c" />

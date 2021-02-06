@@ -276,12 +276,23 @@ void InitGame (void)
 	// add hypov8
 	sv_keeppistol = gi.cvar("sv_keeppistol", "1", 0);
 
+	current_mod = gi.cvar("current_mod", "0", CVAR_SERVERINFO);
+
 	// noset vars
 	dedicated = gi.cvar ("dedicated", "0", CVAR_NOSET);
-
+	
 	// latched vars
 	sv_cheats = gi.cvar ("cheats", "0", CVAR_LATCH);
-	gi.cvar ("gamename", GAMEVERSION , CVAR_SERVERINFO | CVAR_LATCH);
+
+	gi.cvar("gamename", GAMEVERSION, CVAR_SERVERINFO | CVAR_LATCH);
+	
+	if (current_mod->value == 1)
+	gi.cvar("gamemod", "Botmatch.v39", CVAR_SERVERINFO);
+	if (current_mod->value == 2)
+	gi.cvar("gamemod", "Blood Money v616", CVAR_SERVERINFO);
+	else
+	gi.cvar("gamemod", "Monkey Mod v2.0c", CVAR_SERVERINFO);
+
 	gi.cvar ("gamedate", __DATE__ , CVAR_SERVERINFO | CVAR_LATCH);
 
 	no_spec = gi.cvar ("no_spec", "0", 0);
@@ -395,7 +406,13 @@ void InitGame (void)
 	gi.cvar_set("coop", "0");
 
 	// load config
-	process_botmatch_ini_file();
+	if (current_mod->value == 1)
+		process_botmatch_ini_file();   // Botmatch v0.39
+	else
+	if (current_mod->value == 2)
+		process_bloodmoney_ini_file(); // Blood Money Mod
+	else
+		process_botmatch_ini_file();   // Botmatch v0.39
 
 	cmd_check[0] = '\177';
 	for (i=1; i<3; i++)

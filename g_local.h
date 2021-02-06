@@ -928,7 +928,7 @@ extern	cvar_t	*maxentities;
 // END
 
 // Multi Mod add
-extern cvar_t *mod;
+extern cvar_t *current_mod;
 // Multi Mod end
 
 
