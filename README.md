@@ -1,5 +1,13 @@
 # Kingpin: Life of Crime Multi Mod v0.39
 
+#Programmers
+- Ernest Buffington (TheGhost)
+- David S (hypov8)
+- FREDZ
+- Snap
+- Tical
+- Monkey Harris 
+
 # GeoIP setup
 
 - updated to kpded2 implimentation of geoip v2
