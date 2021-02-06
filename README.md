@@ -3,12 +3,17 @@
 ## Programmers
 - TheGhost (Ernest Buffington)
 - hypov8 (David S)
-- FREDZ
+- 𝔽ℝ𝔼𝔻ℤ
 - Snap
 - Tical
 - Monkey Harris 
 - Rat Instinct
 - Chief (Frank Peterson)
+
+## Contributers
+- G()^T
+- Captain Death
+- MrDamage 
 
 # GeoIP setup
 
