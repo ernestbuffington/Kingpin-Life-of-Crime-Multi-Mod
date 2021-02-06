@@ -1,8 +1,8 @@
-MM2.0 + ace bots +hitmen.
+MM2.0 + koogle bots +hitmen.
 
 extracts file to your kingpin folder
 eg c:/program files/kingpin/
-it will create a folder called compbots
+it will create a folder called multi
 
 add "exec bot_setup.cfg" to your custom server.cfg. or add the setting in the file manualy as needed
 defaults are stated in this file.
