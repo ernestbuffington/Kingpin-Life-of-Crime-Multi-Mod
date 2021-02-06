@@ -676,9 +676,21 @@ void MOTDScoreboardMessage (edict_t *ent)
 	{
 		for (i=0; i<num_MOTD_lines; i++)
 		{
-			Com_sprintf (entry, sizeof(entry),
-				"xm %i yv %i dmstr 953 \"%s\" ",
-				-5*strlen(MOTD[i]), yofs + -60-49, MOTD[i] );
+			// 241 is Army Green
+			// 622 dark red
+			if (current_mod->value == 2) // BloodMoney Mod DARK RED
+			{
+				Com_sprintf(entry, sizeof(entry),
+					"xm %i yv %i dmstr 622 \"%s\" ",
+					-5 * strlen(MOTD[i]), yofs + -60 - 49, MOTD[i]);
+			}
+			else
+			{
+				Com_sprintf(entry, sizeof(entry),
+					"xm %i yv %i dmstr 953 \"%s\" ",
+					-5 * strlen(MOTD[i]), yofs + -60 - 49, MOTD[i]);
+			}
+
 			j = strlen(entry);
 			if (stringlength + j < 1024)
 			{
