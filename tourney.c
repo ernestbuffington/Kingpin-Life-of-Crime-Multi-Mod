@@ -174,7 +174,7 @@ qboolean ResetServer (qboolean ifneeded) // completely resets the server includi
 	char command[64];
 
 	// refresh config
-	proccess_ini_file();
+	process_botmatch_ini_file();
 
 	// these things don't need a restart
 	if (default_dmflags[0])

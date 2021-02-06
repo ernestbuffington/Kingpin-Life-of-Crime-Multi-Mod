@@ -395,7 +395,7 @@ void InitGame (void)
 	gi.cvar_set("coop", "0");
 
 	// load config
-	proccess_ini_file();
+	process_botmatch_ini_file();
 
 	cmd_check[0] = '\177';
 	for (i=1; i<3; i++)

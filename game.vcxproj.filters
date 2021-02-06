@@ -127,13 +127,14 @@
     <ClCompile Include="p_weapon.c">
       <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
     </ClCompile>
+    <ClCompile Include="file_process_botmatch_ini.c">
+      <Filter>Kingpin Multi Mod\Mods\Botmatch</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="game.h" />
     <ClInclude Include="kooglebot_src\kooglebot.h">
       <Filter>Kingpin Multi Mod\Mods\Koogle Bot Source</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h" />
     <ClInclude Include="file.h">
       <Filter>Kingpin Multi Mod\Header Files</Filter>
     </ClInclude>
@@ -176,6 +177,12 @@
     <ClInclude Include="voice_punk.h">
       <Filter>Kingpin Multi Mod\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="game.h">
+      <Filter>Kingpin Multi Mod\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Kingpin Multi Mod\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="game.def" />
@@ -211,9 +218,6 @@
     <Filter Include="Kingpin Multi Mod\Mods\Unlagged">
       <UniqueIdentifier>{6e733af3-cfdd-4ef8-821b-37a1fd3474b6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Config Files\kpNBK Config Files">
-      <UniqueIdentifier>{5d90e100-6b27-401e-804d-fd8b4126983e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Config Files\main Config Files">
       <UniqueIdentifier>{b89f4669-2c6e-4985-b1b3-9edb0a015403}</UniqueIdentifier>
     </Filter>
@@ -223,19 +227,13 @@
     <Filter Include="Kingpin Multi Mod\Mods\Snap Chase Cam">
       <UniqueIdentifier>{ad38b418-da21-4f51-9e66-2aff67015331}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Kingpin Multi Mod\Mods\Botmatch">
+      <UniqueIdentifier>{2b0cf580-582e-4003-964e-2b2d18f6784b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
-    <None Include="..\autoexec.cfg">
-      <Filter>Config Files\main Config Files</Filter>
-    </None>
-    <None Include="..\bot_setup.cfg">
-      <Filter>Config Files\main Config Files</Filter>
-    </None>
     <None Include="..\comp.ini">
-      <Filter>Config Files\main Config Files</Filter>
-    </None>
-    <None Include="..\config.cfg">
       <Filter>Config Files\main Config Files</Filter>
     </None>
     <None Include="..\Dedicated Bot Server.bat">
@@ -253,70 +251,25 @@
     <None Include="..\Lan Bot Server.bat">
       <Filter>Config Files\main Config Files</Filter>
     </None>
-    <None Include="..\maps.lst">
-      <Filter>Config Files\main Config Files</Filter>
-    </None>
     <None Include="..\server.cfg">
       <Filter>Config Files\main Config Files</Filter>
-    </None>
-    <None Include="..\teammaps.lst">
-      <Filter>Config Files\main Config Files</Filter>
-    </None>
-    <None Include="..\..\kpNBK\autoexec.cfg">
-      <Filter>Config Files\kpNBK Config Files</Filter>
-    </None>
-    <None Include="..\..\kpNBK\bot_setup.cfg">
-      <Filter>Config Files\kpNBK Config Files</Filter>
-    </None>
-    <None Include="..\..\kpNBK\comp.ini">
-      <Filter>Config Files\kpNBK Config Files</Filter>
-    </None>
-    <None Include="..\..\kpNBK\config.cfg">
-      <Filter>Config Files\kpNBK Config Files</Filter>
-    </None>
-    <None Include="..\..\kpNBK\Dedicated Bot Server.bat">
-      <Filter>Config Files\kpNBK Config Files</Filter>
-    </None>
-    <None Include="..\..\kpNBK\default.cfg">
-      <Filter>Config Files\kpNBK Config Files</Filter>
-    </None>
-    <None Include="..\..\kpNBK\hitmen.ini">
-      <Filter>Config Files\kpNBK Config Files</Filter>
-    </None>
-    <None Include="..\..\kpNBK\hook.cfg">
-      <Filter>Config Files\kpNBK Config Files</Filter>
-    </None>
-    <None Include="..\..\kpNBK\Lan Bot Server.bat">
-      <Filter>Config Files\kpNBK Config Files</Filter>
-    </None>
-    <None Include="..\..\kpNBK\server.cfg">
-      <Filter>Config Files\kpNBK Config Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="gamex86.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="..\ips.txt">
+      <Filter>Config Files\main Config Files</Filter>
+    </Text>
     <Text Include="..\maps.txt">
       <Filter>Config Files\main Config Files</Filter>
     </Text>
-    <Text Include="..\..\kpNBK\config.cfg.txt">
-      <Filter>Config Files\kpNBK Config Files</Filter>
+    <Text Include="..\names.txt">
+      <Filter>Config Files\main Config Files</Filter>
     </Text>
-    <Text Include="..\..\kpNBK\ips.txt">
-      <Filter>Config Files\kpNBK Config Files</Filter>
-    </Text>
-    <Text Include="..\..\kpNBK\maps.txt">
-      <Filter>Config Files\kpNBK Config Files</Filter>
-    </Text>
-    <Text Include="..\..\kpNBK\names.txt">
-      <Filter>Config Files\kpNBK Config Files</Filter>
-    </Text>
-    <Text Include="..\..\kpNBK\natural-born-killers.log">
-      <Filter>Config Files\kpNBK Config Files</Filter>
-    </Text>
-    <Text Include="..\..\kpNBK\rcons.txt">
-      <Filter>Config Files\kpNBK Config Files</Filter>
+    <Text Include="..\rcons.txt">
+      <Filter>Config Files\main Config Files</Filter>
     </Text>
   </ItemGroup>
 </Project>
