@@ -227,8 +227,6 @@ updated geoIP to use new version in kpded2
 ** latest kpded 2 now has an option to disable the ESC bug fix. allowing client command 'menu' to work properly
 bots predict rockets and shoot were player will be.
 
-
-
 ### todo
 prevent bots jumping down from great heights. esp when wandering
 end game bot comment
@@ -248,12 +246,9 @@ teleporter. bots cant use teleporters as a goal while wandering if surrounded by
 teleporter. bots will try avoid(turn) walking into teleporter if surrounded by a solid brush (goal set)
 bots cant use secret doors eg.. kpq1dm6_final
 add topplayer to rl/gl so dodge worke better.
-
-
-
-
+------------------------------
 ### maps to test
-### ladders
+### Ladders
 -----------
 - toomuchblood
 - fragndie3 4
@@ -261,7 +256,7 @@ add topplayer to rl/gl so dodge worke better.
 - fucked
 - sym //stairs
 
-### other 
+### Other 
 ---------
 - bigcube_v3
 - nwth
@@ -270,7 +265,7 @@ add topplayer to rl/gl so dodge worke better.
 - kp_biodm_v3
 - kptrdm05a (stuck on walls+lift+ladder)
 
-### teleporters 
+### Teleporters 
 ---------------
 - kp_biodm_v3	= issue with solid wall above teleporter
 - stdm5		= ok. trig push speed upped 4 bot use
@@ -284,7 +279,7 @@ add topplayer to rl/gl so dodge worke better.
 - dm_fis_b1
 - team_float
 
-### lava 
+### Lava 
 --------
 - brutal
 - sinister 
@@ -292,13 +287,13 @@ add topplayer to rl/gl so dodge worke better.
 - team_crossfire
 - chrome
 
-# crash 
+# Crash 
 ---------
 - parkgarage
 - ddkp1
 
-# legal
-===========
+# Legal
+----------
 Koogle Bot is a modification of the ACE Bot, and is therefore
 in NO WAY supported by Steve Yeager.
 
