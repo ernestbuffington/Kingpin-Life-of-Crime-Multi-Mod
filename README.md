@@ -8,7 +8,7 @@ updated to kpded2 implimentation of geoip v2
 bots now aim for feet when using the rocken luncher
 aim lower for crouched players
 
--== v24 ==-
+# v24
 bot will aim at next target sooner once old target dies. speed is x4 of skill
 added display of stats in dedicated console at endgame
 stoped connecting nodes while in noclip
@@ -22,7 +22,7 @@ botdebug. changed viewed paths to be shorter. less overflows
 botdebug. bound keys 1-10. key8 gets closest node and sets the info to bound key9. for easy relocation
 added some bad spawn locations to be moved. 8mile, 420dm1
 
--== v25 ==-
+# v25
 removed print "connected" for bots
 "votemap" changed to now allow non admin to call a vote. all maps are now playable. even in main.
 "endmap" admin command added. will end map early and allow all players to vote
@@ -40,7 +40,7 @@ added MH: fix for bad spawn locations
 **note you may need to reduce skill in this version**
 
 
--== v26 ==-
+# v26
 "nodefinal" debug command. mark .nod file to never be updated. good for distributing custom rout tables. regardless of "sv_botpath"
 "sv_botjump" 0 off default. to disable the auto creation of nodes when a player jumps. bunnyhop will make maps a mess.
 found missing code not commented in acebots. for jump nodes. code updates map with many node when bunny hoping, so i created sv_botjump default 0.
@@ -60,7 +60,7 @@ players with 4 or more frags will be hunted down by bots
 stop players auto switching to crow bar when picked up
 new cvar sv_keeppistol. if a player selected the pistol after picking up a weapon. it wont switch
 
--== v27 ==-
+# v27
 added 1 more check on keeping pistol
 random taunts for bots when attacking
 changed random weps for bots. hmg will get a boost in percent as fav wep
@@ -81,7 +81,7 @@ antispawn camp shows gun red while immortal, then shows green when player can be
 decrease bot accuracy if on fire. increased to 40 units.
 node links are only joined if player is within 92 units from a node. max node dist is 384
 
--== v28 ==-
+# v28
 fixed teleporter issue. caused by velocity not being reset and crashing into floor
 mapxxx.cfg is now allways used. no longer using old local game style setup.
 added votebotadd.  	"votebotadd 1" will add a bot to team "1" dragons
@@ -113,13 +113,13 @@ bots that have just spawned will look for a better weapon, if in range. even in 
 disabled because player may have used rocketjump to get there. N/A.. yet :)
 
 
--== v29 ==-
+# v29
 previous version?. fixed jump pads. bot now stops directional movements while in air
 added client command "menu" for easy voteing
 stoped player moving on func_plate when going up
 bot now times out by comparing last origin not velocity
 
--== v30 ==-
+# v30
 added hitmen option to comp.ini. enable_hitmen. includes hitmen.ini for setup
 fixed bot angle for corps
 bot should now die if stuck on a ladder
@@ -129,7 +129,7 @@ crate_time reduced for smaller jumps
 fixed a rand() issue for bot dodge
 added a check for jump nodes to make sure they are not allready airborn
 
--== v31 ==-
+# v31
 updated to mm2.0
 made bots more accuret when target is closer
 bots will now shoot sooner if attacked
@@ -137,7 +137,7 @@ fixed multiple issue with func_plat
 node file updated to ver 4. this will delet all old routs
 fixed some more short/int inconsistancies in node usage
 
--== v32 ==-
+# v32
 links "to" teleporters now link through solid walls (work around for bad maps. solid brush over teleporters. cause issues??)
 jump pads no longer create a path. player can steer in the air, causing routs to go all over the place
 jump pads and teleportes are used as a short term goal. makes bots use more of map (though bots cant wander through solid brushes over teleporters)
@@ -145,32 +145,32 @@ fixed esc bug while spectating
 added some checks to water movement. jumping out of pool, item picked up allready.
 pathmap timeout not reset after level change. causing nodes not to be created(this is major bug)
 
--== v33 ==-
+# v33
 added cmd < sv removebot single >. will remove a single bot. the last one added
 made bot random aim via bullets not viewport
 doors are set to auto open
 
--== v34 ==-
+# v34
 fixed bot name truncated to scoreboard size
 frag typo on hud
 match bot vote to M's webpage 0-10
 hitman weapon timer correct at match start
 fixed game start count down timer for shorter pregame
 
--== v35 ==-
+# v35
 added moded pistol with silencer for hitmen
 100hp each bullet for pistol in hitmen
 fix crouch bug again!!!!
 adde taunt animations
 
 
--== v36 ==-
+# v36
 added cvar hitman
 bot skill shown on scoreboard
 anti spawn camp timer reduced to 1.5 sec
 "menu" now shows botskill 0-10 web value
 
--== v37 ==-
+# v37
 fixed bots shooting through some trans surfaces
 changed player names from 13 char to 15.
 added "hitman 1" to cvar. enable hitmen through console. comp.ini still working and efects this cvar.
@@ -184,7 +184,7 @@ additional fix to all scoreboards to truncate to 13 chars. player real name is s
 added "sv_pretimebm" temaply will use a shorter start time than dm
 bug in hitmen causing weapon lag (previous call from shotty/ GL sets RDF_NOLERP)
 
--== v37.M1 ==-
+# v37.M1 
 Bots will jump off ladders if stuck.
 Made bots line up with node X/Y origin on ladders to stop them getting stuck. 
     Node's in map might need to be moved/relocated if bot still gets stuck.
@@ -202,10 +202,10 @@ after a bot shoots an enemy and looses sight, a new goal will be set to try foll
 bots dodge/strafe event is now dependent on skill. they will stand stil more with lower skill levels. 
 custum route tables for kpdm1-4
 
--== v37.M2 ==-
+# v37.M2
 fixed crash with a long map file name. 
 
--== v37.M3 ==-
+# v37.M3
 bots now jumps when slowed down by a short edge. kpdm1 fix
 fixed a ladder bug that could posibly send bot into void
 tweeked bots skill. 0 was previously to hard
@@ -216,7 +216,7 @@ Fixed SPistol bug. if you pickup a pistol mod. you have to wait for the complete
 bot no longer miss at skill 4
 fixed aim at feet when not nessary
 
--== v38 ==-
+# v38
 added hook suport for bots. max 50 nodes allowed
 fixed typo in vector flat distance
 fixed console bug in bot_print
@@ -229,9 +229,7 @@ bots predict rockets and shoot were player will be.
 
 
 
-===========
-todo
-===========
+## todo
 prevent bots jumping down from great heights. esp when wandering
 end game bot comment
 MAKE more rout tables
