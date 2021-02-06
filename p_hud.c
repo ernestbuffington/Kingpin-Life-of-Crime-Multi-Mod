@@ -22,9 +22,26 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 static const char *gameheader[] =
 {
-	GAMEVERSION, //hypov8 "Botmatch.v31"
-	"by Hypo_v8.",
-	"MM2.0, AceBots & Hitmen.",
+	GAMEVERSION, // TheGhost "Life Of Crime Multi Mod"
+	"",
+	"",
+	NULL
+};
+
+static const char *botmatchheader[] = 
+{                                     
+	GAMEVERSION,                      
+	"Botmatch v0.39",                 
+	"by Hypo_v8",                     
+	"MM2.0c & Ace Bots",              
+	NULL                              
+};                                    
+
+static const char *bloodmoneyheader[] =
+{
+	"Blood Money v616", 
+	"by TheGhost & Hypo_v8",
+	"MM2.0c & Koogle Bots",
 	NULL
 };
 
@@ -606,16 +623,45 @@ void MOTDScoreboardMessage (edict_t *ent)
 	strcpy (string + stringlength, entry);
 	stringlength += j;
 
-	for (i=0; gameheader[i]; i++)
+	if (current_mod->value == 1) // Botmatch Mod
 	{
-		Com_sprintf (entry, sizeof(entry),
-			"xm %i yv %i dmstr 863 \"%s\" ",
-			-5*strlen(gameheader[i]), yofs + -60-49, gameheader[i] );
-		j = strlen(entry);
-		strcpy (string + stringlength, entry);
-		stringlength += j;
-		yofs += 20;
+		for (i = 0; botmatchheader[i]; i++)
+		{
+			Com_sprintf(entry, sizeof(entry),
+				"xm %i yv %i dmstr 863 \"%s\" ",
+				-5 * strlen(botmatchheader[i]), yofs + -60 - 49, botmatchheader[i]);
+			    j = strlen(entry);
+			    strcpy(string + stringlength, entry);
+			    stringlength += j;
+			    yofs += 20;
+		}
 	}
+	else
+		if (current_mod->value == 2) // BloodMoney Mod
+		{
+			for (i = 0; bloodmoneyheader[i]; i++)
+			{
+				Com_sprintf(entry, sizeof(entry),
+					"xm %i yv %i dmstr 863 \"%s\" ",
+					-5 * strlen(bloodmoneyheader[i]), yofs + -60 - 49, bloodmoneyheader[i]);
+				    j = strlen(entry);
+				    strcpy(string + stringlength, entry);
+				    stringlength += j;
+				    yofs += 20;
+			}
+		}
+		else
+			for (i = 0; gameheader[i]; i++)
+			{
+				Com_sprintf(entry, sizeof(entry),
+					"xm %i yv %i dmstr 863 \"%s\" ",
+					-5 * strlen(gameheader[i]), yofs + -60 - 49, gameheader[i]);
+				    j = strlen(entry);
+				    strcpy(string + stringlength, entry);
+				    stringlength += j;
+				    yofs += 20;
+			}
+
 	yofs += 10;
 
 	Com_sprintf (entry, sizeof(entry),

@@ -114,7 +114,7 @@ typedef struct							// hitmen
 #define PLAYING				0					// playing types
 
                                                 // the "gameversion" client command will print this plus compile date
-#define	GAMEVERSION	"Life OF Crime Multi Mod"   // "MM2.0 +lagless +acebot +hitmen" //hypov8 gamename
+#define	GAMEVERSION	"Life Of Crime Multi Mod"   // "MM2.0 +lagless +acebot +hitmen" //hypov8 gamename
 #define	MOD0 "Botmatch.v39.2"
 #define	MODV0 "v39.2"
 

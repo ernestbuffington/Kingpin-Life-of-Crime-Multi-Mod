@@ -15,7 +15,7 @@
   file_kpz_ini.c
   file_assault_ini.c
   file_bloodmoney_ini.c
-  file_process_botmatch_ini.c
+  file_botmatch_ini.c
   file_sgm_ini.c
   g_ai.c
   Generating Code...
