@@ -127,9 +127,6 @@
     <ClCompile Include="p_weapon.c">
       <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
     </ClCompile>
-    <ClCompile Include="file_process_botmatch_ini.c">
-      <Filter>Kingpin Multi Mod\Mods\Botmatch Mod</Filter>
-    </ClCompile>
     <ClCompile Include="file_botmen_ini.c">
       <Filter>Kingpin Multi Mod\Mods\Botmen Mod</Filter>
     </ClCompile>
@@ -180,6 +177,9 @@
     </ClCompile>
     <ClCompile Include="file_bloodmoney_ini.c">
       <Filter>Kingpin Multi Mod\Mods\Blood Money Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="file_botmatch_ini.c">
+      <Filter>Kingpin Multi Mod\Mods\Botmatch Mod</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
