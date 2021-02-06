@@ -5,13 +5,13 @@ Kingpin Life Of Crime Multi Mod v0.01
 
 - updated to kpded2 implimentation of geoip v2
 
-# log
+# Log
 
 - bots now aim for feet when using the rocken luncher
 
 - aim lower for crouched players
 
-# v24
+# v0.24
 
 - bot will aim at next target sooner once old target dies. speed is x4 of skill
 
@@ -37,7 +37,7 @@ Kingpin Life Of Crime Multi Mod v0.01
 
 - added some bad spawn locations to be moved. 8mile, 420dm1
 
-# v25
+# v0.25
 
 - removed print "connected" for bots
 
@@ -68,7 +68,7 @@ Kingpin Life Of Crime Multi Mod v0.01
 **note you may need to reduce skill in this version**
 
 
-# v26
+# v0.26
 
 - "nodefinal" debug command. mark .nod file to never be updated. good for distributing custom rout tables. regardless of "sv_botpath"
 
@@ -106,7 +106,7 @@ Kingpin Life Of Crime Multi Mod v0.01
 
 - new cvar sv_keeppistol. if a player selected the pistol after picking up a weapon. it wont switch
 
-# v27
+# v0.27
 
 - added 1 more check on keeping pistol
 
@@ -146,7 +146,7 @@ Kingpin Life Of Crime Multi Mod v0.01
 
 - node links are only joined if player is within 92 units from a node. max node dist is 384
 
-# v28
+# v0.28
 
 - fixed teleporter issue. caused by velocity not being reset and crashing into floor
 
@@ -201,7 +201,7 @@ fix above. also includes a lava check
 disabled because player may have used rocketjump to get there. N/A.. yet :)
 
 
-# v29
+# v0.29
 
 - previous version?. fixed jump pads. bot now stops directional movements while in air
 
@@ -211,7 +211,7 @@ disabled because player may have used rocketjump to get there. N/A.. yet :)
 
 - bot now times out by comparing last origin not velocity
 
-# v30
+# v0.30
 
 - added hitmen option to comp.ini. enable_hitmen. includes hitmen.ini for setup
 
@@ -229,7 +229,7 @@ disabled because player may have used rocketjump to get there. N/A.. yet :)
 
 - added a check for jump nodes to make sure they are not allready airborn
 
-# v31
+# v0.31
 
 - updated to mm2.0
 
@@ -243,7 +243,7 @@ disabled because player may have used rocketjump to get there. N/A.. yet :)
 
 - fixed some more short/int inconsistancies in node usage
 
-# v32
+# v0.32
 
 - links "to" teleporters now link through solid walls (work around for bad maps. solid brush over teleporters. cause issues??)
 
@@ -257,7 +257,7 @@ disabled because player may have used rocketjump to get there. N/A.. yet :)
 
 - pathmap timeout not reset after level change. causing nodes not to be created(this is major bug)
 
-# v33
+# v0.33
 
 - added cmd < sv removebot single >. will remove a single bot. the last one added
 
@@ -265,7 +265,7 @@ disabled because player may have used rocketjump to get there. N/A.. yet :)
 
 - doors are set to auto open
 
-# v34
+# v0.34
 
 - fixed bot name truncated to scoreboard size
 
@@ -277,7 +277,7 @@ disabled because player may have used rocketjump to get there. N/A.. yet :)
 
 - fixed game start count down timer for shorter pregame
 
-# v35
+# v0.35
 
 - added moded pistol with silencer for hitmen
 
@@ -288,7 +288,7 @@ disabled because player may have used rocketjump to get there. N/A.. yet :)
 - adde taunt animations
 
 
-# v36
+# v0.36
 
 - added cvar hitman
 
@@ -298,7 +298,7 @@ disabled because player may have used rocketjump to get there. N/A.. yet :)
 
 - "menu" now shows botskill 0-10 web value
 
-# v37
+# v0.37
 
 - fixed bots shooting through some trans surfaces
 
@@ -322,7 +322,7 @@ disabled because player may have used rocketjump to get there. N/A.. yet :)
 
 - bug in hitmen causing weapon lag (previous call from shotty/ GL sets RDF_NOLERP)
 
-# v37.M1 
+# v0.37.M1 
 
 - Bots will jump off ladders if stuck.
 
@@ -356,10 +356,10 @@ disabled because player may have used rocketjump to get there. N/A.. yet :)
 
 - custum route tables for kpdm1-4
 
-# v37.M2
+# v0.37.M2
 fixed crash with a long map file name. 
 
-# v37.M3
+# v0.37.M3
 
 - bots now jumps when slowed down by a short edge. kpdm1 fix
 
@@ -379,7 +379,7 @@ fixed crash with a long map file name.
 
 - fixed aim at feet when not nessary
 
-# v38
+# v0.38
 
 - added hook suport for bots. max 50 nodes allowed
 
@@ -475,7 +475,7 @@ end game bot comment
 - team_crossfire
 - chrome
 
-# Crash 
+### Crash 
 ---------
 - parkgarage
 - ddkp1
