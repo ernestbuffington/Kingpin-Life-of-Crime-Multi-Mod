@@ -253,13 +253,13 @@ add topplayer to rl/gl so dodge worke better.
 
 
 ### maps to test
-- ladders -
+### ladders
 -----------
-toomuchblood
-fragndie3 4
-nycdm3_kp
-fucked
-sym //stairs
+-toomuchblood
+-fragndie3 4
+-nycdm3_kp
+-fucked
+-sym //stairs
 
 - other -
 ---------
