@@ -255,78 +255,56 @@ add topplayer to rl/gl so dodge worke better.
 ### maps to test
 ### ladders
 -----------
--toomuchblood
--fragndie3 4
--nycdm3_kp
--fucked
--sym //stairs
+- toomuchblood
+- fragndie3 4
+- nycdm3_kp
+- fucked
+- sym //stairs
 
-- other -
+### other 
 ---------
-bigcube_v3
-nwth
-dm_cw
-downhere
-kp_biodm_v3
-kptrdm05a (stuck on walls+lift+ladder)
+- bigcube_v3
+- nwth
+- dm_cw
+- downhere
+- kp_biodm_v3
+- kptrdm05a (stuck on walls+lift+ladder)
 
-- teleporters -
+### teleporters 
 ---------------
-kp_biodm_v3	= issue with solid wall above teleporter
-stdm5		= ok. trig push speed upped 4 bot use
-facility_2016	= ok
-kpq1dm6_final 	= issue with solid brush surounding centre of teleporter
-420dm1 		= fixed lift in version2
+- kp_biodm_v3	= issue with solid wall above teleporter
+- stdm5		= ok. trig push speed upped 4 bot use
+- facility_2016	= ok
+- kpq1dm6_final = issue with solid brush surounding centre of teleporter
+- 420dm1 	= fixed lift in version2
 
-kpdm11
-sonik_e1m7
-panzer_tly
-dm_fis_b1
-team_float
+- kpdm11
+- sonik_e1m7
+- panzer_tly
+- dm_fis_b1
+- team_float
 
-- lava -
+### lava 
 --------
-brutal
-sinister 
-kpq2dm4
-team_crossfire
-chrome
+- brutal
+- sinister 
+- kpq2dm4
+- team_crossfire
+- chrome
 
-- crash -
+# crash 
 ---------
-parkgarage
-ddkp1
+- parkgarage
+- ddkp1
 
+# legal
+===========
+Koogle Bot is a modification of the ACE Bot, and is therefore
+in NO WAY supported by Steve Yeager.
 
-===========
-legal
-===========
 The ACE Bot is a product of Steve Yeager, and is available from
 the ACE Bot homepage, at http://www.axionfx.com/ace.
 
-This program is a modification of the ACE Bot, and is therefore
-in NO WAY supported by Steve Yeager.
-
-This program MUST NOT be sold in ANY form. If you have paid for 
-this product, you should contact Steve Yeager immediately, via
+The ACE Bot MUST NOT be sold in ANY form. If you have paid for 
+The ACE Bot product, you should contact Steve Yeager immediately, via
 the ACE Bot homepage.
-
-
-
-===========
-The End
-===========
-you read down this far!!!!
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-
