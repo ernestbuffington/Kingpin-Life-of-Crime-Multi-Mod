@@ -1,12 +1,14 @@
 # Kingpin: Life of Crime Multi Mod v0.39
 
 ## Programmers
-- Ernest Buffington (TheGhost)
-- David S (hypov8)
+- TheGhost (Ernest Buffington)
+- hypov8 (David S)
 - FREDZ
 - Snap
 - Tical
 - Monkey Harris 
+- Rat Instinct
+- Chief (Frank Peterson)
 
 # GeoIP setup
 
