@@ -4,15 +4,9 @@ Kingpin Life Of Crime Multi Mod v0.01
 **GeoIP setup**
 updated to kpded2 implimentation of geoip v2
 
-
-
-
-===========
-log
-===========
+**log**
 bots now aim for feet when using the rocken luncher
 aim lower for crouched players
-
 
 -== v24 ==-
 bot will aim at next target sooner once old target dies. speed is x4 of skill
