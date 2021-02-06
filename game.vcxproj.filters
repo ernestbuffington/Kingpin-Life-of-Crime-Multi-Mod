@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="kooglebot_src\kooglebot_ai.c">
+      <Filter>Kingpin Multi Mod\Mods\Koogle Bot Source</Filter>
+    </ClCompile>
+    <ClCompile Include="kooglebot_src\kooglebot_cmds.c">
+      <Filter>Kingpin Multi Mod\Mods\Koogle Bot Source</Filter>
+    </ClCompile>
+    <ClCompile Include="kooglebot_src\kooglebot_compress.c">
+      <Filter>Kingpin Multi Mod\Mods\Koogle Bot Source</Filter>
+    </ClCompile>
+    <ClCompile Include="kooglebot_src\kooglebot_items.c">
+      <Filter>Kingpin Multi Mod\Mods\Koogle Bot Source</Filter>
+    </ClCompile>
+    <ClCompile Include="kooglebot_src\kooglebot_movement.c">
+      <Filter>Kingpin Multi Mod\Mods\Koogle Bot Source</Filter>
+    </ClCompile>
+    <ClCompile Include="kooglebot_src\kooglebot_nodes.c">
+      <Filter>Kingpin Multi Mod\Mods\Koogle Bot Source</Filter>
+    </ClCompile>
+    <ClCompile Include="kooglebot_src\kooglebot_spawn.c">
+      <Filter>Kingpin Multi Mod\Mods\Koogle Bot Source</Filter>
+    </ClCompile>
+    <ClCompile Include="g_hitmen_mod.c">
+      <Filter>Kingpin Multi Mod\Mods\Hitmen</Filter>
+    </ClCompile>
+    <ClCompile Include="p_hook.c">
+      <Filter>Kingpin Multi Mod\Mods\Hook</Filter>
+    </ClCompile>
+    <ClCompile Include="g_ai.c">
+      <Filter>Kingpin Multi Mod\C Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_cast.c">
+      <Filter>Kingpin Multi Mod\C Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vehicles.c">
+      <Filter>Kingpin Multi Mod\C Files</Filter>
+    </ClCompile>
+    <ClCompile Include="voice.c">
+      <Filter>Kingpin Multi Mod\C Files</Filter>
+    </ClCompile>
+    <ClCompile Include="voice_bitch.c">
+      <Filter>Kingpin Multi Mod\C Files</Filter>
+    </ClCompile>
+    <ClCompile Include="voice_punk.c">
+      <Filter>Kingpin Multi Mod\C Files</Filter>
+    </ClCompile>
+    <ClCompile Include="unlagged.c">
+      <Filter>Kingpin Multi Mod\Mods\Unlagged</Filter>
+    </ClCompile>
+    <ClCompile Include="tourney.c">
+      <Filter>Kingpin Multi Mod\Mods\Monkey Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="file.c">
+      <Filter>Kingpin Multi Mod\Mods\Monkey Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="g_main.c">
+      <Filter>Kingpin Multi Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="g_save.c">
+      <Filter>Kingpin Multi Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="g_spawn.c">
+      <Filter>Kingpin Multi Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="g_svcmds.c">
+      <Filter>Kingpin Multi Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="p_hud.c">
+      <Filter>Kingpin Multi Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="p_view.c">
+      <Filter>Kingpin Multi Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="g_chase.c">
+      <Filter>Kingpin Multi Mod\Mods\Snap Chase Cam</Filter>
+    </ClCompile>
+    <ClCompile Include="g_combat.c">
+      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_cmds.c">
+      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_func.c">
+      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_items.c">
+      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_misc.c">
+      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_phys.c">
+      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_props.c">
+      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_target.c">
+      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_teamplay.c">
+      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_trigger.c">
+      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_utils.c">
+      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_weapon.c">
+      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+    </ClCompile>
+    <ClCompile Include="m_bbox.c">
+      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+    </ClCompile>
+    <ClCompile Include="m_move.c">
+      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+    </ClCompile>
+    <ClCompile Include="p_client.c">
+      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+    </ClCompile>
+    <ClCompile Include="q_shared.c">
+      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+    </ClCompile>
+    <ClCompile Include="p_weapon.c">
+      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="game.h" />
+    <ClInclude Include="kooglebot_src\kooglebot.h">
+      <Filter>Kingpin Multi Mod\Mods\Koogle Bot Source</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="file.h">
+      <Filter>Kingpin Multi Mod\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="g_ai.h">
+      <Filter>Kingpin Multi Mod\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="g_func.h">
+      <Filter>Kingpin Multi Mod\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="g_hitmen_mod.h">
+      <Filter>Kingpin Multi Mod\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="g_local.h">
+      <Filter>Kingpin Multi Mod\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="g_nav.h">
+      <Filter>Kingpin Multi Mod\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="g_teamplay.h">
+      <Filter>Kingpin Multi Mod\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="m_player.h">
+      <Filter>Kingpin Multi Mod\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="q_shared.h">
+      <Filter>Kingpin Multi Mod\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="veh_defs.h">
+      <Filter>Kingpin Multi Mod\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vehicles.h">
+      <Filter>Kingpin Multi Mod\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="voice.h">
+      <Filter>Kingpin Multi Mod\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="voice_bitch.h">
+      <Filter>Kingpin Multi Mod\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="voice_punk.h">
+      <Filter>Kingpin Multi Mod\Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="game.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Config Files">
+      <UniqueIdentifier>{06dd2fa4-0bd4-4de6-8a73-41349b535348}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod">
+      <UniqueIdentifier>{db25f78a-2a23-4e34-b455-5f656e58b048}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod\Header Files">
+      <UniqueIdentifier>{cdac165f-7e06-498e-9121-904b4a99d6bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod\C Files">
+      <UniqueIdentifier>{c845582f-7079-4297-a829-d225e2b4ea40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod\Mods">
+      <UniqueIdentifier>{809659fe-0a8e-4284-a140-a172f7bd494f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod\Mods\Koogle Bot Source">
+      <UniqueIdentifier>{3abcca90-c5d2-420a-8c11-089a56cbad56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod\Mods\Monkey Mod">
+      <UniqueIdentifier>{5e9fd048-abab-48a9-a143-b7c879aca136}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod\Mods\Hitmen">
+      <UniqueIdentifier>{f97dd27b-f9b3-4396-8455-8d776bb71ca4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod\Mods\Hook">
+      <UniqueIdentifier>{2fcd7dce-da2e-4207-908a-a3116d5c83cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod\Mods\Unlagged">
+      <UniqueIdentifier>{6e733af3-cfdd-4ef8-821b-37a1fd3474b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Config Files\kpNBK Config Files">
+      <UniqueIdentifier>{5d90e100-6b27-401e-804d-fd8b4126983e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Config Files\main Config Files">
+      <UniqueIdentifier>{b89f4669-2c6e-4985-b1b3-9edb0a015403}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod\Mods\Server Files">
+      <UniqueIdentifier>{2f66d252-a6c3-4253-a983-42686f44c3d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod\Mods\Snap Chase Cam">
+      <UniqueIdentifier>{ad38b418-da21-4f51-9e66-2aff67015331}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+    <None Include="..\autoexec.cfg">
+      <Filter>Config Files\main Config Files</Filter>
+    </None>
+    <None Include="..\bot_setup.cfg">
+      <Filter>Config Files\main Config Files</Filter>
+    </None>
+    <None Include="..\comp.ini">
+      <Filter>Config Files\main Config Files</Filter>
+    </None>
+    <None Include="..\config.cfg">
+      <Filter>Config Files\main Config Files</Filter>
+    </None>
+    <None Include="..\Dedicated Bot Server.bat">
+      <Filter>Config Files\main Config Files</Filter>
+    </None>
+    <None Include="..\default.cfg">
+      <Filter>Config Files\main Config Files</Filter>
+    </None>
+    <None Include="..\hitmen.ini">
+      <Filter>Config Files\main Config Files</Filter>
+    </None>
+    <None Include="..\hook.cfg">
+      <Filter>Config Files\main Config Files</Filter>
+    </None>
+    <None Include="..\Lan Bot Server.bat">
+      <Filter>Config Files\main Config Files</Filter>
+    </None>
+    <None Include="..\maps.lst">
+      <Filter>Config Files\main Config Files</Filter>
+    </None>
+    <None Include="..\server.cfg">
+      <Filter>Config Files\main Config Files</Filter>
+    </None>
+    <None Include="..\teammaps.lst">
+      <Filter>Config Files\main Config Files</Filter>
+    </None>
+    <None Include="..\..\kpNBK\autoexec.cfg">
+      <Filter>Config Files\kpNBK Config Files</Filter>
+    </None>
+    <None Include="..\..\kpNBK\bot_setup.cfg">
+      <Filter>Config Files\kpNBK Config Files</Filter>
+    </None>
+    <None Include="..\..\kpNBK\comp.ini">
+      <Filter>Config Files\kpNBK Config Files</Filter>
+    </None>
+    <None Include="..\..\kpNBK\config.cfg">
+      <Filter>Config Files\kpNBK Config Files</Filter>
+    </None>
+    <None Include="..\..\kpNBK\Dedicated Bot Server.bat">
+      <Filter>Config Files\kpNBK Config Files</Filter>
+    </None>
+    <None Include="..\..\kpNBK\default.cfg">
+      <Filter>Config Files\kpNBK Config Files</Filter>
+    </None>
+    <None Include="..\..\kpNBK\hitmen.ini">
+      <Filter>Config Files\kpNBK Config Files</Filter>
+    </None>
+    <None Include="..\..\kpNBK\hook.cfg">
+      <Filter>Config Files\kpNBK Config Files</Filter>
+    </None>
+    <None Include="..\..\kpNBK\Lan Bot Server.bat">
+      <Filter>Config Files\kpNBK Config Files</Filter>
+    </None>
+    <None Include="..\..\kpNBK\server.cfg">
+      <Filter>Config Files\kpNBK Config Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="gamex86.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\maps.txt">
+      <Filter>Config Files\main Config Files</Filter>
+    </Text>
+    <Text Include="..\..\kpNBK\config.cfg.txt">
+      <Filter>Config Files\kpNBK Config Files</Filter>
+    </Text>
+    <Text Include="..\..\kpNBK\ips.txt">
+      <Filter>Config Files\kpNBK Config Files</Filter>
+    </Text>
+    <Text Include="..\..\kpNBK\maps.txt">
+      <Filter>Config Files\kpNBK Config Files</Filter>
+    </Text>
+    <Text Include="..\..\kpNBK\names.txt">
+      <Filter>Config Files\kpNBK Config Files</Filter>
+    </Text>
+    <Text Include="..\..\kpNBK\natural-born-killers.log">
+      <Filter>Config Files\kpNBK Config Files</Filter>
+    </Text>
+    <Text Include="..\..\kpNBK\rcons.txt">
+      <Filter>Config Files\kpNBK Config Files</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
