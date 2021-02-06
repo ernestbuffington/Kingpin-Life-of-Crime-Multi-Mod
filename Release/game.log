@@ -13,8 +13,8 @@
   file_insomnia_ini.c
   file_kpq2_ini.c
   file_kpz_ini.c
-  file_process_assault_ini.c
-  file_process_bloodmoney_ini.c
+  file_assault_ini.c
+  file_bloodmoney_ini.c
   file_process_botmatch_ini.c
   file_sgm_ini.c
   g_ai.c

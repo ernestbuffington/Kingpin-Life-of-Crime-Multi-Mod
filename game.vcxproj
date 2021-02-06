@@ -332,8 +332,8 @@
     <ClCompile Include="file_insomnia_ini.c" />
     <ClCompile Include="file_kpq2_ini.c" />
     <ClCompile Include="file_kpz_ini.c" />
-    <ClCompile Include="file_process_assault_ini.c" />
-    <ClCompile Include="file_process_bloodmoney_ini.c" />
+    <ClCompile Include="file_assault_ini.c" />
+    <ClCompile Include="file_bloodmoney_ini.c" />
     <ClCompile Include="file_process_botmatch_ini.c" />
     <ClCompile Include="file_sgm_ini.c" />
     <ClCompile Include="g_ai.c" />
