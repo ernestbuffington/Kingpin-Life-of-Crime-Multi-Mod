@@ -229,7 +229,7 @@ bots predict rockets and shoot were player will be.
 
 
 
-## todo
+### todo
 prevent bots jumping down from great heights. esp when wandering
 end game bot comment
 MAKE more rout tables
@@ -252,9 +252,7 @@ add topplayer to rl/gl so dodge worke better.
 
 
 
-===========
-maps to test
-===========
+### maps to test
 - ladders -
 -----------
 toomuchblood
