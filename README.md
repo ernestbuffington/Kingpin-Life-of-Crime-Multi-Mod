@@ -1,10 +1,10 @@
 # Kingpin: Life of Crime Multi Mod
 Kingpin Life Of Crime Multi Mod v0.01
 
-**GeoIP setup**
+# GeoIP setup
 updated to kpded2 implimentation of geoip v2
 
-**log**
+# log
 bots now aim for feet when using the rocken luncher
 aim lower for crouched players
 
