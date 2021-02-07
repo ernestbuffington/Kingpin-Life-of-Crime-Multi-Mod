@@ -1,7 +1,7 @@
 # Kingpin: Life of Crime Multi Mod v0.39
 
 ## Programmers
-- TheGhost (Ernest Buffington)
+- TheGhost (Ernest Buffington) 1+813-846-2865 or 1+813 520-3380
 - hypov8 (David S)
 - 𝔽ℝ𝔼𝔻ℤ
 - Snap
