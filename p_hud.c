@@ -45,6 +45,16 @@ static const char *bloodmoneyheader[] =
 	NULL
 };
 
+static const char *hitmenheader[] =
+{
+	"Hitmen Bots v1.0c",
+	"by Rat Instinct",
+	"Original Idea by Mike Fox",
+	"www.atrophy.co.uk",
+	NULL
+};
+
+
 int GetGameModeMessage(char *entry, int yofs)
 {
 	const char *p;
@@ -625,16 +635,35 @@ void MOTDScoreboardMessage (edict_t *ent)
 
 	if (current_mod->value == 1) // Botmatch Mod
 	{
-		for (i = 0; botmatchheader[i]; i++)
-		{
-			Com_sprintf(entry, sizeof(entry),
-				"xm %i yv %i dmstr 863 \"%s\" ",
-				-5 * strlen(botmatchheader[i]), yofs + -60 - 49, botmatchheader[i]);
-			    j = strlen(entry);
-			    strcpy(string + stringlength, entry);
-			    stringlength += j;
-			    yofs += 20;
-		}
+			if (sv_hitmen->value == 1)
+			{
+				for (i = 0; hitmenheader[i]; i++)
+				{
+					Com_sprintf(entry, sizeof(entry),
+						"xm %i yv %i dmstr 863 \"%s\" ",
+						-5 * strlen(hitmenheader[i]), yofs + -60 - 49, hitmenheader[i]);
+					j = strlen(entry);
+					strcpy(string + stringlength, entry);
+					stringlength += j;
+					yofs += 20;
+				}
+
+			}
+			else
+			{
+
+				for (i = 0; botmatchheader[i]; i++)
+				{
+					Com_sprintf(entry, sizeof(entry),
+						"xm %i yv %i dmstr 863 \"%s\" ",
+						-5 * strlen(botmatchheader[i]), yofs + -60 - 49, botmatchheader[i]);
+					j = strlen(entry);
+					strcpy(string + stringlength, entry);
+					stringlength += j;
+					yofs += 20;
+				}
+
+			}
 	}
 	else
 		if (current_mod->value == 2) // BloodMoney Mod
@@ -793,15 +822,34 @@ void RejoinScoreboardMessage (edict_t *ent)
 
 	if (current_mod->value == 1) // Botmatch Mod
 	{
-		for (i = 0; botmatchheader[i]; i++)
+		if (sv_hitmen->value == 1)
 		{
-			Com_sprintf(entry, sizeof(entry),
-				"xm %i yv %i dmstr 863 \"%s\" ",
-				-5 * strlen(botmatchheader[i]), yofs + -60 - 49, botmatchheader[i]);
-			j = strlen(entry);
-			strcpy(string + stringlength, entry);
-			stringlength += j;
-			yofs += 20;
+			for (i = 0; hitmenheader[i]; i++)
+			{
+				Com_sprintf(entry, sizeof(entry),
+					"xm %i yv %i dmstr 863 \"%s\" ",
+					-5 * strlen(hitmenheader[i]), yofs + -60 - 49, hitmenheader[i]);
+				j = strlen(entry);
+				strcpy(string + stringlength, entry);
+				stringlength += j;
+				yofs += 20;
+			}
+
+		}
+		else
+		{
+
+			for (i = 0; botmatchheader[i]; i++)
+			{
+				Com_sprintf(entry, sizeof(entry),
+					"xm %i yv %i dmstr 863 \"%s\" ",
+					-5 * strlen(botmatchheader[i]), yofs + -60 - 49, botmatchheader[i]);
+				j = strlen(entry);
+				strcpy(string + stringlength, entry);
+				stringlength += j;
+				yofs += 20;
+			}
+
 		}
 	}
 	else
