@@ -39,7 +39,6 @@ h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\g_combat.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\g_cmds.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\g_chase.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\g_cast.obj
-h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\voice_punk.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\voice_bitch.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\voice.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\vehicles.obj
@@ -53,12 +52,14 @@ h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\p_hook.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\p_client.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\m_move.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\m_bbox.obj
+h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\lan_play_settings.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\kooglebot_spawn.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\kooglebot_nodes.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\kooglebot_movement.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\kooglebot_items.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\kooglebot_compress.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\kooglebot_cmds.obj
+h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\voice_punk.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\gamex86.lib
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\gamex86.exp
 h:\kingpin\multi\gamex86.dll

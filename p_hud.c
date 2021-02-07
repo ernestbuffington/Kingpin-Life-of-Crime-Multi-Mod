@@ -791,16 +791,45 @@ void RejoinScoreboardMessage (edict_t *ent)
 	strcpy (string + stringlength, entry);
 	stringlength += j;
 
-	for (i=0; gameheader[i]; i++)
+	if (current_mod->value == 1) // Botmatch Mod
 	{
-		Com_sprintf (entry, sizeof(entry),
-			"xm %i yv %i dmstr 863 \"%s\" ",
-			-5*strlen(gameheader[i]), yofs + -60-49, gameheader[i] );
-		j = strlen(entry);
-		strcpy (string + stringlength, entry);
-		stringlength += j;
-		yofs += 20;
+		for (i = 0; botmatchheader[i]; i++)
+		{
+			Com_sprintf(entry, sizeof(entry),
+				"xm %i yv %i dmstr 863 \"%s\" ",
+				-5 * strlen(botmatchheader[i]), yofs + -60 - 49, botmatchheader[i]);
+			j = strlen(entry);
+			strcpy(string + stringlength, entry);
+			stringlength += j;
+			yofs += 20;
+		}
 	}
+	else
+		if (current_mod->value == 2) // BloodMoney Mod
+		{
+			for (i = 0; bloodmoneyheader[i]; i++)
+			{
+				Com_sprintf(entry, sizeof(entry),
+					"xm %i yv %i dmstr 863 \"%s\" ",
+					-5 * strlen(bloodmoneyheader[i]), yofs + -60 - 49, bloodmoneyheader[i]);
+				j = strlen(entry);
+				strcpy(string + stringlength, entry);
+				stringlength += j;
+				yofs += 20;
+			}
+		}
+		else
+			for (i = 0; gameheader[i]; i++)
+			{
+				Com_sprintf(entry, sizeof(entry),
+					"xm %i yv %i dmstr 863 \"%s\" ",
+					-5 * strlen(gameheader[i]), yofs + -60 - 49, gameheader[i]);
+				j = strlen(entry);
+				strcpy(string + stringlength, entry);
+				stringlength += j;
+				yofs += 20;
+			}
+	
 	yofs += 10;
 
 	Com_sprintf (entry, sizeof(entry),

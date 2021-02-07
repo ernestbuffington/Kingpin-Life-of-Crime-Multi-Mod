@@ -363,6 +363,7 @@
     <ClCompile Include="kooglebot_src\kooglebot_movement.c" />
     <ClCompile Include="kooglebot_src\kooglebot_nodes.c" />
     <ClCompile Include="kooglebot_src\kooglebot_spawn.c" />
+    <ClCompile Include="lan_play_settings.c" />
     <ClCompile Include="m_bbox.c" />
     <ClCompile Include="m_move.c" />
     <ClCompile Include="p_client.c" />
@@ -401,6 +402,7 @@
     <ClInclude Include="voice_punk.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\bot_setup.cfg" />
     <None Include="..\comp.ini" />
     <None Include="..\Dedicated Bot Server.bat" />
     <None Include="..\default.cfg" />

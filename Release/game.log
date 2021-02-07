@@ -48,6 +48,7 @@
   kooglebot_movement.c
   kooglebot_nodes.c
   kooglebot_spawn.c
+  lan_play_settings.c
   m_bbox.c
   m_move.c
   p_client.c
@@ -61,6 +62,8 @@
   vehicles.c
   voice.c
   voice_bitch.c
+  Generating Code...
+  Compiling...
   voice_punk.c
   Generating Code...
      Creating library .\Release\gamex86.lib and object .\Release\gamex86.exp

@@ -181,6 +181,9 @@
     <ClCompile Include="file_botmatch_ini.c">
       <Filter>Kingpin Multi Mod\Mods\Botmatch Mod</Filter>
     </ClCompile>
+    <ClCompile Include="lan_play_settings.c">
+      <Filter>Kingpin Multi Mod\Mods\Monkey Mod</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="kooglebot_src\kooglebot.h">
@@ -345,6 +348,9 @@
       <Filter>Config Files\main Config Files</Filter>
     </None>
     <None Include="..\server.cfg">
+      <Filter>Config Files\main Config Files</Filter>
+    </None>
+    <None Include="..\bot_setup.cfg">
       <Filter>Config Files\main Config Files</Filter>
     </None>
   </ItemGroup>

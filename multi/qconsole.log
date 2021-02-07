@@ -1,0 +1,127 @@
+Unknown command "logfile_timestamp"
+Unknown command "logfile_timestamp_format"
+Unknown command "logfile_name"
+Unknown command "logfile_filterlevel"
+Unknown command "sv_allow_map"
+Unknown command "sv_compress"
+Unknown command "sv_compress_downloads"
+Unknown command "sv_connectmessage"
+Unknown command "sv_disconnect_hack"
+Unknown command "sv_global_master"
+Unknown command "sv_log_connectinfo"
+Unknown command "sv_mapdownload_ok_message"
+Unknown command "sv_pakdownload_message"
+Unknown command "sv_predict_on_lag"
+Unknown command "sv_redirect_address"
+Unknown command "sv_underwater_sound"
+Only dedicated servers use masters.
+==== Kingpin Init Lan Play Settings  ====
+Processed comp.ini file
+Processed name bans file (0 bans)
+Processed IP bans file (0 bans)
+Processed rconx password file (0 passwords)
+Processed map list file (maps.txt = 5 maps)
+------- Server Initialization -------
+Sat Feb  6 22:27:03 2021
+Loading map: kpdm2
+2 entities inhibited
+0 teams with 0 entities
+0 special teams
+-------------------------------------
+Bugsy (loopback) connected
+loopback: client_connect
+
+
+
+
+Industrial Waste
+Map: kpdm2                                     pics                                     maps/kpdm2.bsp#w_pipe.mdx#w_pistol.mdx#w_shotgun.mdx#w_tommygun.mdx#w_heavy machinegun.mdx#w_grenade launcher.mdx#w_bazooka.mdx#w_flamethrower.mdxmodels/pu_icon/grenade/tris.md2models/pu_icon/flametank/tris.md2models/weapons/g_grenade_launcher/trimodels/weapons/v_grenade_launcher/gremodels/pu_icon/armor_head/armor_head_models/pu_icon/rocket/tris.md2models/pu_icon/reload_mod/tris.md2models/pu_icon/health/tris.md2models/pu_icon/hmgclip/tris.md2models/weapons/g_hmg/tris.md2models/weapons/v_hmg/hmg.mdxmodels/pu_icon/health_s/tris.md2models/pu_icon/shotgun_shell/tris.md2models/pu_icon/armor_lo/armor_lo_hd.mmodels/pu_icon/armor_head/armor_head.models/weapons/g_rocket_launcher/trismodels/weapons/v_rocket_launcher/rlaumodels/props/glass/glass2.md2models/pu_icon/armor/tris.md2models/weapons/g_tomgun/tris.md2models/weapons/v_tomgun/tomgun.mdxmodels/pu_icon/pclip/tris.md2models/pu_icon/armor_lo/armor_lo.md2models/pu_icon/ro_fire_mod/tris.md2models/weapons/g_shotgun/tris.md2models/weapons/shotgun/shotgun.mdxmodels/pu_icon/magmod/tris.md2models/pu_icon/tgclip/tris.md2models/pu_icon/flame_shell/tris.md2models/weapons/v_flamegun/flamegun.mdmodels/pu_icon/armor/armorhdtop.md2models/pu_icon/coolmod/tris.md2models/pu_icon/adrenaline/tris.md2images                                     client 0                                     sky                                                                          Bugsy entered the game
+Let the fun begin!
+ KOOGLE: No node file found, creating new nodes...
+ KOOGLE: Create nodes done. (Nodes:84 Items:83 Dupes:0)
+]resetserver
+You do not have permission
+]admin 2112
+Bugsy is now admin
+
+Current Console Commands
+========================
+menu, maplist, changemap, players, motd, settings, curselist, commands
+botskill 0-10, VoteBotRemove x, VoteBotAdd 1=Dragons 
+antilag, admin, resign 
+resetserver, settimelimit, setfraglimit, setcashlimit, setdmflags
+endmap, setidletime, toggle_asc, toggle_bunny, toggle_shadows, toggle_zoom, setbonus, clientlist, mute, setdm_realmode, setteamplay
+
+   The dm_realmode settings are:
+      0 : Standard
+      1 : Realmode
+      2 : Rocketmode
+   The teamplay settings are:
+      0 : Standard DM
+      1 : Bagman
+      4 : Team DM
+]resetserver
+Bot-Skill set to 3 of 10 (sv_botskill 1.0)
+ KOOGLE: Resolving all paths done. (1 updated)
+ KOOGLE: ERROR Can not save node file.
+==== ShutdownGame ====
+==== Kingpin Init Lan Play Settings  ====
+Processed comp.ini file
+Processed name bans file (0 bans)
+Processed IP bans file (0 bans)
+Processed rconx password file (0 passwords)
+Processed map list file (maps.txt = 5 maps)
+------- Server Initialization -------
+Sat Feb  6 22:27:49 2021
+Loading map: kpdm1
+info_player_intermission doesn't have a spawn function
+info_player_intermission doesn't have a spawn function
+0 entities inhibited
+0 teams with 0 entities
+0 special teams
+-------------------------------------
+Server restarted
+Server disconnected, reconnecting
+Connecting to localhost...
+loopback: challenge
+Bugsy (loopback) connected
+loopback: client_connect
+
+
+
+
+Rival Turf
+Map: kpdm1                                     pics                                     maps/kpdm1.bsp#w_pipe.mdx#w_pistol.mdx#w_shotgun.mdx#w_tommygun.mdx#w_heavy machinegun.mdx#w_grenade launcher.mdx#w_bazooka.mdx#w_flamethrower.mdxmodels/pu_icon/flametank/tris.md2models/pu_icon/health/tris.md2models/weapons/g_shotgun/tris.md2models/weapons/shotgun/shotgun.mdxmodels/pu_icon/shotgun_shell/tris.md2models/pu_icon/armor/tris.md2models/pu_icon/armor_head/armor_head_models/pu_icon/coolmod/tris.md2models/pu_icon/armor_lo/armor_lo_hd.mmodels/weapons/g_hmg/tris.md2models/weapons/v_hmg/hmg.mdxmodels/pu_icon/hmgclip/tris.md2models/pu_icon/pclip/tris.md2models/pu_icon/armor_lo/armor_lo.md2models/pu_icon/armor/armorhdtop.md2models/pu_icon/rocket/tris.md2models/pu_icon/health_s/tris.md2models/weapons/g_tomgun/tris.md2models/weapons/v_tomgun/tomgun.mdxmodels/pu_icon/reload_mod/tris.md2models/pu_icon/tgclip/tris.md2models/pu_icon/ro_fire_mod/tris.md2models/pu_icon/grenade/tris.md2models/pu_icon/magmod/tris.md2models/weapons/g_grenade_launcher/trimodels/weapons/v_grenade_launcher/gremodels/pu_icon/flame_shell/tris.md2models/weapons/v_flamegun/flamegun.mdmodels/weapons/g_rocket_launcher/trismodels/weapons/v_rocket_launcher/rlaumodels/props/glass/glass2.md2models/pu_icon/armor_head/armor_head.models/pu_icon/backpack/tris.md2images                                     client 0                                     sky                                                                          Bugsy entered the game
+:Bugsy: HY 0.022 1
+Let the fun begin!
+ KOOGLE: No node file found, creating new nodes...
+ KOOGLE: Create nodes done. (Nodes:83 Items:82 Dupes:0)
+]serverinfo
+Server info settings:
+antilag             1
+cashlimit           0
+cheats              0
+current_mod         1
+dm_realmode         0
+dmflags             788
+fraglimit           30
+game                multi
+gamedate            Feb  6 2021
+gamedir             multi
+gamemod             Botmatch.v39
+gamename            Life Of Crime Multi Mod
+hitmen              0
+hostname            Life Of Crime Multi Mod (DeBugVille)
+kick_flamehack      1
+mapname             kpdm1
+maxclients          64
+protocol            32
+sv_botskill         1.0
+sv_lan_play         1
+teamplay            0
+time                19:53
+timelimit           20
+version             1.21 x86 Sep  5 1999 Win32 RELEASE
+ KOOGLE: Resolving all paths done. (1 updated)
+ KOOGLE: ERROR Can not save node file.
+==== ShutdownGame ====

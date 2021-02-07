@@ -927,8 +927,11 @@ extern	cvar_t	*maxentities;
 //extern	cvar_t	*HmSoundWarn;
 // END
 
+void InitLanGame(void);
+
 // Multi Mod add
 extern cvar_t *current_mod;
+extern cvar_t* sv_lan_play;
 // Multi Mod end
 
 

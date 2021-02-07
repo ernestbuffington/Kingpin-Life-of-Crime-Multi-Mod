@@ -215,15 +215,23 @@ qboolean ResetServer (qboolean ifneeded) // completely resets the server includi
 
 // BEGIN HITMEN
 	if (enable_hitmen)
-		sv_hitmen =	gi.cvar_set("hitmen", "1");
+	{
+		if (sv_hitmen->value == 1)
+		sv_hitmen = gi.cvar_set("hitmen", "1");
+		else
+		sv_hitmen = gi.cvar_set("hitmen", "0");
+	}
 // END
 
 	if (default_teamplay[0])
 		gi.cvar_set("teamplay", default_teamplay);
 	if (default_dm_realmode[0])
 		gi.cvar_set("dm_realmode", default_dm_realmode);
+	
+	if (sv_cheats->value == 1)
+	gi.cvar_set("cheats", "1");
+	else 
 	gi.cvar_set("cheats", "0");
-
 
 	if (default_random_map && num_maps)
 		Com_sprintf (command, sizeof(command), "map \"%s\"\n", maplist[rand() % num_maps]);

@@ -47,6 +47,7 @@ object_bounds_t	*g_objbnds[MAX_OBJECT_BOUNDS];
 
 // Multi Mod add
 cvar_t *current_mod;
+cvar_t *sv_lan_play;
 // Multi Mod end
 
 //cvar_t	*deathmatch;
@@ -159,6 +160,8 @@ void ReadGame (char *filename);
 void WriteLevel (char *filename);
 void ReadLevel (char *filename);
 void InitGame (void);
+void InitLanGame(void); // new TheGhost
+void InitNetGame(void);	// new TheGhost
 void G_RunFrame (void);
 
 //===================================================================
