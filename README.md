@@ -413,6 +413,39 @@ fixed crash with a long map file name.
 
 - bots predict rockets and shoot were player will be.
 
+# v0.39
+- added kooglebot source - modified version of Ace Bots (adding Ace Bots back soon)
+- moved "dm_realmode" now only shows up in serverinfo if enabled.
+- new cvar "gamemod" tis displays the current running mode of the server, the current mod loaded.
+- moved "sv_cheats" now only shows up in serverinfo when enabled.
+- moved "sv_hook" now only shows up in serverinfo when enabled.
+- moved lan game play functions to "lan_play_settings.c" - New Function "void InitLanGame(void);".
+- moved "sv_hitmen" only shows up in serverinfo when hitmen is enabled.
+- added custome headers for each gamemode or mod currently loaded.
+- moved "teamplay" now only shows up in serverinfo when teamplay is enabled.
+- added "current_mod" used to slect which mod you would like to play, can be changed through admin settings.
+- added "sv_lan_play" lan play mode with new config files for lan play. set to 1 to play on lan use "Lan Bot Server.bat" BATCH FILE
+** added new mod files for all the mods.
+- process_assault_ini_file();		// assault mod
+- process_bloodmoney_ini_file();	// blood money mod v616
+- process_botmatch_ini_file();	    // botmatch mod v0.39
+- process_botmen_ini_file();		// botmen
+- process_comp_ini_file();		    // monkey mod 2.0c
+- process_coop_ini_file();		    // coop mod
+- process_curse_ini_file();		    // curse mod
+- process_dogmod_ini_file();		// dog mod
+- process_genocide_ini_file();	    // genocide mod
+- process_godfather_ini_file();	    // godfather mod
+- process_gunrace_ini_file();		// gunrace mod
+- process_hitmen_ini_file();		// hitmen mod
+- process_hitmen_teams_ini_file();  // hitmen teams mod
+- process_insanity_ini_file();	    // insanity mod
+- process_insomnia_ini_file();	    // insomina mod
+- process_kpq2_ini_file();		    // kpq2 mod
+- process_kpz_ini_file();			// kpz mod
+- process_sqm_ini_file();			// sgm mod
+
+
 ### todo
 - prevent bots jumping down from great heights. esp when wandering
 end game bot comment
