@@ -264,7 +264,7 @@ typedef struct //bot->kooglebot.xxx
 	// For bot movement
 	int	isOnLadder;						// hypo_v8 add. stop bots aiming when on ladders. added top of latter = 2
 	qboolean	isJumpToCrate;			// hypo_v8 tryto get bot to jump upto item
-	qboolean	isTrigPush;				// add hypov8 trig push. dont move
+	qboolean	isTrigPush;				// add hypo_v8 trig push. dont move
 	qboolean	is_Jumping;				// jump node last used
 
 	int			ladder_time;			// server framenum bot was on a ladder
