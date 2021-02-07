@@ -100,12 +100,12 @@ vec3_t KOOGLEBOT_Look_Out; // hypov8 global var	 ??? What is this and what is go
 #define BOTNODE_TELEPORTER 3
 #define BOTNODE_ITEM 4
 #define BOTNODE_WATER 5
-#define BOTNODE_GRAPPLE 6 // BEGIN HITMEN
+#define BOTNODE_GRAPPLE 6     // BEGIN HITMEN
 #define BOTNODE_JUMP 7
-#define BOTNODE_DRAGON_SAFE 8 //hypov8 todo:
-#define BOTNODE_NIKKISAFE 9 //hypov8 todo:
-#define BOTNODE_TRIGPUSH 10 //hypov8 add for trigger_push todo:? using jump nodes
-#define BOTNODE_ALL 99 // For selecting all nodes
+#define BOTNODE_DRAGON_SAFE 8 // hypo_v8 todo:
+#define BOTNODE_NIKKISAFE 9   // hypo_v8 todo:
+#define BOTNODE_TRIGPUSH 10   // hypo_v8 add for trigger_push todo:? using jump nodes
+#define BOTNODE_ALL 99        // For selecting all nodes
 
 // Node height adjustment. items are usualy 16 high. we move every item up +8 above player height (32 units)
 #define BOTNODE_MOVE_8 8		//player droped entity
@@ -132,8 +132,8 @@ vec3_t KOOGLEBOT_Look_Out; // hypov8 global var	 ??? What is this and what is go
 #define BOTNODE_DENSITY_THIRD	42
 #define BOTNODE_DENSITY_QUART	32
 #define BOTNODE_DENSITY_STAIR	160
-#define BOTNODE_DENSITY_LOCAL	(BOTNODE_DENSITY*0.75) //add hypov8 allow only very close node to add a link. 
-													//needs to be shorter then 1/2 way betweeen BOTNODE_DENSITY
+#define BOTNODE_DENSITY_LOCAL	(BOTNODE_DENSITY*0.75) // add hypov8 allow only very close node to add a link. 
+													   // needs to be shorter then 1/2 way betweeen BOTNODE_DENSITY
 
 // Bot state types
 #define BOTSTATE_STAND 0
@@ -178,21 +178,21 @@ vec3_t KOOGLEBOT_Look_Out; // hypov8 global var	 ??? What is this and what is go
 #define ITEMLIST_CYLINDER			22
 #define ITEMLIST_FLAMETANK			23
 
-//item_coil					24
-//item_lizzyhead			25
+//item_coil					          24
+//item_lizzyhead			          25
 
 #define ITEMLIST_CASHROLL			26
 #define ITEMLIST_CASHBAGLARGE		27
 #define ITEMLIST_CASHBAGSMALL		28
-//item_battery				29
-//item_jetpack				30
-//#define ITEMLIST_SAFEBAG			31 todo fix
+//item_battery				          29
+//item_jetpack				          30
+//#define ITEMLIST_SAFEBAG			  31 // todo fix
 
 #define ITEMLIST_HEALTH_SMALL		31
 #define ITEMLIST_HEALTH_LARGE		32
-//item_flashlight	33
-//item_watch		34
-//item_whiskey	35
+//item_flashlight	                  33
+//item_watch		                  34
+//item_whiskey	                      35
 
 #define ITEMLIST_PACK				36
 #define ITEMLIST_ADRENALINE			37
@@ -222,7 +222,6 @@ key_key10	51
 #define ITEMLIST_TRIG_PUSH			58
 #define ITEMLIST_TELEPORTER			59
 
-
 #define ITEMLIST_BOT				60
 #define ITEMLIST_PLAYER				61
 
@@ -232,15 +231,14 @@ typedef struct gitem_s gitem_t;//needed for ->kooglebot.
 typedef struct botnode_s
 {
 	vec3_t origin; // Using Id's representation
-	short type;   // type of node
-
+	short type;    // type of node
 } botnode_t;
 
 // Node structure
 typedef struct botnode_file_s
 {
 	short origin[3]; // Using Id's representation
-	short type;   // type of node
+	short type;      // type of node
 
 } botnode_file_t;
 
@@ -268,12 +266,12 @@ typedef struct //bot->kooglebot.xxx
 	//qboolean	is_jumping;
 
 	// For bot movement
-	int	isOnLadder;						//hypov8 add. stop bots aiming when on ladders. added top of latter = 2
-	qboolean	isJumpToCrate;			//hypov8 tryto get bot to jump upto item
-	qboolean	isTrigPush;				//add hypov8 trig push. dont move
-	qboolean	is_Jumping;				//jump node last used
+	int	isOnLadder;						// hypo_v8 add. stop bots aiming when on ladders. added top of latter = 2
+	qboolean	isJumpToCrate;			// hypo_v8 tryto get bot to jump upto item
+	qboolean	isTrigPush;				// add hypov8 trig push. dont move
+	qboolean	is_Jumping;				// jump node last used
 
-	int			ladder_time;			//server framenum bot was on a ladder
+	int			ladder_time;			// server framenum bot was on a ladder
 	int			crate_time; 
 
 	vec3_t		move_vector;
@@ -288,81 +286,79 @@ typedef struct //bot->kooglebot.xxx
 	short		node_next;				// the node that will take us one step closer to our goal
 	int			node_timeout;
 	int			node_tries;
-	edict_t		*node_ent;				//store goal. its posible it was picked up early with SRG
+	edict_t		*node_ent;				// store goal. its posible it was picked up early with SRG
 	
-	int			state;					//wander/goal
+	int			state;					// wander/goal
 
 	//hypov8 aim recalculate on shoot
-	vec3_t		enemyOrigin;			//store enemy origin untill we shoot with filre_lead
-	float		bot_accuracy;			//store accuracy untill we shoot with filre_lead
+	vec3_t		enemyOrigin;			// store enemy origin untill we shoot with filre_lead
+	float		bot_accuracy;			// store accuracy untill we shoot with filre_lead
 
-	int			flame_frameNum;			//aim accurecy last's longer
+	int			flame_frameNum;			// aim accurecy last's longer
 
 	//hypo new bot skill func
-	int			enemyID;				//if new target. dont shoot straight away
-	int			enemyAddFrame;			//dont keep old targets in memory for to long? will ignore skill on 2nd sight
-	int			enemyChaseFrame;		//enemy search	
-	vec_t		enemyOriginZoffset;		//look down amount for rl, fence etc..
-	vec3_t		enemyRL_Offset;			//store rocket offset untill we can shoot
+	int			enemyID;				// if new target. dont shoot straight away
+	int			enemyAddFrame;			// dont keep old targets in memory for to long? will ignore skill on 2nd sight
+	int			enemyChaseFrame;		// enemy search	
+	vec_t		enemyOriginZoffset;		// look down amount for rl, fence etc..
+	vec3_t		enemyRL_Offset;			// store rocket offset untill we can shoot
 
-	float		botSkillDeleyTimer;		//timer to allow bot to start attacking. level.time
-	int			botSkillDeleyTimer2;	//timer for rocket/nal dodge
-	qboolean	last_dodgeRocket;		//true/false
-	float		botSkillMultiplier;		//add skill per bot 0.0 to 2.0
-	float		botSkillCalculated;		//store skill+multiplyer here. quick acess
+	float		botSkillDeleyTimer;		// timer to allow bot to start attacking. level.time
+	int			botSkillDeleyTimer2;	// timer for rocket/nal dodge
+	qboolean	last_dodgeRocket;		// true/false
+	float		botSkillMultiplier;		// add skill per bot 0.0 to 2.0
+	float		botSkillCalculated;		// store skill+multiplyer here. quick acess
 
 	qboolean	isChasingEnemy; //
 
-	int			water_time;				//add hypov8 keep jumping out of water
+	int			water_time;				// add hypov8 keep jumping out of water
 
-	int			plateWaitTim;			//give up waiting at func_plat
+	int			plateWaitTim;			// give up waiting at func_plat
 	int			dodge_time;				// time bot last moved sideways from player
 	int			dodge_dir;
 
-	int			uTurnCount;				//hypov8 count times bot got stuck n turned
-	int			uTurnTime;				//hypov8 get last time bot turned
+	int			uTurnCount;				// hypo_v8 count times bot got stuck n turned
+	int			uTurnTime;				// hypo_v8 get last time bot turned
 
-	int			num_weps;				//hypov8 added to compare bots invitory changed. select weapon?
-	int			randomWeapon;			//hypov8 select a random weapon to be there poirity, reset per level
+	int			num_weps;				// hypo_v8 added to compare bots invitory changed. select weapon?
+	int			randomWeapon;			// hypo_v8 select a random weapon to be there poirity, reset per level
 
 	float		moveDirVel;				// 360 deg velocity
-	//float		moveFlatVel;			//horozontal velocity
+	//float		moveFlatVel;			// horozontal velocity
 
-	vec3_t		oldOrigin;				//hypov8 store last position for calculating velocity
+	vec3_t		oldOrigin;				// hypo_v8 store last position for calculating velocity
 	vec3_t		oldAngles;
-	vec3_t		deathAngles;			//hypov8 store angles for dead body
+	vec3_t		deathAngles;			// hypo_v8 store angles for dead body
 
-	qboolean	is_validTarget;			//set who is shootable. once every frame
-	qboolean	is_hunted;				//bot will attack this persone with brute force:)
-	int			lastDamageTimer;		//last time bot took damage. make bot attack quicker
+	qboolean	is_validTarget;			// set who is shootable. once every frame
+	qboolean	is_hunted;				// bot will attack this persone with brute force:)
+	int			lastDamageTimer;		// last time bot took damage. make bot attack quicker
 
-	int			tauntTime;				//hypov8 random taunt timmer
-	qboolean	aimLegs;				//hypo aim for head with rl. used when a low fence/rail is blocking player
+	int			tauntTime;				// hypo_v8 random taunt timmer
+	qboolean	aimLegs;				// hypo_v8 aim for head with rl. used when a low fence/rail is blocking player
 
 	int			trigPushTimer;			// bot will free move with trigger push
 	qboolean	isMovingUpPushed; 
 
-	//int			spawnedTime;			//store time just spawned, so they can collect better weps
+	//int			spawnedTime;		// store time just spawned, so they can collect better weps
 
-	int			last_strafeTime;		//frame since strafed. make strafe go for longer
+	int			last_strafeTime;		// frame since strafed. make strafe go for longer
 	int			last_strafeDir;
 	int			last_moveFwdTime;
-	int			targetPlayerNode;		//add hypov8. target node was a player LRG
-
+	int			targetPlayerNode;		// add hypo_v8. target node was a player LRG
 
 	//player movement auto route
-	short		pm_last_node;			//last node
-	int			pm_playerJumpTime;		//add hypov8 store last jump time for auto rout
-	int			pm_jumpPadMove;			//add hypov8. connect nodes after using a trig_push
-	int			pm_hookActive;			//add hypov8. hook 1=route, 2=enabled but dont route
-	qboolean	PM_firstPlayer;			//use this player to route
-	int			PM_Jumping;				//PathMap jump. 1=jump 2=landing
+	short		pm_last_node;			// last node
+	int			pm_playerJumpTime;		// add hypo_v8 store last jump time for auto rout
+	int			pm_jumpPadMove;			// add hypo_v8. connect nodes after using a trig_push
+	int			pm_hookActive;			// add hypo_v8. hook 1=route, 2=enabled but dont route
+	qboolean	PM_firstPlayer;			// use this player to route
+	int			PM_Jumping;				// PathMap jump. 1=jump 2=landing
 
 	float		hookDistLast;
-	float		hookDistCurrent;			//
-	int			SRGoal_frameNum;			//stop bot trying for SR goal so oftern
+	float		hookDistCurrent;		//
+	int			SRGoal_frameNum;		//stop bot trying for SR goal so oftern
 	int			SRGoal_onLadder;
-
 } kooglebot_t;
 
 
