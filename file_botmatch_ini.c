@@ -59,13 +59,13 @@ int process_botmatch_ini_file()
 	pickup_sounds = false;
 
 	// KOOGLEBOT_ADD
-		 //Lx_map_request.cfg
-		 //LB_chat_request.cfg
+	//Lx_map_request.cfg
+	//LB_chat_request.cfg
 
 	default_botskill = -1;
 	// KOOGLEBOT_END
 
-		// BEGIN HITMEN
+	// BEGIN HITMEN
 	enable_hitmen = false;
 	//END
 	enable_killerhealth = false;

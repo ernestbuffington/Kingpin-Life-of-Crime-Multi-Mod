@@ -69,10 +69,10 @@
 //hypov8 func to stop bot looking up/down when not needed
 #define KOOGLE_Look_Straight(target,player,out) (out[0]=target[0],out[1]=target[1],out[2]=player[2])
 
-vec3_t KOOGLE_look_out; //hypov8 global var
-#define BOT_JUMP_VEL (400) //360
-#define BOT_FORWARD_VEL (160*2) //340 //hypov8 kp default
-#define BOT_SIDE_VEL (160*2) //cl_anglespeedkey->value)	//hypov8 kp default 1.5
+vec3_t KOOGLEBOT_Look_Out; // hypov8 global var	 ??? What is this and what is going to be used for ???
+#define BOT_JUMP_VEL (400) // 360
+#define BOT_FORWARD_VEL (160*2) // 340 // hypov8 kp default
+#define BOT_SIDE_VEL (160*2) // cl_anglespeedkey->value) // hypov8 kp default 1.5
 
 //bot time. allow some errors in float. only run every 0.1 seconds anyway
 #define BOTFRAMETIME 0.098

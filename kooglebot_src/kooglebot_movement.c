@@ -68,7 +68,7 @@
 #include "kooglebot.h"			// kooglebot header file
 #include "../g_hitmen_mod.h"	// hitmen header file
 
-vec3_t KOOGLE_look_out; //hypov8 global var
+vec3_t KOOGLEBOT_Look_Out; //hypov8 global var
 
 //static qboolean KOOGLEMV_CheckLavaAndSky(edict_t *self);
 static qboolean KOOGLEMV_CheckLadder(edict_t *self, usercmd_t *ucmd, qboolean isTopOfLadder, qboolean isKnownLadder);
