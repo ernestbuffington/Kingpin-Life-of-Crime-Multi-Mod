@@ -307,7 +307,7 @@ typedef struct //bot->kooglebot.xxx
 
 	qboolean	isChasingEnemy; //
 
-	int			water_time;				// add hypov8 keep jumping out of water
+	int			water_time;				// add hypo_v8 keep jumping out of water
 
 	int			plateWaitTim;			// give up waiting at func_plat
 	int			dodge_time;				// time bot last moved sideways from player
