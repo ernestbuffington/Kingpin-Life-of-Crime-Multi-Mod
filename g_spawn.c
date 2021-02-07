@@ -909,7 +909,7 @@ void SpawnEntities (char *mapname, char *entities, char *spawnpoint)
 // END:		Xatrix/Ridah/Navigator/19-mar-1998
 
 // KOOGLEBOT_ADD
-	KOOGLESP_FreeBots(); //add hypov8
+	KOOGLESP_FreeBots(); // add hypo_v8
 // KOOGLEBOT_END
 
 
@@ -1685,6 +1685,14 @@ void SP_worldspawn (edict_t *ent)
 	gi.soundindex ("weapons/ric2.wav");
 	gi.soundindex ("weapons/ric3.wav");
 
+	gi.soundindex("hook/hit.wav");		   // 2/22021 524pm - hitmen TheGhost
+	gi.soundindex("hook/medatck2.wav");	   // 2/22021 524pm	- hitmen TheGhost
+	gi.soundindex("hook/motor1.wav");	   // 2/22021 524pm	- hitmen TheGhost
+	gi.soundindex("hook/motor2.wav");	   // 2/22021 524pm	- hitmen TheGhost
+	gi.soundindex("hook/motor3.wav");	   // 2/22021 524pm	- hitmen TheGhost
+	gi.soundindex("hook/retract.wav");	   // 2/22021 524pm	- hitmen TheGhost
+	gi.soundindex("hook/smack.wav");	   // 2/22021 524pm	- hitmen TheGhost
+	
 	// ----------------------------------------------------------------------------------
 	// Vweap weapon models
 	//

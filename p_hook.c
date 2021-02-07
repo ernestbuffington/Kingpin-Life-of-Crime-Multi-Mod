@@ -576,7 +576,7 @@ void FireHook (edict_t *ent) {
   newhook->solid = SOLID_BBOX;
   VectorClear (newhook->mins);
   VectorClear (newhook->maxs);
-  newhook->s.modelindex = gi.modelindex ("models/items/hook/tris.md2");
+  newhook->s.modelindex = gi.modelindex ("models/items/hook/hook.mdx");
   // BEGIN HOOK
   newhook->s.renderfx2 |= RF2_NOSHADOW;
   // END

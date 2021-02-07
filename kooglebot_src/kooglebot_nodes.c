@@ -1535,13 +1535,16 @@ void KOOGLEND_LoadNodes(void)
 	if((pIn = fopen(filename, "rb" )) == NULL)
     {
 		// Create new node/item tables
-		if (current_mod == 1)
+		if (current_mod->value == 1)
 		gi.dprintf(" ACE: No node file found, creating new nodes...\n");
 		else
 		gi.dprintf(" KOOGLE: No node file found, creating new nodes...\n");
 
 		KOOGLEIT_BuildItemNodeTable(false);
-		gi.dprintf(" KOOGLE: Create nodes done. (Nodes:%i Items:%i Dupes:%i)\n", numnodes, num_items, KOOGLEND_CountDupeNodes());
+		if (current_mod->value == 1)
+			gi.dprintf(" ACE: Create nodes done. (Nodes:%i Items:%i Dupes:%i)\n", numnodes, num_items, KOOGLEND_CountDupeNodes());
+		else
+			gi.dprintf(" KOOGLE: Create nodes done. (Nodes:%i Items:%i Dupes:%i)\n", numnodes, num_items, KOOGLEND_CountDupeNodes());
 		return; 
 	}
 
@@ -1554,7 +1557,7 @@ void KOOGLEND_LoadNodes(void)
 
 		bytes = fread(&nodefinal, sizeof(int), 1, pIn);
 		if (nodefinal == 1)	{
-			if (current_mod == 1)
+			if (current_mod->value == 1)
 			gi.dprintf(" ACE: Node table *WRITE PROTECTED*\n");
 			else
 			gi.dprintf(" KOOGLE: Node table *WRITE PROTECTED*\n");
@@ -1576,7 +1579,7 @@ void KOOGLEND_LoadNodes(void)
 		}
 
 		//File loaded ok. now rebuild entity link
-		if (current_mod== 1)
+		if (current_mod->value == 1)
 		gi.dprintf(" ACE: Load node file done. (Nodes:%i Items:%i Ver:%i Dupes:%i)\n", numnodes, num_items, version, KOOGLEND_CountDupeNodes());
 		else
 		gi.dprintf(" KOOGLE: Load node file done. (Nodes:%i Items:%i Ver:%i Dupes:%i)\n", numnodes, num_items, version, KOOGLEND_CountDupeNodes());
@@ -1586,7 +1589,7 @@ void KOOGLEND_LoadNodes(void)
 
 		if (level.aceNodesCurupt)
 		{
-			if (current_mod == 1)
+			if (current_mod->value == 1)
 			gi.dprintf(" ACE: WARNING: Nodes corrupt. Tried to add nodes for new items...\n");
 			else
 			gi.dprintf(" KOOGLE: WARNING: Nodes corrupt. Tried to add nodes for new items...\n");
@@ -1595,12 +1598,15 @@ void KOOGLEND_LoadNodes(void)
 	else
 	{
 		// Create new item table
-		if (current_mod == 1)
+		if (current_mod->value == 1)
 		gi.dprintf(" ACE: old node file found, creating new nodes...\n");
 		else 
 		gi.dprintf(" KOOGLE: old node file found, creating new nodes...\n");
 		KOOGLEIT_BuildItemNodeTable(false);
-		gi.dprintf(" KOOGLE: Create nodes done. (Nodes:%i Items:%i Dupes:%i)\n", numnodes, num_items, KOOGLEND_CountDupeNodes());
+		if (current_mod->value == 1)
+			gi.dprintf(" ACE: Create nodes done. (Nodes:%i Items:%i Dupes:%i)\n", numnodes, num_items, KOOGLEND_CountDupeNodes());
+		else
+			gi.dprintf(" KOOGLE: Create nodes done. (Nodes:%i Items:%i Dupes:%i)\n", numnodes, num_items, KOOGLEND_CountDupeNodes());
 	}
 	
 	fclose(pIn);
