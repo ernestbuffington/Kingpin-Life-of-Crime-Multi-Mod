@@ -1,9 +1,59 @@
-///////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 //
-//  ACE - Quake II Bot
+//  KOOGLE - Kingpin v1.21 Bot Base Code
 //
-//  Copyright (c) Steve Yeager 1998
+//  Version 1.0
 //
+//  This file is Copyright(c), Kingpin.info 2021, All Rights Reserved
+//
+//
+//	All other files are Copyright(c) Id Software, Inc.
+//
+//	Please see liscense.txt in the source directory for the copyright
+//	information regarding those files belonging to Id Software, Inc.
+//	
+//	Should you decide to release a modified version of KOOGLE, you MUST
+//	include the following text (minus the BEGIN and END lines) in the 
+//	documentation for your modification.
+//
+//	--- BEGIN ---
+//
+//	The ACE Bot is a product of Steve Yeager, and is available from
+//	the ACE Bot homepage, at http://www.axionfx.com/ace.
+//
+//	This program is a modification of the ACE Bot, and is therefore
+//	in NO WAY supported by Steve Yeager.
+//
+//	This program MUST NOT be sold in ANY form. If you have paid for 
+//	this product, you should contact Steve Yeager immediately, via
+//	the ACE Bot homepage.
+//
+//	--- END ---
+//
+//	I, Ernest Buffington, hold no responsibility for any harm caused by the
+//	use of this source code, especially to old people or mailmen.
+//  It is provided as-is with no implied warranty or support.
+//
+//  I also wish to thank and acknowledge the great work of others
+//  that has helped me to develop this code.
+//
+//  FREDZ           - For ideas and swapping code.
+//  Snap            - For ideas and swapping code.
+//  Monkey Harris   - For ideas and swapping code.
+//  TiCal           - For modeling, swapping code.
+//  G()^T           - For swapping code.
+//  hypov8          - For all the massive code contributions.
+//  Mr.Damage       - For ideas and years of dedication.
+//  hub.86it.us     - For giving KOOGLE a home.
+//  Microsoft       - For Microsoft Visual Studio Enterprise 2019
+//  id              - Need I say more.
+//  
+//  And to all the other testers, pathers, and players and people
+//  who I can't remember who the heck they were, but helped out.
+//
+/////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////
 //
 //  kooglebot_compress.c - Data compress based on LZSS
 //
@@ -11,7 +61,12 @@
 //  author. I just rewote it to allow the use of buffers
 //  instead of files.
 //
-///////////////////////////////////////////////////////////
+//  Code Authors:
+//  Hypo_v8
+//	TheGhost
+//  Steve Yeager
+//
+/////////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>
 #include <stdlib.h>

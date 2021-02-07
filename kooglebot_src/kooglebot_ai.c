@@ -1,10 +1,10 @@
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 //
-//  ACE - Quake II Bot Base Code
+//  KOOGLE - Kingpin v1.21 Bot Base Code
 //
 //  Version 1.0
 //
-//  This file is Copyright(c), Steve Yeager 1998, All Rights Reserved
+//  This file is Copyright(c), Kingpin.info 2021, All Rights Reserved
 //
 //
 //	All other files are Copyright(c) Id Software, Inc.
@@ -12,7 +12,7 @@
 //	Please see liscense.txt in the source directory for the copyright
 //	information regarding those files belonging to Id Software, Inc.
 //	
-//	Should you decide to release a modified version of ACE, you MUST
+//	Should you decide to release a modified version of KOOGLE, you MUST
 //	include the following text (minus the BEGIN and END lines) in the 
 //	documentation for your modification.
 //
@@ -23,49 +23,56 @@
 //
 //	This program is a modification of the ACE Bot, and is therefore
 //	in NO WAY supported by Steve Yeager.
-
+//
 //	This program MUST NOT be sold in ANY form. If you have paid for 
 //	this product, you should contact Steve Yeager immediately, via
 //	the ACE Bot homepage.
 //
 //	--- END ---
 //
-//	I, Steve Yeager, hold no responsibility for any harm caused by the
-//	use of this source code, especially to small children and animals.
+//	I, Ernest Buffington, hold no responsibility for any harm caused by the
+//	use of this source code, especially to old people or mailmen.
 //  It is provided as-is with no implied warranty or support.
 //
 //  I also wish to thank and acknowledge the great work of others
 //  that has helped me to develop this code.
 //
-//  John Cricket    - For ideas and swapping code.
-//  Ryan Feltrin    - For ideas and swapping code.
-//  SABIN           - For showing how to do true client based movement.
-//  BotEpidemic     - For keeping us up to date.
-//  Telefragged.com - For giving ACE a home.
-//  Microsoft       - For giving us such a wonderful crash free OS.
+//  FREDZ           - For ideas and swapping code.
+//  Snap            - For ideas and swapping code.
+//  Monkey Harris   - For ideas and swapping code.
+//  TiCal           - For modeling, swapping code.
+//  G()^T           - For swapping code.
+//  hypov8          - For all the massive code contributions.
+//  Mr.Damage       - For ideas and years of dedication.
+//  hub.86it.us     - For giving KOOGLE a home.
+//  Microsoft       - For Microsoft Visual Studio Enterprise 2019
 //  id              - Need I say more.
 //  
 //  And to all the other testers, pathers, and players and people
 //  who I can't remember who the heck they were, but helped out.
 //
-///////////////////////////////////////////////////////////////////////
-	
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////
 //
 //  kooglebot_ai.c -      This file contains all of the 
-//                     AI routines for the ACE II bot.
+//                        AI routines for the Koogle bot.
 //
+// NOTE: hypo_v8 went back and fixed a lot of stuff that was pulled out of ACE!
+//       which was most of the brains. Steve yanked out all the intelligence
+//       from a number of these functions. Hypo_v8 expanded almost all of them 
+//       to provide a "much higher" level of AI.  
 //
-// NOTE: I went back and pulled out most of the brains from
-//       a number of these functions. They can be expanded on 
-//       to provide a "higher" level of AI. 
-////////////////////////////////////////////////////////////////////////
+//  Code Authors:
+//  Hypo_v8
+//	TheGhost
+//  Steve Yeager
+//
+/////////////////////////////////////////////////////////////////////////////////
 
-#include "../g_local.h" //DIR_SLASH
-#include "../m_player.h" //DIR_SLASH
-
-#include "kooglebot.h"
-
+#include "../g_local.h"         // main game header file
+#include "kooglebot.h"			// kooglebot header file
+#include "../g_hitmen_mod.h"	// hitmen header file
 
 ///////////////////////////////////////////////////////////////////////
 // Hold fire with RL/BFG?
@@ -110,7 +117,9 @@ static qboolean KOOGLEAI_CheckNonLeadShot(edict_t *self, qboolean isRocket)
 	return false;
 }
 
-//setup rand order for weps
+/////////////////////////////////////////////////////////////////////////////////
+// setup rand order for weps
+/////////////////////////////////////////////////////////////////////////////////
 static char* KOOGLEAI_Randwep(int index, int type)
 {
 	switch (index)
@@ -158,9 +167,9 @@ static char* KOOGLEAI_Randwep(int index, int type)
 }
 
 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Choose the best weapon for bot (simplified)
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 static void KOOGLEAI_ChooseWeapon(edict_t *self)
 {
 	float range;
@@ -279,11 +288,11 @@ static void KOOGLEAI_ChooseWeapon(edict_t *self)
 }
 
 // BEGIN HITMEN
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Choose weapon for hitmen
 // used when ammo runs out then bot selects crow bar
 // will select gun when ammo topes back up
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 static void KOOGLEAI_ChooseWeaponHM(edict_t *self)
 {
 
@@ -313,15 +322,13 @@ static void KOOGLEAI_ChooseWeaponHM(edict_t *self)
 // END
 
 
-/*
-=============
-infrontBot
-hypov8
-returns 1 if other is in front (in sight) of self
-hypov8 look more to side for items was 0.2
-0 must be 90 deg???
-=============
-*/
+/////////////////////////////////////////////////////////////////////////////////
+// infrontBot
+// hypov8
+// returns 1 if other is in front (in sight) of self
+// hypov8 look more to side for items was 0.2
+// 0 must be 90 deg???
+/////////////////////////////////////////////////////////////////////////////////
 qboolean KOOGLEAI_InfrontBot(edict_t *self, edict_t *other)
 {
 	vec3_t	vec;
@@ -357,11 +364,11 @@ qboolean KOOGLEAI_InfrontBot(edict_t *self, edict_t *other)
 }
 
 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Pick best goal based on importance and range. This function
 // overrides the long range goal selection for items that
 // are very close to the bot and are reachable.
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 static void KOOGLEAI_PickShortRangeGoal(edict_t *self)
 {
 	edict_t *target;
@@ -475,11 +482,11 @@ static void KOOGLEAI_PickShortRangeGoal(edict_t *self)
 
 
 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Pick best goal based on importance and range. This function
 // overrides the long range goal selection for items that
 // are very close to the bot and are reachable.
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 qboolean KOOGLEAI_PickShortRangeGoalSpawned(edict_t *self)
 {
 	edict_t *target;
@@ -531,8 +538,10 @@ qboolean KOOGLEAI_PickShortRangeGoalSpawned(edict_t *self)
 }
 
 
-//hypov8 add
-//count if we picked up a new wep. should we change to it?
+/////////////////////////////////////////////////////////////////////////////////
+// hypov8 add
+// count if we picked up a new wep. should we change to it?
+/////////////////////////////////////////////////////////////////////////////////
 static qboolean KOOGLEAI_WeaponCount(edict_t *self)
 {
 	int			i;
@@ -562,7 +571,9 @@ static qboolean KOOGLEAI_WeaponCount(edict_t *self)
 	return false;
 }
 
- //recheck keeps looking 4 same player once node reached
+/////////////////////////////////////////////////////////////////////////////////
+// recheck keeps looking 4 same player once node reached
+/////////////////////////////////////////////////////////////////////////////////
 qboolean KOOGLEAI_PickShortRangeGoal_Player (edict_t *self, qboolean reCheck)
 {
 	if (self->kooglebot.state != BOTSTATE_WANDER && !self->kooglebot.isChasingEnemy)
@@ -652,11 +663,11 @@ qboolean KOOGLEAI_PickShortRangeGoal_Player (edict_t *self, qboolean reCheck)
 	return false;
 }
 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Evaluate the best long range goal and send the bot on
 // its way. This is a good time waster, so use it sparingly. 
 // Do not call it for every think cycle.
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 void KOOGLEAI_PickLongRangeGoal(edict_t *self)
 {
 
@@ -802,8 +813,10 @@ void KOOGLEAI_PickLongRangeGoal(edict_t *self)
 
 }
 
-//hypov8 add
-//use eyesight to check pvs
+/////////////////////////////////////////////////////////////////////////////////
+// hypov8 add
+// use eyesight to check pvs
+/////////////////////////////////////////////////////////////////////////////////
 static qboolean KOOGLEAI_VisibleEnemyPVS(edict_t *self, edict_t *other)
 {
 	vec3_t botsSight, enemySight, enemyLegs;
@@ -819,14 +832,12 @@ static qboolean KOOGLEAI_VisibleEnemyPVS(edict_t *self, edict_t *other)
 	return true;
 }
 
-//hypov8 add
-/*
-=============
-KOOGLEAI_VisibleEnemy
-
-returns 1 if the entity is visible to self, even if not infront ()
-=============
-*/
+/////////////////////////////////////////////////////////////////////////////////
+// hypov8 add
+// KOOGLEAI_VisibleEnemy
+//
+// returns 1 if the entity is visible to self, even if not infront ()
+/////////////////////////////////////////////////////////////////////////////////
 static qboolean KOOGLEAI_VisibleEnemy(edict_t *self, edict_t *other, qboolean isBestplayer)
 {
 	trace_t tr_upper, tr_lower;
@@ -900,7 +911,9 @@ static qboolean KOOGLEAI_VisibleEnemy(edict_t *self, edict_t *other, qboolean is
 }
 
 
-//skill multiplier
+/////////////////////////////////////////////////////////////////////////////////
+// skill multiplier
+/////////////////////////////////////////////////////////////////////////////////
 static float KOOGLEAI_SkillMP(float skillMulti, float CvarSkill)
 {
 	float skill = CvarSkill * skillMulti;
@@ -911,6 +924,9 @@ static float KOOGLEAI_SkillMP(float skillMulti, float CvarSkill)
 	return skill;
 }
 
+/////////////////////////////////////////////////////////////////////////////////
+//
+/////////////////////////////////////////////////////////////////////////////////
 static void KOOGLEAI_CalculatePlayerState()
 {
 	int		i, j, k, count;
@@ -1006,7 +1022,9 @@ static qboolean KOOGLEAI_PickOnBestPlayer(int playerNum)
 }
 #endif
 
-
+/////////////////////////////////////////////////////////////////////////////////
+//
+/////////////////////////////////////////////////////////////////////////////////
 void KOOGLEAI_G_RunFrame(void)
 {
 	int i, foundFirstPlyr = false;
@@ -1052,15 +1070,13 @@ void KOOGLEAI_G_RunFrame(void)
 }
 
 
-/*
-=============
-infrontEnem
-
-returns 1 if other is in front (in sight) of self
-hypov8 look more to side for items was 0.2
-0 must be 90 deg(180 left/right)
-=============
-*/
+/////////////////////////////////////////////////////////////////////////////////
+// infrontEnem
+//
+// returns 1 if other is in front (in sight) of self
+// hypov8 look more to side for items was 0.2
+// 0 must be 90 deg(180 left/right)
+/////////////////////////////////////////////////////////////////////////////////
 static qboolean KOOGLEAI_InfrontEnemy(edict_t *self, edict_t *other)
 {
 	vec3_t	vec;
@@ -1081,17 +1097,14 @@ static qboolean KOOGLEAI_InfrontEnemy(edict_t *self, edict_t *other)
 	return false;
 }
 
-
+/////////////////////////////////////////////////////////////////////////////////
 // BEGIN HITMEN
-/*
-=============
-KOOGLEAI_Enemy_ToFarHM
-
-return true if enamy is to far away
-only used for hitmen
-bots cant change to a suitable weapon
-=============
-*/
+// KOOGLEAI_Enemy_ToFarHM
+//
+// return true if enamy is to far away
+// only used for hitmen
+// bots cant change to a suitable weapon
+/////////////////////////////////////////////////////////////////////////////////
 static qboolean KOOGLEAI_Enemy_ToFarHM(edict_t *self,edict_t *enemy )
 {
 	//vec3_t v;
@@ -1123,9 +1136,9 @@ static qboolean KOOGLEAI_Enemy_ToFarHM(edict_t *self,edict_t *enemy )
 
 }
 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Scan for enemy (simplifed for now to just pick any visible enemy)
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 static qboolean KOOGLEAI_FindEnemy(edict_t *self)
 {
 	int i;
@@ -1258,9 +1271,9 @@ static qboolean KOOGLEAI_FindEnemy(edict_t *self)
 
 
 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Choose the best weapon for bot (hypo)
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 static void KOOGLEAI_PreChooseWeaponDM(edict_t *self)
 {	
 	switch (self->kooglebot.randomWeapon)
@@ -1319,7 +1332,9 @@ static void KOOGLEAI_PreChooseWeaponDM(edict_t *self)
 
 }
 
+/////////////////////////////////////////////////////////////////////////////////
 // select a weapon b4 we find enamy
+/////////////////////////////////////////////////////////////////////////////////
 static void KOOGLEAI_PreChooseWeapon(edict_t *self)
 {
 	if (sv_hitmen->value) /*enable_hitmen*/
@@ -1328,9 +1343,10 @@ static void KOOGLEAI_PreChooseWeapon(edict_t *self)
 		KOOGLEAI_PreChooseWeaponDM(self);
 }
 
-
-//add hypov8
-//found an enemy, forget out goal
+/////////////////////////////////////////////////////////////////////////////////
+// add hypov8
+// found an enemy, forget out goal
+/////////////////////////////////////////////////////////////////////////////////
 void KOOGLEAI_Reset_Goal_Node(edict_t *self, float wanderTime, char* eventName)
 {
 	//if (self->kooglebot.node_goal != INVALID)
@@ -1359,9 +1375,9 @@ void KOOGLEAI_Reset_Goal_Node(edict_t *self, float wanderTime, char* eventName)
 #define BOT_TIME_DIFF(a,b,c,d)(b=1)
 #endif
 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Main Think function for bot
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 void KOOGLEAI_Think(edict_t *self)
 {
 	usercmd_t	ucmd;

@@ -1,10 +1,10 @@
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 //
-//  ACE - Quake II Bot Base Code
+//  KOOGLE - Kingpin v1.21 Bot Base Code
 //
 //  Version 1.0
 //
-//  This file is Copyright(c), Steve Yeager 1998, All Rights Reserved
+//  This file is Copyright(c), Kingpin.info 2021, All Rights Reserved
 //
 //
 //	All other files are Copyright(c) Id Software, Inc.
@@ -12,7 +12,7 @@
 //	Please see liscense.txt in the source directory for the copyright
 //	information regarding those files belonging to Id Software, Inc.
 //	
-//	Should you decide to release a modified version of ACE, you MUST
+//	Should you decide to release a modified version of KOOGLE, you MUST
 //	include the following text (minus the BEGIN and END lines) in the 
 //	documentation for your modification.
 //
@@ -23,42 +23,50 @@
 //
 //	This program is a modification of the ACE Bot, and is therefore
 //	in NO WAY supported by Steve Yeager.
-
+//
 //	This program MUST NOT be sold in ANY form. If you have paid for 
 //	this product, you should contact Steve Yeager immediately, via
 //	the ACE Bot homepage.
 //
 //	--- END ---
 //
-//	I, Steve Yeager, hold no responsibility for any harm caused by the
-//	use of this source code, especially to small children and animals.
+//	I, Ernest Buffington, hold no responsibility for any harm caused by the
+//	use of this source code, especially to old people or mailmen.
 //  It is provided as-is with no implied warranty or support.
 //
 //  I also wish to thank and acknowledge the great work of others
 //  that has helped me to develop this code.
 //
-//  John Cricket    - For ideas and swapping code.
-//  Ryan Feltrin    - For ideas and swapping code.
-//  SABIN           - For showing how to do true client based movement.
-//  BotEpidemic     - For keeping us up to date.
-//  Telefragged.com - For giving ACE a home.
-//  Microsoft       - For giving us such a wonderful crash free OS.
+//  FREDZ           - For ideas and swapping code.
+//  Snap            - For ideas and swapping code.
+//  Monkey Harris   - For ideas and swapping code.
+//  TiCal           - For modeling, swapping code.
+//  G()^T           - For swapping code.
+//  hypov8          - For all the massive code contributions.
+//  Mr.Damage       - For ideas and years of dedication.
+//  hub.86it.us     - For giving KOOGLE a home.
+//  Microsoft       - For Microsoft Visual Studio Enterprise 2019
 //  id              - Need I say more.
 //  
 //  And to all the other testers, pathers, and players and people
 //  who I can't remember who the heck they were, but helped out.
 //
-///////////////////////////////////////////////////////////////////////
-	
-///////////////////////////////////////////////////////////////////////
-//  kooglebot_movement.c - This file contains all of the 
-//                      movement routines for the ACE bot
-//           
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 
-#include "../g_local.h" //DIR_SLASH
-#include "kooglebot.h"
-#include "../g_hitmen_mod.h"
+/////////////////////////////////////////////////////////////////////////////////
+//  kooglebot_movement.c - This file contains all of the 
+//                         movement routines for the Koogle bot
+//           
+//  Code Authors:
+//  Hypo_v8
+//	TheGhost
+//  Steve Yeager
+//
+/////////////////////////////////////////////////////////////////////////////////
+
+#include "../g_local.h"         // main game header file
+#include "kooglebot.h"			// kooglebot header file
+#include "../g_hitmen_mod.h"	// hitmen header file
 
 vec3_t KOOGLE_look_out; //hypov8 global var
 
@@ -66,11 +74,11 @@ vec3_t KOOGLE_look_out; //hypov8 global var
 static qboolean KOOGLEMV_CheckLadder(edict_t *self, usercmd_t *ucmd, qboolean isTopOfLadder, qboolean isKnownLadder);
 #define CHECKSKYDOWNDIST 3072
 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Checks if bot can move (really just checking the ground)
 // Also, this is not a real accurate check, but does a
 // pretty good job and looks for lava/slime. 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 static qboolean KOOGLEMV_CanMove(edict_t *self, int direction)
 {
 	vec3_t forward, right;
@@ -109,7 +117,9 @@ static qboolean KOOGLEMV_CanMove(edict_t *self, int direction)
 	return true; // yup, can move
 }
 
-//hypov8 added to check flat ground/edge
+/////////////////////////////////////////////////////////////////////////////////
+// hypov8 added to check flat ground/edge
+/////////////////////////////////////////////////////////////////////////////////
 static qboolean KOOGLEMV_CanMove_Simple(edict_t *self, int direction)
 {
 	vec3_t forward, right;
@@ -448,12 +458,12 @@ static qboolean KOOGLEMV_SpecialMove(edict_t *self, usercmd_t *ucmd)
 	return false; // We did not resolve a move here
 }
 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Make the change in angles a little more gradual, not so snappy
 // Subtle, but noticeable.
 // 
 // Modified from the original id ChangeYaw code...
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 static void KOOGLEMV_ChangeBotAngle(edict_t *ent)
 {
 	float	ideal_yaw;
@@ -533,6 +543,9 @@ static void KOOGLEMV_ChangeBotAngle(edict_t *ent)
 }
 
 
+/////////////////////////////////////////////////////////////////////////////////
+// Check Lava and Sky
+/////////////////////////////////////////////////////////////////////////////////
 static int KOOGLEMV_CheckLavaAndSky(edict_t *self) //add normal falling edges
 {
 	vec3_t dir, forward, right, offset, start, wall, down;
@@ -601,8 +614,6 @@ static int KOOGLEMV_CheckLavaAndSky(edict_t *self) //add normal falling edges
 
 	return false; //cant move
 }
-
-
 
 ///////////////////////////////////////////////////////////////////////
 // Checks for obstructions in front of bot
@@ -880,15 +891,13 @@ void KOOGLE_Look_Straight(vec3_t player, vec3_t target, vec3_t out)
 
 
 
-/*
-=============
-infrontBot
-hypov8
-returns 1 if other is in front (in sight) of self
-hypov8 look more to side for items was 0.2
-0 must be 90 deg???
-=============
-*/
+/////////////////////////////////////////////////////////////////////////////////
+// infrontBot
+// hypov8
+// returns 1 if other is in front (in sight) of self
+// hypov8 look more to side for items was 0.2
+// 0 must be 90 deg???
+/////////////////////////////////////////////////////////////////////////////////
 qboolean KOOGLEMV_InfrontRocket(edict_t *self, edict_t *other)
 {
 	vec3_t	vec;
@@ -905,7 +914,9 @@ qboolean KOOGLEMV_InfrontRocket(edict_t *self, edict_t *other)
 	return false;
 }
 
-
+/////////////////////////////////////////////////////////////////////////////////
+// Dodge Rockets
+/////////////////////////////////////////////////////////////////////////////////
 static qboolean KOOGLEMV_MoveDodgeRocket(edict_t *self, usercmd_t *ucmd, qboolean targetAquired)
 {
 	vec_t angleDif;		
@@ -966,6 +977,9 @@ static qboolean KOOGLEMV_MoveDodgeRocket(edict_t *self, usercmd_t *ucmd, qboolea
 	return true;
 }
 
+/////////////////////////////////////////////////////////////////////////////////
+// Move dodge nad
+/////////////////////////////////////////////////////////////////////////////////
 static qboolean KOOGLEMV_MoveDodgeNad(edict_t *self, usercmd_t *ucmd, qboolean targetAquired)
 {
 	if (!targetAquired)
@@ -1033,8 +1047,9 @@ static qboolean KOOGLEMV_MoveDodgeNad(edict_t *self, usercmd_t *ucmd, qboolean t
 
 }
 
-
-//add hypov8 stops bots avoiding all rockets/nads
+/////////////////////////////////////////////////////////////////////////////////
+// add hypov8 stops bots avoiding all rockets/nads
+/////////////////////////////////////////////////////////////////////////////////
 static qboolean KOOGLEMV_Attack_Dodge_bySkill(edict_t *bot)
 {
 	static int i=0;
@@ -1170,8 +1185,9 @@ static qboolean KOOGLEMV_MoveToGoal(edict_t *self, usercmd_t *ucmd)
 	}
 }
 
-
-//face towards ladder surface
+/////////////////////////////////////////////////////////////////////////////////
+// face towards ladder surface
+/////////////////////////////////////////////////////////////////////////////////
 qboolean KOOGLEMV_CheckLadder(edict_t *self, usercmd_t *ucmd, qboolean isTopOfLadder, qboolean isKnownLadder)
 {
 	int i;
@@ -1244,9 +1260,10 @@ qboolean KOOGLEMV_CheckLadder(edict_t *self, usercmd_t *ucmd, qboolean isTopOfLa
 	return false; //trace null
 }
 
-
-//hypov8
-//remove short range goals and set jump pad node as hit, incase in bad location
+/////////////////////////////////////////////////////////////////////////////////
+// hypov8
+// remove short range goals and set jump pad node as hit, incase in bad location
+/////////////////////////////////////////////////////////////////////////////////
 void KOOGLEMV_JumpPadUpdate(edict_t *bot/*, float pushSpeed*/)
 {
 	//bot used jump pad.
@@ -1274,7 +1291,6 @@ void KOOGLEMV_JumpPadUpdate(edict_t *bot/*, float pushSpeed*/)
 		bot->s.angles[PITCH] = 0;
 	}
 }
-
 
 ///////////////////////////////////////////////////////////////////////
 // Main movement code. (following node path)
@@ -1345,7 +1361,9 @@ void KOOGLEMV_Move(edict_t *self, usercmd_t *ucmd)
 		return;
 	}
 
+	/////////////////////////////////////////////////////////////////////////////////
 	// Reset the grapple if hangin on a graple node
+    /////////////////////////////////////////////////////////////////////////////////
 	if(current_node_type == BOTNODE_GRAPPLE)
 	{
 		if (self->groundentity)
@@ -1356,9 +1374,9 @@ void KOOGLEMV_Move(edict_t *self, usercmd_t *ucmd)
 		return;
 	}
 
-	////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////
 	// Platforms
-	///////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////
 	if (current_node_type != BOTNODE_PLATFORM && next_node_type == BOTNODE_PLATFORM)
 	{
 		// check to see if lift is down?
@@ -1390,9 +1408,9 @@ void KOOGLEMV_Move(edict_t *self, usercmd_t *ucmd)
 		return; // No move, riding elevator
 	}
 
-	////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////
 	// Jumpto Nodes
-	///////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////
 	if (next_node_type == BOTNODE_JUMP /*&& self->groundentity*/ ||
 		(current_node_type == BOTNODE_JUMP 	&& next_node_type != BOTNODE_ITEM && nodes[self->kooglebot.node_next].origin[2] > (self->s.origin[2]+24) ))
 	{
@@ -1487,9 +1505,9 @@ void KOOGLEMV_Move(edict_t *self, usercmd_t *ucmd)
 		}
 	}
 	
-	////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////
 	// Ladder Nodes
-	///////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////
 #ifdef HYPODEBUG
 	if (self->s.origin[0]==794.125000 && self->s.origin[1] > -1500 &&self->s.origin[2]> 64)
 		gi.dprintf("ladder\n" );
@@ -1582,9 +1600,9 @@ void KOOGLEMV_Move(edict_t *self, usercmd_t *ucmd)
 		return;
 	}
 
-	////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////
 	// Water Nodes
-	///////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////
 	if(current_node_type == BOTNODE_WATER)
 	{
 		// We need to be pointed up/down
@@ -1706,6 +1724,9 @@ void KOOGLEMV_Move(edict_t *self, usercmd_t *ucmd)
 	KOOGLEMV_ChangeBotAngle(self);	
 }
 
+/////////////////////////////////////////////////////////////////////////////////
+// Plat handeling
+/////////////////////////////////////////////////////////////////////////////////
 void KOOGLEMV_WanderPlat(edict_t *self, usercmd_t *ucmd, edict_t *plate)
 {
 	vec3_t vCenter, v1, v2;
@@ -1740,9 +1761,9 @@ void KOOGLEMV_WanderPlat(edict_t *self, usercmd_t *ucmd, edict_t *plate)
 	}
 }
 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Wandering code (based on old ACE movement code) 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 void KOOGLEMV_Wander(edict_t *self, usercmd_t *ucmd)
 {
 	vec3_t  temp;
@@ -1948,8 +1969,9 @@ void KOOGLEMV_Wander(edict_t *self, usercmd_t *ucmd)
 
 }
 
-
-//hypov8 random player taunts
+/////////////////////////////////////////////////////////////////////////////////
+// hypov8 random player taunts
+/////////////////////////////////////////////////////////////////////////////////
 void KOOGLEMV_BotTaunt(edict_t *self, edict_t *enemy)
 {
 	int randomTaunt;
@@ -1990,7 +2012,9 @@ void KOOGLEMV_BotTaunt(edict_t *self, edict_t *enemy)
 	}
 }
 
-
+/////////////////////////////////////////////////////////////////////////////////
+// Spawn Nodes
+/////////////////////////////////////////////////////////////////////////////////
 void ACEMW_SpawnNodeAt_RL_Target(vec3_t v)
 {
 #if HYPODEBUG //defined in project DEBUG
@@ -2020,8 +2044,9 @@ void ACEMW_SpawnNodeAt_RL_Target(vec3_t v)
 #endif
 }
 
-
-
+/////////////////////////////////////////////////////////////////////////////////
+// Bazooka Prediction
+/////////////////////////////////////////////////////////////////////////////////
 void KOOGLEMV_Attack_RL_Predict(edict_t *self, edict_t *enemy)
 {
 	vec3_t  offset ;
@@ -2074,7 +2099,9 @@ void KOOGLEMV_Attack_RL_Predict(edict_t *self, edict_t *enemy)
 	VectorCopy(offset, self->kooglebot.enemyRL_Offset);
 }
 
-
+/////////////////////////////////////////////////////////////////////////////////
+// Aim Random
+/////////////////////////////////////////////////////////////////////////////////
 static void KOOGLEMV_Attack_AimRandom(edict_t *self)
 {
 	//inverse skill 1.0 to 0.0 (0.0 more accurate)
@@ -2143,6 +2170,9 @@ static void KOOGLEMV_Attack_AimRandom(edict_t *self)
 	}
 }
 
+/////////////////////////////////////////////////////////////////////////////////
+// Attack Offset
+/////////////////////////////////////////////////////////////////////////////////
 void KOOGLEMV_Attack_AimRandom_offset(edict_t *self, vec3_t aimdir)
 {
 	vec3_t v, v2,  botOrigin, enemyOrigin;
@@ -2179,8 +2209,10 @@ void KOOGLEMV_Attack_AimRandom_offset(edict_t *self, vec3_t aimdir)
 	VectorCopy(v2, aimdir);
 }
 
-//add hypov8
-//random bullet dir. stops bot view being jerky
+/////////////////////////////////////////////////////////////////////////////////
+// add hypov8
+// random bullet dir. stops bot view being jerky
+/////////////////////////////////////////////////////////////////////////////////
 void KOOGLEMV_Attack_CalcRandDir(edict_t *self, vec3_t aimdir)
 {
 	//random aim
@@ -2188,7 +2220,9 @@ void KOOGLEMV_Attack_CalcRandDir(edict_t *self, vec3_t aimdir)
 	KOOGLEMV_Attack_AimRandom_offset(self, aimdir); //flammer just do view offset
 }
 
-
+/////////////////////////////////////////////////////////////////////////////////
+// Attack Dodge
+/////////////////////////////////////////////////////////////////////////////////
 static void KOOGLEMV_Attack_Dodge(edict_t *self, usercmd_t *ucmd)
 {
 	float c;
@@ -2441,12 +2475,12 @@ static void KOOGLEMV_Attack_Dodge(edict_t *self, usercmd_t *ucmd)
 }
 
 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Attack movement routine
 //
 // NOTE: Very simple for now, just a basic move about avoidance.
 //       Change this routine for more advanced attack movement.
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 void KOOGLEMV_Attack (edict_t *self, usercmd_t *ucmd)
 {
 	vec3_t  target, angles;

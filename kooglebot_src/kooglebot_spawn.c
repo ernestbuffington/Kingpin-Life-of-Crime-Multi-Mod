@@ -1,10 +1,10 @@
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 //
-//  ACE - Quake II Bot Base Code
+//  KOOGLE - Kingpin v1.21 Bot Base Code
 //
 //  Version 1.0
 //
-//  This file is Copyright(c), Steve Yeager 1998, All Rights Reserved
+//  This file is Copyright(c), Kingpin.info 2021, All Rights Reserved
 //
 //
 //	All other files are Copyright(c) Id Software, Inc.
@@ -12,7 +12,7 @@
 //	Please see liscense.txt in the source directory for the copyright
 //	information regarding those files belonging to Id Software, Inc.
 //	
-//	Should you decide to release a modified version of ACE, you MUST
+//	Should you decide to release a modified version of KOOGLE, you MUST
 //	include the following text (minus the BEGIN and END lines) in the 
 //	documentation for your modification.
 //
@@ -23,59 +23,63 @@
 //
 //	This program is a modification of the ACE Bot, and is therefore
 //	in NO WAY supported by Steve Yeager.
-
+//
 //	This program MUST NOT be sold in ANY form. If you have paid for 
 //	this product, you should contact Steve Yeager immediately, via
 //	the ACE Bot homepage.
 //
 //	--- END ---
 //
-//	I, Steve Yeager, hold no responsibility for any harm caused by the
-//	use of this source code, especially to small children and animals.
+//	I, Ernest Buffington, hold no responsibility for any harm caused by the
+//	use of this source code, especially to old people or mailmen.
 //  It is provided as-is with no implied warranty or support.
 //
 //  I also wish to thank and acknowledge the great work of others
 //  that has helped me to develop this code.
 //
-//  John Cricket    - For ideas and swapping code.
-//  Ryan Feltrin    - For ideas and swapping code.
-//  SABIN           - For showing how to do true client based movement.
-//  BotEpidemic     - For keeping us up to date.
-//  Telefragged.com - For giving ACE a home.
-//  Microsoft       - For giving us such a wonderful crash free OS.
+//  FREDZ           - For ideas and swapping code.
+//  Snap            - For ideas and swapping code.
+//  Monkey Harris   - For ideas and swapping code.
+//  TiCal           - For modeling, swapping code.
+//  G()^T           - For swapping code.
+//  hypov8          - For all the massive code contributions.
+//  Mr.Damage       - For ideas and years of dedication.
+//  hub.86it.us     - For giving KOOGLE a home.
+//  Microsoft       - For Microsoft Visual Studio Enterprise 2019
 //  id              - Need I say more.
 //  
 //  And to all the other testers, pathers, and players and people
 //  who I can't remember who the heck they were, but helped out.
 //
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 //
 //  kooglebot_spawn.c - This file contains all of the 
-//                   spawing support routines for the ACE bot.
+//                      spawing support routines for the Koogle bot.
 //
-///////////////////////////////////////////////////////////////////////
+//  Code Authors:	  - Last Code update Jan 1st 2921
+//  Hypo_v8
+//	TheGhost
+//  Steve Yeager
+//
+/////////////////////////////////////////////////////////////////////////////////
 
-#include "../g_local.h" //DIR_SLASH
-#include "../m_player.h" //DIR_SLASH
-#include "kooglebot.h"
+#include "../g_local.h" 	 // main game header
+#include "../m_player.h" 	 // player animations
+#include "kooglebot.h"		 // kooglebot header file
 
-// BEGIN HITMEN
-#include "../g_hitmen_mod.h" //DIR_SLASH
-// END
+#include "../g_hitmen_mod.h" // hitmen header
 
-
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Had to add this function in this version for some reason.
 // any globals are wiped out between level changes....so
 // load the bots from a file.
 //
 // Side effect/benifit are that the bots persist between games.
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 void KOOGLESP_LoadBots()
 {
-
     FILE *pIn;
 	char buffer[MAX_STRING_LENGTH];
 	int i;
@@ -152,19 +156,19 @@ void KOOGLESP_LoadBots()
 
 static  void KOOGLESP_PutClientInServer(edict_t *bot, qboolean respawn, int team);
 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Called by PutClient in Server to actually release the bot into the game
 // Keep from killin' each other when all spawned at once
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 static void KOOGLESP_HoldSpawn(edict_t *self)
 {
-	//KOOGLESP_Respawn(self);
+	// KOOGLESP_Respawn(self);
 
 	if (!(level.modeset == MATCH || level.modeset == PUBLIC))
 	{
 		self->deadflag = 0;
 		gi.dprintf("bot respawned after match\n");
-		return; //hypov8 dont respawn, fixes last person dying loosing there mouse pitch
+		return; // hypov8 dont respawn, fixes last person dying loosing there mouse pitch
 	}
 
 	if (teamplay->value)
@@ -179,33 +183,30 @@ static void KOOGLESP_HoldSpawn(edict_t *self)
 	self->client->ps.pmove.pm_flags = PMF_TIME_TELEPORT;
 	self->client->ps.pmove.pm_time = 14;
 
-	self->client->respawn_time = level.time; // +5;//hypov8 add 5 secs to respawn
+	self->client->respawn_time = level.time; // +5; // hypov8 add 5 secs to respawn
 
 
 	safe_bprintf (PRINT_MEDIUM, "%s entered the game\n", self->client->pers.netname);
 }
 
-
-
-/*
-===========
-KOOGLESP_ClientConnect
-
-Called when a player begins connecting to the server.
-The game can refuse entrance to a client by returning false.
-If the client is allowed, the connection process will continue
-and eventually get to ClientBegin()
-Changing levels will NOT cause this to be called again, but
-loadgames will.
-============
-*/
+/////////////////////////////////////////////////////////////////////////////////
+// KOOGLESP_ClientConnect
+/////////////////////////////////////////////////////////////////////////////////
+// Called when a player begins connecting to the server.
+// The game can refuse entrance to a client by returning false.
+// If the client is allowed, the connection process will continue
+// and eventually get to ClientBegin()
+// Changing levels will NOT cause this to be called again, but
+// loadgames will.
+//
+/////////////////////////////////////////////////////////////////////////////////
 static void KOOGLESP_ClientConnect(edict_t *ent, char *userinfo)
 {
 	char *bestWepName = '\0';
 
-	//hypov8 add randomness to best wep when connected. each map
+	// hypov8 add randomness to best wep when connected. each map
 	ent->kooglebot.randomWeapon = rand() % 3;
-	//hypo another random, try make hmg more domanant
+	// hypo another random, try make hmg more domanant
 	if (ent->kooglebot.randomWeapon != 0)
 		ent->kooglebot.randomWeapon = rand() % 3;
 
@@ -223,7 +224,7 @@ static void KOOGLESP_ClientConnect(edict_t *ent, char *userinfo)
 
 	Info_SetValueForKey(userinfo, "ver", "121");
 	Info_SetValueForKey(userinfo, "country", "Botville");
-	//hypov8 todo ip?
+	// hypov8 todo ip?
 
 	ClientConnect(ent, userinfo); //todo return test fail??
 
@@ -231,13 +232,9 @@ static void KOOGLESP_ClientConnect(edict_t *ent, char *userinfo)
 	ent->kooglebot.is_bot = true; //not needed
 }
 
-
-
-
-
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Modified version of id's code
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 #if 1 //HYPOBOTS
 static  void KOOGLESP_PutClientInServer(edict_t *bot, qboolean respawn, int team)
 {
@@ -247,10 +244,10 @@ static  void KOOGLESP_PutClientInServer(edict_t *bot, qboolean respawn, int team
 	bot->classname = "bot"; // "bot"
 	//bot->kooglebot.is_jumping = false;
 	bot->kooglebot.isTrigPush = false;
-	bot->kooglebot.enemyID = -1; //hypo add
-	bot->kooglebot.num_weps = 2;  //hypo add. 2= pistol+pipe
-	bot->kooglebot.lastDamageTimer = 0;  //hypo add
-	bot->kooglebot.enemyAddFrame = 0;	//hypov8 add
+	bot->kooglebot.enemyID = -1;         // hypo add
+	bot->kooglebot.num_weps = 2;         // hypo add. 2= pistol+pipe
+	bot->kooglebot.lastDamageTimer = 0;  // hypo add
+	bot->kooglebot.enemyAddFrame = 0;	 // hypov8 add
 	bot->kooglebot.tauntTime = level.framenum + (random() * 100);
 	//bot->kooglebot.spawnedTime = level.framenum + 30; //hypo add 3 seconds to look for weps?
 	bot->kooglebot.SRGoal_frameNum = 0;
@@ -258,15 +255,15 @@ static  void KOOGLESP_PutClientInServer(edict_t *bot, qboolean respawn, int team
 	bot->client->pers.noantilag = true;
 	bot->client->ps.fov = 90;
 
-	//hypo
+	// hypo_v8 add
 	bot->client->resp.is_spawn = true;
 	bot->inuse = true;
 	bot->kooglebot.is_bot = true;
-//end
+    //end
 
 
 	bot->s.angles[PITCH] = 0;
-	bot->s.angles[YAW] = 0;// spawn_angles[YAW];
+	bot->s.angles[YAW] = 0; // spawn_angles[YAW];
 	bot->s.angles[ROLL] = 0;
 	VectorCopy(bot->s.angles, bot->client->ps.viewangles);
 	VectorCopy(bot->s.angles, bot->client->v_angle);
@@ -286,7 +283,7 @@ static  void KOOGLESP_PutClientInServer(edict_t *bot, qboolean respawn, int team
 		bot->kooglebot.state = BOTSTATE_WANDER;
 
 	if (!KOOGLEAI_PickShortRangeGoalSpawned(bot))
-		KOOGLEAI_PickLongRangeGoal(bot);//todo: lrg weapon
+		KOOGLEAI_PickLongRangeGoal(bot); //todo: lrg weapon
 
 
 #if HYPOBOTS
@@ -382,7 +379,7 @@ static  void KOOGLESP_PutClientInServer(edict_t *bot, qboolean respawn, int team
 	bot->s.renderfx2 = 0;
 	bot->onfiretime = 0;
 	bot->cast_info.aiflags |= AI_GOAL_RUN;	// make AI run towards us if in pursuit
-	bot->flags &= ~FL_CHASECAM; //hypov8 turn off togglecam
+	bot->flags &= ~FL_CHASECAM; // hypov8 turn off togglecam
 	VectorCopy(mins, bot->mins);
 	VectorCopy(maxs, bot->maxs);
 	VectorClear(bot->velocity);
@@ -392,13 +389,13 @@ static  void KOOGLESP_PutClientInServer(edict_t *bot, qboolean respawn, int team
 
 	bot->hasSelectedPistol = false; // HYPOV8_ADD
 
-	//acebot
+	// kooglebot
 	//bot->kooglebot.is_jumping = false;
 	bot->kooglebot.isTrigPush = false;
-	bot->kooglebot.enemyID = -1; //hypo add
-	bot->kooglebot.num_weps = 2;  //hypo add. 2= pistol+pipe
-	bot->kooglebot.lastDamageTimer = 0;  //hypo add
-	bot->kooglebot.enemyAddFrame = 0;	//hypov8 add
+	bot->kooglebot.enemyID = -1;         // hypo add
+	bot->kooglebot.num_weps = 2;         // hypo add. 2= pistol+pipe
+	bot->kooglebot.lastDamageTimer = 0;  // hypo add
+	bot->kooglebot.enemyAddFrame = 0;	 // hypov8 add
 	bot->kooglebot.tauntTime = level.framenum + (random() * 100);
 	//bot->kooglebot.spawnedTime = level.framenum + 30; //hypo add 3 seconds to look for weps?
 	client->pers.team = team;
@@ -449,13 +446,12 @@ static  void KOOGLESP_PutClientInServer(edict_t *bot, qboolean respawn, int team
 
 	
 	
-	client->ps.pmove.origin[0] = spawn_origin[0]*8; //hypov8 todo: check this for spec players
+	client->ps.pmove.origin[0] = spawn_origin[0]*8; //hypo_v8 todo: check this for spec players
 	client->ps.pmove.origin[1] = spawn_origin[1]*8;
 	client->ps.pmove.origin[2] = spawn_origin[2]*8;
 
 
 	client->ps.fov = 90;
-
 
 	// RAFAEL
 	// weapon mdx
@@ -477,7 +473,6 @@ static  void KOOGLESP_PutClientInServer(edict_t *bot, qboolean respawn, int team
 		client->ps.gunindex = gi.modelindex(client->pers.weapon->view_model);
 	// END JOSEPH
 
-
 	// clear entity state values
 	bot->s.effects = 0;
 	bot->s.skinnum = bot - g_edicts - 1;
@@ -491,11 +486,9 @@ static  void KOOGLESP_PutClientInServer(edict_t *bot, qboolean respawn, int team
 	//add hypov8. calculate bots movement
 	VectorCopy(spawn_origin, bot->kooglebot.oldOrigin);
 
-
 	// bikestuff
 	bot->biketime = 0;
 	bot->bikestate = 0;
-
 
 // Ridah, Hovercars
 	if (g_vehicle_test->value)
@@ -529,11 +522,8 @@ static  void KOOGLESP_PutClientInServer(edict_t *bot, qboolean respawn, int team
 //		int		skin;
 
 		// NOTE: this is just here for collision detection, modelindex's aren't actually set
-
 		bot->s.num_parts = 0;		// so the client's setup the model for viewing
-
 		s = Info_ValueForKey (client->pers.userinfo, "skin");
-
 //		skins = strstr( s, "/" ) + 1;
 
 		// converts some characters to NULL's
@@ -602,8 +592,6 @@ static  void KOOGLESP_PutClientInServer(edict_t *bot, qboolean respawn, int team
 	// randomize spectator's direction in "no spec" mode
 	if (level.modeset == MATCH && no_spec->value && bot->client->pers.spectator == SPECTATING && !bot->client->pers.admin && !bot->client->pers.rconx[0])
 		spawn_angles[YAW] = rand() % 360;
-
-
 
 	// set the delta angle
 	for (i=0 ; i<3 ; i++)
@@ -709,9 +697,9 @@ static  void KOOGLESP_PutClientInServer(edict_t *bot, qboolean respawn, int team
 
 }
 #endif
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Respawn the bot
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 void KOOGLESP_Respawn (edict_t *ent)
 {
 #if 1
@@ -775,9 +763,9 @@ void KOOGLESP_Respawn (edict_t *ent)
 #endif
 }
 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Find a free client spot
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 static edict_t *KOOGLESP_FindFreeClient (void)
 {
 	edict_t *bot = NULL;
@@ -850,12 +838,9 @@ static const char runt_body[] = { "001", "002", "003", "004", "005", "006", "007
 
 #endif
 
-
-
-
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Set the name of the bot and update the userinfo
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 void KOOGLESP_SetName(edict_t *bot, char *name, char *skin/*, char *team*/)
 {
 	char userinfo[MAX_INFO_STRING];
@@ -999,9 +984,9 @@ void KOOGLESP_SetName(edict_t *bot, char *name, char *skin/*, char *team*/)
 
 extern void Teamplay_AutoJoinTeam(edict_t *self);
 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Spawn the bot
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 void KOOGLESP_SpawnBot (char *team, char *name, char *skin, char *userinfo, float skill)
 {
 	edict_t	*bot;
@@ -1015,7 +1000,7 @@ void KOOGLESP_SpawnBot (char *team, char *name, char *skin, char *userinfo, floa
 		return;
 	}
 
- //hypov8 added here when multiple bots get added at match start(g_runframe not called yet)
+    // hypov8 added here when multiple bots get added at match start(g_runframe not called yet)
 	num_bots++;
 
 
@@ -1047,7 +1032,6 @@ void KOOGLESP_SpawnBot (char *team, char *name, char *skin, char *userinfo, floa
 		}
 	}
 
-
 	if (teamplay->value)
 		team2 = bot->client->pers.team;
 
@@ -1072,11 +1056,9 @@ void KOOGLESP_SpawnBot (char *team, char *name, char *skin, char *userinfo, floa
 
 }
 
-
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Load a predefined bot cfg
-///////////////////////////////////////////////////////////////////////
-
+/////////////////////////////////////////////////////////////////////////////////
 int KOOGLESP_LoadRandomBotCFG(void)
 {
 	FILE *pIn;
@@ -1148,7 +1130,6 @@ int KOOGLESP_LoadRandomBotCFG(void)
 	return 0;
 }
 
-
 void KOOGLESP_SpawnBot_Random(char *team, char *name, char *skin, char *userinfo)
 {
 	edict_t	*bot;
@@ -1213,9 +1194,9 @@ void KOOGLESP_SpawnBot_Random(char *team, char *name, char *skin, char *userinfo
 }
 
 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Remove a bot by name or all bots
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 void KOOGLESP_RemoveBot(char *name, qboolean print)
 {
 	int i;
@@ -1232,7 +1213,7 @@ void KOOGLESP_RemoveBot(char *name, qboolean print)
 	for(i=1;i<=(int)maxclients->value;i++)
 	{
 		bot = g_edicts + i ;
-		if(bot->inuse && bot->kooglebot.is_bot) //hypov8 Q_stricmp
+		if(bot->inuse && bot->kooglebot.is_bot) //hypo_v8 Q_stricmp
 		{
 			if (Q_stricmp(bot->client->pers.netname, name) == 0 || Q_stricmp(name, "all") == 0 || Q_stricmp(name, "single") == 0)
 			{
@@ -1257,22 +1238,20 @@ void KOOGLESP_RemoveBot(char *name, qboolean print)
 		//safe_bprintf (PRINT_MEDIUM, "%s not found\n", name);
 }
 
-
 //respawn(self);
 void KOOGLESP_KillBot(edict_t *self)
 {
 	self->client->latched_buttons = 0;
-	self->kooglebot.suicide_timeout = level.time + 10.0; //reset since not using ACESP
-	self->flags &= ~FL_GODMODE; //hypov8 added. shown as player killed them selves now
+	self->kooglebot.suicide_timeout = level.time + 10.0; // reset since not using ACESP
+	self->flags &= ~FL_GODMODE; // hypo_v8 added. shown as player killed them selves now
 	self->health = 0;
-	meansOfDeath = MOD_BOT_SUICIDE;		//hypov8 added. shown as player killed them selves now
-	VectorSet(self->velocity, 0, 0, 0);	//hypo stop movement
+	meansOfDeath = MOD_BOT_SUICIDE;		// hypo_v8 added. shown as player killed them selves now
+	VectorSet(self->velocity, 0, 0, 0);	// hypo_v8 stop movement
 #if HYPODEBUG
 	gi.dprintf(" KOOGLE: Bot %s Died at XYZ:(%f, %f, %f)\n", self->client->pers.netname, self->s.origin[0], self->s.origin[1], self->s.origin[2]);
 #endif
 	player_die(self, self, self, 100000, vec3_origin, 0, 0); //hypov8 add null
 }
-
 
 //fix for using console to change map
 void KOOGLESP_FreeBots(void)

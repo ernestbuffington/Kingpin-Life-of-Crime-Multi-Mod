@@ -1,10 +1,10 @@
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 //
-//  ACE - Quake II Bot Base Code
+//  KOOGLE - Kingpin v1.21 Bot Base Code
 //
 //  Version 1.0
 //
-//  This file is Copyright(c), Steve Yeager 1998, All Rights Reserved
+//  This file is Copyright(c), Kingpin.info 2021, All Rights Reserved
 //
 //
 //	All other files are Copyright(c) Id Software, Inc.
@@ -12,7 +12,7 @@
 //	Please see liscense.txt in the source directory for the copyright
 //	information regarding those files belonging to Id Software, Inc.
 //	
-//	Should you decide to release a modified version of ACE, you MUST
+//	Should you decide to release a modified version of KOOGLE, you MUST
 //	include the following text (minus the BEGIN and END lines) in the 
 //	documentation for your modification.
 //
@@ -23,43 +23,52 @@
 //
 //	This program is a modification of the ACE Bot, and is therefore
 //	in NO WAY supported by Steve Yeager.
-
+//
 //	This program MUST NOT be sold in ANY form. If you have paid for 
 //	this product, you should contact Steve Yeager immediately, via
 //	the ACE Bot homepage.
 //
 //	--- END ---
 //
-//	I, Steve Yeager, hold no responsibility for any harm caused by the
-//	use of this source code, especially to small children and animals.
+//	I, Ernest Buffington, hold no responsibility for any harm caused by the
+//	use of this source code, especially to old people or mailmen.
 //  It is provided as-is with no implied warranty or support.
 //
 //  I also wish to thank and acknowledge the great work of others
 //  that has helped me to develop this code.
 //
-//  John Cricket    - For ideas and swapping code.
-//  Ryan Feltrin    - For ideas and swapping code.
-//  SABIN           - For showing how to do true client based movement.
-//  BotEpidemic     - For keeping us up to date.
-//  Telefragged.com - For giving ACE a home.
-//  Microsoft       - For giving us such a wonderful crash free OS.
+//  FREDZ           - For ideas and swapping code.
+//  Snap            - For ideas and swapping code.
+//  Monkey Harris   - For ideas and swapping code.
+//  TiCal           - For modeling, swapping code.
+//  G()^T           - For swapping code.
+//  hypov8          - For all the massive code contributions.
+//  Mr.Damage       - For ideas and years of dedication.
+//  hub.86it.us     - For giving KOOGLE a home.
+//  Microsoft       - For Microsoft Visual Studio Enterprise 2019
 //  id              - Need I say more.
 //  
 //  And to all the other testers, pathers, and players and people
 //  who I can't remember who the heck they were, but helped out.
 //
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 //
 //  kooglebot_items.c - This file contains all of the 
-//                   item handling routines for the 
-//                   ACE bot, including fact table support
+//                      item handling routines for the 
+//                      Koogle bot, including fact table support
 //           
-///////////////////////////////////////////////////////////////////////
+//  Code Authors:
+//  Hypo_v8
+//	TheGhost
+//  Steve Yeager
+//
+/////////////////////////////////////////////////////////////////////////////////
 
-#include "../g_local.h" //DIR_SLASH
-#include "kooglebot.h"
+#include "../g_local.h"         // main game header file
+#include "kooglebot.h"			// kooglebot header file
+#include "../g_hitmen_mod.h"	// hitmen header file
 
 int	num_players;
 int num_items;
@@ -69,9 +78,10 @@ int num_bots;
 
 item_table_t item_table[MAX_EDICTS];
 
-
-//hypov8
-//has item been picked up?
+/////////////////////////////////////////////////////////////////////////////////
+// hypov8
+// has item been picked up?
+/////////////////////////////////////////////////////////////////////////////////
 qboolean KOOGLEIT_CheckIfItemExists(edict_t *self)
 {
 	int i;
@@ -95,10 +105,10 @@ qboolean KOOGLEIT_CheckIfItemExists(edict_t *self)
 }
 
 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Player added
 // Count players/bots and remove if to many
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 void KOOGLEIT_PlayerAdded(edict_t *ent)
 {
 	if (!ent->kooglebot.is_bot && level.bots_spawned && sv_bot_max_players->value)
@@ -131,10 +141,10 @@ void KOOGLEIT_PlayerAdded(edict_t *ent)
 	}
 }
 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Player emoved
 // Re'add a bot if we are below limit
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 void KOOGLEIT_PlayerRemoved(edict_t *ent)
 {
 	if (!ent->kooglebot.is_bot && level.bots_spawned && sv_bot_max_players->value && level.botsRemoved)
@@ -150,9 +160,9 @@ void KOOGLEIT_PlayerRemoved(edict_t *ent)
 	}
 }
 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Can we get there?
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 qboolean KOOGLEIT_IsReachable(edict_t *self, vec3_t goal)
 {
 	trace_t trace;
@@ -213,9 +223,9 @@ qboolean KOOGLEIT_IsReachable(edict_t *self, vec3_t goal)
 }
 
 #if 0 //hypov8 not used??
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Visiblilty check 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 qboolean KOOGLEIT_IsVisible(edict_t *self, vec3_t goal)
 {
 	trace_t trace;
@@ -231,7 +241,9 @@ qboolean KOOGLEIT_IsVisible(edict_t *self, vec3_t goal)
 }
 #endif
 
-
+/////////////////////////////////////////////////////////////////////////////////
+// Bot Clip Index
+/////////////////////////////////////////////////////////////////////////////////
 static int KOOGLEIT_ClipNameIndex(gitem_t *item)
 {
 
@@ -262,9 +274,9 @@ static int KOOGLEIT_ClipNameIndex(gitem_t *item)
 }
 
 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 //  Weapon changing support
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 qboolean KOOGLEIT_ChangeWeapon (edict_t *ent, gitem_t *item)
 {
 	int			ammo_index;
@@ -299,8 +311,9 @@ qboolean KOOGLEIT_ChangeWeapon (edict_t *ent, gitem_t *item)
 	return true;
 }
 
-
-//add hypov8
+/////////////////////////////////////////////////////////////////////////////////
+// Bot needs armor hypo_v8
+/////////////////////////////////////////////////////////////////////////////////
 qboolean KOOGLEIT_Needs_Armor(edict_t *bot, char * itemName)
 {
 	if (strcmp(itemName, "item_armor_helmet") == 0)
@@ -358,13 +371,13 @@ qboolean KOOGLEIT_Needs_Armor(edict_t *bot, char * itemName)
 }
 
 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Determins the NEED for an item
 //
 // This function can be modified to support new items to pick up
 // Any other logic that needs to be added for custom decision making
 // can be added here. For now it is very simple.
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 float KOOGLEIT_ItemNeed(edict_t *self, int item, float timestamp, int spawnflags)
 {
 	//weapon search multiplyer. stop bot using pistol to much
@@ -595,13 +608,13 @@ float KOOGLEIT_ItemNeedSpawned(edict_t *self, int item, float timestamp, int spa
 }
 
 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Convert a classname to its index value
 //
 // I prefer to use integers/defines for simplicity sake. This routine
 // can lead to some slowdowns I guess, but makes the rest of the code
 // easier to deal with.
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 int KOOGLEIT_ClassnameToIndex(char *classname, int style)
 {
 	//int value = INVALID;
@@ -681,17 +694,17 @@ int KOOGLEIT_ClassnameToIndex(char *classname, int style)
 }
 
 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // Only called once per level, when saved will not be called again
 //
 // Downside of the routine is that items can not move about. If the level
 // has been saved before and reloaded, it could cause a problem if there
 // are items that spawn at random locations.
-//
+/////////////////////////////////////////////////////////////////////////////////
 #if HYPODEBUG
 #define DEBUG_KOOGLE // uncomment to write out items to a file.
 #endif
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 void KOOGLEIT_BuildItemNodeTable(qboolean reLinkEnts)
 {
 	edict_t *items;
@@ -875,6 +888,3 @@ void KOOGLEIT_BuildItemNodeTable(qboolean reLinkEnts)
 #endif
 
 }
-
-
-

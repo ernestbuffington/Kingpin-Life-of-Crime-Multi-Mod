@@ -39,8 +39,8 @@ static const char *botmatchheader[] =
 
 static const char *bloodmoneyheader[] =
 {
-	"Blood Money v616", 
-	"by TheGhost & Hypo_v8",
+	"Blood Money v1.0", 
+	"by TheGhost",
 	"MM2.0c & Koogle Bots",
 	NULL
 };
