@@ -62,14 +62,14 @@
 #ifndef _KOOGLEBOT_H
 #define _KOOGLEBOT_H
 
-//add hypov8
+// add hypo_v8
 #include "../voice_punk.h"
 #include "../voice_bitch.h"
 
-//hypov8 func to stop bot looking up/down when not needed
+// hypo_v8 func to stop bot looking up/down when not needed
 #define KOOGLE_Look_Straight(target,player,out) (out[0]=target[0],out[1]=target[1],out[2]=player[2])
 
-vec3_t KOOGLEBOT_Look_Out; // hypov8 global var	 ??? What is this and what is going to be used for ???
+vec3_t KOOGLEBOT_Look_Out; // hypo_v8 global var	 ??? What is this and what is going to be used for ???
 #define BOT_JUMP_VEL (400) // 360
 #define BOT_FORWARD_VEL (160*2) // 340 // hypov8 kp default
 #define BOT_SIDE_VEL (160*2) // cl_anglespeedkey->value) // hypov8 kp default 1.5
@@ -121,8 +121,6 @@ vec3_t KOOGLEBOT_Look_Out; // hypov8 global var	 ??? What is this and what is go
 #define BOTNODE_TRIGPUSH_0 0
 #define BOTNODE_SHIFT 8 //move node back down to player height
 
-
-
 // Density setting for nodes
 #define BOTNODE_DENSITY			128
 #define BOTNODE_DENSITY_DBL		(BOTNODE_DENSITY*2)
@@ -133,7 +131,7 @@ vec3_t KOOGLEBOT_Look_Out; // hypov8 global var	 ??? What is this and what is go
 #define BOTNODE_DENSITY_QUART	32
 #define BOTNODE_DENSITY_STAIR	160
 #define BOTNODE_DENSITY_LOCAL	(BOTNODE_DENSITY*0.75) // add hypov8 allow only very close node to add a link. 
-													   // needs to be shorter then 1/2 way betweeen BOTNODE_DENSITY
+												       // needs to be shorter then 1/2 way betweeen BOTNODE_DENSITY
 
 // Bot state types
 #define BOTSTATE_STAND 0
@@ -146,7 +144,6 @@ vec3_t KOOGLEBOT_Look_Out; // hypov8 global var	 ??? What is this and what is go
 #define MOVE_RIGHT 1
 #define MOVE_FORWARD 2
 #define MOVE_BACK 3
-
 
 // KingPin Item defines 
 #define ITEMLIST_NULL				0
@@ -295,7 +292,7 @@ typedef struct //bot->kooglebot.xxx
 
 	int			flame_frameNum;			// aim accurecy last's longer
 
-	//hypo_v8 new bot skill func
+	// hypo_v8 new bot skill func
 	int			enemyID;				// if new target. dont shoot straight away
 	int			enemyAddFrame;			// dont keep old targets in memory for to long? will ignore skill on 2nd sight
 	int			enemyChaseFrame;		// enemy search	
