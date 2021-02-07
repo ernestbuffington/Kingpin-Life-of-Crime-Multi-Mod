@@ -3,6 +3,12 @@
 #include <stdio.h>
 #include <sys/stat.h>
 
+#ifdef _WIN32
+#define DIR_BLOODMONEY "\\ini\\bloodmoney\\"
+#else
+#define	DIR_BLOODMONEY "/ini/bloodmoney/"
+#endif
+
 int process_bloodmoney_ini_file()
 {
 	FILE* infile;
@@ -17,11 +23,12 @@ int process_bloodmoney_ini_file()
 	game_dir = gi.cvar("game", "", 0);
 	dir = game_dir->string[0] ? game_dir->string : "main";
 
-	if (stat(va("%s/comp.ini", dir), &st))
+	if (stat(va("%s"DIR_BLOODMONEY"bloodmoney.ini", dir), &st))
 	{
-		gi.error("comp.ini file is missing");
+		gi.error(DIR_BLOODMONEY"bloodmoney.ini file is missing");
 		return false;
 	}
+	
 	if (st.st_mtime == lasttime)
 		goto skipini;
 	lasttime = st.st_mtime;
@@ -67,10 +74,11 @@ int process_bloodmoney_ini_file()
 	num_MOTD_lines = 0;
 
 	// Open config file
-	infile = fopen(va("%s/comp.ini", dir), "r");
+	infile = fopen(va("%s"DIR_BLOODMONEY"bloodmoney.ini", dir), "r");
+
 	if (infile == NULL)
 	{
-		gi.error("Failed to open comp.ini file");
+		gi.error("Failed to open "DIR_BLOODMONEY"bloodmoney.ini file");
 		return false;
 	}
 
@@ -218,13 +226,13 @@ int process_bloodmoney_ini_file()
 		}
 		//END
 		else
-			gi.dprintf("Unknown comp.ini line: %s\n", buffer);
+			gi.dprintf("Unknown line: %s "DIR_BLOODMONEY"bloodmoney.ini\n", buffer);
 	}
 
 	// close the ini file
 	fclose(infile);
 
-	gi.dprintf("Processed comp.ini file\n");
+	gi.dprintf("Processed "DIR_BLOODMONEY"bloodmoney.ini file\n");
 
 skipini:
 
@@ -234,13 +242,14 @@ skipini:
 		if (!lasttime)
 			num_ban_names = 0;
 
-		if (stat(va("%s/%s", dir, ban_name_filename), &st) || st.st_mtime == lasttime)
+		if (stat(va("%s"DIR_BLOODMONEY"%s", dir, ban_name_filename), &st) || st.st_mtime == lasttime)
 			goto skipban_name;
 		lasttime = st.st_mtime;
 
 		num_ban_names = 0;
 
-		infile = fopen(va("%s/%s", dir, ban_name_filename), "r");
+		infile = fopen(va("%s"DIR_BLOODMONEY"%s", dir, ban_name_filename), "r");
+
 		if (infile != NULL)
 		{
 			while (fgetline(infile, buffer))	// Retrieve line from the file
@@ -256,7 +265,7 @@ skipini:
 					break;
 			}
 			fclose(infile);
-			gi.dprintf("Processed name bans file (%d bans)\n", num_ban_names);
+			gi.dprintf("Processed "DIR_BLOODMONEY"%s ban file (%d bans)\n", ban_name_filename, num_ban_names);
 		}
 	}
 	else
@@ -270,13 +279,13 @@ skipban_name:
 		if (!lasttime)
 			num_ban_ips = 0;
 
-		if (stat(va("%s/%s", dir, ban_ip_filename), &st) || st.st_mtime == lasttime)
+		if (stat(va("%s"DIR_BLOODMONEY"%s", dir, ban_ip_filename), &st) || st.st_mtime == lasttime)
 			goto skipban_ip;
 		lasttime = st.st_mtime;
 
 		num_ban_ips = 0;
 
-		infile = fopen(va("%s/%s", dir, ban_ip_filename), "r");
+		infile = fopen(va("%s"DIR_BLOODMONEY"%s", dir, ban_ip_filename), "r");
 		if (infile != NULL)
 		{
 			while (fgetline(infile, buffer))	// Retrieve line from the file
@@ -291,7 +300,7 @@ skipban_name:
 					break;
 			}
 			fclose(infile);
-			gi.dprintf("Processed IP bans file (%d bans)\n", num_ban_ips);
+			gi.dprintf("Processed "DIR_BLOODMONEY"%s ban file (%d bans)\n", ban_ip_filename, num_ban_ips);
 		}
 	}
 	else
@@ -305,13 +314,13 @@ skipban_ip:
 		if (!lasttime)
 			num_rconx_pass = 0;
 
-		if (stat(va("%s/%s", dir, rconx_file), &st) || st.st_mtime == lasttime)
+		if (stat(va("%s"DIR_BLOODMONEY"%s", dir, rconx_file), &st) || st.st_mtime == lasttime)
 			goto skiprconx;
 		lasttime = st.st_mtime;
 
 		num_rconx_pass = 0;
 
-		infile = fopen(va("%s/%s", dir, rconx_file), "r");
+		infile = fopen(va("%s"DIR_BLOODMONEY"%s", dir, rconx_file), "r");
 		if (infile != NULL)
 		{
 			while (fgetline(infile, buffer))	// Retrieve line from the file
@@ -326,7 +335,7 @@ skipban_ip:
 					break;
 			}
 			fclose(infile);
-			gi.dprintf("Processed rconx password file (%d passwords)\n", num_rconx_pass);
+			gi.dprintf("Processed "DIR_BLOODMONEY"%s rconx passwords file (%d passwords)\n", rconx_file, num_rconx_pass);
 		}
 	}
 	else
@@ -343,13 +352,14 @@ skiprconx:
 		if (!lasttime)
 			num_maps = 0;
 
-		if (stat(va("%s/%s", dir, map_list_filename), &st) || st.st_mtime == lasttime)
+		if (stat(va("%s"DIR_BLOODMONEY"%s", dir, map_list_filename), &st) || st.st_mtime == lasttime)
 			goto skipmaps;
 		lasttime = st.st_mtime;
 
 		num_maps = 0;
 
-		infile = fopen(va("%s/%s", dir, map_list_filename), "r");
+		infile = fopen(va("%s"DIR_BLOODMONEY"%s", dir, map_list_filename), "r");
+
 		if (infile != NULL)
 		{
 			while (fgetline(infile, buffer))	// Retrieve line from the file
@@ -382,7 +392,7 @@ skiprconx:
 				if (num_maps == 1024) break;
 			}
 			fclose(infile);
-			gi.dprintf("Processed map list file (%s = %d maps)\n", map_list_filename, num_maps);
+			gi.dprintf("Processed "DIR_BLOODMONEY"%s map list file (%d maps)\n", map_list_filename, num_maps);
 		}
 	}
 	else
