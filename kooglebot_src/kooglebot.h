@@ -245,25 +245,24 @@ typedef struct botnode_file_s
 
 typedef struct item_table_s
 {
-	int item;
-	float weight;
+	int     item;
+	float   weight;
 	edict_t *ent;
-	short node; //hypov8 was int
+	short   node; // hypo_v8 was int CHANGE
 
 } item_table_t;
 
 typedef struct bot_skin_s
 {
-	char name[32];
-	char skin[64];
-	char team[32];
-	float skill; //hypov8 ad skill multiplyer 0.0 to 2.0
+	char  name[32];
+	char  skin[64];
+	char  team[32];
+	float skill; // hypo_v8 ad skill multiplyer 0.0 to 2.0
 } bot_skin_t;
 
 typedef struct //bot->kooglebot.xxx
 {
 	qboolean	is_bot;
-	//qboolean	is_jumping;
 
 	// For bot movement
 	int	isOnLadder;						// hypo_v8 add. stop bots aiming when on ladders. added top of latter = 2
@@ -290,13 +289,13 @@ typedef struct //bot->kooglebot.xxx
 	
 	int			state;					// wander/goal
 
-	//hypov8 aim recalculate on shoot
+	// hypo_v8 aim recalculate on shoot
 	vec3_t		enemyOrigin;			// store enemy origin untill we shoot with filre_lead
 	float		bot_accuracy;			// store accuracy untill we shoot with filre_lead
 
 	int			flame_frameNum;			// aim accurecy last's longer
 
-	//hypo new bot skill func
+	//hypo_v8 new bot skill func
 	int			enemyID;				// if new target. dont shoot straight away
 	int			enemyAddFrame;			// dont keep old targets in memory for to long? will ignore skill on 2nd sight
 	int			enemyChaseFrame;		// enemy search	
@@ -360,7 +359,6 @@ typedef struct //bot->kooglebot.xxx
 	int			SRGoal_frameNum;		//stop bot trying for SR goal so oftern
 	int			SRGoal_onLadder;
 } kooglebot_t;
-
 
 extern int num_players;
 extern int num_bots;
