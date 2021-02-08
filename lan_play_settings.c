@@ -86,7 +86,7 @@ void InitLanGame(void)
 	sv_hitmen = gi.cvar("hitmen", "0", CVAR_LATCH | CVAR_SERVERINFO);
 	sv_hook = gi.cvar("sv_hook", "0", 0); //HmHookAvailable //enable hook to work out of hitman
 // KOOGLEBOT_END
-
+	sv_grapple = gi.cvar("sv_grapple", "0", 0); //HmHookAvailable //enable hook to work out of hitman
 
 	// add hypov8
 	sv_keeppistol = gi.cvar("sv_keeppistol", "1", 0);
@@ -240,27 +240,58 @@ void InitLanGame(void)
 	// END
 
 	// HYPOV8_ADD
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// hypov8 fix for lan bug in kingpin.exe. when inital .dll is loaded
-		// if cvar does not exist in the exe or configs it will fail setting the flags.
-		// missing CVAR_LATCH is causing crashes.
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
+	// hypov8 fix for lan bug in kingpin.exe. when inital .dll is loaded
+	// if cvar does not exist in the exe or configs it will fail setting the flags.
+	// missing CVAR_LATCH is causing crashes.
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
+	if (sv_grapple->value == 1)
+	{
+		gi.cvar("Quake II Grapple", "enabled", CVAR_SERVERINFO);
+	}
+
+	if (sv_hook->value == 1)
+	{
+		gi.cvar("Kingpin Hook", "enabled", CVAR_SERVERINFO);
+	}
+	if (current_mod->value == 2)
+	{
+		gi.cvar("Koogle Bots", "enabled", CVAR_SERVERINFO);
+	}
+	else
+		gi.cvar("Ace Bots", "enabled", CVAR_SERVERINFO);
+	gi.cvar("menu", "enabled - Type menu in the console to load bots.", CVAR_SERVERINFO);
+	//gi.cvar("Teleports", "disabled", CVAR_SERVERINFO);
+	//gi.cvar("Jetpack", "disabled", CVAR_SERVERINFO);
+	//gi.cvar("Quaked", "disabled", CVAR_SERVERINFO);
+
+	if (sv_cheats->value == 1)
+		gi.cvar("cheats", "1", CVAR_LATCH | CVAR_SERVERINFO);
+
 	props = gi.cvar("props", "0", CVAR_NOSET);
 	gi.cvar_forceset("props", "0");
 
 	sv_botskill = gi.cvar("sv_botskill", "", CVAR_SERVERINFO);
-	sv_hitmen = gi.cvar("hitmen", "", CVAR_LATCH | CVAR_SERVERINFO);
+
+	sv_hitmen = gi.cvar("hitmen", "", 0);
+	if (sv_hitmen->value == 1)
+		gi.cvar("sv_hitmen", "1", CVAR_LATCH | CVAR_SERVERINFO);
 
 	maxentities = gi.cvar("maxentities", "", CVAR_LATCH);
-	antilag = gi.cvar("antilag", "", CVAR_SERVERINFO);
-	kick_flamehack = gi.cvar("kick_flamehack", "", CVAR_SERVERINFO);
-	g_select_empty = gi.cvar("g_select_empty", "", CVAR_ARCHIVE);
+	antilag = gi.cvar("antilag", "", CVAR_LATCH | CVAR_SERVERINFO);
+	kick_flamehack = gi.cvar("kick_flamehack", "", 0);
+	g_select_empty = gi.cvar("g_select_empty", "", CVAR_LATCH | CVAR_ARCHIVE);
 
-	teamplay = gi.cvar("teamplay", "0.0", CVAR_LATCH | CVAR_SERVERINFO);
+	teamplay = gi.cvar("teamplay", "0.0", 0);
+	if (teamplay->value > 0)
+		teamplay = gi.cvar("teamplay", "0.0", CVAR_ARCHIVE | CVAR_LATCH);
 
-	cashlimit = gi.cvar("cashlimit", "", teamplay->value == 1 ? CVAR_SERVERINFO : 0);
+	cashlimit = gi.cvar("cashlimit", "", teamplay->value == 1 ? CVAR_LATCH | CVAR_SERVERINFO : 0);
 	g_cashspawndelay = gi.cvar("g_cashspawndelay", "", CVAR_ARCHIVE | CVAR_LATCH);
-	dm_realmode = gi.cvar("dm_realmode", "", CVAR_LATCH | CVAR_SERVERINFO);
+
+	dm_realmode = gi.cvar("dm_realmode", "", 0);
+	if (dm_realmode->value == 1)
+		gi.cvar("dm_realmode", "1", CVAR_LATCH | CVAR_SERVERINFO);
 	// HYPOV8_END
 
 	if (kpded2)

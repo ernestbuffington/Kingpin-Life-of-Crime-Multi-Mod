@@ -544,6 +544,19 @@ void P_FallingDamage (edict_t *ent)
 	}
 	delta = delta*delta * 0.0001;
 
+     // q2 grapple start
+	 // never take damage if just release grapple or on grapple
+	if (((level.time - ent->client->kpq2_grapplereleasetime) <= (FRAMETIME * 2)) ||
+		(ent->client->kpq2_grapple && ent->client->kpq2_grapplestate > KPQ2_GRAPPLE_STATE_FLY))
+		return;
+	// END
+
+	// hitmen hook Fix TheGhost
+	// stop fucking yourself up when you hit a wall
+     #define HOOK_IN 0x00000002
+ 	if (ent->client->hookstate & HOOK_IN)
+	return;
+
 	// never take falling damage if completely underwater
 	if (ent->waterlevel == 3)
 		return;

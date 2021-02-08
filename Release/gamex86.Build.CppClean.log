@@ -1,5 +1,5 @@
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\vc142.pdb
-h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\g_ai.obj
+h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\p_grapple.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\file_sgm_ini.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\file_botmatch_ini.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\file_bloodmoney_ini.obj
@@ -19,7 +19,6 @@ h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\file_coop_ini.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\file_comp_ini.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\file_botmen_ini.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\file.obj
-h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\kooglebot_ai.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\g_weapon.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\g_utils.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\g_trigger.obj
@@ -39,7 +38,7 @@ h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\g_combat.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\g_cmds.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\g_chase.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\g_cast.obj
-h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\voice_bitch.obj
+h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\g_ai.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\voice.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\vehicles.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\unlagged.obj
@@ -59,7 +58,9 @@ h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\kooglebot_movement.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\kooglebot_items.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\kooglebot_compress.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\kooglebot_cmds.obj
+h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\kooglebot_ai.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\voice_punk.obj
+h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\voice_bitch.obj
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\gamex86.lib
 h:\kingpin\multi\kingpin-life-of-crime-multi-mod\release\gamex86.exp
 h:\kingpin\multi\gamex86.dll

@@ -93,6 +93,7 @@ cvar_t *sv_bot_max;
 cvar_t *sv_bot_max_players;
 cvar_t *sv_hitmen;
 cvar_t *sv_hook; //add hypov8
+cvar_t *sv_grapple; // add TheGhost
 // KOOGLEBOT_END
 
 cvar_t *sv_keeppistol;//add hypov8

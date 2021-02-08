@@ -336,6 +336,7 @@
     <ClCompile Include="file_bloodmoney_ini.c" />
     <ClCompile Include="file_botmatch_ini.c" />
     <ClCompile Include="file_sgm_ini.c" />
+    <ClCompile Include="p_grapple.c" />
     <ClCompile Include="g_ai.c" />
     <ClCompile Include="g_cast.c" />
     <ClCompile Include="g_chase.c" />
@@ -393,6 +394,7 @@
     <ClInclude Include="g_teamplay.h" />
     <ClInclude Include="kooglebot_src\kooglebot.h" />
     <ClInclude Include="m_player.h" />
+    <ClInclude Include="p_grapple.h" />
     <ClInclude Include="q_shared.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="vehicles.h" />

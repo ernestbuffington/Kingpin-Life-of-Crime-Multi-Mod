@@ -45,6 +45,31 @@ static void P_ProjectSource (gclient_t *client, vec3_t point, vec3_t distance, v
 	G_ProjectSource (point, _distance, forward, right, result);
 }
 
+/*
+===============
+PlayerNoise
+
+Each player can have two noise objects associated with it:
+a personal noise (jumping, pain, weapon firing), and a weapon
+target noise (bullet wall impacts)
+
+Monsters that don't directly see the player can move
+to a noise in hopes of seeing the player from there.
+===============
+*/
+void PlayerNoise(edict_t* who, vec3_t where, int type)
+{
+
+	if (deathmatch_value && type != PNOISE_WEAPON)
+		return;
+
+	VectorCopy(who->s.origin, who->noise_pos);
+	who->noise_time = level.time + 2;
+	who->noise_type = type;
+	VectorCopy(who->s.angles, who->noise_angles);
+
+}
+
 
 #define MAX_PISTOL_ROUNDS		10
 #define MAX_TOMMYGUN_ROUNDS		50

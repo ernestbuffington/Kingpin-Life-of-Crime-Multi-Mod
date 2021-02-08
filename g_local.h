@@ -22,6 +22,10 @@
 
 #include "kooglebot_src/kooglebot.h" // kooglebot
 
+// q2 grapple start
+#include "p_grapple.h"
+// end
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // kpded2 options that can be enabled via the "g_features" cvar																				 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -234,7 +238,9 @@ typedef enum			   //
 	AMMO_CELLS,			   //
 	AMMO_SLUGS,			   //
 	AMMO_MAGSLUG,		   //
-	AMMO_TRAP			   //
+	AMMO_TRAP,			   //
+	AMMO_HOOK,			   //
+	AMMO_GRAPPLE		   //
 } ammo_t;				   //
 /////////////////////////////
 
@@ -899,6 +905,10 @@ extern	int	meansOfDeath;		// means of death
 #define MOD_HOOK_VAMPIRE2       53
 // END
 
+// q2 grapple add
+#define MOD_GRAPPLE     		54
+// end
+
 // Begin Hitmen REJOIN
 //#define MOD_RESTART				54
 // END REJOIN
@@ -980,8 +990,9 @@ extern cvar_t *sv_bot_max_players; //maximum bots+clients allowed. remove bots i
 extern cvar_t *sv_hitmen;
 extern cvar_t *sv_hook; //add hypov8
 // KOOGLEBOT_END
+extern cvar_t *sv_grapple; // add TheGhost
 
-extern  cvar_t *sv_keeppistol; //hypov8 add keeps pistol if manualy selected
+extern  cvar_t *sv_keeppistol; // hypo_v8 add keeps pistol if manualy selected
 extern	cvar_t	*gun_x, *gun_y, *gun_z;
 extern	cvar_t	*sv_rollspeed;
 extern	cvar_t	*sv_rollangle;
@@ -1506,7 +1517,7 @@ typedef struct
 
 	gitem_t		*weapon;
 	gitem_t		*lastweapon;
-
+	gitem_t     *holsteredweapon;
 	// JOSEPH 3-FEB-99
 	int			currentcash;
 	// END JOSEPH
@@ -1647,12 +1658,20 @@ struct gclient_s
 	float		killer_yaw;			// when dead, look at killer
 
 	weaponstate_t	weaponstate;
-	// BEGIN HOOK
-	// hmhook_t hm; //hypov8 move??
+	
+	// BEGIN HITMEN HOOK
+	// hmhook_t hm; // hypo_v8 move??
 	int			hookstate;
 	int			hook_vampire_time;
 	int			hook_attach_time;
 	// END
+	
+	// q2 grapple start
+	void        *kpq2_grapple;		        // entity of grapple
+	int			kpq2_grapplestate;		    // true if pulling
+	float		kpq2_grapplereleasetime;	// time of grapple release
+	// end
+
 	vec3_t		kick_angles;	// weapon kicks
 	vec3_t		kick_origin;
 	float		v_dmg_roll, v_dmg_pitch, v_dmg_time;	// damage kicks
@@ -2092,6 +2111,13 @@ struct edict_s
 
 	float		gun_noise_delay;
 
+	// q2 grapple add
+	float		noise_time;		    
+	vec3_t		noise_pos;			
+	int			noise_type;			
+	vec3_t		noise_angles;		
+	// end
+
 	int			gender;				// so we know what sorts of sounds to play, uses GENDER_*
 
 	float		take_cover_time;
@@ -2107,7 +2133,12 @@ struct edict_s
 	int			launch_delay; // missile launch delay
 	//hypov8 new options menu
 	int			menu;
-};
+
+	// q2 grapple start
+	qboolean    grapple_out;
+	qboolean    is_hook;
+	// end
+};	
 
 // RAFAEL
 #define ACTIVATE_GENERAL  1

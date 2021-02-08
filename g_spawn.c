@@ -1685,13 +1685,19 @@ void SP_worldspawn (edict_t *ent)
 	gi.soundindex ("weapons/ric2.wav");
 	gi.soundindex ("weapons/ric3.wav");
 
-	gi.soundindex("hook/hit.wav");		   // 2/22021 524pm - hitmen TheGhost
-	gi.soundindex("hook/medatck2.wav");	   // 2/22021 524pm	- hitmen TheGhost
-	gi.soundindex("hook/motor1.wav");	   // 2/22021 524pm	- hitmen TheGhost
-	gi.soundindex("hook/motor2.wav");	   // 2/22021 524pm	- hitmen TheGhost
-	gi.soundindex("hook/motor3.wav");	   // 2/22021 524pm	- hitmen TheGhost
-	gi.soundindex("hook/retract.wav");	   // 2/22021 524pm	- hitmen TheGhost
-	gi.soundindex("hook/smack.wav");	   // 2/22021 524pm	- hitmen TheGhost
+	gi.soundindex("hook/hit.wav");		   // 2/2/2021 524pm - hitmen TheGhost
+	gi.soundindex("hook/medatck2.wav");	   // 2/2/2021 524pm	- hitmen TheGhost
+	gi.soundindex("hook/motor1.wav");	   // 2/2/2021 524pm	- hitmen TheGhost
+	gi.soundindex("hook/motor2.wav");	   // 2/2/2021 524pm	- hitmen TheGhost
+	gi.soundindex("hook/motor3.wav");	   // 2/2/2021 524pm	- hitmen TheGhost
+	gi.soundindex("hook/retract.wav");	   // 2/2/2021 524pm	- hitmen TheGhost
+	gi.soundindex("hook/smack.wav");	   // 2/2/2021 524pm	- hitmen TheGhost
+
+	gi.soundindex("grapple/grfire.wav");   // 2/2/2021 1:58am - q2 grapple adde TheGhost
+	gi.soundindex("grapple/grhang.wav");   // 2/2/2021 1:58am - q2 grapple adde hitmen TheGhost
+	gi.soundindex("grapple/grhit.wav");	   // 2/2/2021 1:58am - q2 grapple adde hitmen TheGhost
+	gi.soundindex("grapple/grpull.wav");   // 2/2/2021 1:58am - q2 grapple adde hitmen TheGhost
+	gi.soundindex("grapple/grreset.wav");  // 2/2/2021 1:58am - q2 grapple adde hitmen TheGhost
 	
 	// ----------------------------------------------------------------------------------
 	// Vweap weapon models

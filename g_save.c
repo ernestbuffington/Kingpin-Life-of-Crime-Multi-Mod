@@ -281,7 +281,11 @@ void InitGame(void)
 		sv_bot_max_players = gi.cvar("sv_bot_max_players", "0", 0);
 		sv_hitmen = gi.cvar("hitmen", "0", 0);
 		sv_hook = gi.cvar("sv_hook", "0", 0); //HmHookAvailable //enable hook to work out of hitman
-	// KOOGLEBOT_END
+	    // KOOGLEBOT_END
+		
+		// q2 grapple add
+		sv_grapple = gi.cvar("sv_grapple", "0", 0); 
+		// end
 
 		sv_keeppistol = gi.cvar("sv_keeppistol", "1", 0);                        // add hypov8
 		current_mod = gi.cvar("current_mod", "0", CVAR_LATCH | CVAR_SERVERINFO); // TheGhost
@@ -426,6 +430,26 @@ void InitGame(void)
 			// if cvar does not exist in the exe or configs it will fail setting the flags.
 			// missing CVAR_LATCH is causing crashes.
 			/////////////////////////////////////////////////////////////////////////////////////////////////////
+		if (sv_grapple->value == 1)
+		{
+			gi.cvar("Quake II Grapple", "enabled", CVAR_SERVERINFO);
+		}
+
+		if (sv_hook->value == 1)
+		{
+			gi.cvar("Kingpin Hook", "enabled", CVAR_SERVERINFO);
+		}
+		if (current_mod->value == 2)
+		{
+			gi.cvar("Koogle Bots", "enabled", CVAR_SERVERINFO);
+		}
+		else
+			gi.cvar("Ace Bots", "enabled", CVAR_SERVERINFO);
+		gi.cvar("menu", "enabled - Type menu in the console to load bots.", CVAR_SERVERINFO);
+		//gi.cvar("Teleports", "disabled", CVAR_SERVERINFO);
+		//gi.cvar("Jetpack", "disabled", CVAR_SERVERINFO);
+		//gi.cvar("Quaked", "disabled", CVAR_SERVERINFO);
+		
 		if (sv_cheats->value == 1)
 			gi.cvar("cheats", "1", CVAR_LATCH | CVAR_SERVERINFO);
 

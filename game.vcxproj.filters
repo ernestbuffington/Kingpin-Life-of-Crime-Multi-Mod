@@ -26,7 +26,7 @@
       <Filter>Kingpin Multi Mod\Mods\Hitmen Mod</Filter>
     </ClCompile>
     <ClCompile Include="p_hook.c">
-      <Filter>Kingpin Multi Mod\Mods\Hook</Filter>
+      <Filter>Kingpin Multi Mod\Mods\Hook &amp; Grapple</Filter>
     </ClCompile>
     <ClCompile Include="g_ai.c">
       <Filter>Kingpin Multi Mod\C Files</Filter>
@@ -184,6 +184,9 @@
     <ClCompile Include="lan_play_settings.c">
       <Filter>Kingpin Multi Mod\Mods\Monkey Mod</Filter>
     </ClCompile>
+    <ClCompile Include="p_grapple.c">
+      <Filter>Kingpin Multi Mod\Mods\Hook &amp; Grapple</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="kooglebot_src\kooglebot.h">
@@ -237,6 +240,9 @@
     <ClInclude Include="resource.h">
       <Filter>Kingpin Multi Mod\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="p_grapple.h">
+      <Filter>Kingpin Multi Mod\Mods\Hook &amp; Grapple</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="game.def" />
@@ -262,9 +268,6 @@
     </Filter>
     <Filter Include="Kingpin Multi Mod\Mods\Monkey Mod">
       <UniqueIdentifier>{5e9fd048-abab-48a9-a143-b7c879aca136}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Kingpin Multi Mod\Mods\Hook">
-      <UniqueIdentifier>{2fcd7dce-da2e-4207-908a-a3116d5c83cb}</UniqueIdentifier>
     </Filter>
     <Filter Include="Kingpin Multi Mod\Mods\Unlagged">
       <UniqueIdentifier>{6e733af3-cfdd-4ef8-821b-37a1fd3474b6}</UniqueIdentifier>
@@ -325,6 +328,9 @@
     </Filter>
     <Filter Include="Kingpin Multi Mod\Mods\SGM Mod">
       <UniqueIdentifier>{aeff1a19-23c7-4401-9901-392c5464dc70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod\Mods\Hook &amp; Grapple">
+      <UniqueIdentifier>{2fcd7dce-da2e-4207-908a-a3116d5c83cb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

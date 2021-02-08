@@ -501,6 +501,10 @@ qboolean Add_Ammo (edict_t *ent, gitem_t *item, int count)
 		max = ent->client->pers.max_magslug;
 	else if (item->tag == AMMO_TRAP)
 		max = ent->client->pers.max_trap;
+	else if (item->tag == AMMO_HOOK)
+		max = ent->client->pers.max_trap;
+	else if (item->tag == AMMO_GRAPPLE)
+		max = ent->client->pers.max_trap;
 	else
 		return false;
 
@@ -2347,6 +2351,52 @@ model="models/pu_icon/hmgclip/tris.md2"
 	},
 // END JOSEPH
 
+/* q2 grapple add ammo_grapple (.3 .3 1) (-16 -16 -16) (16 16 16)
+*/
+	{
+		"ammo_hook",
+		Pickup_Ammo,
+		Use_Null,
+		NULL, //Drop_Ammo,
+		NULL,
+		"world/pickups/ammo.wav",
+		"models/items/hook/hook.mdx", 0,
+		NULL,
+		/* icon */		"/pics/a_hook.tga",
+		/* pickup */	"Hook",
+		/* width */		3,
+				1,
+				NULL,
+				IT_AMMO,
+				NULL,
+				AMMO_HOOK,
+				/* precache */ ""
+	},
+
+
+/* q2 grapple add ammo_grapple (.3 .3 1) (-16 -16 -16) (16 16 16)
+*/
+	{
+		"ammo_grapple",
+		Pickup_Ammo,
+		Use_Null,
+		NULL, //Drop_Ammo,
+		NULL,
+		"world/pickups/ammo.wav",
+		"models/items/hook/hook.mdx", 0,
+		NULL,
+		/* icon */		"/pics/a_grapple.tga",
+		/* pickup */	"Grapple",
+		/* width */		3,
+				1,
+				NULL,
+				IT_AMMO,
+				NULL,
+				AMMO_GRAPPLE,
+				/* precache */ ""
+	},
+
+		
 /*QUAKED ammo_cylinder (.3 .3 1) (-16 -16 -16) (16 16 16)
 model="models/pu_icon/tgclip/tris.md2"  
 */

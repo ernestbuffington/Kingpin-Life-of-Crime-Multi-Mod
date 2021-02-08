@@ -34,6 +34,10 @@ extern int HmHookAvailable;
 extern int HmStatTime;
 // END
 
+// q2 grapple add
+void Cmd_Hook3_f(edict_t* ent);
+// end
+
 // KOOGLEBOT_ADD
 //char changeMapName[32]; // = '\0';
 char voteAddBot[32]; //team
@@ -3629,23 +3633,23 @@ void ClientCommand (edict_t *ent)
 	else if (Q_stricmp (cmd, "togglecam") == 0)
 		Cmd_ToggleCam_f (ent);
 
-// BEGIN HOOK
+// BEGIN HITMEN HOOK
 	// The hook will only work if its available as a server option
 	else if ((Q_stricmp(cmd, "hook") == 0))
 	{
-		if (sv_hook->value || HmHookAvailable) /*enable_hitmen*/
 			Cmd_Hook_f(ent);
 	}
-// END
-// BEGIN HITMEN
+
+	else if (Q_stricmp(cmd, "grapple") == 0)
+		Cmd_Hook3_f(ent);
+
 	else if (Q_stricmp (cmd, "showmotd") == 0)
 		{
 		ent->client->showscores = SCORE_MOTD;
 		DeathmatchScoreboard (ent);
 		}
-// END
 
-	// Ridah, Vehicles
+// Ridah, Vehicles
 	else if (Q_stricmp (cmd, "gear_up") == 0)
 		Cmd_GearUp_f (ent);
 	else if (Q_stricmp (cmd, "gear_down") == 0)

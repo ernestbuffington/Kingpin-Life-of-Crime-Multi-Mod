@@ -17,9 +17,10 @@
   file_bloodmoney_ini.c
   file_botmatch_ini.c
   file_sgm_ini.c
-  g_ai.c
+  p_grapple.c
   Generating Code...
   Compiling...
+  g_ai.c
   g_cast.c
   g_chase.c
   g_cmds.c
@@ -39,9 +40,9 @@
   g_trigger.c
   g_utils.c
   g_weapon.c
-  kooglebot_ai.c
   Generating Code...
   Compiling...
+  kooglebot_ai.c
   kooglebot_cmds.c
   kooglebot_compress.c
   kooglebot_items.c
@@ -61,9 +62,9 @@
   unlagged.c
   vehicles.c
   voice.c
-  voice_bitch.c
   Generating Code...
   Compiling...
+  voice_bitch.c
   voice_punk.c
   Generating Code...
      Creating library .\Release\gamex86.lib and object .\Release\gamex86.exp

@@ -372,6 +372,13 @@ void ClientObituary (edict_t *self, edict_t *inflictor, edict_t *attacker)
 				message2 = "'s hook";
 				break;
 			// END
+			
+			// q2 grapple add
+			case MOD_GRAPPLE: 
+				message = "was caught by"; 
+				message2 = "'s grapple";                                               
+				break;
+			 // end
 			}
 			if (message)
 			{
@@ -748,6 +755,10 @@ void InitClientPersistant (gclient_t *client)
 	// END JOSEPH
 	client->pers.selected_item = ITEM_INDEX(item);
 	client->pers.inventory[client->pers.selected_item] = 1;
+	
+	client->pers.inventory[ITEM_INDEX(FindItem("Hook"))] += 1;     // person has a physical hook in inventory
+	client->pers.inventory[ITEM_INDEX(FindItem("Grapple"))] += 1;  // person has a physical grapple in inventory
+
 	// BEGIN HITMEN
 	if (sv_hitmen->value /*enable_hitmen*/)
 	{
@@ -3015,6 +3026,13 @@ chasing:
 		VectorCopy (pm.viewangles, client->v_angle);
 		VectorCopy (pm.viewangles, client->ps.viewangles);
 	}
+
+	// q2 grapple add
+	if (client->kpq2_grapple)
+	{
+		KPQ2GrapplePull(client->kpq2_grapple);
+	}
+	// end
 
 	gi.linkentity (ent);
 

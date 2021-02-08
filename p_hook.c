@@ -40,8 +40,8 @@
 // this is the same as function P_ProjectSource in p_weapons.c except it 
 // projects the offset distance in reverse since hook is launched with 
 // player's free hand
-void P_ProjectSource_Reverse (gclient_t *client, vec3_t point, vec3_t distance,
-			      vec3_t forward, vec3_t right, vec3_t result) {
+void P_ProjectSource_Reverse (gclient_t *client, vec3_t point, vec3_t distance,vec3_t forward, vec3_t right, vec3_t result) 
+{
 
   vec3_t _distance;
 
@@ -346,7 +346,7 @@ void HookBehavior(edict_t *ent) {
 				else
 					ent->enemy->health -= hook_vampirism->value;
 			} 
-			else //minus health //hypov8
+			else //minus health // hypo_v8
 			{
 				ent->enemy->health -= (int)(hook_vampirism->value * hook_vampire_ratio->value);
 	
@@ -565,7 +565,7 @@ void FireHook (edict_t *ent) {
 
   // spawn hook
   newhook = G_Spawn();
-  newhook->classname = "hook"; //add hypov8
+  newhook->classname = "hook"; //add hypo_v8
   VectorCopy (start, newhook->s.origin);
   VectorCopy (forward, newhook->movedir);
   vectoangles (forward, newhook->s.angles);
@@ -600,16 +600,22 @@ void FireHook (edict_t *ent) {
 }
 
 
-void Cmd_Hook_f (edict_t *ent) {
+void Cmd_Hook_f (edict_t *ent) 
+{
 
 	char *s;
 	int *hookstate;
-  
+
+	if (sv_hook->value != 1) {
+		safe_centerprintf(ent, "Admin Has The Hook Disabled!!!\n");
+		return;
+	}
+
 	// BEGIN HITMEN
 	if (ent->deadflag)
 		return;
 	// END
-	//hypov8
+	// hypo_v8
 	if (!(level.modeset == MATCH || level.modeset == PUBLIC))
 		return;
 	if (ent->client && ent->client->pers.spectator == SPECTATING)
