@@ -1,0 +1,749 @@
+Kingpin is based on Quake2, and like Quake2, it has several bugs and security
+issues. Quake2 has since been made open source, and enhanced Quake2 servers
+have appeared. R1Q2 is one of the main ones, and kpded2 is a version of it that
+has been modified to run Kingpin instead of Quake2. kpded2 is fully compatible
+with the original Kingpin server, so it can simply be dropped in place of the
+kingpin/kpded executable without any config changes, although you will probably
+want to edit your config to take advantage of new features.
+
+As well as fixing bugs and security holes, kpded2 adds a bunch of other
+improvements, including the following:
+
+* A workaround for the Kingpin client's broken download support, to allow
+  sounds and skies to be downloaded from the server. PAK files and other
+  Game DLL specific files can also be downloaded from the server.
+
+* Reduced bandwidth, memory and CPU usage. Practically 0% CPU usage when idle
+  mode is enabled by the Game DLL or config.
+
+* Packet loss measurement and duplicate packet sending to reduce it.
+
+* Message buffering to prevent overflows.
+
+* Player country lookups using MaxMind GeoIP2 database.
+
+* Demo recording.
+
+* Support for team info in server browsers.
+
+* A new console window with command history on Windows ("-oldconsole" can be
+  used in the command-line to enable the old style console window).
+
+* A bunch of new config options and commands (see below).
+
+
+Quick start settings
+====================
+Here are some suggested settings to start with in your server config:
+
+set sv_bandwidth xxx    (replace 'xxx' with a value below your upstream speed)
+set sv_enforcetime_kick 4
+set sv_maxpps 120
+
+If you have a slow hard drive (not SSD), also enable download precaching:
+
+set sv_download_precache 1
+
+When running a mod that doesn't require any special client files (eg. PAKs),
+clients should be told to use their 'main' directory to avoid duplicate files
+in multiple directories:
+
+set clientdir main
+
+When running an old mod without its own connection or name notifications, the
+following may be used:
+
+set sv_show_connections 1
+set sv_show_name_changes 1
+
+On Windows, the default network buffers are very small, so they should be
+increased:
+
+set net_rcvbuf 64
+set net_sndbuf 64
+
+Also on Windows, if other software (including other servers) is running on the
+same machine, the Kingpin server may be given higher CPU priority when it is in
+use:
+
+set win_priority auto
+
+See the descriptions below for what these settings do.
+
+On Linux, all files and directories should be lowercase. The 'fixfilenames'
+command can be used to fix any such issues. When using the unzip program to
+install files, its -LL option can be used to have it convert to lowercase.
+
+
+Server config options
+=====================
+As well as the standard Kingpin config options, the following new options can
+be used:
+
+allow_download_paks
+  Allow downloading of PAK files in the game directory (not main). Default 1.
+
+allow_download_pics
+  Allow downloading of files in the pics directory. Default 1.
+
+clientdir
+  Client-side "game" value. This allows the server to use a custom directory
+  while the client uses the normal directory. Default is the server's "game"
+  value.
+
+con_filterlevel
+  Bitmask of message types to exclude from the console. Default 0.
+    2: SERVER
+    4: DEBUG
+    8: WARNING
+    16: ERROR
+    32: GAME
+    128: NAME
+    256: DROP
+    1024: EXPLOIT
+    2048: DOWNLOAD
+    4096: NOTICE
+    8192: CHAT
+    16384: NET
+    32768: GAMEDEBUG
+
+fs_cache
+  Bitmask of file info to cache. Default 0.
+    1: Cache path and size of files inside PAK files
+    2: Cache non-existent files
+    4: Cache path and size of normal files
+
+logfile
+  This option works the same as standard but can also be set to 4 for appended
+  & buffered logging. Default 0.
+
+logfile_timestamp
+  Include a timestamp in the logfile. Default 1.
+
+logfile_timestamp_format
+  Format of the logfile timestamp (see strftime function docs).
+  Default [%Y-%m-%d %H:%M]
+
+logfile_name
+  Logfile filename. Default qconsole.log
+
+logfile_filterlevel
+  Bitmask of message types to exclude from the logfile. See con_filterlevel.
+  Default 0.
+
+lrcon_password
+  Limited rcon password for use with lrcon commands. Default empty.
+
+net_ignore_icmp
+  Don't use ICMP destination-unreachable messages to detect and kick clients
+  with lost connections. Default 0.
+
+net_rcvbuf
+  Network receive buffer size in KB. Default 0 (OS's default). Windows only.
+
+net_sndbuf
+  Network send buffer size in KB. Default 0 (OS's default). Windows only.
+
+nostdin
+  Disable console input. Linux only.
+
+nostdout
+  Disable console output. Linux only.
+
+public
+  This option works the same as standard but can also be set to send one type
+  of heartbeat to master servers. Default 1.
+    0: Disabled
+    1: Auto-enable both heartbeats
+    2: Enable Gamespy heartbeats
+    3: Enable Quake2 heartbeats
+
+sv_allow_any_model
+  Allow players to use models that the server does not have. Default 0.
+
+sv_allow_map
+  Allow use of the 'map' command to change levels. The 'gamemap' command should
+  be used to change levels as 'map' will force the Game DLL to unload and
+  reload, losing any internal state. Default 1.
+
+sv_allow_unconnected_cmds
+  Allow players who aren't in game to send commands (eg players who are map
+  downloading). Since the Game DLL has no knowledge of the player until they
+  are in-game, this can be dangerous if enabled. Default 0.
+
+sv_allownodelta
+  Allow clients to use cl_nodelta (disables delta state). Not using delta state
+  results in much greater bandwidth usage. Default 0.
+
+sv_autoidle
+  Suspend the game when the server is empty. Default 0.
+
+sv_badcvarcheck
+  Action to take on receiving an illegal cvarcheck response (illegal meaning
+  'completely invalid', not 'fails the check condition').
+    0: Console warning only
+    1: Kick player
+    2: Kick and blackhole player.
+
+sv_bandwidth
+  The upstream bandwidth available in KB/s. This determines how fast downloads
+  can be. Default 0 (no limit).
+
+sv_blackhole_mask
+  Network mask to use for automatically added blackholes.
+  Common values: 24 means 1.2.3.*, 16 means 1.2.*.*, etc. Default 32.
+
+sv_blackholes
+  Allow automatic blackholing (IP blocking) by various features. Default 1.
+
+sv_compress
+  Compression level to use when sending compressed game state data to patched
+  clients. Default 1.
+    0: Disabled
+    1-9: Lowest/fastest to Highest/slowest
+
+sv_compress_downloads
+  Compression level to use when sending compressed files to patched clients.
+  Default 1.
+    0: Disabled
+    1-9: Lowest/fastest to Highest/slowest
+
+sv_connectmessage
+  Message to show to clients after they connect (prior to auto downloading and
+  entering the game). Default empty.
+
+sv_disconnect_hack
+  Turn svc_disconnect and stuffcmd disconnect into a proper disconnect for
+  buggy mods. Default 1.
+
+sv_download_drop_file
+  If a player attempts to download this file, they are kicked from the server.
+  Used to prevent players from trying to auto download huge mods.
+  Default empty.
+
+sv_download_drop_message
+  Message to show to users who are kicked for trying to download the file
+  specified by sv_download_drop_file.
+
+sv_download_refuselimit
+  Refuse auto downloading if the number of players on the server is equal or
+  higher than this value. 0 means no limit. Default 0.
+
+sv_download_precache
+  Pre-cache downloads to the system file cache before sending them to avoid I/O
+  delays. Default 0.
+
+sv_enforcetime_kick
+  Kick clients that exceed this many seconds of time offset. Default 0.
+    0: Disabled
+    1+: Enabled (increase value to reduce false positives)
+
+sv_enhanced_setplayer
+  Allow use of partial names in the kick, dumpuser, etc commands. Default 0.
+
+sv_entity_inuse_hack
+  Save network bandwidth by not sending entities that are marked as no longer
+  in use. This only applies to buggy mods that do not mark entities as unused
+  when they are no longer in use. Note that some mods may have problems with
+  this if set to 1. Default 0.
+
+sv_features
+  Read-only bitmask of extended server features for the Game DLL. Do not
+  modify.
+
+sv_filter_stringcmds
+  Filter client commands. Default 0.
+    0: No filtering
+    1: Strip low ASCII values.
+    2: Strip low+high ASCII values.
+
+sv_filter_userinfo
+  Filter client userinfo. Default 0.
+    0: No filtering
+    1: Strip low ASCII values.
+    2: Strip low+high ASCII values.
+
+sv_force_reconnect
+  Force a quick reconnect to this specified IP/hostname. Useful as an
+  anti-proxy check, specify your full IP:PORT. Default empty.
+
+sv_format_string_hack
+  Remove %% from user-supplied strings to mitigate format string
+  vulnerabilities in the Game DLL. Default 0.
+
+sv_gamedebug
+  Show warnings and optionally cause breakpoints if the Game DLL does something
+  in an incorrect or dangerous way. Useful for mod developers. Default 0.
+    1: Show warnings only.
+    2: Show warnings and break on severe errors.
+    3: Show warnings and break on severe and normal errors.
+    4+: Show warnings and break on all errors.
+
+sv_geoipdb
+  The MaxMind GeoIP2 database to use for player country lookups. The database
+  can be downloaded from http://dev.maxmind.com/geoip/geoip2/geolite2/.
+  Default "GeoLite2-Country.mmdb" if it exists, otherwise empty (disabled).
+
+sv_global_master
+  Report to the master server at kingpin.info. Default 1.
+
+sv_hideplayers
+  Hide information about who is playing from server browsers. Default 0.
+
+sv_hidestatus
+  Don't respond at all to requests for information from server browsers.
+  Default 0.
+
+sv_idlekick
+  Seconds before kicking idle players. 0 means no limit.
+
+sv_iplimit
+  Maximum number of connections allowed from a single IP. Default 3.
+
+sv_locked
+  Prevent new players from connecting. Default 0.
+
+sv_log_connectinfo
+  Log connecting client userinfo. Default 0.
+
+sv_mapdownload_denied_message
+  Message to sent to clients when they are refused a map download.
+  Default empty.
+
+sv_mapdownload_ok_message
+  Message to send to clients when they commence a map download. Default empty.
+
+sv_max_download_size
+  Maximum file size in bytes that a client may attempt to auto download.
+  Default 0 (no limit).
+
+sv_max_netdrop
+  Maximum number of movements to replay from lagged clients. Lower this to
+  limit 'warping' effects. Default 20.
+
+sv_max_packetdup
+  Maximum number of duplicate packets a client can request for when they have
+  packet loss. Each duplicate causes the client to consume more bandwidth.
+  Default 1.
+
+sv_maxpps
+  Limit users to sending this many packets/sec (tied to the client's cl_maxfps
+  setting) and kick if they persistently exceed it. 0 means no limit.
+  Default 0.
+
+sv_minimize_memory
+  Minimize memory usage when the server is empty. Default 0.
+
+sv_minpps
+  Minimum number of packets/sec a client is required to send before they are
+  kicked. Default 0.
+
+sv_msecs
+  Milliseconds of movement to allow per client per 16 frames. You shouldn't
+  need to change this unless you know why. Default 1800.
+
+sv_nc_visibilitycheck
+  Attempt to calculate player visibility server-side to thwart wall-hacks and
+  other cheats. Default 0.
+
+sv_nc_clientsonly
+  Only apply sv_nc_visibilitycheck checking to other players. Default 1.
+
+sv_no_game_serverinfo
+  Disallow the Game DLL to set serverinfo cvars (serverinfo shows up on server
+  browsers). Some mods set too much serverinfo, causing info string exceeded
+  errors. Must be set before the mod loads to be of any effect. Default 0.
+
+sv_no_zoom
+  Disable zooming-in by setting fov below 90. Default 0.
+
+sv_packetdup
+  Default number of duplicate packets sent to a client suffering packet loss,
+  if they have rate set to at least 15000. Default 0.
+
+sv_pakdownload_message
+  Message to send to clients when they commence a PAK download. Default empty.
+
+sv_predict_on_lag
+  Try to predict movement of lagged players to avoid frozen/warping players
+  (experimental). Default 0.
+
+sv_randomframe
+  Randomize the server framenumber on starting to prevent clients from being
+  able to tell how long the map has been running. Default 0.
+
+sv_ratelimit_status
+  Maximum number of status requests to reply to per second.
+
+sv_rcon_buffsize
+  Amount of bytes the rcon buffer holds before flushing. You should not change
+  this unless you know what you are doing. Default 1384.
+
+sv_rcon_ratelimit
+  Number of rcon attempts to accept per second. 0 to disable rate limiting.
+  Default 2.
+
+sv_rcon_showoutput
+  Display output of rcon commands in the server console. Default 0.
+
+sv_restartmap
+  If set, restart the server by changing to this map if the server crashes from
+  a non-fatal error. '*' can be used to terminate the server. Default empty.
+
+sv_recycle
+  Reload the Game DLL on the next map load. Default 0.
+
+sv_redirect_address
+  Address to redirect clients to if the server is full. Can be a hostname or
+  IP. Default empty.
+
+sv_reserved_password
+  Password required to access a reserved player slot. Clients should set their
+  'password' cvar to this. Default empty.
+
+sv_reserved_slots
+  Number of reserved player slots. Default 0.
+
+sv_show_connections
+  Broadcast connecting players to all players on the server. Default 0.
+
+sv_show_name_changes
+  Broadcast player name changes to all players on the server. Default 0.
+
+sv_strict_userinfo_check
+  Force client userinfo to conform to the userinfo specifications. This will
+  prevent colored names amongst other things. Default 1.
+
+sv_underwater_sound
+  Play an underwater sound to players that are under water. Default 0.
+
+sv_unique_names
+  Modify the name (append a number) of a player that tries to use the same name
+  as another player on the server. Default 1.
+
+sv_uptime
+  Display the server uptime statistics in the info response shown to server
+  browsers. Default 1.
+
+sv_validate_playerskins
+  Perform strict checks on playerskins passed to the engine by the mod. When
+  enabled, this ensures all skins are in the form model/skin. Default 1.
+
+win_priority
+  Control the server's CPU priority level. Default 0. Windows only.
+    -2: low
+    -1: below normal
+    0: normal
+    1: above normal
+    2: high
+    auto: normal (0) when empty, above normal (1) when in use
+
+
+Server commands
+===============
+As well as the standard Kingpin server commands, the following new commands can
+be used:
+
+addcommandban
+  Prevents any client from executing a given command.
+    Syntax : addcommandban <commandname> [method] [logmethod]
+      method=message|kick|silent|blackhole (default message)
+      logmethod=log|silent (default log)
+    Example: addcommandban god
+    Example: addcommandban frkq2cmd kick silent
+    Example: addcommandban invdrop silent
+    Example: addcommandban invdrop silent silent
+
+addcvarcheck
+  Add a simple check for a client cvar. Checked when a client connects and
+  when the 'checkcvars' command is used.
+    Syntax : addcvarcheck <cvarname> <[!]((=|<|>)numvalue|[~|#]string|*)> <KICK|BLACKHOLE|LOG|MESSAGE|STUFF|EXEC> message
+    Example: addcvarcheck gl_modulate >2 KICK Use a lower gl_modulate
+    Example: addcvarcheck frkq2_bot * BLACKHOLE
+    Example: addcvarcheck vid_ref sw KICK Software mode is not allowed
+    Example: addcvarcheck timescale !=1 KICK Illegal timescale value!
+    Example: addcvarcheck rate <5000 STUFF set rate 5000
+    WARNING: If the match string requires quotes it can not be added via rcon.
+
+    ~ checks for a substring match
+    # checks for an exact match (case-insensitive)
+    * checks for any non-empty value
+    ! negates the result
+
+addhole
+  Prevents a given IP from communicating with the server.
+    Syntax : addhole <ip-address/mask> [SILENT|MESSAGE] [message]
+    Example: addhole 192.168.0.1 MESSAGE You are not welcome on this server.
+    Example: addhole 172.16.0.0/16 SILENT The clients will never see this text.
+
+addlrconcmd
+  Allow a command to be used with limited rcon.
+    Syntax : addlrconcmd <substring>
+    Example: addlrconcmd set dmflags
+
+addnullcmd
+  Make an otherwise undefined user command do nothing.
+    Syntax : addnullcmd <command>
+    Example: addnullcmd invdrop
+
+addserveralias
+  Add a server-side aliased command that stuffs clients.
+   Syntax : addserveralias <name> <commandstring>
+   Example: addserveralias cow "set gender_auto 0;set skin cow/black"
+
+addstuffcmd
+  Add a command sent to a client at a chosen time.
+    Syntax : addstuffcmd <when> <cmdstring>
+    Example: addstuffcmd connect set allow_download 1
+    Example: addstuffcmd begin say I have just entered the game!!
+
+adduserinfocheck
+  Add a simple check for a userinfo variable.
+    Syntax : adduserinfocheck <varname> <[!]((=|<|>)numvalue|[~|#]string|*)> <KICK|BLACKHOLE|LOG|MESSAGE|STUFF|EXEC> message
+    Example: adduserinfocheck rate >15000 KICK Your rate value is too high!
+    Example: adduserinfocheck name ~lamer KICK Lamers aren't welcome here.
+    Example: adduserinfocheck name !~[R1Q2] KICK This server is for R1Q2 clan members only!
+    Example: adduserinfocheck msg !=0 KICK You must use msg 0 on this server.
+    Example: adduserinfocheck fov <90 KICK No zoom aliases allowed!
+    WARNING: If the match string requires quotes it can not be added via rcon.
+
+addwhitehole
+  Allow a given IP block to bypass a blackhole filter.
+    Syntax : addwhitehole <ip-address/mask>
+    Example: addwhitehole 192.168.0.1
+
+aliaslist
+  List alias commands (set with 'alias').
+
+checkcvars
+  Send all cvar checks to all clients.
+
+clientrecord
+  Record a demo from a client's point of view. If demoname is omitted then one
+  will be auto-generated based on the client's name.
+    Syntax : clientrecord <userid> [demoname]
+    Example: clientrecord 1 demo1
+
+clientstop
+  Stop recording a client. If userid is omitted then all current recordings are
+  stopped.
+    Syntax : clientstop [userid]
+
+cvarhelp
+  Show the description of a config option.
+    Syntax : cvarhelp <cvarname>
+
+delcommandban
+  Allows any client to execute a previously banned command.
+    Syntax : delcommandban <commandname>
+    Example: delcommandban god
+
+delcvarcheck
+  Remove a cvar check.
+    Syntax : delcvarcheck <cvarname>
+    Example: delcvarcheck gl_modulate
+
+deleteservice
+  Remove a Win32 service for a server. Windows only.
+    Syntax : deleteservice <servicename>
+    Example: deleteservice KPDM
+
+delhole
+  Remove a (or all) blackhole from the list.
+    Syntax : delhole <index|ip|all>
+    Example: delhole 1
+
+dellrconcmd
+  Remove a limited rcon command.
+    Syntax : dellrconcmd <substring>
+    Example: dellrconcmd set dmflags
+
+delnullcmd
+  Remove a nullcmd.
+    Syntax : delnullcmd <substring>
+    Example: delnullcmd invdrop
+
+delserveralias
+  Remove a server alias.
+    Syntax : delserveralias <name>
+    Example: delserveralias cow
+
+delstuffcmd
+  Remove a stuffed command.
+    Syntax : delstuffcmd <when> <index>
+    Example: delstuffcmd connect 1
+
+deluserinfocheck
+  Remove a userinfo check.
+    Syntax : deluserinfocheck <varname>
+    Example: deluserinfocheck rate
+
+delwhitehole
+  Remove a (or all) blackhole bypass entry.
+    Syntax : delwhitehole <ip-address/mask|all>
+    Example: delwhitehole 192.168.0.1
+
+dumpents
+   Dump the current map's entities to a file in the maps directory. See the "Map
+  override files" section.
+    Syntax : dumpents <filename>
+    Example: dumpents kpdm1.bsp.override
+
+fixfilenames
+  Change any uppercase filenames in the server's directory and sub-directories
+  to lowercase. Linux only.
+
+fs_stats
+  Show the number of filesystem cache entries.
+  
+fsflushcache
+  Flush the filesystem cache.
+
+installservice
+  Install a Win32 service for a server. Windows only.
+    Syntax : installservice <servicename> <commandline>
+    Example: installservice KPDM +set game comp +exec server.cfg
+
+listcommandbans
+  List banned commands.
+
+listcvarchecks
+  List current cvar checks.
+
+listholes
+  List current blackholes.
+
+listlrconcmds
+  List allowed limited rcon commands.
+
+listnullcmds
+  List nullcmds.
+
+listserveraliases
+  List server aliases.
+
+liststuffcmds
+  List stuffed commands.
+
+listuserinfochecks
+  List current userinfo checks.
+
+listwhiteholes
+  List blackhole bypass entries.
+
+localtime
+  Show current time.
+
+minimize
+  Minimize the console window. Windows only.
+
+net_restart
+  Restart the network (recreate sockets and reset stats).
+
+net_stats
+  Show network statistics.
+
+processtimes
+  Show the server's accumulated CPU time used.
+
+setclientfiles
+  Set additional files to be sent to clients. Also see allow_download_paks.
+    Syntax : setclientfiles [files...]
+    Example: setclientfiles readme.txt
+
+setstarttime
+  Set a game start time to show in server browsers.
+    Syntax : setstarttime <hour:min|none> [days]
+    Example: setstarttime 21:30
+
+status
+  This command works the same as standard but also includes the client rate
+  and packets per second (cl_maxfps) values. 'mode' can optionally be set to 2
+  to get current download info, or 3 to get more connection info, or '4' to
+  list current demo recordings, or 'all' to display all modes.
+    Syntax : status [mode]
+
+stuff
+  Stuff raw string to client.
+    Syntax : stuff <userid> <cmdstring>
+    Example: stuff 3 say hello
+
+stuffall
+  Stuff raw string to all clients.
+    Syntax : stuffall <cmdstring>
+    Example: stuffall say hello
+
+title
+  Set the console window title. Windows only.
+    Syntax : title <text>
+    Example: title "my server's console"
+
+tray
+  Enable or disable minimize to notification area. Windows only.
+    Syntax : tray <on|off>
+    Example: tray on
+
+uptime
+  Show how long ago the server started.
+
+whereis
+  Find where a file is being loaded from on the filesystem.
+    Syntax : whereis <path>
+
+
+Client commands
+===============
+The following new commands can be used by clients:
+
+info
+  Show the serverinfo cvars.
+
+lag
+  Show ping and packet loss statistics for a client. If userid is omitted, then
+  the client's own stats are shown.
+    Syntax : lag [userid]
+
+packetdup
+  Request duplicates of each frame to be sent when there is any packet loss.
+  If n is omitted, then the client's current setting is shown. Also see
+  sv_max_packetdup.
+    Syntax : packetdup [n]
+
+
+Client cursing disabling
+========================
+A client that has parental control active will not hear cursing sounds when
+playing a mod that has cursing ability, and other clients won't hear any
+cursing sounds from them if they happen to try the cursing feature themself.
+This can also be enabled without parental control by adding "set nocurse 1" to
+the autoexec.cfg file.
+
+Besides not wanting to hear cursing sounds, another possible reason to do this
+is to avoid a possible stutter when a curse sound is first loaded from a slow
+hard drive (not SSD).
+
+
+Map override files
+==================
+Map override files allow modification of entities in existing maps without
+requiring any client-side downloads or support. For example, they can be used
+to add and remove weapons/ammo/spawnpoints, or convert a DM map into a bagman
+(or other game mode) map.
+
+The 'dumpents' command can be used to export an existing map's entities to a
+file, which you can then modify as wanted in a text editor. The file's
+extension must be '.bsp.override', and it must also contain the original map's
+name in a first line comment (added automatically by the 'dumpents' command).
+
+An override file can have the same name as the original map (just '.override'
+added) to always use the modified entities with that map, or it can have a
+different name. For example, if you want a separate version of kpdm1 without a
+flamer then you might name the file 'kpdm1-noflamer.bsp.override'.
+
+
+Game DLL updating
+=================
+The game DLL can be updated without stopping the server by appending '.new' to
+the new file's name (eg. gamex86.dll.new). It will then replace the existing
+DLL upon the next reload, which can be triggered by the 'map' command or the
+'sv_recycle' option.
