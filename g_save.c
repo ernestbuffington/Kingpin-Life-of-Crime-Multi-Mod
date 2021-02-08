@@ -288,7 +288,7 @@ void InitGame(void)
 		// end
 
 		sv_keeppistol = gi.cvar("sv_keeppistol", "1", 0);                        // add hypov8
-		current_mod = gi.cvar("current_mod", "0", CVAR_LATCH | CVAR_SERVERINFO); // TheGhost
+		current_mod = gi.cvar("current_mod", "0", CVAR_LATCH | CVAR_SERVERINFO); // add TheGhost
 
 		// noset vars
 		dedicated = gi.cvar("dedicated", "0", CVAR_NOSET);
@@ -298,14 +298,17 @@ void InitGame(void)
 
 		gi.cvar("gamename", GAMEVERSION, CVAR_SERVERINFO | CVAR_LATCH);
 
-
-		if (current_mod->value == 1)												   // multimod
-			gi.cvar("gamemod", "Botmatch.v39", CVAR_SERVERINFO);						   // multimod
-		if (current_mod->value == 2)												   // multimod
-			gi.cvar("gamemod", "Blood Money v616", CVAR_SERVERINFO);					   // multimod
-		else																		   // multimod
-			gi.cvar("gamemod", "Monkey Mod v2.0c", CVAR_SERVERINFO);					   // multimod
-
+		if (sv_hitmen->value == 1)
+			gi.cvar("gamemod", MOD4" "MODV4, CVAR_SERVERINFO);		       // Hitmen multimod
+		else
+		{
+			if (current_mod->value == 1)
+				gi.cvar("gamemod", MOD0" "MODV0, CVAR_SERVERINFO);			   // Botmatch multimod
+			if (current_mod->value == 2)
+				gi.cvar("gamemod", MOD1" "MODV1, CVAR_SERVERINFO);			   // Blood Money multimod
+			else
+				gi.cvar("gamemod", "Monkey Mod v2.0c", CVAR_SERVERINFO);		   // Monkey Mod 2.0c multimod
+		}
 
 		gi.cvar("gamedate", __DATE__, CVAR_SERVERINFO | CVAR_LATCH);
 
@@ -323,22 +326,22 @@ void InitGame(void)
 		password = gi.cvar("password", "", CVAR_USERINFO);
 		filterban = gi.cvar("filterban", "1", 0);
 		antilag = gi.cvar("antilag", "1", CVAR_SERVERINFO);
-		props = gi.cvar("props", "0", CVAR_NOSET);             // hypov8 force disable.. later can enable some features. props=2?
+		props = gi.cvar("props", "0", CVAR_NOSET);             // hypo_v8 force disable.. later can enable some features. props=2?
 		shadows = gi.cvar("shadows", "1", 0);
 
-		hook_is_homing = gi.cvar("hook_is_homing", "0", 0);			  // hitmen
+		hook_is_homing = gi.cvar("hook_is_homing", "0", 0);			          // hitmen
 		hook_homing_radius = gi.cvar("hook_homing_radius", "200", 0);		  // hitmen
-		hook_homing_factor = gi.cvar("hook_homing_factor", "5", 0);		  // hitmen
-		hook_players = gi.cvar("hook_players", "0", 0);				  // hitmen
-		hook_sky = gi.cvar("hook_sky", "0", 0);					  // hitmen
-		hook_min_length = gi.cvar("hook_min_length", "20", 0);			  // hitmen
-		hook_max_length = gi.cvar("hook_max_length", "2000", 0);		  // hitmen
-		hook_pull_speed = gi.cvar("hook_pull_speed", "40", 0);			  // hitmen
-		hook_fire_speed = gi.cvar("hook_fire_speed", "1000", 0);		  // hitmen
-		hook_messages = gi.cvar("hook_messages", "0", 0);			  // hitmen
-		hook_vampirism = gi.cvar("hook_vampirism", "0", 0);			  // hitmen
+		hook_homing_factor = gi.cvar("hook_homing_factor", "5", 0);		      // hitmen
+		hook_players = gi.cvar("hook_players", "0", 0);				          // hitmen
+		hook_sky = gi.cvar("hook_sky", "0", 0);					              // hitmen
+		hook_min_length = gi.cvar("hook_min_length", "20", 0);			      // hitmen
+		hook_max_length = gi.cvar("hook_max_length", "2000", 0);		      // hitmen
+		hook_pull_speed = gi.cvar("hook_pull_speed", "40", 0);			      // hitmen
+		hook_fire_speed = gi.cvar("hook_fire_speed", "1000", 0);		      // hitmen
+		hook_messages = gi.cvar("hook_messages", "0", 0);			          // hitmen
+		hook_vampirism = gi.cvar("hook_vampirism", "0", 0);			          // hitmen
 		hook_vampire_ratio = gi.cvar("hook_vampire_ratio", "0.5", 0);		  // hitmen
-		hook_hold_time = gi.cvar("hook_hold_time", "20", 0);			  // hitmen
+		hook_hold_time = gi.cvar("hook_hold_time", "20", 0);			      // hitmen
 
 		if (hook_hold_time->value < 5)  hook_hold_time->value = 15;			  // hitmen
 		if (hook_hold_time->value > 60) hook_hold_time->value = 30;			  // hitmen

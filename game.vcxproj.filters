@@ -118,9 +118,6 @@
     <ClCompile Include="m_move.c">
       <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
     </ClCompile>
-    <ClCompile Include="p_client.c">
-      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
-    </ClCompile>
     <ClCompile Include="q_shared.c">
       <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
     </ClCompile>
@@ -186,6 +183,9 @@
     </ClCompile>
     <ClCompile Include="p_grapple.c">
       <Filter>Kingpin Multi Mod\Mods\Hook &amp; Grapple</Filter>
+    </ClCompile>
+    <ClCompile Include="p_client.c">
+      <Filter>Kingpin Multi Mod</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

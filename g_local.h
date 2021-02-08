@@ -117,13 +117,13 @@ typedef struct							// hitmen
 #define SPECTATING			1                   // playing types
 #define PLAYING				0					// playing types
 
-                                                // the "gameversion" client command will print this plus compile date
-#define	GAMEVERSION	"Life Of Crime Multi Mod"   // "MM2.0 +lagless +acebot +hitmen" //hypov8 gamename
-#define	MOD0 "Botmatch.v39.2"
-#define	MODV0 "v39.2"
+                                                       // the "gameversion" client command will print this plus compile date
+#define	GAMEVERSION	"Life Of Crime Multi Mod v0.039"   // "MM2.0 +lagless +acebot +kooglebot +bloodmoney +hitmen" //hypo_v8 gamename
+#define	MOD0 "Botmatch"
+#define	MODV0 ".v38"
 
-#define	MOD1 "Blood MOney Mod"
-#define	MODV1 "v616"
+#define	MOD1 "Blood Money Mod"
+#define	MODV1 "v1.0"
 
 #define	MOD2 "Dog Mod"
 #define	MODV2 "v4"
@@ -132,7 +132,7 @@ typedef struct							// hitmen
 #define	MODV3 "v0.24"
 
 #define	MOD4 "Hitmen"
-#define	MODV4 "v6.0a"
+#define	MODV4 "v1.0c"
 
 #define	svc_muzzleflash		        1			// protocol bytes that can be directly added to messages
 #define	svc_muzzleflash2	        2			// protocol bytes that can be directly added to messages

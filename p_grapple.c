@@ -337,14 +337,14 @@ void Offhand_Grapple_Fire(edict_t* ent)
 	}
 }
 
-void Offhand_Grapple_Drop(edict_t* ent)
+void Offhand_Grapple_Drop(edict_t *ent)
 {
 	KPQ2PlayerResetGrapple(ent);
 }
 
-void Cmd_Hook3_f(edict_t* ent)
+void Cmd_Hook3_f(edict_t *ent)
 {
- 	char* z;
+ 	char *z;
 
 	if (ent->deadflag)
 	{

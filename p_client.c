@@ -728,7 +728,7 @@ void player_die (edict_t *self, edict_t *inflictor, edict_t *attacker, int damag
 	}
 
 	self->deadflag = DEAD_DEAD;
-
+	self->grapple_out = false;
 	gi.linkentity (self);
 }
 
