@@ -3182,7 +3182,6 @@ void ClientBeginServerFrame (edict_t *ent)
 	client->pers.idle = curtime;
 #endif
 
-
 	if (client->pers.spectator != SPECTATING && curtime-client->pers.lastpacket >= 5000)
 	{
 		// 5 seconds since last contact from the client

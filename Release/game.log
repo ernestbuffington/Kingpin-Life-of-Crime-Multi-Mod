@@ -67,5 +67,10 @@
   voice_bitch.c
   voice_punk.c
   Generating Code...
+  Microsoft (R) Windows (R) Resource Compiler Version 6.0.5724.0
+  
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  
      Creating library .\Release\gamex86.lib and object .\Release\gamex86.exp
-  game.vcxproj -> H:\Kingpin\multi\gamex86.dll
+  game.vcxproj -> H:\Kingpin\multi\Kingpin-Life-of-Crime-Multi-Mod\.\..\gamex86.dll

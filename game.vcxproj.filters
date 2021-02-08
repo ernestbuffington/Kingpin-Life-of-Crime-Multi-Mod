@@ -359,6 +359,8 @@
     <None Include="..\bot_setup.cfg">
       <Filter>Config Files\main Config Files</Filter>
     </None>
+    <None Include="packages.config" />
+    <None Include=".editorconfig" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="gamex86.rc" />

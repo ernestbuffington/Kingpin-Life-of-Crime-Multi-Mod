@@ -1668,8 +1668,7 @@ void SP_worldspawn (edict_t *ent)
 	// JOSEPH 29-MAR-99 
 	gi.soundindex ("actors/player/male/gasp1.wav");		// gasping for air
 	gi.soundindex ("actors/player/male/gasp2.wav");		// head breaking surface, not gasping
-
-// JOSEPH 22-JAN-99
+    // JOSEPH 22-JAN-99
 	gi.soundindex ("world/trash1.wav");
 	gi.soundindex ("world/trash2.wav");
 	gi.soundindex ("world/trash3.wav");
@@ -1679,26 +1678,27 @@ void SP_worldspawn (edict_t *ent)
 	gi.soundindex ("weapons/bullethit_tin.wav");
 	gi.soundindex ("weapons/bullethit_tin2.wav");
 	gi.soundindex ("weapons/bullethit_tin3.wav");
-// END JOSEPH
-
-	gi.soundindex ("weapons/ric1.wav");
+    // END JOSEPH
+ 	gi.soundindex ("weapons/ric1.wav");
 	gi.soundindex ("weapons/ric2.wav");
 	gi.soundindex ("weapons/ric3.wav");
 
-	gi.soundindex("hook/hit.wav");		   // 2/2/2021 524pm - hitmen TheGhost
-	gi.soundindex("hook/medatck2.wav");	   // 2/2/2021 524pm	- hitmen TheGhost
-	gi.soundindex("hook/motor1.wav");	   // 2/2/2021 524pm	- hitmen TheGhost
-	gi.soundindex("hook/motor2.wav");	   // 2/2/2021 524pm	- hitmen TheGhost
-	gi.soundindex("hook/motor3.wav");	   // 2/2/2021 524pm	- hitmen TheGhost
-	gi.soundindex("hook/retract.wav");	   // 2/2/2021 524pm	- hitmen TheGhost
-	gi.soundindex("hook/smack.wav");	   // 2/2/2021 524pm	- hitmen TheGhost
+	gi.soundindex("hook/hit.wav");		   // 2/2/2021 524pm kp hook - hitmen TheGhost
+	gi.soundindex("hook/medatck2.wav");	   // 2/2/2021 524pm kp hook - hitmen TheGhost
+	gi.soundindex("hook/motor1.wav");	   // 2/2/2021 524pm kp hook - hitmen TheGhost
+	gi.soundindex("hook/motor2.wav");	   // 2/2/2021 524pm kp hook - hitmen TheGhost
+	gi.soundindex("hook/motor3.wav");	   // 2/2/2021 524pm kp hook - hitmen TheGhost
+	gi.soundindex("hook/retract.wav");	   // 2/2/2021 524pm kp hook - hitmen TheGhost
+	gi.soundindex("hook/smack.wav");	   // 2/2/2021 524pm kp hook - hitmen TheGhost
 
-	gi.soundindex("grapple/grfire.wav");   // 2/2/2021 1:58am - q2 grapple adde TheGhost
-	gi.soundindex("grapple/grhang.wav");   // 2/2/2021 1:58am - q2 grapple adde hitmen TheGhost
-	gi.soundindex("grapple/grhit.wav");	   // 2/2/2021 1:58am - q2 grapple adde hitmen TheGhost
-	gi.soundindex("grapple/grpull.wav");   // 2/2/2021 1:58am - q2 grapple adde hitmen TheGhost
-	gi.soundindex("grapple/grreset.wav");  // 2/2/2021 1:58am - q2 grapple adde hitmen TheGhost
-	
+	gi.soundindex("grapple/grfire.wav");   // 2/2/2021 1:58am - q2 grapple TheGhost
+	gi.soundindex("grapple/grhang.wav");   // 2/2/2021 1:58am - q2 grapple TheGhost
+	gi.soundindex("grapple/grhit.wav");	   // 2/2/2021 1:58am - q2 grapple TheGhost
+	gi.soundindex("grapple/grpull.wav");   // 2/2/2021 1:58am - q2 grapple TheGhost
+	gi.soundindex("grapple/grreset.wav");  // 2/2/2021 1:58am - q2 grapple TheGhost
+	gi.modelindex("models/weapons/grapple/hook/tris.md2"); // 2/2/2021 1:58am - q2 grapple TheGhost
+	gi.modelindex("models/items/hook/hook.mdx");		   // 2/2/2021 1:58am - Kp Hook added hitmen TheGhost
+
 	// ----------------------------------------------------------------------------------
 	// Vweap weapon models
 	//
@@ -1706,6 +1706,7 @@ void SP_worldspawn (edict_t *ent)
 	// These must be defined in the same order as the corresponding CLIP_* in gl_locals.h, so that
 	// the client knows which model to use
 	// !!!!!!!!!!!!!!!
+	
 
 	gi.modelindex ("#w_pipe.mdx");				// CLIP_NONE
 	gi.modelindex ("#w_pistol.mdx");			// CLIP_PISTOL
