@@ -448,7 +448,8 @@ void InitGame(void)
 		}
 		else
 			gi.cvar("Ace Bots", "enabled", CVAR_SERVERINFO);
-		gi.cvar("menu", "enabled - Type menu in the console to load bots.", CVAR_SERVERINFO);
+		
+		gi.cvar("menues", "enabled - Type menu in the console to load bots.", CVAR_SERVERINFO);
 		//gi.cvar("Teleports", "disabled", CVAR_SERVERINFO);
 		//gi.cvar("Jetpack", "disabled", CVAR_SERVERINFO);
 		//gi.cvar("Quaked", "disabled", CVAR_SERVERINFO);

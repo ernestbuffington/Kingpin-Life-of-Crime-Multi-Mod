@@ -1858,7 +1858,6 @@ void ClientBegin (edict_t *ent)
 		}
 	}
 // KOOGLEBOT_END
-
 	if (keep_admin_status)
 	{
 		edict_t *admin = GetAdmin();

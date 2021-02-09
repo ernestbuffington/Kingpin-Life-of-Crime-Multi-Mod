@@ -122,7 +122,6 @@ edict_t *GetAdmin()
 }
 
 
-
 //==============================================================
 //
 // Papa - This file contains all the functions that control the 
@@ -654,6 +653,12 @@ void CheckEndMatch () // check if time,frag,cash limits have been reached in a m
 		if (level.framenum > (level.startframe + ((int)timelimit->value) * 600 - 1))
 		{
 			safe_bprintf(PRINT_HIGH, "Timelimit hit.\n");
+
+			gi.WriteByte(svc_stufftext);
+			//	gi.WriteString(va("play world/VotewithaBullet%i.wav\n", 2+(rand()%4)));
+			gi.WriteString("play VotewithaBullet1.wav\n");
+			gi.multicast(vec3_origin, MULTICAST_ALL);
+
 			MatchEnd();
 			return;
 		}

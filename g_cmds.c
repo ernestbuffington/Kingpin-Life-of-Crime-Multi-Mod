@@ -3775,6 +3775,8 @@ void ClientCommand (edict_t *ent)
 		Cmd_Toggle_Zoom_f(ent);
 	else if (Q_stricmp (cmd, "antilag") == 0) 
 		Cmd_AntiLag_f(ent, gi.argv(1));
+	else if (Q_stricmp(cmd, "play") == 0)
+	{ }
 	//hypov8 votemap
 	//else if (Q_stricmp(cmd, "votemap") == 0)	//allow map voting early map vote
 	//	Cmd_VoteMap_f(ent);

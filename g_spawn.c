@@ -1570,7 +1570,6 @@ void SP_worldspawn (edict_t *ent)
 
 	num_flares = 0;
 	level.num_light_sources = 0;
-
 	// Teamplay
 	Teamplay_InitTeamplay();
 

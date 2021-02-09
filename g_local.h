@@ -586,7 +586,6 @@ typedef struct
 	float	    light_values[MAX_LIGHT_SOURCES];
 	byte	    light_styles[MAX_LIGHT_SOURCES];
 	int		    num_light_sources;
-
 	float	    cut_scene_time;					  // re add
 	
 	vec3_t	    cut_scene_origin;				  // re add
@@ -915,7 +914,7 @@ extern	int	meansOfDeath;		// means of death
 
 #define MOD_FRIENDLY_FIRE	0x8000000
 
-extern	edict_t			*g_edicts;
+extern	edict_t *g_edicts;
 
 #define	FOFS(x) (int)&(((edict_t *)0)->x)
 #define	STOFS(x) (int)&(((spawn_temp_t *)0)->x)
@@ -938,6 +937,17 @@ extern	cvar_t	*maxentities;
 // END
 
 void InitLanGame(void);
+
+extern int log_uptime_days;
+extern int log_uptime_hours;
+extern int log_uptime_minutes;
+extern int log_uptime_seconds;
+
+// snap	server time
+cvar_t *map_songlimit;
+cvar_t *map_timelimit;
+int uptime_days,uptime_hours,uptime_minutes,uptime_seconds;
+cvar_t *days,*hours,*minutes,*seconds;
 
 // Multi Mod add
 extern cvar_t *current_mod;
@@ -1449,7 +1459,6 @@ void UpdateTeams();
 void UpdateScore();
 void UpdateTime();
 edict_t *GetAdmin();
-
 //
 // unlagged.c
 //

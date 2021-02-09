@@ -79,9 +79,6 @@
     <ClCompile Include="g_combat.c">
       <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
     </ClCompile>
-    <ClCompile Include="g_cmds.c">
-      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
-    </ClCompile>
     <ClCompile Include="g_func.c">
       <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
     </ClCompile>
@@ -185,6 +182,9 @@
       <Filter>Kingpin Multi Mod\Mods\Hook &amp; Grapple</Filter>
     </ClCompile>
     <ClCompile Include="p_client.c">
+      <Filter>Kingpin Multi Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="g_cmds.c">
       <Filter>Kingpin Multi Mod</Filter>
     </ClCompile>
   </ItemGroup>
@@ -361,6 +361,7 @@
     </None>
     <None Include="packages.config" />
     <None Include=".editorconfig" />
+    <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="gamex86.rc" />

@@ -40,10 +40,16 @@ int	snd_fry;
 
 int meansOfDeath;		// means of death
 
-edict_t		*g_edicts;
+edict_t *g_edicts;
 
-int		num_object_bounds=0;
+int num_object_bounds=0;
 object_bounds_t	*g_objbnds[MAX_OBJECT_BOUNDS];
+
+// snap server time
+extern cvar_t *map_songlimit;
+extern cvar_t *map_timelimit;
+extern int uptime_days,uptime_hours,uptime_minutes,uptime_seconds;
+extern cvar_t *days,*hours,*minutes,*seconds;
 
 // Multi Mod add
 cvar_t *current_mod;
@@ -583,13 +589,13 @@ Advances the world by 0.1 seconds
 ================
 */
 extern int bbox_cnt;
-extern edict_t	*mdx_bbox[];
+extern edict_t *mdx_bbox[];
 
 void AI_ProcessCombat (void);
 
 void G_RunFrame (void)
 {
-	int		i;
+	int	i;
 	edict_t	*ent;
 
 	if (level.framenum == 50 && wait_for_players && !level.num_vote_set && !level.lastactive)
@@ -637,7 +643,7 @@ void G_RunFrame (void)
 
 		level.current_entity = ent;
 
-		VectorCopy (ent->s.origin, ent->s.old_origin);
+		VectorCopy(ent->s.origin, ent->s.old_origin);
 
 
 		if ((ent->svflags & SVF_MONSTER) || ent->client)

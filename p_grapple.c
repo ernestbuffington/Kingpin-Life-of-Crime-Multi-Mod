@@ -26,8 +26,6 @@ void KPQ2ResetGrapple(edict_t* self)
 	{
 		float volume = 1.0;
 		gclient_t* cl;
- 		if (self->owner->client->pers.silencer_shots)
-		volume = 0.2;
  		gi.sound(self->owner, CHAN_RELIABLE + CHAN_WEAPON, gi.soundindex("grapple/grreset.wav"), volume, ATTN_NORM, 0);
 		cl = self->owner->client;
 		cl->kpq2_grapple = NULL;
@@ -61,8 +59,6 @@ void KPQ2GrappleTouch(edict_t* self, edict_t* other, cplane_t* plane, csurface_t
 	self->owner->client->kpq2_grapplestate = KPQ2_GRAPPLE_STATE_PULL; // we're on hook
 	self->enemy = other;
 	self->solid = SOLID_NOT;
-	if (self->owner->client->pers.silencer_shots)
-	volume = 0.2;
 	gi.sound(self->owner, CHAN_RELIABLE + CHAN_WEAPON, gi.soundindex("grapple/grpull.wav"), volume, ATTN_NORM, 0);
 	gi.sound(self, CHAN_WEAPON, gi.soundindex("grapple/grhit.wav"), volume, ATTN_NORM, 0);
 
@@ -156,9 +152,6 @@ void KPQ2GrapplePull(edict_t* self)
 		{
 			float volume = 0.6;
 
-			if (self->owner->client->pers.silencer_shots)
-				volume = 0.6;
-
 			T_Damage(self->enemy, self, self->owner, self->velocity, self->s.origin, vec3_origin, 1, 1, 0, MOD_GRAPPLE);
 			gi.sound(self, CHAN_WEAPON, gi.soundindex("grapple/grhurt.wav"), volume, ATTN_NORM, 0);
 		}
@@ -190,8 +183,6 @@ void KPQ2GrapplePull(edict_t* self)
 		if (self->owner->client->kpq2_grapplestate == KPQ2_GRAPPLE_STATE_PULL && vlen < 64)
 		{
 			float volume = 0.6;
- 			if (self->owner->client->pers.silencer_shots)
-			volume = 0.6;
  			self->owner->client->ps.pmove.pm_flags |= PMF_NO_PREDICTION;
 			gi.sound(self->owner, CHAN_RELIABLE + CHAN_WEAPON, gi.soundindex("grapple/grhang.wav"), volume, ATTN_NORM, 0);
 			self->owner->client->kpq2_grapplestate = KPQ2_GRAPPLE_STATE_HANG;

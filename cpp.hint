@@ -1,0 +1,4 @@
+// Hint files help the Visual Studio IDE interpret Visual C++ identifiers
+// such as names of functions and macros.
+// For more information see https://go.microsoft.com/fwlink/?linkid=865984
+#define for_each_player_not_bot(JOE_BLOGGS, INDEX) for(INDEX=1;INDEX<=(int)maxclients->value;INDEX++) if((JOE_BLOGGS=&g_edicts[INDEX])!=0 && JOE_BLOGGS->inuse && JOE_BLOGGS->client && JOE_BLOGGS->client->pers.connected && !JOE_BLOGGS->kooglebot.is_bot)

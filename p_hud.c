@@ -286,14 +286,33 @@ void BeginIntermission (edict_t *targ)
 	{
 		ent = g_edicts + i;
 		ent->s.sound = 0;
+	
+		ent->s.sound = ent->noise_index;
 	}
 
-	// play a music clip
-	gi.WriteByte(svc_stufftext);
-//	gi.WriteString(va("play world/cypress%i.wav\n", 2+(rand()%4)));
-	gi.WriteString("play world/cypress2.wav\n");
-	gi.multicast(vec3_origin, MULTICAST_ALL);
-}
+
+	//i = level.num_songs;
+
+	switch (i)
+	{
+	    case 1:
+			ent->s.sound = ent->noise_index;
+		    gi.positioned_sound(ent->s.origin, ent, CHAN_RELIABLE, gi.soundindex("VotewithaBullet0.wav"), 1, 1, 0);
+		break;
+	    case 2:
+			ent->s.sound = ent->noise_index;
+		    gi.positioned_sound(ent->s.origin, ent, CHAN_RELIABLE, gi.soundindex("VotewithaBullet1.wav"), 1, 1, 0);
+		   break;
+	   case 3:
+		   ent->s.sound = ent->noise_index;
+		   gi.positioned_sound(ent->s.origin, ent, CHAN_RELIABLE, gi.soundindex("VotewithaBullet2.wav"), 1, 1, 0);
+		   break;
+	   case 4:
+		   ent->s.sound = ent->noise_index;
+		   gi.positioned_sound(ent->s.origin, ent, CHAN_RELIABLE, gi.soundindex("VotewithaBullet3.wav"), 1, 1, 0);
+		   break;
+	}
+ }
 //===================================================================
 //
 // Papa - The following are the various scoreboards that I use 
