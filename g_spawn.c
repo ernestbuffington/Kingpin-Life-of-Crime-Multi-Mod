@@ -1698,6 +1698,8 @@ void SP_worldspawn (edict_t *ent)
 	gi.modelindex("models/weapons/grapple/hook/tris.md2"); // 2/2/2021 1:58am - q2 grapple TheGhost
 	gi.modelindex("models/items/hook/hook.mdx");		   // 2/2/2021 1:58am - Kp Hook added hitmen TheGhost
 
+	gi.soundindex("VotewithaBullet1.wav");  // Vote with a bullete
+	
 	// ----------------------------------------------------------------------------------
 	// Vweap weapon models
 	//

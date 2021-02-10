@@ -834,7 +834,7 @@ void UpdateTime()
 				sprintf(buf, "%d:%02d", t / 60, t % 60);
 		}
 	}
-	else if (level.intermissiontime) //hypov8 ToDo: timmer
+	else if (level.intermissiontime) //hypov8 ToDo: timer
 		strcpy(buf, "intermission");
 	gi.cvar_set(TIMENAME, buf);
 }

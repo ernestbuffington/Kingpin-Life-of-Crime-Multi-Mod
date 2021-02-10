@@ -118,7 +118,7 @@ typedef struct							// hitmen
 #define PLAYING				0					// playing types
 
                                                        // the "gameversion" client command will print this plus compile date
-#define	GAMEVERSION	"Life Of Crime Multi Mod v0.039"   // "MM2.0 +lagless +acebot +kooglebot +bloodmoney +hitmen" //hypo_v8 gamename
+#define	GAMEVERSION	"Life Of Crime Multi Mod v2"   // "MM2.0 +lagless +acebot +kooglebot +bloodmoney +hitmen" //hypo_v8 gamename
 #define	MOD0 "Botmatch"
 #define	MODV0 ".v38"
 
@@ -131,8 +131,8 @@ typedef struct							// hitmen
 #define	MOD3 "Assault 2 Mod"
 #define	MODV3 "v0.24"
 
-#define	MOD4 "Hitmen"
-#define	MODV4 "v1.0c"
+#define	MOD4 "Botmatch .v38"
+#define	MODV4 "& Hitmen v1.0c"
 
 #define	svc_muzzleflash		        1			// protocol bytes that can be directly added to messages
 #define	svc_muzzleflash2	        2			// protocol bytes that can be directly added to messages
@@ -789,6 +789,7 @@ extern	int	sm_meat_index;
 extern int  itemrespawn;        // re add
 extern	int	snd_fry;
 
+extern char ver_check[8];
 
 extern char Pistol_Dmg[16];          // kp pistol damage setings             - tourney.c
 extern char Blakjack_Dmg[16];        // kp black jack damage setings		 - tourney.c
@@ -937,6 +938,8 @@ extern	cvar_t	*maxentities;
 // END
 
 void InitLanGame(void);
+
+extern charbuf2[32];
 
 extern int log_uptime_days;
 extern int log_uptime_hours;
@@ -1104,6 +1107,17 @@ typedef struct
 extern	field_t fields[];
 extern	gitem_t	itemlist[];
 
+//
+// file_bloodmoney_ini.c
+//
+void check_version(edict_t* ent);
+int special_checking();
+extern int VerCheck; //version checking on and off
+#define	MAX_STRING_LENGTH 100
+#define	FILE_OPEN_ERROR 0
+#define	OK 1
+#define	COMMENT_LINE 0
+#define	FOUND_STRING 4
 
 //
 // g_cmds.c
@@ -1675,12 +1689,6 @@ struct gclient_s
 	int			hook_attach_time;
 	// END
 	
-	// q2 grapple start
-	void        *kpq2_grapple;		        // entity of grapple
-	int			kpq2_grapplestate;		    // true if pulling
-	float		kpq2_grapplereleasetime;	// time of grapple release
-	// end
-
 	vec3_t		kick_angles;	// weapon kicks
 	vec3_t		kick_origin;
 	float		v_dmg_roll, v_dmg_pitch, v_dmg_time;	// damage kicks
@@ -1783,6 +1791,11 @@ struct gclient_s
 	int			move_frame;
 	int			fakeThief;
 	int			mapvote;
+#if 1 //TheGhost:
+	void       *kpq2_grapple;		        // entity of q2 lithium grapple
+	int		   kpq2_grapplestate;		    // q2 lithium grapple true if pulling
+	float 	   kpq2_grapplereleasetime;	    // q2 lithium grapple release time
+#endif
 
 	int			historyHead;	// the head of the history queue
 	clientHistory_t	history[NUM_CLIENT_HISTORY]; // the history queue
@@ -1969,11 +1982,11 @@ struct edict_s
 // END:		Xatrix/Ridah/Navigator/17-mar-1998
 
 // KOOGLEBOT_ADD
-	kooglebot_t kooglebot; //hypov8 messy. move this to a seperate group
+	kooglebot_t kooglebot; // hypo_v8 was messy. moved this to a seperate group
 // KOOGLEBOT_END
 
 //HYPOV8
-	qboolean hasSelectedPistol;//hypo stop auto switch (clientinfo??)
+	qboolean hasSelectedPistol;// hypo_v8 stop auto switch (clientinfo??)
 //END
 
 // JOSEPH 19-MAR-99
@@ -2143,10 +2156,11 @@ struct edict_s
 	//hypov8 new options menu
 	int			menu;
 
-	// q2 grapple start
-	qboolean    grapple_out;
-	qboolean    is_hook;
-	// end
+#if 1  // TheGhost: Multi Mod Stuff
+	qboolean    grapple_out;	 // Life Of Crime Multi Mod q2 grapple
+	qboolean    is_hook;		 // used for hook can't remember why at the moment
+	int		   version;          // Life Of Crime Multi Mod client version checking
+#endif
 };	
 
 // RAFAEL
@@ -2177,7 +2191,6 @@ typedef struct
 extern	int				num_object_bounds;
 extern	object_bounds_t	*g_objbnds[MAX_OBJECT_BOUNDS];
 
-
 extern char maplist[1024][32];
 
 extern char admincode[16];		 // the admincode
@@ -2206,6 +2219,7 @@ extern int disable_curse;
 // KOOGLEBOT_ADD
 extern float default_botskill;
 // KOOGLEBOT_END
+
 // BEGIN HITMEN
 extern int enable_hitmen;
 // END
@@ -2247,10 +2261,10 @@ extern int num_rconx_pass;
 
 #define TEAMNAME "teams"
 #define SCORENAME "scores"
-#define TIMENAME "time"
+#define TIMENAME "gameround"
 
 extern char cmd_check[8];
-
+extern char ver_check[8];
 //void cprintf(edict_t *ent, int printlevel, char *fmt, ...); hypov8 disabled mm2.0
 
 #define KICKENT(ent,mess) {if (!ent->client->resp.kickdelay) {ent->client->resp.kickmess=mess;ent->client->resp.kickdelay=2;}}

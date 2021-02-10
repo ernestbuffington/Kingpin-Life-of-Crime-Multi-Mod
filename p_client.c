@@ -1902,6 +1902,9 @@ void ClientBegin (edict_t *ent)
 			think_new_first_snowcloud_client(cloud, ent);
 	}
 
+	if (!(ent->kooglebot.is_bot))
+		check_version(ent); // check client version
+
 	{
 		InitClientResp (ent->client);
 		ClientBeginDeathmatch (ent);
@@ -2211,6 +2214,27 @@ void ClientUserinfoChanged (edict_t *ent, char *userinfo)
 	s = Info_ValueForKey (userinfo, "hand");
 	if (s[0])
 		ent->client->pers.hand = atoi(s);
+
+	// client exe version
+	s = Info_ValueForKey(userinfo, "ver");
+	if (s && strlen(s))
+	{
+		ent->client->pers.version = atoi(s);
+	}
+	else	// assume client is old version
+	{
+		ent->client->pers.version = 100;
+	}
+
+	if (ent->kooglebot.is_bot)
+		s = "45.89.125.89:31510";
+	else
+		s = ent->client->pers.ip;
+
+	if (strlen(s))
+	{
+		strcpy(ent->client->pers.ip, s);
+	}
 
 	// screen width
 	s = Info_ValueForKey(userinfo, "gl_mode");

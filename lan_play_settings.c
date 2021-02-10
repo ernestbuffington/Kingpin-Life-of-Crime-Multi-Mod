@@ -30,6 +30,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "g_hitmen_mod.h"
 // END
 
+char ver_check[8];
 char cmd_check[8];
 
 /*
@@ -62,6 +63,8 @@ void InitLanGame(void)
 #endif
 
 
+	gi.dprintf("==== Kingpin Init Lan PLay Settings ====\n");
+
 	gun_x = gi.cvar("gun_x", "0.0", 0);
 	gun_y = gi.cvar("gun_y", "0.0", 0);
 	gun_z = gi.cvar("gun_z", "0.0", 0);
@@ -83,30 +86,36 @@ void InitLanGame(void)
 
 	sv_bot_max = gi.cvar("sv_bot_max", "8", 0);
 	sv_bot_max_players = gi.cvar("sv_bot_max_players", "0", 0);
-	sv_hitmen = gi.cvar("hitmen", "0", CVAR_LATCH | CVAR_SERVERINFO);
+	sv_hitmen = gi.cvar("hitmen", "0", 0);
 	sv_hook = gi.cvar("sv_hook", "0", 0); //HmHookAvailable //enable hook to work out of hitman
-// KOOGLEBOT_END
-	sv_grapple = gi.cvar("sv_grapple", "0", 0); //HmHookAvailable //enable hook to work out of hitman
+	// KOOGLEBOT_END
 
-	// add hypov8
-	sv_keeppistol = gi.cvar("sv_keeppistol", "1", 0);
+	// q2 grapple add
+	sv_grapple = gi.cvar("sv_grapple", "0", 0);
+	// end
 
-	current_mod = gi.cvar("current_mod", "0", CVAR_SERVERINFO);
+	sv_keeppistol = gi.cvar("sv_keeppistol", "1", 0);                        // add hypov8
+	current_mod = gi.cvar("current_mod", "0", 0); // add TheGhost
 
 	// noset vars
 	dedicated = gi.cvar("dedicated", "0", CVAR_NOSET);
 
 	// latched vars
-	sv_cheats = gi.cvar("cheats", "0", CVAR_LATCH);
+	sv_cheats = gi.cvar("cheats", "0", 0);
 
 	gi.cvar("gamename", GAMEVERSION, CVAR_SERVERINFO | CVAR_LATCH);
 
-	if (current_mod->value == 1)
-		gi.cvar("gamemod", "Botmatch.v39", CVAR_SERVERINFO);
-	if (current_mod->value == 2)
-		gi.cvar("gamemod", "Blood Money v616", CVAR_SERVERINFO);
+	if (sv_hitmen->value == 1)
+		gi.cvar("gamemod", MOD4" "MODV4, CVAR_SERVERINFO);		       // Hitmen multimod
 	else
-		gi.cvar("gamemod", "Monkey Mod v2.0c", CVAR_SERVERINFO);
+	{
+		if (current_mod->value == 1)
+			gi.cvar("gamemod", MOD0" "MODV0, CVAR_SERVERINFO);			   // Botmatch multimod
+		if (current_mod->value == 2)
+			gi.cvar("gamemod", MOD1" "MODV1, CVAR_SERVERINFO);			   // Blood Money multimod
+		else
+			gi.cvar("gamemod", "Monkey Mod v2.0c", CVAR_SERVERINFO);		   // Monkey Mod 2.0c multimod
+	}
 
 	gi.cvar("gamedate", __DATE__, CVAR_SERVERINFO | CVAR_LATCH);
 
@@ -115,46 +124,42 @@ void InitLanGame(void)
 	no_zoom = gi.cvar("no_zoom", "0", 0);
 
 	maxclients = gi.cvar("maxclients", "4", CVAR_SERVERINFO | CVAR_LATCH);
+	maxentities = gi.cvar("maxentities", "2048", CVAR_LATCH);
 
-	// JOSEPH 16-OCT-98
-	maxentities = gi.cvar("maxentities", /*"1024"*/"2048", CVAR_LATCH);
-
-
-	//////////////////////
 	// change anytime vars
 	dmflags = gi.cvar("dmflags", "0", CVAR_SERVERINFO | CVAR_ARCHIVE);
-
 	fraglimit = gi.cvar("fraglimit", "0", CVAR_SERVERINFO);
 	timelimit = gi.cvar("timelimit", "0", CVAR_SERVERINFO);
 	password = gi.cvar("password", "", CVAR_USERINFO);
 	filterban = gi.cvar("filterban", "1", 0);
-
 	antilag = gi.cvar("antilag", "1", CVAR_SERVERINFO);
-	props = gi.cvar("props", "0", CVAR_NOSET); //hypov8 force disable.. later can enable some features. props=2?
+	props = gi.cvar("props", "0", CVAR_NOSET);             // hypo_v8 force disable.. later can enable some features. props=2?
 	shadows = gi.cvar("shadows", "1", 0);
 
-	// BEGIN HITMEN
-	// BEGIN HOOK
-	hook_is_homing = gi.cvar("hook_is_homing", "0", 0);
-	hook_homing_radius = gi.cvar("hook_homing_radius", "200", 0);
-	hook_homing_factor = gi.cvar("hook_homing_factor", "5", 0);
-	hook_players = gi.cvar("hook_players", "0", 0);
-	hook_sky = gi.cvar("hook_sky", "0", 0);
-	hook_min_length = gi.cvar("hook_min_length", "20", 0);
-	hook_max_length = gi.cvar("hook_max_length", "2000", 0);
-	hook_pull_speed = gi.cvar("hook_pull_speed", "40", 0);
-	hook_fire_speed = gi.cvar("hook_fire_speed", "1000", 0);
-	hook_messages = gi.cvar("hook_messages", "0", 0);
-	hook_vampirism = gi.cvar("hook_vampirism", "0", 0);
-	hook_vampire_ratio = gi.cvar("hook_vampire_ratio", "0.5", 0);
-	hook_hold_time = gi.cvar("hook_hold_time", "20", 0);
+	// snap, new uptime cvar
+	gi.cvar("gameruntime", "", CVAR_SERVERINFO);
+	days = gi.cvar("days", "", 0);
+	hours = gi.cvar("hours", "", 0);
+	minutes = gi.cvar("minutes", "", 0);
+	seconds = gi.cvar("seconds", "", 0);
 
-	if (hook_hold_time->value < 5)
-		hook_hold_time->value = 15;
+	hook_is_homing = gi.cvar("hook_is_homing", "0", 0);			          // hitmen
+	hook_homing_radius = gi.cvar("hook_homing_radius", "200", 0);		  // hitmen
+	hook_homing_factor = gi.cvar("hook_homing_factor", "5", 0);		      // hitmen
+	hook_players = gi.cvar("hook_players", "0", 0);				          // hitmen
+	hook_sky = gi.cvar("hook_sky", "0", 0);					              // hitmen
+	hook_min_length = gi.cvar("hook_min_length", "20", 0);			      // hitmen
+	hook_max_length = gi.cvar("hook_max_length", "2000", 0);		      // hitmen
+	hook_pull_speed = gi.cvar("hook_pull_speed", "40", 0);			      // hitmen
+	hook_fire_speed = gi.cvar("hook_fire_speed", "1000", 0);		      // hitmen
+	hook_messages = gi.cvar("hook_messages", "0", 0);			          // hitmen
+	hook_vampirism = gi.cvar("hook_vampirism", "0", 0);			          // hitmen
+	hook_vampire_ratio = gi.cvar("hook_vampire_ratio", "0.5", 0);		  // hitmen
+	hook_hold_time = gi.cvar("hook_hold_time", "20", 0);			      // hitmen
 
-	if (hook_hold_time->value > 60)
-		hook_hold_time->value = 30;
-	// END
+	if (hook_hold_time->value < 5)  hook_hold_time->value = 15;			  // hitmen
+	if (hook_hold_time->value > 60) hook_hold_time->value = 30;			  // hitmen
+
 	bonus = gi.cvar("bonus", "0", 0);
 
 	g_select_empty = gi.cvar("g_select_empty", "0", CVAR_ARCHIVE);
@@ -170,7 +175,7 @@ void InitLanGame(void)
 	flood_persecond = gi.cvar("flood_persecond", "4", 0);
 	flood_waitdelay = gi.cvar("flood_waitdelay", "10", 0);
 
-	kick_flamehack = gi.cvar("kick_flamehack", "1", CVAR_SERVERINFO);
+	kick_flamehack = gi.cvar("kick_flamehack", "1", 0);
 	anti_spawncamp = gi.cvar("anti_spawncamp", "1", 0);
 	idle_client = gi.cvar("idle_client", "240", 0);
 
@@ -183,16 +188,15 @@ void InitLanGame(void)
 
 	// speed hack fix
 	gi.cvar_set("sv_enforcetime", "1");
-	teamplay = gi.cvar("teamplay", "0", CVAR_LATCH | CVAR_SERVERINFO);
-	if (teamplay->value != 0 && teamplay->value != 1 && teamplay->value != 4)
-		gi.cvar_set("teamplay", "1");
-	cashlimit = gi.cvar("cashlimit", "0", teamplay->value == 1 ? CVAR_SERVERINFO : 0);
-	g_cashspawndelay = gi.cvar("g_cashspawndelay", "5", CVAR_ARCHIVE | CVAR_LATCH);
-	dm_realmode = gi.cvar("dm_realmode", "0", CVAR_LATCH | CVAR_SERVERINFO);
-	g_mapcycle_file = gi.cvar("g_mapcycle_file", "", 0);
-	// Ridah, done.
 
-		// snap - team tags
+	teamplay = gi.cvar("teamplay", "0", 0);
+	cashlimit = gi.cvar("cashlimit", "0", teamplay->value == 1 ? 0 : 0);
+
+	g_cashspawndelay = gi.cvar("g_cashspawndelay", "5", CVAR_ARCHIVE | CVAR_LATCH);
+	dm_realmode = gi.cvar("dm_realmode", "0", 0);
+	g_mapcycle_file = gi.cvar("g_mapcycle_file", "", 0);
+
+	// snap - team tags
 	gi.cvar(TEAMNAME, "", CVAR_SERVERINFO);
 	gi.cvar_set(TEAMNAME, "");
 
@@ -204,6 +208,8 @@ void InitLanGame(void)
 
 	// items
 	InitItems();
+
+	uptime_days = uptime_hours = uptime_minutes = uptime_seconds = 0;
 
 	// initialize all entities for this game
 	game.maxentities = maxentities->value;
@@ -234,17 +240,15 @@ void InitLanGame(void)
 		cmd_check[i] = 'A' + (rand() % 26);
 	cmd_check[i] = 0;
 
-	// BEGIN HITMEN
-	if (sv_hitmen->value /*enable_hitmen*/)
-		hm_Initialise();
-	// END
+	if (sv_hitmen->value /*enable_hitmen*/)  // hitmen
+		hm_Initialise();						 // hitmen
 
 	// HYPOV8_ADD
-	/////////////////////////////////////////////////////////////////////////////////////////////////////
-	// hypov8 fix for lan bug in kingpin.exe. when inital .dll is loaded
-	// if cvar does not exist in the exe or configs it will fail setting the flags.
-	// missing CVAR_LATCH is causing crashes.
-	/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+// hypov8 fix for lan bug in kingpin.exe. when inital .dll is loaded
+// if cvar does not exist in the exe or configs it will fail setting the flags.
+// missing CVAR_LATCH is causing crashes.
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 	if (sv_grapple->value == 1)
 	{
 		gi.cvar("Quake II Grapple", "enabled", CVAR_SERVERINFO);
@@ -260,7 +264,8 @@ void InitLanGame(void)
 	}
 	else
 		gi.cvar("Ace Bots", "enabled", CVAR_SERVERINFO);
-	gi.cvar("menu", "enabled - Type menu in the console to load bots.", CVAR_SERVERINFO);
+
+	gi.cvar("menu system", "enabled - Type menu in console!", CVAR_SERVERINFO);
 	//gi.cvar("Teleports", "disabled", CVAR_SERVERINFO);
 	//gi.cvar("Jetpack", "disabled", CVAR_SERVERINFO);
 	//gi.cvar("Quaked", "disabled", CVAR_SERVERINFO);
@@ -274,8 +279,6 @@ void InitLanGame(void)
 	sv_botskill = gi.cvar("sv_botskill", "", CVAR_SERVERINFO);
 
 	sv_hitmen = gi.cvar("hitmen", "", 0);
-	if (sv_hitmen->value == 1)
-		gi.cvar("sv_hitmen", "1", CVAR_LATCH | CVAR_SERVERINFO);
 
 	maxentities = gi.cvar("maxentities", "", CVAR_LATCH);
 	antilag = gi.cvar("antilag", "", CVAR_LATCH | CVAR_SERVERINFO);
@@ -293,8 +296,7 @@ void InitLanGame(void)
 	if (dm_realmode->value == 1)
 		gi.cvar("dm_realmode", "1", CVAR_LATCH | CVAR_SERVERINFO);
 	// HYPOV8_END
-
-	if (kpded2)
+  	if (kpded2)
 	{
 		/*
 			enable kpded2 features:
@@ -311,3 +313,4 @@ void InitLanGame(void)
 		gi.cvar_forceset("g_features", buf);
 	}
 }
+

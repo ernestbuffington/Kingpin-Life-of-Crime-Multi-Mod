@@ -284,34 +284,32 @@ void BeginIntermission (edict_t *targ)
 	// stop any looping sounds
 	for (i=0 ; i<globals.num_edicts ; i++)
 	{
-		ent = g_edicts + i;
-		ent->s.sound = 0;
-	
-		ent->s.sound = ent->noise_index;
+//		ent = g_edicts + i;
+//		ent->s.sound = 0;
 	}
 
 
 	//i = level.num_songs;
 
-	switch (i)
-	{
-	    case 1:
-			ent->s.sound = ent->noise_index;
-		    gi.positioned_sound(ent->s.origin, ent, CHAN_RELIABLE, gi.soundindex("VotewithaBullet0.wav"), 1, 1, 0);
-		break;
-	    case 2:
-			ent->s.sound = ent->noise_index;
+	//switch (i)
+	//{
+	//    case 1:
+	//		ent->s.sound = ent->noise_index;
+	//	    gi.positioned_sound(ent->s.origin, ent, CHAN_RELIABLE, gi.soundindex("VotewithaBullet0.wav"), 1, 1, 0);
+	//	break;
+	//   case 2:
+	//		ent->s.sound = ent->noise_index;
 		    gi.positioned_sound(ent->s.origin, ent, CHAN_RELIABLE, gi.soundindex("VotewithaBullet1.wav"), 1, 1, 0);
-		   break;
-	   case 3:
-		   ent->s.sound = ent->noise_index;
-		   gi.positioned_sound(ent->s.origin, ent, CHAN_RELIABLE, gi.soundindex("VotewithaBullet2.wav"), 1, 1, 0);
-		   break;
-	   case 4:
-		   ent->s.sound = ent->noise_index;
-		   gi.positioned_sound(ent->s.origin, ent, CHAN_RELIABLE, gi.soundindex("VotewithaBullet3.wav"), 1, 1, 0);
-		   break;
-	}
+	//	   break;
+	//   case 3:
+	//	   ent->s.sound = ent->noise_index;
+	//	   gi.positioned_sound(ent->s.origin, ent, CHAN_RELIABLE, gi.soundindex("VotewithaBullet2.wav"), 1, 1, 0);
+	//	   break;
+	//   case 4:
+	//	   ent->s.sound = ent->noise_index;
+	//	   gi.positioned_sound(ent->s.origin, ent, CHAN_RELIABLE, gi.soundindex("VotewithaBullet3.wav"), 1, 1, 0);
+	//	   break;
+	//}
  }
 //===================================================================
 //

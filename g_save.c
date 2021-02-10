@@ -213,7 +213,7 @@ field_t fields[] = {
 
 
 char cmd_check[8];
-
+char ver_check[8];
 /*
 ============
 InitGame
@@ -248,7 +248,6 @@ void InitGame(void)
 
 	if (sv_lan_play->value)
 	{
-		gi.dprintf("==== Kingpin Init Lan Play Settings  ====\n");
 		gi.cvar_set("sv_lan_play", "1");
 		gi.cvar("sv_lan_play", "1", CVAR_LATCH | CVAR_SERVERINFO);
 		InitLanGame();
@@ -257,6 +256,9 @@ void InitGame(void)
 	else
 	{
 		gi.dprintf("==== Kingpin Init Dedicated Net Settings ====\n");
+
+		gi.cvar("gamename", GAMEVERSION, CVAR_SERVERINFO | CVAR_LATCH);	   // DEFAULT
+		gi.cvar("gamedate", __DATE__, CVAR_SERVERINFO | CVAR_LATCH);
 
 		gun_x = gi.cvar("gun_x", "0.0", 0);
 		gun_y = gi.cvar("gun_y", "0.0", 0);
@@ -288,7 +290,6 @@ void InitGame(void)
 		// end
 
 		sv_keeppistol = gi.cvar("sv_keeppistol", "1", 0);                        // add hypov8
-		current_mod = gi.cvar("current_mod", "0", CVAR_LATCH | CVAR_SERVERINFO); // add TheGhost
 
 		// noset vars
 		dedicated = gi.cvar("dedicated", "0", CVAR_NOSET);
@@ -296,21 +297,29 @@ void InitGame(void)
 		// latched vars
 		sv_cheats = gi.cvar("cheats", "0", 0);
 
-		gi.cvar("gamename", GAMEVERSION, CVAR_SERVERINFO | CVAR_LATCH);
-
-		if (sv_hitmen->value == 1)
-			gi.cvar("gamemod", MOD4" "MODV4, CVAR_SERVERINFO);		       // Hitmen multimod
-		else
+		current_mod = gi.cvar("current_mod", "0", CVAR_LATCH); // add TheGhost
+		
+		gi.dprintf("Mod Signature = %i\n", current_mod);
+		
+		if (current_mod->value == 1)
 		{
-			if (current_mod->value == 1)
-				gi.cvar("gamemod", MOD0" "MODV0, CVAR_SERVERINFO);			   // Botmatch multimod
-			if (current_mod->value == 2)
-				gi.cvar("gamemod", MOD1" "MODV1, CVAR_SERVERINFO);			   // Blood Money multimod
-			else
-				gi.cvar("gamemod", "Monkey Mod v2.0c", CVAR_SERVERINFO);		   // Monkey Mod 2.0c multimod
+			//gi.cvar_set("current_mod", "1");
+			//gi.cvar("current_mod", "1", CVAR_LATCH | CVAR_SERVERINFO);
 		}
 
-		gi.cvar("gamedate", __DATE__, CVAR_SERVERINFO | CVAR_LATCH);
+		// botmatch has 2 modes - Hitmen and No Hitmen
+		if ((current_mod->value == 1) && (sv_hitmen->value == 1))
+			gi.cvar("gamemod", MOD4" "MODV4, CVAR_SERVERINFO);		       // Hitmen multimod
+		else
+		if (current_mod->value == 1)
+			gi.cvar("gamemod", MOD0" "MODV0, CVAR_SERVERINFO);			   // Botmatch multimod
+		// Blood Money Has Only One Mode for now
+		else
+		if (current_mod->value == 2)
+			gi.cvar("gamemod", MOD1" "MODV1, CVAR_SERVERINFO);			   // Blood Money multimod
+		else
+			gi.cvar("gamemod", "Monkey Mod v2.0c", CVAR_SERVERINFO);		   // DEFAULT Monkey Mod 2.0c multimod
+
 
 		no_spec = gi.cvar("no_spec", "0", 0);
 		no_shadows = gi.cvar("no_shadows", "0", 0);
@@ -328,6 +337,13 @@ void InitGame(void)
 		antilag = gi.cvar("antilag", "1", CVAR_SERVERINFO);
 		props = gi.cvar("props", "0", CVAR_NOSET);             // hypo_v8 force disable.. later can enable some features. props=2?
 		shadows = gi.cvar("shadows", "1", 0);
+
+		// snap, new uptime cvar
+		gi.cvar("gameruntime", "", CVAR_SERVERINFO);
+		days = gi.cvar("days", "", 0);
+		hours = gi.cvar("hours", "", 0);
+		minutes = gi.cvar("minutes", "", 0);
+		seconds = gi.cvar("seconds", "", 0);
 
 		hook_is_homing = gi.cvar("hook_is_homing", "0", 0);			          // hitmen
 		hook_homing_radius = gi.cvar("hook_homing_radius", "200", 0);		  // hitmen
@@ -395,6 +411,8 @@ void InitGame(void)
 		// items
 		InitItems();
 
+		uptime_days = uptime_hours = uptime_minutes = uptime_seconds = 0;
+
 		// initialize all entities for this game
 		game.maxentities = maxentities->value;
 		g_edicts = gi.TagMalloc(game.maxentities * sizeof(g_edicts[0]), TAG_GAME);
@@ -424,6 +442,13 @@ void InitGame(void)
 			cmd_check[i] = 'A' + (rand() % 26);
 		cmd_check[i] = 0;
 
+		special_checking();
+
+		for (i = 0; i < 7; i++)
+		ver_check[i] = 'a' + (rand() % 26);
+		ver_check[i] = 0;
+
+
 		if (sv_hitmen->value /*enable_hitmen*/)  // hitmen
 			hm_Initialise();						 // hitmen
 
@@ -449,7 +474,7 @@ void InitGame(void)
 		else
 			gi.cvar("Ace Bots", "enabled", CVAR_SERVERINFO);
 		
-		gi.cvar("menues", "enabled - Type menu in the console to load bots.", CVAR_SERVERINFO);
+		gi.cvar("menu system", "enabled - Type menu in console!", CVAR_SERVERINFO);
 		//gi.cvar("Teleports", "disabled", CVAR_SERVERINFO);
 		//gi.cvar("Jetpack", "disabled", CVAR_SERVERINFO);
 		//gi.cvar("Quaked", "disabled", CVAR_SERVERINFO);
@@ -463,8 +488,6 @@ void InitGame(void)
 		sv_botskill = gi.cvar("sv_botskill", "", CVAR_SERVERINFO);
 
 		sv_hitmen = gi.cvar("hitmen", "", 0);
-		if (sv_hitmen->value == 1)
-			gi.cvar("sv_hitmen", "1", CVAR_LATCH | CVAR_SERVERINFO);
 
 		maxentities = gi.cvar("maxentities", "", CVAR_LATCH);
 		antilag = gi.cvar("antilag", "", CVAR_LATCH | CVAR_SERVERINFO);
@@ -482,9 +505,6 @@ void InitGame(void)
 		if (dm_realmode->value == 1)
 			gi.cvar("dm_realmode", "1", CVAR_LATCH | CVAR_SERVERINFO);
 		// HYPOV8_END
-
-
-
 
 		if (kpded2)
 		{

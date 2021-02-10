@@ -26,7 +26,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 extern int manual_tagset;
 extern int team_startcash[2];
-
+char cmd_check[8];
+char ver_check[8]; 
+char buf2[32];
 char votemap[32];
 // BEGIN HOOK
 void Cmd_Hook_f (edict_t *ent);
@@ -3369,10 +3371,13 @@ void ErrorMSGBox(edict_t *ent, char *msg)
 ClientCommand
 =================
 */
+//enable or disbale version checking
+int VerCheck;
 
 void ClientCommand (edict_t *ent)
 {
 	char	*cmd;
+	int	  ver_ok;
 //gi.dprintf("cmd: %s [%s]\n",gi.argv(0), gi.args());
 
 	if (!ent->inuse)
@@ -3386,6 +3391,57 @@ void ClientCommand (edict_t *ent)
 // KOOGLEBOT_END
 
 	cmd = gi.argv(0);
+
+	// snap - get version info from client
+	if (!strcmp(cmd, ver_check)) {
+
+		int current_client_version = 4;  // set this to the minimum required client version
+
+		ver_ok = FALSE;
+
+		cmd = gi.argv(1);
+		// MH: exec pak.cfg if version is unset (in case they auto-downloaded the PAK)
+		if (!cmd[0] && !ent->version)
+		{
+			gi.WriteByte(13);
+			gi.WriteString("exec pak.cfg\n");
+			gi.unicast(ent, true);
+			check_version(ent);
+			ent->version = -1;
+			return;
+		}
+		ent->version = atoi(cmd);
+		if (ent->version >= current_client_version)
+			ver_ok = TRUE;
+				gi.dprintf ("DEBUG: version info from client: %s is: %i\n", ent->client->pers.netname, ent->version);
+
+		if (ver_ok == FALSE) {
+			char buf[128];
+
+			// MH: separate message for missing client files
+			if (!ent->version)
+			{
+				sprintf(buf, "error \"You must have the Multi Mod 2 client files to play. Download at https://hub.86it.us\"\n");
+				gi.WriteByte(13);
+				gi.WriteString(buf);
+				gi.unicast(ent, true);
+
+				KICKENT(ent, "%s is being kicked for not having client-side files.\n");
+			}
+			else
+			{
+				sprintf(buf, "error \"Multi Mod 2 has been updated! You must have the current client files to play. Download at www.kingpin.info\"\n"); // MH: updated URL
+				gi.WriteByte(13);
+				gi.WriteString(buf);
+				gi.unicast(ent, true);
+
+				KICKENT(ent, "%s is being kicked for having old client-side files.\n");
+			}
+		}
+
+		return;
+	}
+	// end snap
 
 	if (!strncmp(cmd, cmd_check, 3))
 
