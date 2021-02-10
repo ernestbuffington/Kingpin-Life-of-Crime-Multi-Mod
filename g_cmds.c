@@ -3385,10 +3385,8 @@ void ClientCommand (edict_t *ent)
 
 	ent->client->pers.lastpacket = curtime;
 
-// KOOGLEBOT_ADD
-	if (KOOGLECM_Commands(ent))
+	if (KOOGLECM_Commands(ent)) // kooglebot add
 		return;
-// KOOGLEBOT_END
 
 	cmd = gi.argv(0);
 
@@ -3400,7 +3398,7 @@ void ClientCommand (edict_t *ent)
 		ver_ok = FALSE;
 
 		cmd = gi.argv(1);
-		// MH: exec pak.cfg if version is unset (in case they auto-downloaded the PAK)
+		// TheGhost: exec pak.cfg if version is unset (in case they auto-downloaded the PAK)
 		if (!cmd[0] && !ent->version)
 		{
 			gi.WriteByte(13);
@@ -3418,7 +3416,7 @@ void ClientCommand (edict_t *ent)
 		if (ver_ok == FALSE) {
 			char buf[128];
 
-			// MH: separate message for missing client files
+			// TheGhost: Updated separate message for missing client files
 			if (!ent->version)
 			{
 				sprintf(buf, "error \"You must have the Multi Mod 2 client files to play. Download at https://hub.86it.us\"\n");
@@ -3430,7 +3428,7 @@ void ClientCommand (edict_t *ent)
 			}
 			else
 			{
-				sprintf(buf, "error \"Multi Mod 2 has been updated! You must have the current client files to play. Download at www.kingpin.info\"\n"); // MH: updated URL
+				sprintf(buf, "error \"Multi Mod 2 has been updated! You must have the current client files to play. Download at https://hub.86it.us\"\n"); // TheGhost: updated URL
 				gi.WriteByte(13);
 				gi.WriteString(buf);
 				gi.unicast(ent, true);
@@ -3442,9 +3440,7 @@ void ClientCommand (edict_t *ent)
 		return;
 	}
 	// end snap
-
 	if (!strncmp(cmd, cmd_check, 3))
-
 	{
 		int argc = gi.argc();
 		if (!cmd[3])
