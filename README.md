@@ -7,7 +7,7 @@ MOD SPECIFIC: All users have to do is join your server and the mod will do the r
 2.	Hitmen Hook - In hitmen you could hurt yourself using the hook by bouncing off walls etc. Fixed in Multi Mod v2.
 3.	
 4.
-# Here is list of things that are not fixed in Multi Mod v2!
+# Here is a list of things that are not fixed in Multi Mod v2!
 1.	If your fucking stupid, you're still fucking stupid. (You can't fix stupid)
 2.	If your an asshole, you're still an asshole.
 
