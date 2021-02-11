@@ -8,8 +8,8 @@ MOD SPECIFIC: All users have to do is join your server and the mod will do the r
 3.	
 4.
 # Here is list of things that are not fixed!ti Mod v2.
-1.	If your fucking stupid, your still fucking stupid. (you can't fix stupid)
-2.	If your an asshole, you are still an asshole.
+1.	If your fucking stupid, you're still fucking stupid. (You can't fix stupid)
+2.	If your an asshole, you're still an asshole.
 
 # Build and Test
 TODO: Describe and show how to build your code and run the tests. 
