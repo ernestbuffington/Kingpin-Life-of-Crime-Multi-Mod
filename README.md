@@ -3,11 +3,11 @@ Kingpin Life Of Crime is a server mod that allows you to run multiple servers fr
 
 # Here is list of things that are in the new Multi Mod v2.
 MOD SPECIFIC: All users have to do is join your server and the mod will do the rest! 
-1.	Quake II Lithium Grapple
-2.	Hitmen Hook - In hitmen you could hurt yourself using the hook by bouncing off walls etc. Fixed in multimod v2
+1.	Quake II Lithium Grapple.
+2.	Hitmen Hook - In hitmen you could hurt yourself using the hook by bouncing off walls etc. Fixed in Multi Mod v2.
 3.	
 4.
-# Here is list of things that are not fixed!ti Mod v2.
+# Here is list of things that are not fixed!
 1.	If your fucking stupid, you're still fucking stupid. (You can't fix stupid)
 2.	If your an asshole, you're still an asshole.
 
