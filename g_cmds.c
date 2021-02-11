@@ -3411,7 +3411,7 @@ void ClientCommand (edict_t *ent)
 		ent->version = atoi(cmd);
 		if (ent->version >= current_client_version)
 			ver_ok = TRUE;
-				gi.dprintf ("DEBUG: version info from client: %s is: %i\n", ent->client->pers.netname, ent->version);
+				gi.dprintf ("%s's Mod files are version: %i\n", ent->client->pers.netname, ent->version);
 
 		if (ver_ok == FALSE) {
 			char buf[128];
