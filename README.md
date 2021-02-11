@@ -1,12 +1,12 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Kingpin: Life Of Crime Multi Mod 2 
+Kingpin Life Of Crime is a server mod that allows you to run multiple servers from the same mod directory as well as multiple mod configurations. You can vote to play mods during game play much the same way you vote for maps at the end of a round for next mapchange.  
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+# Here is list of things that are in the new Multi Mod v2.
+MOD SPECIFIC: All users have to do is join your server and the mod will do the rest! 
+1.	Quake II Lithium Grapple
+2.	Hitmen Hook - In hitmen you could hurt yourself using the hook by bouncing off walls etc. Fixed in multimod v2
+3.	
+4.	
 
 # Build and Test
 TODO: Describe and show how to build your code and run the tests. 
