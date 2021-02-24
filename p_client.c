@@ -2263,6 +2263,9 @@ void ClientUserinfoChanged (edict_t *ent, char *userinfo)
 			case 4:
 				ent->client->pers.screenwidth = 1152;
 				break;
+			case 13:
+				ent->client->pers.screenwidth = 1920;
+				break;
 			default:
 				// assuming anything else is at least 1280
 				ent->client->pers.screenwidth = 1280;

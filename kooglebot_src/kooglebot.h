@@ -388,124 +388,123 @@ void Teamplay_AutoJoinTeam( edict_t *self );
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // id Function Protos I need
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void     LookAtKiller (edict_t *self, edict_t *inflictor, edict_t *attacker);
-void     ClientObituary (edict_t *self, edict_t *inflictor, edict_t *attacker);
-void     TossClientWeapon (edict_t *self);
-void     ClientThink (edict_t *ent, usercmd_t *ucmd);
-void     SelectSpawnPoint (edict_t *ent, vec3_t origin, vec3_t angles);
-void     ClientUserinfoChanged (edict_t *ent, char *userinfo);
-void     CopyToBodyQue (edict_t *ent);
+void LookAtKiller (edict_t *self, edict_t *inflictor, edict_t *attacker);
+void ClientObituary (edict_t *self, edict_t *inflictor, edict_t *attacker);
+void TossClientWeapon (edict_t *self);
+void ClientThink (edict_t *ent, usercmd_t *ucmd);
+void SelectSpawnPoint (edict_t *ent, vec3_t origin, vec3_t angles);
+void ClientUserinfoChanged (edict_t *ent, char *userinfo);
+void CopyToBodyQue (edict_t *ent);
 qboolean ClientConnect (edict_t *ent, char *userinfo); //hypo_v8 enabled
 void ClientBegin (edict_t *ent);	// hypo_v8 enabled
-void     Use_Plat (edict_t *ent, edict_t *other, edict_t *activator);
+void Use_Plat (edict_t *ent, edict_t *other, edict_t *activator);
 void FetchClientEntData(edict_t *ent); // hypo_v8 add
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // kooglebot_ai.c protos
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void     KOOGLEAI_Think (edict_t *self);
-void     KOOGLEAI_PickLongRangeGoal(edict_t *self);
+void KOOGLEAI_Think (edict_t *self);
+void KOOGLEAI_PickLongRangeGoal(edict_t *self);
 qboolean KOOGLEAI_PickShortRangeGoal_Player(edict_t *self, qboolean reCheck); // add hypo_v8
-void	 KOOGLEAI_Reset_Goal_Node(edict_t *self, float wanderTime, char* eventName);
+void KOOGLEAI_Reset_Goal_Node(edict_t *self, float wanderTime, char* eventName);
 qboolean KOOGLEAI_PickShortRangeGoalSpawned(edict_t *self);
 //qboolean KOOGLEAI_InfrontBot(edict_t *self, edict_t *other) //add hypo_v8
-void	KOOGLEAI_G_RunFrame(void);
+void KOOGLEAI_G_RunFrame(void);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // kooglebot_cmds.c protos
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 qboolean KOOGLECM_Commands(edict_t *ent);
-void     KOOGLECM_LevelEnd(void);
-void	 KOOGLECM_BotDebug(qboolean changeState); // add hypo_v8
-void	 KOOGLECM_BotAdd(char *cmd2, char *cmd3, char *cmd4, char* skill); // add hypo_v8
-int		 KOOGLECM_ReturnBotSkillWeb(void); //add hypov8
-float	 KOOGLECM_ReturnBotSkillFloat(int skill);
-int		 KOOGLECM_ReturnBotSkillWeb_var(float skill); // add hypo_v8
+void KOOGLECM_LevelEnd(void);
+void KOOGLECM_BotDebug(qboolean changeState); // add hypo_v8
+void KOOGLECM_BotAdd(char *cmd2, char *cmd3, char *cmd4, char* skill); // add hypo_v8
+int KOOGLECM_ReturnBotSkillWeb(void); //add hypov8
+float KOOGLECM_ReturnBotSkillFloat(int skill);
+int KOOGLECM_ReturnBotSkillWeb_var(float skill); // add hypo_v8
 qboolean KOOGLECM_G_Activate_f(edict_t *ent);
 qboolean KOOGLECM_G_PutAway_f(edict_t *ent);
 qboolean KOOGLECM_G_Use_f(edict_t *ent, char*s);
 qboolean KOOGLECM_G_SelectNextItem(edict_t *ent);
 qboolean KOOGLECM_G_SelectPrevItem(edict_t *ent);
-void	 KOOGLECM_BotScoreboardVote(edict_t *ent);
-void	 KOOGLECM_BotScoreboardAdd(edict_t *ent);
-void	 KOOGLECM_BotScoreboardRemove(edict_t *ent);
-void	 KOOGLECM_BotScoreboardSkill(edict_t *ent);
+void KOOGLECM_BotScoreboardVote(edict_t *ent);
+void KOOGLECM_BotScoreboardAdd(edict_t *ent);
+void KOOGLECM_BotScoreboardRemove(edict_t *ent);
+void KOOGLECM_BotScoreboardSkill(edict_t *ent);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Bot Safe Print Functions
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void	 safe_cprintf (edict_t *ent, int printlevel, char *fmt, ...);
-void	 safe_centerprintf (edict_t *ent, char *fmt, ...);
-void	 safe_bprintf (int printlevel, char *fmt, ...);
-void	 debug_printf (char *fmt, ...);
+void safe_cprintf (edict_t *ent, int printlevel, char *fmt, ...);
+void safe_centerprintf (edict_t *ent, char *fmt, ...);
+void safe_bprintf (int printlevel, char *fmt, ...);
+void debug_printf (char *fmt, ...);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // kooglebot_items.c protos
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void     KOOGLEIT_PlayerAdded(edict_t *ent);
-void     KOOGLEIT_PlayerRemoved(edict_t *ent);
+void KOOGLEIT_PlayerAdded(edict_t *ent);
+void KOOGLEIT_PlayerRemoved(edict_t *ent);
 qboolean KOOGLEIT_IsVisible(edict_t *self, vec3_t goal);
 qboolean KOOGLEIT_IsReachable(edict_t *self,vec3_t goal);
 qboolean KOOGLEIT_ChangeWeapon (edict_t *ent, gitem_t *item);
-float	 KOOGLEIT_ItemNeed(edict_t *self, int item, float timestamp, int spawnflags); //hypo add spawnflags. for droped items
-int		 KOOGLEIT_ClassnameToIndex(char *classname, int style);
-// void     KOOGLEIT_BuildItemNodeTable (qboolean rebuild);
-void     KOOGLEIT_BuildItemNodeTable(qboolean reLinkEnts); // hypo_v8 changed this?
-float	 KOOGLEIT_ItemNeedSpawned(edict_t *self, int item, float timestamp, int spawnflags); //add hypo_v8
+float KOOGLEIT_ItemNeed(edict_t *self, int item, float timestamp, int spawnflags); //hypo add spawnflags. for droped items
+int KOOGLEIT_ClassnameToIndex(char *classname, int style);
+// void KOOGLEIT_BuildItemNodeTable (qboolean rebuild); // old
+void KOOGLEIT_BuildItemNodeTable(qboolean reLinkEnts); // hypo_v8 changed this?
+float KOOGLEIT_ItemNeedSpawned(edict_t *self, int item, float timestamp, int spawnflags); //add hypo_v8
 qboolean KOOGLEIT_CheckIfItemExists(edict_t *self); //add hypo_v8
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // kooglebot_movement.c protos
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void     KOOGLEMV_Move(edict_t *self, usercmd_t *ucmd);
-void     KOOGLEMV_Attack (edict_t *self, usercmd_t *ucmd);
-void     KOOGLEMV_Wander (edict_t *self, usercmd_t *ucmd);
-void	 KOOGLEMV_JumpPadUpdate(edict_t *bot/*, float pushSpeed*/); // add hypo_v8
-void	 KOOGLEMV_Attack_CalcRandDir(edict_t *self, vec3_t aimdir); // aim directly at enamy but shoot off target(random)
-void	 KOOGLESP_KillBot(edict_t *self);
+void KOOGLEMV_Move(edict_t *self, usercmd_t *ucmd);
+void KOOGLEMV_Attack (edict_t *self, usercmd_t *ucmd);
+void KOOGLEMV_Wander (edict_t *self, usercmd_t *ucmd);
+void KOOGLEMV_JumpPadUpdate(edict_t *bot/*, float pushSpeed*/); // add hypo_v8
+void KOOGLEMV_Attack_CalcRandDir(edict_t *self, vec3_t aimdir); // aim directly at enamy but shoot off target(random)
+void KOOGLESP_KillBot(edict_t *self);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // kooglebot_nodes.c protos
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-int			KOOGLEND_FindCost(short from, short to);
-short		KOOGLEND_FindClosestReachableNode(edict_t *self, int range, short type);
-void		KOOGLEND_SetGoal(edict_t *self, short goal_node,edict_t *goal_ent);
-qboolean	KOOGLEND_FollowPath(edict_t *self);
-void		KOOGLEND_GrapFired(edict_t *self);
-void		KOOGLEND_PathMap(edict_t *self, qboolean check_jump);
-void		KOOGLEND_InitNodes(void);
-void		KOOGLEND_ShowNode(short node, int isTmpNode);
-void		KOOGLEND_DrawPath();
-void		KOOGLEND_ShowPath(edict_t *self, short goal_node);
-short		KOOGLEND_AddNode(edict_t *self, short type, qboolean isBuildingTable);
-void		KOOGLEND_UpdateNodeEdge(short from, short to, qboolean stopJumpNodes, qboolean stopTeleNodes, qboolean checkSight, qboolean isTrigPush);
-void		KOOGLEND_RemoveNodeEdge(edict_t *self, short from, short to);
-void		KOOGLEND_RemovePaths(edict_t *self, short from); // add hypo_v8
-void		KOOGLEND_RemoveallPaths(edict_t *self); // add hypo_v8
-void		KOOGLEND_SaveNodes();
-void		KOOGLEND_LoadNodes();
-void		KOOGLEND_DebugNodesLocal(void); // add hypo_v8
-void		KOOGLEND_PathMap_ToTeleporter(edict_t *player); // add hypo_v8
-void		KOOGLEND_PathMap_ToTeleporterDest(edict_t *player); // add hypo_v8
-void		KOOGLEND_PathToTrigPush(edict_t *player); // add hypo_v8
-void		KOOGLEND_PathToTrigPushDest(edict_t *player); // add hypo_v8
-short		KOOGLEND_FindClosestNode(edict_t *self, int range, short type); // add hypo_v8
-void		KOOGLEND_HookActivate(edict_t *self); // add hypo_v8
-void		KOOGLEND_HookDeActivate(edict_t *self); // add hypo_v8
-qboolean	KOOGLEND_PathMapValidPlayer(edict_t *self);
-float		VectorDistanceFlat(vec3_t vec1, vec3_t vec2);
+int KOOGLEND_FindCost(short from, short to);
+void KOOGLEND_SetGoal(edict_t *self, short goal_node,edict_t *goal_ent);
+qboolean KOOGLEND_FollowPath(edict_t *self);
+void KOOGLEND_GrapFired(edict_t *self);
+void KOOGLEND_PathMap(edict_t *self, qboolean check_jump);
+void KOOGLEND_InitNodes(void);
+void KOOGLEND_ShowNode(short node, int isTmpNode);
+void KOOGLEND_DrawPath();
+void KOOGLEND_ShowPath(edict_t *self, short goal_node);
+short KOOGLEND_AddNode(edict_t *self, short type, qboolean isBuildingTable);
+void KOOGLEND_UpdateNodeEdge(short from, short to, qboolean stopJumpNodes, qboolean stopTeleNodes, qboolean checkSight, qboolean isTrigPush);
+void KOOGLEND_RemoveNodeEdge(edict_t *self, short from, short to);
+void KOOGLEND_RemovePaths(edict_t *self, short from); // add hypo_v8
+void KOOGLEND_RemoveallPaths(edict_t *self); // add hypo_v8
+void KOOGLEND_SaveNodes();
+void KOOGLEND_LoadNodes();
+void KOOGLEND_DebugNodesLocal(void); // add hypo_v8
+void KOOGLEND_PathMap_ToTeleporter(edict_t *player); // add hypo_v8
+void KOOGLEND_PathMap_ToTeleporterDest(edict_t *player); // add hypo_v8
+void KOOGLEND_PathToTrigPush(edict_t *player); // add hypo_v8
+void KOOGLEND_PathToTrigPushDest(edict_t *player); // add hypo_v8
+short KOOGLEND_FindClosestNode(edict_t *self, int range, short type); // add hypo_v8
+void KOOGLEND_HookActivate(edict_t *self); // add hypo_v8
+void KOOGLEND_HookDeActivate(edict_t *self); // add hypo_v8
+qboolean KOOGLEND_PathMapValidPlayer(edict_t *self);
+float VectorDistanceFlat(vec3_t vec1, vec3_t vec2);
 vec_t KOOGLEND_NodeOffset(short type); // hypo_v8 keep height consistant
+short KOOGLEND_FindClosestReachableNode(edict_t* self, int range, short type);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // kooglebot_spawn.c protos
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void		KOOGLESP_LoadBots();
-void		KOOGLESP_Respawn (edict_t *self);
-void		KOOGLESP_SetName(edict_t *bot, char *name, char *skin/*, char *team*/);
-void		KOOGLESP_SpawnBot (char *team, char *name, char *skin, char *userinfom, float skill);
-void		KOOGLESP_SpawnBot_Random(char *team, char *name, char *skin, char *userinfo); // add hypo_v8
-void	    KOOGLESP_ReAddBots();
-void		KOOGLESP_RemoveBot(char *name, qboolean print);
-void		KOOGLESP_FreeBots(void); // add hypo_v8
-int			KOOGLESP_LoadRandomBotCFG(void); // load custom bot file
+void KOOGLESP_LoadBots();
+void KOOGLESP_Respawn (edict_t *self);
+void KOOGLESP_SetName(edict_t *bot, char *name, char *skin/*, char *team*/);
+void KOOGLESP_SpawnBot (char *team, char *name, char *skin, char *userinfom, float skill);
+void KOOGLESP_SpawnBot_Random(char* team, char* name, char* skin, char* userinfo);
+void KOOGLESP_RemoveBot(char *name, qboolean print);
+void KOOGLESP_FreeBots(void); // add hypo_v8
+int	KOOGLESP_LoadRandomBotCFG(void); // load custom bot file
 #endif

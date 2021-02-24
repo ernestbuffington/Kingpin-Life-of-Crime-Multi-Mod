@@ -254,10 +254,10 @@ void MatchStart()  // start the match
 	int			i;
 	edict_t		*ent;
 
-// KOOGLEBOT_ADD
+    // KOOGLEBOT_ADD
 	KOOGLESP_RemoveBot("all", false);
 	level.bots_spawned = false;
-// KOOGLEBOT_END
+    // KOOGLEBOT_END
 		
 	level.intermissiontime = 0;
 	level.player_num = 0;
@@ -392,10 +392,12 @@ void Start_Pub () // Starts a public game
 {
 	edict_t		*self;
 	int			i;
+	static int rnd;
 
 	level.modeset = PUBLICSPAWN;
 	level.startframe = level.framenum;
 	level.is_spawn = false;
+	
 	for_each_player_not_bot(self, i)
 	{
 		safe_centerprintf(self, "Let the fun begin!");
@@ -406,6 +408,35 @@ void Start_Pub () // Starts a public game
 	gi.WriteByte(svc_stufftext);
 	gi.WriteString("play world/pawnbuzz_out\n");
 	gi.multicast(vec3_origin, MULTICAST_ALL);
+
+	if (current_mod->value == 2) // blood money
+	{
+		rnd = (rnd + 1) % 4;
+
+		switch (rnd)
+		{
+		case 0:
+			gi.WriteByte(svc_stufftext);
+			gi.WriteString("play VotewithaBullet0.wav\n");
+			gi.multicast(vec3_origin, MULTICAST_ALL);
+			break;
+		case 1:
+			gi.WriteByte(svc_stufftext);
+			gi.WriteString("play VotewithaBullet1.wav\n");
+			gi.multicast(vec3_origin, MULTICAST_ALL);
+			break;
+		case 2:
+			gi.WriteByte(svc_stufftext);
+			gi.WriteString("play VotewithaBullet2.wav\n");
+			gi.multicast(vec3_origin, MULTICAST_ALL);
+			break;
+		default:
+			gi.WriteByte(svc_stufftext);
+			gi.WriteString("play VotewithaBullet3.wav\n");
+			gi.multicast(vec3_origin, MULTICAST_ALL);
+			break;
+		}
+	}
 }
 
 /*
@@ -420,10 +451,6 @@ void SetupMapVote () // sets up the vote options for the next map
 	int		i, j, k;
 	int		unique;
 	int		selection;
-
-// KOOGLEBOT_ADD
-	//KOOGLECM_LevelEnd();
-// KOOGLEBOT_END
 
 	// find current map index
 	i = 0;
@@ -533,7 +560,7 @@ void CheckIdleMatchSetup () // restart the server if its empty in matchsetup mod
 	edict_t	*doot;
 
 	for_each_player_not_bot(doot, i)
-	{ //hypov8 bots count??
+	{ // hypo_v8 bots count??
 		count++;
 	}
 	if (count == 0)
@@ -609,15 +636,13 @@ void CheckEndMatch () // check if time,frag,cash limits have been reached in a m
 	for_each_player_inc_bot(doot, i)
 		count++;
 		
-// KOOGLEBOT_ADD
+    // KOOGLEBOT_ADD
 	if (count && !level.bots_spawned)
 	{
-		//KOOGLEND_InitNodes();
-		//KOOGLEND_LoadNodes();
 		KOOGLESP_LoadBots();
 		level.bots_spawned = true;
 	}
-// KOOGLEBOT_END
+    // KOOGLEBOT_END
 		
 		
 	if (count == 0)

@@ -939,22 +939,21 @@ extern	cvar_t	*maxentities;
 
 void InitLanGame(void);
 
-extern charbuf2[32];
-
+extern char buf2[32];
 extern int log_uptime_days;
 extern int log_uptime_hours;
 extern int log_uptime_minutes;
 extern int log_uptime_seconds;
 
 // snap	server time
-cvar_t *map_songlimit;
-cvar_t *map_timelimit;
-int uptime_days,uptime_hours,uptime_minutes,uptime_seconds;
-cvar_t *days,*hours,*minutes,*seconds;
+extern cvar_t *map_songlimit;
+extern cvar_t *map_timelimit;
+extern int uptime_days,uptime_hours,uptime_minutes,uptime_seconds;
+extern cvar_t *days,*hours,*minutes,*seconds;
 
 // Multi Mod add
 extern cvar_t *current_mod;
-extern cvar_t* sv_lan_play;
+extern cvar_t *sv_lan_play;
 // Multi Mod end
 
 
@@ -2162,7 +2161,7 @@ struct edict_s
 	int		   version;          // Life Of Crime Multi Mod client version checking
 #endif
 };	
-
+//ern
 // RAFAEL
 #define ACTIVATE_GENERAL  1
 #define	ACTIVATE_AND_OPEN 2

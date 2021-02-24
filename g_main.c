@@ -45,11 +45,17 @@ edict_t *g_edicts;
 int num_object_bounds=0;
 object_bounds_t	*g_objbnds[MAX_OBJECT_BOUNDS];
 
+char buf2[32];
+int log_uptime_days;
+int log_uptime_hours;
+int log_uptime_minutes;
+int log_uptime_seconds;
+
 // snap server time
-extern cvar_t *map_songlimit;
-extern cvar_t *map_timelimit;
-extern int uptime_days,uptime_hours,uptime_minutes,uptime_seconds;
-extern cvar_t *days,*hours,*minutes,*seconds;
+cvar_t *map_songlimit;
+cvar_t *map_timelimit;
+int uptime_days,uptime_hours,uptime_minutes,uptime_seconds;
+cvar_t *days,*hours,*minutes,*seconds;
 
 // Multi Mod add
 cvar_t *current_mod;
@@ -448,31 +454,27 @@ CheckDMRules
 */
 void CheckDMRules (void)
 {
-	int			i;
 	gclient_t	*cl;
+	int		i;
 
 	if (level.intermissiontime)
 		return;
 
-// KOOGLEBOT_ADD
-	if (!level.bots_spawned)
+	if (!level.bots_spawned) // koogle bots
 	{
 		int		count = 0;
 		edict_t	*doot;
 
-		//hypov8 allows to add 1 bot and rest will join. with no players
+		//hypo_v8 allows to add 1 bot and rest will join. with no players
 		for_each_player_inc_bot(doot, i)
 		count++;
 
 		if (count)		
 		{
-			//KOOGLEND_InitNodes();
-			//KOOGLEND_LoadNodes();
 			KOOGLESP_LoadBots();
 			level.bots_spawned = true;
 		}
 	}
-// KOOGLEBOT_END
 
 	if (level.framenum - level.lastactive == 600)
 	{
@@ -496,6 +498,9 @@ void CheckDMRules (void)
 		{
 			if ((team_cash[1] >= (int)cashlimit->value) || (team_cash[2] >= (int)cashlimit->value))
 			{
+				if (current_mod->value == 2) // blood money
+				safe_bprintf(PRINT_CHAT, "CASHLIMIT HIT!\n");
+				else 
 				safe_bprintf(PRINT_HIGH, "Cashlimit hit.\n");
 				EndDMLevel ();
 				return;
@@ -508,6 +513,9 @@ void CheckDMRules (void)
 		{
 			if (team_cash[1] >= (int)fraglimit->value || team_cash[2] >= (int)fraglimit->value)
 			{
+				if (current_mod->value == 2) // blood money
+				safe_bprintf(PRINT_CHAT, "FRAGLIMIT HIT!\n");
+				else
 				safe_bprintf(PRINT_HIGH, "Fraglimit hit.\n");
 				EndDMLevel ();
 				return;
@@ -523,6 +531,9 @@ void CheckDMRules (void)
 
 				if (cl->resp.score >= (int)fraglimit->value)
 				{
+					if (current_mod->value == 2) // blood money
+					safe_bprintf(PRINT_CHAT, "FRAGLIMIT HIT!\n");
+					else 
 					safe_bprintf(PRINT_HIGH, "Fraglimit hit.\n");
 					EndDMLevel ();
 					return;
@@ -533,9 +544,30 @@ void CheckDMRules (void)
 
 	if ((int)timelimit->value)
 	{
-		if (level.framenum >= (level.startframe + ((int)timelimit->value) * 600))
+		if (current_mod->value == 2) // blood money
 		{
+
+			if (level.framenum == (level.startframe + ((int)timelimit->value - 4) * 600))
+			{
+				safe_bprintf(PRINT_CHAT, "3 MINUTE WARNING!\n");
+				gi.WriteByte(svc_stufftext);
+				gi.WriteString("play 3_minute_warning.wav\n");
+				gi.multicast(vec3_origin, MULTICAST_ALL);
+			}
+		}
+		
+		if (level.framenum == (level.startframe + ((int)timelimit->value) * 600))
+		{
+			if (current_mod->value == 2)  // blood money
+			{
+				gi.WriteByte(svc_stufftext);
+				gi.WriteString("play end_game.wav\n");
+				gi.multicast(vec3_origin, MULTICAST_ALL);
+				safe_bprintf(PRINT_CHAT, "TIMELIMIT HIT!\n");
+			}
+			else
 			safe_bprintf(PRINT_HIGH, "Timelimit hit.\n");
+
 			EndDMLevel ();
 		}
 	}

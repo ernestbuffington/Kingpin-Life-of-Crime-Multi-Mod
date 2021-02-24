@@ -453,11 +453,11 @@ void InitGame(void)
 			hm_Initialise();						 // hitmen
 
 		// HYPOV8_ADD
-			/////////////////////////////////////////////////////////////////////////////////////////////////////
-			// hypov8 fix for lan bug in kingpin.exe. when inital .dll is loaded
-			// if cvar does not exist in the exe or configs it will fail setting the flags.
-			// missing CVAR_LATCH is causing crashes.
-			/////////////////////////////////////////////////////////////////////////////////////////////////////
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		// hypo_v8 fix for lan bug in kingpin.exe. when inital .dll is loaded
+		// if cvar does not exist in the exe or configs it will fail setting the flags.
+		// missing CVAR_LATCH is causing crashes.
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		if (sv_grapple->value == 1)
 		{
 			gi.cvar("Quake II Grapple", "enabled", CVAR_SERVERINFO);
@@ -499,6 +499,7 @@ void InitGame(void)
 			teamplay = gi.cvar("teamplay", "0.0", CVAR_ARCHIVE | CVAR_LATCH);
 
 		cashlimit = gi.cvar("cashlimit", "", teamplay->value == 1 ? CVAR_LATCH | CVAR_SERVERINFO : 0);
+		
 		g_cashspawndelay = gi.cvar("g_cashspawndelay", "", CVAR_ARCHIVE | CVAR_LATCH);
 
 		dm_realmode = gi.cvar("dm_realmode", "", 0);

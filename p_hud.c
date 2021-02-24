@@ -217,6 +217,7 @@ void BeginIntermission (edict_t *targ)
 {
 	int		i, n;
 	edict_t	*ent, *client;
+	static int rnd;
 
 	if (level.intermissiontime)
 		return;		// already activated
@@ -253,10 +254,11 @@ void BeginIntermission (edict_t *targ)
 	// find an intermission spot
 	ent = G_Find (NULL, FOFS(classname), "info_player_intermission");
 	if (!ent)
-	{	// the map creator forgot to put in an intermission point...
+	{	
+		// the map creator forgot to put in an intermission point...
 		ent = G_Find (NULL, FOFS(classname), "info_player_start");
 		if (!ent)
-			ent = G_Find (NULL, FOFS(classname), "info_player_deathmatch");
+		ent = G_Find (NULL, FOFS(classname), "info_player_deathmatch");
 	}
 	else
 	{	// chose one of four spots
@@ -281,35 +283,39 @@ void BeginIntermission (edict_t *targ)
 		MoveClientToIntermission (client);
 	}
 
-	// stop any looping sounds
-	for (i=0 ; i<globals.num_edicts ; i++)
+	if (current_mod->value == 2) // blood money
 	{
-//		ent = g_edicts + i;
-//		ent->s.sound = 0;
+		// do not stop any looping sounds
+	}
+	else
+	{
+		for (i = 0; i < globals.num_edicts; i++)
+		{
+			ent = g_edicts + i;
+			ent->s.sound = 0;
+		}
 	}
 
+	if (current_mod->value == 2) // blood money
+	{
+		rnd = (rnd + 1) % 4;
 
-	//i = level.num_songs;
-
-	//switch (i)
-	//{
-	//    case 1:
-	//		ent->s.sound = ent->noise_index;
-	//	    gi.positioned_sound(ent->s.origin, ent, CHAN_RELIABLE, gi.soundindex("VotewithaBullet0.wav"), 1, 1, 0);
-	//	break;
-	//   case 2:
-	//		ent->s.sound = ent->noise_index;
-		    gi.positioned_sound(ent->s.origin, ent, CHAN_RELIABLE, gi.soundindex("VotewithaBullet1.wav"), 1, 1, 0);
-	//	   break;
-	//   case 3:
-	//	   ent->s.sound = ent->noise_index;
-	//	   gi.positioned_sound(ent->s.origin, ent, CHAN_RELIABLE, gi.soundindex("VotewithaBullet2.wav"), 1, 1, 0);
-	//	   break;
-	//   case 4:
-	//	   ent->s.sound = ent->noise_index;
-	//	   gi.positioned_sound(ent->s.origin, ent, CHAN_RELIABLE, gi.soundindex("VotewithaBullet3.wav"), 1, 1, 0);
-	//	   break;
-	//}
+		switch (rnd)
+		{
+		case 0:
+			gi.positioned_sound(ent->s.origin, ent, CHAN_RELIABLE, gi.soundindex("VotewithaBullet0.wav"), 1, 1, 0);
+			break;
+		case 1:
+			gi.positioned_sound(ent->s.origin, ent, CHAN_RELIABLE, gi.soundindex("VotewithaBullet1.wav"), 1, 1, 0);
+			break;
+		case 2:
+			gi.positioned_sound(ent->s.origin, ent, CHAN_RELIABLE, gi.soundindex("VotewithaBullet2.wav"), 1, 1, 0);
+			break;
+		default:
+			gi.positioned_sound(ent->s.origin, ent, CHAN_RELIABLE, gi.soundindex("VotewithaBullet3.wav"), 1, 1, 0);
+			break;
+		}
+	}
  }
 //===================================================================
 //
@@ -475,7 +481,7 @@ void VoteMapScoreboardMessage (edict_t *ent)
 	stringlength = 0;
 	yofs = -60-49;
 	if (ent->client->pers.screenwidth >= 1152)
-		yofs -= 40;
+	yofs -= 40;
 
 	Com_sprintf (entry, sizeof(entry),"xm %i ", -5*41);
 	j = strlen(entry);

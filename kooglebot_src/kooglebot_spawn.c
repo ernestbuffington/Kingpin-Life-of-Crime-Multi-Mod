@@ -848,8 +848,13 @@ void KOOGLESP_SetName(edict_t *bot, char *name, char *skin/*, char *team*/)
 	char bot_name[MAX_INFO_STRING];
 
 	// Set the name for the bot.
-	if(strlen(name) == 0)
-		sprintf(bot_name,"HypBot_%d",bot->count);
+	if (strlen(name) == 0)
+	{
+		if (current_mod->value == 2) // blood money
+		sprintf(bot_name, "KooglepBot_%d", bot->count);
+		else
+		sprintf(bot_name, "HypBot_%d", bot->count);
+	}
 	else
 		strcpy(bot_name,name);
 
@@ -1056,6 +1061,69 @@ void KOOGLESP_SpawnBot (char *team, char *name, char *skin, char *userinfo, floa
 
 }
 
+void KOOGLESP_SpawnBot_Random(char* team, char* name, char* skin, char* userinfo)
+{
+	edict_t* bot;
+	int i, j, k, l, count;
+	int randm, numBotCFGs;
+	int countArray[64]; //64 max players
+
+	level.bots_spawned = true;
+
+	numBotCFGs = KOOGLESP_LoadRandomBotCFG(); //check file every time?
+	if (numBotCFGs)
+	{
+		// run through all players/bots names. add a random bot
+		memset(&countArray, false, sizeof(countArray));
+		j = 0;
+		if (numBotCFGs)
+		{
+
+			//1024 should n more than enough times to test random
+			for (k = 0; k < 1024; k++)
+			{
+				count = 0;
+				randm = rand() % numBotCFGs;
+
+				for_each_player_inc_bot(bot, i)
+				{
+					//if (!bot->kooglebot.is_bot) continue; //hypo allow clients to use bot names?
+					if (Q_stricmp(randomBotSkins[randm].name, bot->client->pers.netname) == 0)
+					{
+						count++;
+						break;
+					}
+				}
+
+				if (!count)
+				{
+					if (teamplay->value) // name, skin, team 
+						KOOGLESP_SpawnBot(team, randomBotSkins[randm].name, randomBotSkins[randm].skin, NULL, randomBotSkins[randm].skill); //sv addbot thugBot "male_thug/009 031 031" dragon
+					else // name, skin			
+						KOOGLESP_SpawnBot("\0", randomBotSkins[randm].name, randomBotSkins[randm].skin, NULL, randomBotSkins[randm].skill); //sv addbot thugBot "male_thug/009 031 031"
+
+					return;
+				}
+
+				countArray[randm] = true;
+
+				//check if every cfg name has been compared( because of random)
+				for (l = 0; l < numBotCFGs; l++)
+				{
+					if (countArray[l] == false)
+						break;
+
+					//run out of names. spawn generic
+					if (l == numBotCFGs - 1)
+						KOOGLESP_SpawnBot(team, name, skin, userinfo, 1.0f);
+				}
+			}
+		}
+	}
+	else	//no bot cfg
+		KOOGLESP_SpawnBot(team, name, skin, userinfo, 1.0f);
+}
+
 /////////////////////////////////////////////////////////////////////////////////
 // Load a predefined bot cfg
 /////////////////////////////////////////////////////////////////////////////////
@@ -1130,68 +1198,7 @@ int KOOGLESP_LoadRandomBotCFG(void)
 	return 0;
 }
 
-void KOOGLESP_SpawnBot_Random(char *team, char *name, char *skin, char *userinfo)
-{
-	edict_t	*bot;
-	int i, j, k, l, count;
-	int randm, numBotCFGs;
-	int countArray[64]; //64 max players
 
-	level.bots_spawned = true;
-
-	numBotCFGs = KOOGLESP_LoadRandomBotCFG(); //check file every time?
-	if (numBotCFGs)
-	{
-		// run through all players/bots names. add a random bot
-		memset(&countArray, false, sizeof(countArray));
-		j = 0;
-		if (numBotCFGs)
-		{
-
-			//1024 should n more than enough times to test random
-			for (k = 0; k < 1024; k++) 
-			{
-				count = 0; 
-				randm = rand() % numBotCFGs;
-
-				for_each_player_inc_bot(bot, i)
-				{
-					//if (!bot->kooglebot.is_bot) continue; //hypo allow clients to use bot names?
-					if (Q_stricmp(randomBotSkins[randm].name, bot->client->pers.netname) == 0)
-					{
-						count++;
-						break;
-					}
-				}
-
-				if (!count)
-				{
-					if (teamplay->value) // name, skin, team 
-						KOOGLESP_SpawnBot(team, randomBotSkins[randm].name, randomBotSkins[randm].skin, NULL, randomBotSkins[randm].skill); //sv addbot thugBot "male_thug/009 031 031" dragon
-					else // name, skin			
-						KOOGLESP_SpawnBot("\0", randomBotSkins[randm].name, randomBotSkins[randm].skin, NULL, randomBotSkins[randm].skill); //sv addbot thugBot "male_thug/009 031 031"
-					
-					return;
-				}
-
-				countArray[randm] = true;
-
-				//check if every cfg name has been compared( because of random)
-				for (l = 0; l < numBotCFGs; l++)
-				{
-					if (countArray[l] == false)
-						break;
-
-					//run out of names. spawn generic
-					if (l == numBotCFGs-1)
-						KOOGLESP_SpawnBot(team, name, skin, userinfo, 1.0f);
-				}
-			}
-		}
-	}
-	else	//no bot cfg
-		KOOGLESP_SpawnBot(team, name, skin, userinfo, 1.0f);
-}
 
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -1242,7 +1249,7 @@ void KOOGLESP_RemoveBot(char *name, qboolean print)
 void KOOGLESP_KillBot(edict_t *self)
 {
 	self->client->latched_buttons = 0;
-	self->kooglebot.suicide_timeout = level.time + 10.0; // reset since not using ACESP
+	self->kooglebot.suicide_timeout = level.time + 10.0; // reset since not using KOOGLESP
 	self->flags &= ~FL_GODMODE; // hypo_v8 added. shown as player killed them selves now
 	self->health = 0;
 	meansOfDeath = MOD_BOT_SUICIDE;		// hypo_v8 added. shown as player killed them selves now

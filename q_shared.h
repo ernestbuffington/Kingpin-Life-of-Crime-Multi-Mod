@@ -69,8 +69,10 @@ typedef enum {false, true}	qboolean;
 #define	MAX_SOUNDS			384		// so they cannot be blindly increased
 #define	MAX_IMAGES			256
 #define	MAX_ITEMS			256
+
 #define MAX_LIGHTFLARES		128
 #define MAX_JUNIOR_STRINGS	512
+
 #define MAX_GENERAL			(MAX_CLIENTS*2)	// general config strings
 
 // game print flags
@@ -659,9 +661,11 @@ typedef struct
 #define EF_SPINNINGLIGHTS	0x00800000
 #define EF_PLASMA			0x01000000
 #define EF_TRAP				0x02000000
+
 #define EF_REFL				0x04000000
 #define	EF_FLAMETHROWER		0x08000000
 #define EF_ANIM_ALLFAST_NEW	0x10000000		// automatically cycle through all frames at 10hz
+
 
 // entity_state_t->renderfx flags
 #define	RF_MINLIGHT			1		// allways have some light (viewmodel)
@@ -1273,9 +1277,7 @@ typedef enum
 	EV_FOOTSTEP5,
 	EV_FOOTSTEP6,
 	EV_FOOTSTEP7,
-	// JOSEPH 26-JAN-99
 	EV_FOOTSTEP8,
-	// END JOSEPH
 	EV_FALLSHORT0,
 	EV_FALLSHORT1,
 	EV_FALLSHORT2,
@@ -1284,9 +1286,7 @@ typedef enum
 	EV_FALLSHORT5,
 	EV_FALLSHORT6,
 	EV_FALLSHORT7,
-	// JOSEPH 26-JAN-99
 	EV_FALLSHORT8,
-	// END JOSEPH	
 	EV_FALL,
 	EV_FALLFAR,
 	EV_PLAYER_TELEPORT,
