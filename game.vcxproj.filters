@@ -380,4 +380,7 @@
       <Filter>Config Files\main Config Files</Filter>
     </Text>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="win32\kingpin.ico" />
+  </ItemGroup>
 </Project>

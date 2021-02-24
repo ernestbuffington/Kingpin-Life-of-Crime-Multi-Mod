@@ -428,6 +428,9 @@
     <Text Include="..\names.txt" />
     <Text Include="..\rcons.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="win32\kingpin.ico" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
