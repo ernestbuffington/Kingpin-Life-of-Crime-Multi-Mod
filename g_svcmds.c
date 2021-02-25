@@ -289,9 +289,10 @@ The game can issue gi.argc() / gi.argv() commands to get the rest
 of the parameters
 =================
 */
-void	ServerCommand (void)
+void ServerCommand (void)
 {
 	char	*cmd;
+
 	cmd = gi.argv(1);
 
 	if (Q_stricmp (cmd, "test") == 0)
@@ -305,16 +306,29 @@ void	ServerCommand (void)
 	else if (Q_stricmp (cmd, "writeip") == 0)
 		SVCmd_WriteIP_f ();
 
-// KOOGLEBOT_ADD
-	else if (Q_stricmp(cmd, "acedebug") == 0 || Q_stricmp(cmd, "botdebug") == 0 || Q_stricmp(cmd, "debugbot") == 0)
-		KOOGLECM_BotDebug(true);
+   // KOOGLEBOT_ADD
+	else if (Q_stricmp(cmd, "acedebug") == 0 || Q_stricmp(cmd, "debug") == 0 || Q_stricmp(cmd, "koogledebug") == 0 || Q_stricmp(cmd, "botdebug") == 0 || Q_stricmp(cmd, "debugbot") == 0)
+	{
+		if (strcmp(gi.argv(2), "on") == 0)
+		{
+			safe_bprintf(PRINT_MEDIUM, "KOOGLE: Debug Mode On\n");
+			KOOGLECM_BotDebug(true);
+		}
+		else
+		{
+			safe_bprintf(PRINT_MEDIUM, "KOOGLE: Debug Mode Off\n");
+			KOOGLECM_BotDebug(false);
+		}
+	}
+
+
 	else if (Q_stricmp(cmd, "addbot") == 0)
 		KOOGLECM_BotAdd(gi.argv(2), gi.argv(3), gi.argv(4), gi.argv(5)); //add skill
-	else if (Q_stricmp(cmd, "removebot") == 0 || Q_stricmp(cmd, "removebots") == 0)
+	else if (Q_stricmp(cmd, "removebot") == 0 || Q_stricmp(cmd, "removebots") == 0 || Q_stricmp(cmd, "rbot") == 0)
 		KOOGLESP_RemoveBot(gi.argv(2), true);
 	else if (Q_stricmp(cmd, "savenodes") == 0 || Q_stricmp(cmd, "savenode") == 0)
 		KOOGLEND_SaveNodes();
-// KOOGLEBOT_END
+	// KOOGLEBOT_END
 
 	else if (!Q_stricmp(cmd,"banip")) 
 		Cmd_BanDicks_f(NULL, 1);

@@ -72,7 +72,7 @@
 
 int	num_players;
 int num_items;
-int nodeFileComplet =0;
+int nodeFileComplet = 0;
 int num_bots;
 
 
@@ -865,7 +865,7 @@ void KOOGLEIT_BuildItemNodeTable(qboolean reLinkEnts)
 			//cant find a match.
 			if (i == numnodes)
 			{
-				level.aceNodesCurupt = true;
+				level.koogleNodesCurupt = true;
 #ifdef DEBUG_KOOGLE
 				fprintf(pOut, "Relink item FAILED: %s pos: %f %f %f (matching XY:%s)\n",
 					items->classname, items->s.origin[0], items->s.origin[1], items->s.origin[2], XY_Match? "true": "false" );

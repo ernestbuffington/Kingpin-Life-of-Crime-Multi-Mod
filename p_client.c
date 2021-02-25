@@ -154,11 +154,11 @@ void ClientObituary (edict_t *self, edict_t *inflictor, edict_t *attacker)
 		case MOD_SUICIDE:
 			message = "suicides";
 			break;
-// KOOGLEBOT_ADD
+           // KOOGLEBOT_ADD
 			case MOD_BOT_SUICIDE: //added hypov8 console write bot death
 				message = "bot stuck, suicides";
 				break;
-// KOOGLEBOT_END
+           // KOOGLEBOT_END
 		case MOD_FALLING:
 			message = "cratered";
 			break;
@@ -255,9 +255,9 @@ void ClientObituary (edict_t *self, edict_t *inflictor, edict_t *attacker)
 		{
 			safe_bprintf(PRINT_MEDIUM, "%s %s.\n", self->client->pers.netname, message);
 			{
-// HYPOV8_ADD
+                // HYPOV8_ADD
 				if (mod != MOD_BOT_SUICIDE) //add hypov8 stop stuck bots loosinbg frags
-// HYPOV8_END
+                // HYPOV8_END
 					self->client->resp.score--;
 
 				// BEGIN HITMEN
@@ -885,7 +885,7 @@ PlayersRangeFromSpot
 Returns the distance to the nearest player from the given spot
 ================
 */
-float	PlayersRangeFromSpot (edict_t *spot)
+float PlayersRangeFromSpot (edict_t *spot)
 {
 	edict_t	*player;
 	float	bestplayerdistance;
@@ -1064,7 +1064,7 @@ SelectSpawnPoint
 Chooses a player start, deathmatch start, coop start, etc
 ============
 */
-void	SelectSpawnPoint (edict_t *ent, vec3_t origin, vec3_t angles)
+void SelectSpawnPoint (edict_t *ent, vec3_t origin, vec3_t angles)
 {
 	edict_t	*spot = NULL;
 
@@ -1078,11 +1078,11 @@ void	SelectSpawnPoint (edict_t *ent, vec3_t origin, vec3_t angles)
 		{
 			gi.error("Couldn't find  SP spawn point\n");
 
-//HYPOV8_ADD //fix for testing maps in sp when missing an info_player_start
+            //HYPOV8_ADD //fix for testing maps in sp when missing an info_player_start
 			spot = G_Find (spot, FOFS(classname), "info_player_deathmatch");
 			if (!spot)
 				gi.error("Couldn't find DM spawn point\n");
-//HYPOV8_END							
+            //HYPOV8_END							
 
 		}
 	}
@@ -1141,7 +1141,7 @@ void body_die (edict_t *self, edict_t *inflictor, edict_t *attacker, int damage,
 		gi.WritePosition (self->s.origin);
 		gi.WriteDir (vec3_origin);
 		gi.WriteByte ( dm_realmode->value == 3 ? 8 : 16 );	// number of gibs
-		gi.WriteByte ( 0 );	// scale of direction to add to velocity
+		gi.WriteByte ( 0 );	    // scale of direction to add to velocity
 		gi.WriteByte ( 16 );	// random offset scale
 		gi.WriteByte ( 100 );	// random velocity scale
 		gi.multicast (self->s.origin, MULTICAST_PVS);
@@ -1274,11 +1274,11 @@ void CopyToBodyQue (edict_t *ent)
 
 	body->s.effects = 0;
 	body->s.angles[PITCH] = 0;
+
 	// KOOGLEBOT_ADD
 	if (ent->kooglebot.is_bot)
 		VectorCopy(ent->kooglebot.deathAngles, body->s.angles);
-
-	// KOOGLEBOT_END
+ 	// KOOGLEBOT_END
 
 	body->gender = ent->gender;
 	body->deadflag = ent->deadflag;
@@ -1305,15 +1305,14 @@ void CopyToBodyQue (edict_t *ent)
 
 void respawn (edict_t *self)
 {
-// HYPOV8_ADD
+    // HYPOV8_ADD
 	if (level.modeset != MATCH && level.modeset != PUBLIC)
 	{
 		self->deadflag = 0;
 		gi.dprintf("%s caught respawing after match\n", self->client->pers.netname);
 		return; //hypov8 dont respawn, fixes last person dying loosing there mouse pitch
 	}
-// HYPOV8_END
-
+    // HYPOV8_END
 
 		if (!(self->svflags & SVF_NOCLIENT))
 			CopyToBodyQue (self);
@@ -1327,9 +1326,7 @@ void respawn (edict_t *self)
 		self->client->ps.pmove.pm_time = 14;
 
 		self->client->respawn_time = level.time;
-
-
-}
+ }
 
 //==============================================================
 
@@ -1353,14 +1350,14 @@ void PutClientInServer (edict_t *ent)
 	client_persistant_t	saved;
 	client_respawn_t	resp;
 
-// KOOGLEBOT_ADD
-	//add hypov8 stop player moving to a spawnpoint
+    // KOOGLEBOT_ADD
+	// add hypov8 stop player moving to a spawnpoint
 	qboolean isUsingSpec = false;// HYPOV8_ADD
-	short		delta_anglesOld[3];
+	short delta_anglesOld[3];
 
 	if (!ent->kooglebot.is_bot 
 		&& (ent->client->pers.spectator == SPECTATING /*|| (teamplay->value && ent->client->pers.team == 0)*/)
-		&& (level.modeset == MATCH || level.modeset == PUBLIC)) //rembers last posi
+		&& (level.modeset == MATCH || level.modeset == PUBLIC)) //rembers last position
 	{
 		VectorCopy(ent->s.origin, spawn_origin);
 		VectorCopy(ent->s.angles, spawn_angles);
@@ -1374,7 +1371,7 @@ void PutClientInServer (edict_t *ent)
 		isUsingSpec = true;
 	}
 	else //end hypov8
-// KOOGLEBOT_END
+    // KOOGLEBOT_END
 
 	// find a spawn point
 	// do it before setting health back up, so farthest
@@ -1396,7 +1393,7 @@ void PutClientInServer (edict_t *ent)
 
 	ent->name_index = -1;
 
-	//hypov8 todo: check this add scoreboard menu. after death
+	// hypo_v8 todo: check this add scoreboard menu. after death
 	// clear everything but the persistant data
 	saved = client->pers;
 	memset (client, 0, sizeof(*client));
@@ -1424,11 +1421,11 @@ void PutClientInServer (edict_t *ent)
 		ent->svflags &= ~(SVF_DEADMONSTER|SVF_NOCLIENT);
 
 		//give 3 seconds of imortality on each spawn (anti-camp) 
-		client->invincible_framenum = level.framenum + 6;	//hypov8 allow for antilag. 
+		client->invincible_framenum = level.framenum + 6;	// hypo_v8 allow for antilag. 
 		if (anti_spawncamp->value)
-			client->invincible_framenum = level.framenum + 15;  //3 seconds 
+		client->invincible_framenum = level.framenum + 15;  // 3 seconds 
 	}
-	// RAFAEL
+	// RAFAEL blows goats
 	ent->viewheight = 40;
 
 	ent->inuse = true;
@@ -1447,7 +1444,7 @@ void PutClientInServer (edict_t *ent)
 	ent->s.renderfx2 = 0;
 	ent->onfiretime = 0;
 	ent->cast_info.aiflags |= AI_GOAL_RUN;	// make AI run towards us if in pursuit
-	ent->flags &= ~FL_CHASECAM; //hypov8 turn off togglecam
+	ent->flags &= ~FL_CHASECAM; // hypo_v8 turn off togglecam
 	VectorCopy (mins, ent->mins);
 	VectorCopy (maxs, ent->maxs);
 	VectorClear (ent->velocity);
@@ -1457,11 +1454,12 @@ void PutClientInServer (edict_t *ent)
 
 	ent->hasSelectedPistol = false; // HYPOV8_ADD
 
-// KOOGLEBOT_ADD
+    // KOOGLEBOT_ADD
 	ent->kooglebot.PM_Jumping = 0;
 	ent->kooglebot.pm_last_node = INVALID;
 	ent->kooglebot.pm_jumpPadMove = false;
-// KOOGLEBOT_END
+	ent->kooglebot.isCrouching = false;
+    // KOOGLEBOT_END
 
 	if (ent->solid)
 	{
@@ -1534,7 +1532,7 @@ void PutClientInServer (edict_t *ent)
 		memset(&(client->ps.model_parts[0]), 0, sizeof(model_part_t) * MAX_MODEL_PARTS);
 
 		client->ps.num_parts++;
-	// JOSEPH 22-JAN-99
+	    // JOSEPH 22-JAN-99
 		if (client->pers.weapon)
 			client->ps.model_parts[PART_HEAD].modelindex = gi.modelindex(client->pers.weapon->view_model);
 		
@@ -1556,11 +1554,11 @@ void PutClientInServer (edict_t *ent)
 	ent->s.origin[2] += 1;	// make sure off ground
 	VectorCopy (ent->s.origin, ent->s.old_origin);
 
-// KOOGLEBOT_ADD
+    // KOOGLEBOT_ADD
 	if (ent->kooglebot.is_bot)
-		KOOGLESP_Respawn(ent);
+	KOOGLESP_Respawn(ent);
 	VectorCopy( ent->s.origin,ent->kooglebot.oldOrigin);
-// KOOGLEBOT_END 
+    // KOOGLEBOT_END 
 
 // bikestuff
 ent->biketime = 0;
@@ -1599,8 +1597,9 @@ ent->bikestate = 0;
 			ent->flags |= FL_CAR;
 	}
 // done.
-	else if (dm_locational_damage->value)	// deathmatch, note models must exist on server for client's to use them, but if the server has a model a client doesn't that client will see the default male model
-	{
+	else 
+	if (dm_locational_damage->value)	// deathmatch, note models must exist on server for client's to use them, 
+	{									// but if the server has a model a client doesn't that client will see the default male model
 		char	*s;
 		char	modeldir[MAX_QPATH];//, *skins;
 		int		len;
@@ -1633,12 +1632,12 @@ ent->bikestate = 0;
 		}
 
 		if (strlen(s) > MAX_QPATH-1)
-			s[MAX_QPATH-1] = '\0';
+		s[MAX_QPATH-1] = '\0';
 
 		strcpy(modeldir, s);
 		
 		if (!modeldir[0])
-			strcpy( modeldir, "male_thug" );
+		strcpy( modeldir, "male_thug" );
 		
 		memset(&(ent->s.model_parts[0]), 0, sizeof(model_part_t) * MAX_MODEL_PARTS);
 		
@@ -1649,7 +1648,7 @@ ent->bikestate = 0;
 		ent->s.model_parts[ent->s.num_parts-1].modelindex = 255;
 		gi.GetObjectBounds( modelname, &ent->s.model_parts[ent->s.num_parts-1] );
 		if (!ent->s.model_parts[ent->s.num_parts-1].object_bounds[0])
-			gi.GetObjectBounds( "players/male_thug/head.mdx", &ent->s.model_parts[ent->s.num_parts-1] );
+		gi.GetObjectBounds( "players/male_thug/head.mdx", &ent->s.model_parts[ent->s.num_parts-1] );
 
 		ent->s.num_parts++;
 		strcpy( modelname, "players/" );
@@ -1658,7 +1657,7 @@ ent->bikestate = 0;
 		ent->s.model_parts[ent->s.num_parts-1].modelindex = 255;
 		gi.GetObjectBounds( modelname, &ent->s.model_parts[ent->s.num_parts-1] );
 		if (!ent->s.model_parts[ent->s.num_parts-1].object_bounds[0])
-			gi.GetObjectBounds( "players/male_thug/legs.mdx", &ent->s.model_parts[ent->s.num_parts-1] );
+		gi.GetObjectBounds( "players/male_thug/legs.mdx", &ent->s.model_parts[ent->s.num_parts-1] );
 
 		ent->s.num_parts++;
 		strcpy( modelname, "players/" );
@@ -1667,7 +1666,7 @@ ent->bikestate = 0;
 		ent->s.model_parts[ent->s.num_parts-1].modelindex = 255;
 		gi.GetObjectBounds( modelname, &ent->s.model_parts[ent->s.num_parts-1] );
 		if (!ent->s.model_parts[ent->s.num_parts-1].object_bounds[0])
-			gi.GetObjectBounds( "players/male_thug/body.mdx", &ent->s.model_parts[ent->s.num_parts-1] );
+		gi.GetObjectBounds( "players/male_thug/body.mdx", &ent->s.model_parts[ent->s.num_parts-1] );
 
 		ent->s.num_parts++;
 		ent->s.model_parts[PART_GUN].modelindex = 255;
@@ -1686,11 +1685,11 @@ ent->bikestate = 0;
 	// set the delta angle
 	for (i=0 ; i<3 ; i++)
 	{
-// HYPOV8_ADD 
+        // HYPOV8_ADD 
 		if (!isUsingSpec)
 			client->ps.pmove.delta_angles[i] = ANGLE2SHORT(spawn_angles[i] - client->resp.cmd_angles[i]);
 		else
-// HYPOV8_END 
+        // HYPOV8_END 
 			client->ps.pmove.delta_angles[i] = delta_anglesOld[i];
 
 	}
@@ -1708,7 +1707,7 @@ ent->bikestate = 0;
 
 	// we don't want players being backward-reconciled to the place they died
 	if (antilag->value && ent->solid != SOLID_NOT)
-		G_ResetHistory(ent);
+	G_ResetHistory(ent);
 
 	// BEGIN HITMEN
 	if (sv_hitmen->value /*enable_hitmen*/)
@@ -1717,12 +1716,12 @@ ent->bikestate = 0;
 		// this should only work once we've been killed once and respawned
 		timediff = 0;
 		if (ent->client->resp.spawntime != 0)
-			timediff = level.framenum - ent->client->resp.spawntime;
+		timediff = level.framenum - ent->client->resp.spawntime;
 
 		// Once we've respawned set the players time alive.
 		timediff /= 10;
 		if ((timediff > 0) && timediff > (ent->client->resp.timealive))
-			ent->client->resp.timealive = timediff;
+		ent->client->resp.timealive = timediff;
 
 		ent->client->resp.spawntime = level.framenum;
 
@@ -1734,9 +1733,9 @@ ent->bikestate = 0;
 	client->newweapon = client->pers.weapon;
 	ChangeWeapon (ent);
 
-// KOOGLEBOT_ADD
+    // KOOGLEBOT_ADD
 	if (!ent->kooglebot.is_bot)
-// KOOGLEBOT_END
+    // KOOGLEBOT_END
 
 	if (ent->solid != SOLID_NOT || client->resp.enterframe == level.framenum)
 	{
@@ -1745,13 +1744,13 @@ ent->bikestate = 0;
 		gi.WriteShort (ent - g_edicts);
 		gi.WriteByte (MZ_LOGIN);
 		if (ent->solid != SOLID_NOT)
-			gi.multicast (ent->s.origin, MULTICAST_PVS);
+		gi.multicast (ent->s.origin, MULTICAST_PVS);
 		else
-			gi.unicast (ent, false);
+		gi.unicast (ent, false);
 	}
 
 	if (level.intermissiontime)
-		MoveClientToIntermission (ent);
+	MoveClientToIntermission (ent);
 }
 
 /*

@@ -70,6 +70,7 @@
 #define KOOGLE_Look_Straight(target,player,out) (out[0]=target[0],out[1]=target[1],out[2]=player[2])
 
 vec3_t KOOGLEBOT_Look_Out; // hypo_v8 global var	 ??? What is this and what is going to be used for ???
+#define BOT_CROUCH_VEL (-400)  
 #define BOT_JUMP_VEL (400) // 360
 #define BOT_FORWARD_VEL (160*2) // 340 // hypov8 kp default
 #define BOT_SIDE_VEL (160*2) // cl_anglespeedkey->value) // hypov8 kp default 1.5
@@ -87,7 +88,7 @@ vec3_t KOOGLEBOT_Look_Out; // hypo_v8 global var	 ??? What is this and what is g
 #define STATE_DOWN			3
 
 // Maximum nodes
-#define MAX_BOTNODES ((short)1000)
+#define MAX_BOTNODES ((short)2048)
 //const static short MAX_BOTNODES = 1000;
 
 // Link types
@@ -105,6 +106,10 @@ vec3_t KOOGLEBOT_Look_Out; // hypo_v8 global var	 ??? What is this and what is g
 #define BOTNODE_DRAGON_SAFE 8 // hypo_v8 todo:
 #define BOTNODE_NIKKISAFE 9   // hypo_v8 todo:
 #define BOTNODE_TRIGPUSH 10   // hypo_v8 add for trigger_push todo:? using jump nodes
+
+// the following can exist in conjunction with others
+#define	BOTNODE_DUCKING  32   // the infamous duck node! What an oversight! // TheGhost add
+
 #define BOTNODE_ALL 99        // For selecting all nodes
 
 // Node height adjustment. items are usualy 16 high. we move every item up +8 above player height (32 units)
@@ -264,6 +269,7 @@ typedef struct //bot->kooglebot.xxx
 	// For bot movement
 	int	isOnLadder;						// hypo_v8 add. stop bots aiming when on ladders. added top of latter = 2
 	qboolean	isJumpToCrate;			// hypo_v8 tryto get bot to jump upto item
+	qboolean	isCrouching;
 	qboolean	isTrigPush;				// add hypo_v8 trig push. dont move
 	qboolean	is_Jumping;				// jump node last used
 
@@ -495,14 +501,15 @@ qboolean KOOGLEND_PathMapValidPlayer(edict_t *self);
 float VectorDistanceFlat(vec3_t vec1, vec3_t vec2);
 vec_t KOOGLEND_NodeOffset(short type); // hypo_v8 keep height consistant
 short KOOGLEND_FindClosestReachableNode(edict_t* self, int range, short type);
+qboolean KOOGLEND_CheckForCrouch(edict_t *self);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // kooglebot_spawn.c protos
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void KOOGLESP_LoadBots();
 void KOOGLESP_Respawn (edict_t *self);
-void KOOGLESP_SetName(edict_t *bot, char *name, char *skin/*, char *team*/);
-void KOOGLESP_SpawnBot (char *team, char *name, char *skin, char *userinfom, float skill);
+void KOOGLESP_SpawnBot (char *team,char *name,char *skin, char *userinfom, float skill);
+void KOOGLESP_SetName(edict_t *bot,char *name,char *skin,char *extras);
 void KOOGLESP_SpawnBot_Random(char* team, char* name, char* skin, char* userinfo);
 void KOOGLESP_RemoveBot(char *name, qboolean print);
 void KOOGLESP_FreeBots(void); // add hypo_v8

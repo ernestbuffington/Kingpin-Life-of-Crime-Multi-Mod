@@ -1330,6 +1330,13 @@ void KOOGLEMV_Move(edict_t *self, usercmd_t *ucmd)
 	if (self->movetarget)
 		isExplosive = KOOGLEMV_MoveToGoal(self, ucmd);
 
+
+	///////////////////////////
+	// Crouch Mother Fucker  // TheGhost add
+	///////////////////////////
+	if (current_node_type == BOTNODE_DUCKING || next_node_type == BOTNODE_DUCKING)
+		ucmd->upmove = -400;
+
 	////////////////////////////////////////////////////////
 	// Grapple
 	///////////////////////////////////////////////////////

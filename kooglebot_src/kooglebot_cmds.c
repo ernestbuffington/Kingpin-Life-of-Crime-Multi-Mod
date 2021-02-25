@@ -108,19 +108,20 @@ static const char *menu_str[] ={
 //new debug statusbar
 	static const char *botStatusbar = " xr -170"
 		" yv 100 string \"  *KEYS REBOUND* \""
-		" yv 110 string \" KEY 0 = ADD MOVE \""
-		" yv 120 string \" KEY 5 = ADD WATER \""
-		" yv 130 string \" KEY 6 = ADD LADDER \""
-		" yv 140 string \" KEY 7 = ADD JUMP  \""
-		" yv 150 string \" KEY 8 = findnode \""
-		" yv 160 string \" KEY 9 = movenode \""
+		" yv 120 string \" KEY 0 = ADD MOVE \""
+		" yv 130 string \" KEY 1 = ADD CROUCH \""
+		" yv 140 string \" KEY 5 = ADD WATER \""
+		" yv 150 string \" KEY 6 = ADD LADDER \""
+		" yv 160 string \" KEY 7 = ADD JUMP  \""
+		" yv 170 string \" KEY 8 = findnode \""
+		" yv 180 string \" KEY 9 = movenode \""
 		" xr -130"
-		" yv 190 string \"sv_botpath\""
-		" yv 200 string \"localnode\""
-		" yv 210 string \"clearnode #\""
-		" yv 220 string \"addlink # #\""
-		" yv 230 string \"removelink # #\""
-		" yv 240 string \"nodeFinal\" "		;
+		" yv 200 string \"sv_botpath\""
+		" yv 210 string \"localnode\""
+		" yv 220 string \"clearnode #\""
+		" yv 230 string \"addlink # #\""
+		" yv 240 string \"removelink # #\""
+		" yv 250 string \"nodeFinal\" "		;
 
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -650,7 +651,8 @@ void Cmd_VoteSkill_f(edict_t *ent, qboolean usedMenu) //VOTE_BOTSKILL;
 	char		*s;
 	float skill_f;
 
-	if (!sv_bot_allow_skill->value)	{
+	if (!sv_bot_allow_skill->value)	
+	{
 		safe_cprintf(ent, PRINT_HIGH, "Bot-Skill Voting Disabled.\n", ent->client->pers.netname);
 		return;
 	}
@@ -1141,7 +1143,7 @@ void KOOGLECM_BotDebug(qboolean changeState) //Fix TheGhost
 			/*	safe_cprintf(doot, PRINT_MEDIUM, " \n");*/
 			safe_cprintf(doot, PRINT_MEDIUM,
 				"ƒ†====================\n"
-				"ƒ† findnode gets closes #node\n"
+				"ƒ† findnode gets closest #node\n"
 				"ƒ†   then copys # to movenode\n"
 				"ƒ† movenode copys #node to player origin\n"
 				"ƒ†====================\n\n");
@@ -1150,6 +1152,7 @@ void KOOGLECM_BotDebug(qboolean changeState) //Fix TheGhost
 			gi.WriteString(	
 				"bind 5 \"addnode 5\";"
 				"bind 6 \"addnode 1\";"
+				"bind 1 \"addnode 32\";"
 				"bind 7 \"addnode 7\";"
 				"bind 8 \"findnode\";"
 				"bind 9 \"movenode 999\";"
@@ -1164,6 +1167,7 @@ void KOOGLECM_BotDebug(qboolean changeState) //Fix TheGhost
 			gi.WriteByte(13);
 			gi.WriteString(
 				"bind 5 \"use heavy machinegun\";"
+				"bind 1 \"use pipe\";"
 				"bind 6 \"use grenade launcher\";"
 				"bind 7 \"use bazooka\";"
 				"bind 8 \"use flamethrower\";"
@@ -1291,23 +1295,28 @@ qboolean KOOGLECM_Commands(edict_t *ent)
 	//client commands
 	if (Q_stricmp(cmd, "votebotadd") == 0)
 		Cmd_VoteAddBot_f(ent, 0);
-	else if (Q_stricmp(cmd, "votebotremove") == 0)
+	else 
+	if (Q_stricmp(cmd, "votebotremove") == 0)
 		Cmd_VoteRemoveBot_f(ent, false, NULL);
-	else if (Q_stricmp(cmd, "votebotskill") == 0)
+	else 
+	if (Q_stricmp(cmd, "votebotskill") == 0)
 		Cmd_VoteSkill_f(ent, false);
-	else if (Q_stricmp(cmd, "menu") == 0)
+	else 
+	if (Q_stricmp(cmd, "menu") == 0)
 		KOOGLECM_Menu_f(ent);
-	else if (Q_stricmp(cmd, "botskill") == 0)
+	else 
+	if (Q_stricmp(cmd, "botskill") == 0)
 		KOOGLECM_SetBotSkill_f(ent, gi.argv(1));
 	//else if (Q_stricmp(cmd, "votebotcount") == 0)		//hypo todo:
 	//	Cmd_VoteBotCount_f(ent); 
 
-	else if (!level.bot_debug_mode)
+	else 
+	if (!level.bot_debug_mode)
 		return false;
 
-
 	//dev commands
-	else if (Q_stricmp(cmd, "addnode") == 0)
+	else 
+	if (Q_stricmp(cmd, "addnode") == 0)
 	{
 		if (ent->client == NULL
 			|| ent->client->pers.spectator == SPECTATING
@@ -1321,15 +1330,19 @@ qboolean KOOGLECM_Commands(edict_t *ent)
 		if (!sv_botpath->value)
 			ent->kooglebot.pm_last_node = INVALID; //prevent bug when re'enable sv_botpath
 	}
-	else if (Q_stricmp(cmd, "removelink") == 0){
+	else 
+	if (Q_stricmp(cmd, "removelink") == 0){
 		KOOGLEND_RemoveNodeEdge(ent, atoi(gi.argv(1)), atoi(gi.argv(2)));
 		return true;
 	}
-	else if(Q_stricmp (cmd, "addlink") == 0)
+	else 
+	if(Q_stricmp (cmd, "addlink") == 0)
 		KOOGLEND_UpdateNodeEdge(atoi(gi.argv(1)), atoi(gi.argv(2)), false, false, false, false);
-	else if(Q_stricmp (cmd, "showpath") == 0)
+	else 
+	if(Q_stricmp (cmd, "showpath") == 0)
     	KOOGLEND_ShowPath(ent,atoi(gi.argv(1)));
-	else if (Q_stricmp(cmd, "localnode") == 0) //hypov8 add. show nodes close by
+	else 
+	if (Q_stricmp(cmd, "localnode") == 0) //hypov8 add. show nodes close by
 	{
 		if (level.bot_debug_mode != 2){
 			gi.dprintf("%s enabled localnode\n", ent->client->pers.netname);
@@ -1342,7 +1355,8 @@ qboolean KOOGLECM_Commands(edict_t *ent)
 			level.bot_debug_mode = 1;
 		}
 	}
-	else if(Q_stricmp (cmd, "findnode") == 0)
+	else 
+	if(Q_stricmp (cmd, "findnode") == 0)
 	{
 		char strWrite[MAX_INFO_STRING];
 
@@ -1363,7 +1377,8 @@ qboolean KOOGLECM_Commands(edict_t *ent)
 		gi.WriteString(strWrite);
 		gi.unicast(ent, true);
 	}
-	else if (Q_stricmp(cmd, "movenode") == 0)
+	else 
+	if (Q_stricmp(cmd, "movenode") == 0)
 	{
 		float x, y, z;
 		char* nodeStr = gi.argv(1);
@@ -1410,11 +1425,14 @@ qboolean KOOGLECM_Commands(edict_t *ent)
 			safe_cprintf(ent, PRINT_MEDIUM, "node: %d moved to x: %f y: %f z %f\n", node, x, y, z);
 		}
 	}
-	else if (Q_stricmp(cmd, "clearnode") == 0) //add hypov8 clear all paths to a node(cant be removed?)
+	else 
+	if (Q_stricmp(cmd, "clearnode") == 0) //add hypov8 clear all paths to a node(cant be removed?)
 		KOOGLEND_RemovePaths(ent, (short)atoi(gi.argv(1)));
-	else if (Q_stricmp(cmd, "clearallpaths") == 0) //add hypov8 clear all paths
+	else 
+	if (Q_stricmp(cmd, "clearallpaths") == 0) //add hypov8 clear all paths
 		KOOGLEND_RemoveallPaths(ent);
-	else if (Q_stricmp(cmd, "nodefinal") == 0) //add hypov8 finalise node table
+	else 
+	if (Q_stricmp(cmd, "nodefinal") == 0) //add hypov8 finalise node table
 		stopNodeUpdate = 1;
 	else
 		return false;

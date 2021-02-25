@@ -351,7 +351,7 @@ qboolean KOOGLEND_FollowPath(edict_t *self)
 			KOOGLEND_SetGoal(self, self->kooglebot.node_goal, self->kooglebot.node_ent);
 	}
 		
-	//hypov8 check plate. fix for plate with hand rails
+	//hypov8 check plat. fix for plat with hand rails
 	if (nodes[self->kooglebot.node_current].type == BOTNODE_PLATFORM)	{
 		int i;
 		for (i = 0; i < num_items; i++)		{
@@ -567,9 +567,6 @@ void KOOGLEND_HookDeActivate(edict_t *self)
 	self->kooglebot.pm_hookActive = 0;
 	self->kooglebot.pm_last_node = INVALID;
 }
-
-
-
 #endif
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -633,7 +630,16 @@ static qboolean KOOGLEND_PM_CheckForLadder(edict_t *self)
 	return false;
 }
 
+qboolean KOOGLEND_CheckForCrouch(edict_t *self)
+{
+	////////////////////////////////////////////////////////
+	// Turn Crouching Off
+	///////////////////////////////////////////////////////
+	if (self->kooglebot.isCrouching == true)
+		self->kooglebot.isCrouching = false;
 
+	return false;
+}
 
 /////////////////////////////////////////////////////////////////////////////////
 // This routine is called to hook in the pathing code and sets
@@ -693,7 +699,7 @@ void KOOGLEND_PathMap(edict_t *self, qboolean check_jump)
 	}
 
 
-	if (   self->deadflag
+	   if (self->deadflag
 		|| self->client->pers.spectator
 		|| self->solid == SOLID_NOT
 		|| self->movetype != MOVETYPE_WALK //noclip
@@ -709,6 +715,12 @@ void KOOGLEND_PathMap(edict_t *self, qboolean check_jump)
 	// Special check for ladder nodes
 	///////////////////////////////////////////////////////
 	if (KOOGLEND_PM_CheckForLadder(self)) // check for ladder nodes
+		return;
+
+	////////////////////////////////////////////////////////
+	// Special check for Crouch nodes
+	///////////////////////////////////////////////////////
+	if (KOOGLEND_CheckForCrouch(self)) // check for crouch nodes
 		return;
 
 	////////////////////////////////////////////////////////
@@ -944,24 +956,64 @@ void KOOGLEND_ShowNode(short node, int isTmpNode)
 	ent->solid = SOLID_NOT;
 	ent->s.effects = (EF_COLOR_SHELL||EF_ROTATE);
 	ent->s.renderfx2 = RF2_NOSHADOW;
-	ent->s.renderfx = RF_FULLBRIGHT;
+	//ent->s.renderfx = RF_FULLBRIGHT;
 
 	switch (nodes[node].type )
 	{
-		case BOTNODE_MOVE:			ent->s.skinnum = 0; break;
-		case BOTNODE_LADDER:		ent->s.skinnum = 1; break;
-		case BOTNODE_PLATFORM:		ent->s.skinnum = 2; break;
-		case BOTNODE_TELEPORTER:	ent->s.skinnum = 3; break;
-		case BOTNODE_ITEM:			ent->s.skinnum = 4; break;
-		case BOTNODE_WATER:			ent->s.skinnum = 5; break;
-		case BOTNODE_GRAPPLE:		ent->s.skinnum = 6; break;
-		case BOTNODE_JUMP:			ent->s.skinnum = 7; break;
-		default: 					ent->s.skinnum = 8;
+		case BOTNODE_MOVE:			
+			ent->s.renderfx = RF_FULLBRIGHT||RF_SHELL_BLUE;
+			ent->s.skinnum = 0;
+			ent->model = "models/props/cigar/cigar.mdx";
+			break;
+		case BOTNODE_LADDER:		
+			ent->s.renderfx = RF_FULLBRIGHT;
+			ent->s.skinnum = 1; 
+			ent->model = "models/props/cigar/cigar.mdx";
+			break;
+		case BOTNODE_PLATFORM:
+			ent->s.renderfx = RF_FULLBRIGHT;
+			ent->s.skinnum = 2; 
+			ent->model = "models/props/cigar/cigar.mdx";
+			break;
+		case BOTNODE_TELEPORTER:
+			ent->s.renderfx = RF_FULLBRIGHT;
+			ent->s.skinnum = 3; 
+			ent->model = "models/props/cigar/cigar.mdx";
+			break;
+		case BOTNODE_ITEM:
+			ent->s.renderfx = RF_FULLBRIGHT;
+			ent->s.skinnum = 4; 
+			ent->model = "models/props/cigar/cigar.mdx";
+			break;
+		case BOTNODE_WATER:
+			ent->s.renderfx = RF_FULLBRIGHT;
+			ent->s.skinnum = 5; 
+			ent->model = "models/props/cigar/cigar.mdx";
+			break;
+		case BOTNODE_GRAPPLE:
+			ent->s.renderfx = RF_FULLBRIGHT;
+			ent->s.skinnum = 6; 
+			ent->model = "models/props/cigar/cigar.mdx";
+			break;
+		case BOTNODE_JUMP:
+			ent->s.renderfx = RF_FULLBRIGHT||RF_SHELL_GREEN;
+			ent->s.skinnum = 7;
+			ent->model = "models/props/key/key_b.md2";
+			break;
+		case BOTNODE_DUCKING:      	  
+			ent->s.renderfx = RF_FULLBRIGHT||RF_SHELL_RED;
+			ent->s.skinnum = 8; 
+			ent->model = "models/props/key/key_a.md2";
+			break;
+		default: 					
+			ent->s.renderfx = RF_FULLBRIGHT;
+			ent->s.skinnum = 9;
+			ent->model = "models/props/cigar/cigar.mdx";
 		//BOTNODE_DRAGON_SAFE 8 //hypov8 todo:
 		//BOTNODE_NIKKISAFE 9 //hypov8 todo:
 	}
 
-	ent->model = "models/bot/tris.md2";
+	
 	ent->s.modelindex = gi.modelindex(ent->model);
 
 
@@ -1172,7 +1224,25 @@ short KOOGLEND_AddNode(edict_t *self, short type, qboolean isBuildingTable)
 		numnodes++;
 		return numnodes - (short)1;
 	}
-		
+	
+	if (type == BOTNODE_DUCKING)
+	{
+		nodes[numnodes].type = BOTNODE_DUCKING;
+
+		if (level.bot_debug_mode)
+		{
+			debug_printf("Node added %d type: Crouch\n", numnodes);
+			KOOGLEND_ShowNode(numnodes, 0);
+		}
+
+		nodes[numnodes].origin[2] += 16;
+		numnodes++;
+
+		// return the node added
+		return numnodes - (short)1;
+
+	}
+
 	if(level.bot_debug_mode)
 	{
 		if (nodes[numnodes].type == BOTNODE_MOVE)
@@ -1493,10 +1563,10 @@ void KOOGLEND_SaveNodes()
 		return; // bail
 	}
 	
-	fwrite(&version,sizeof(int),1,pOut); // write version
-	fwrite(&nodefinal, sizeof(int), 1, pOut); //hypo if 1. will never get updated
-	fwrite(&numnodes,sizeof(short),1,pOut); // write count. in short??
-	fwrite(&num_items,sizeof(int),1,pOut); // write facts count
+	fwrite(&version,sizeof(int),1,pOut);      // write version
+	fwrite(&nodefinal, sizeof(int), 1, pOut); // hypo if 1. will never get updated
+	fwrite(&numnodes,sizeof(short),1,pOut);   // write count. in short??
+	fwrite(&num_items,sizeof(int),1,pOut);    // write facts count
 	
 	fwrite(nodes,sizeof(botnode_t),numnodes,pOut); // write nodes
 	
@@ -1587,7 +1657,7 @@ void KOOGLEND_LoadNodes(void)
 		KOOGLEIT_BuildItemNodeTable(true); //relink
 		//gi.dprintf(" KOOGLE: Relinked items done. (Nodes:%i Items:%i Ver:%i Dupes:%i)\n", numnodes, num_items, version, KOOGLEND_CountDupeNodes());
 
-		if (level.aceNodesCurupt)
+		if (level.koogleNodesCurupt)
 		{
 			if (current_mod->value == 1)
 			gi.dprintf(" ACE: WARNING: Nodes corrupt. Tried to add nodes for new items...\n");

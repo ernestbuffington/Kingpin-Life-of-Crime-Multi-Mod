@@ -639,14 +639,14 @@ typedef struct
 
 	char playerskins[MAX_CLIENTS][MAX_QPATH]; // player skin configstrings
 
-	qboolean	bots_spawned;    // kooglebot - hypov8 load bots once only while loading players
-	float		bot_lastUdate;   // kooglebot
-	qboolean	scoresCalled;    // kooglebot - only show scores once
-	qboolean	aceNodesCurupt;  // kooglebot
-	int			botsRemoved;     // kooglebot
-	int			bot_debug_mode;  // kooglebot - bot debug mode
-	int			bot_nodesLoaded; // kooglebot - nodes loaded
-	int         bot_mapFix;      // kooglebot - some maps require special treatment 
+	qboolean	bots_spawned;      // kooglebot - hypov8 load bots once only while loading players
+	float		bot_lastUdate;     // kooglebot
+	qboolean	scoresCalled;      // kooglebot - only show scores once
+	qboolean	koogleNodesCurupt; // kooglebot
+	int			botsRemoved;       // kooglebot
+	int			bot_debug_mode;    // kooglebot - bot debug mode
+	int			bot_nodesLoaded;   // kooglebot - nodes loaded
+	int         bot_mapFix;        // kooglebot - some maps require special treatment 
 } level_locals_t;
 
 

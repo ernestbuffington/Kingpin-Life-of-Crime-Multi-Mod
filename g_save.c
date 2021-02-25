@@ -54,8 +54,8 @@ field_t fields[] = {
 	{"health", FOFS(health), F_INT},
 	{"sounds", FOFS(sounds), F_INT},
 
-	{"light", FOFS(light_level), F_INT},	// Ridah, used by model lighting code
-	{"_color", FOFS(rotate), F_VECTOR},		// Ridah, used by model lighting code
+	{"light", FOFS(light_level), F_INT},	    // Ridah, used by model lighting code
+	{"_color", FOFS(rotate), F_VECTOR},		    // Ridah, used by model lighting code
 	{"radius", FOFS(dmg_radius), F_VECTOR},		// Ridah, used by model lighting code
 
 	{"dmg", FOFS(dmg), F_INT},
@@ -76,7 +76,7 @@ field_t fields[] = {
 	{"objectbounds_filename7", FOFS(s.model_parts[6].objectbounds_filename), F_LSTRING},
 	{"objectbounds_filename8", FOFS(s.model_parts[7].objectbounds_filename), F_LSTRING},
 
-// JOSEPH 19-MAR-99
+    // JOSEPH 19-MAR-99
 	{"rotate", FOFS(rotate), F_VECTOR},
 	{"duration", FOFS(duration), F_FLOAT},
 	{"alphalevel", FOFS(alphalevel), F_INT},
@@ -111,13 +111,12 @@ field_t fields[] = {
 	{"lightit", FOFS(lightit), F_INT},
 	{"option", FOFS(option), F_INT},
 	{"noshadow", FOFS(noshadow), F_INT},
-// END JOSEPH
+    // END JOSEPH
 
 	{"acc", FOFS (acc), F_INT},
 	{"cal", FOFS (cal), F_INT},
 
 	// Ridah, new stuff
-
 	{"cast_group", FOFS(cast_group), F_INT},
 	{"skin", FOFS(skin), F_INT},
 	{"moral", FOFS(moral), F_INT},
@@ -190,7 +189,7 @@ field_t fields[] = {
 	{"pausetime", STOFS(pausetime), F_FLOAT, FFL_SPAWNTEMP},
 	{"item", STOFS(item), F_LSTRING, FFL_SPAWNTEMP},
 
-//need for item field in edict struct, FFL_SPAWNTEMP item will be skipped on saves
+    //need for item field in edict struct, FFL_SPAWNTEMP item will be skipped on saves
 	{"item", FOFS(item), F_ITEM},
 
 	{"gravity", STOFS(gravity), F_LSTRING, FFL_SPAWNTEMP},

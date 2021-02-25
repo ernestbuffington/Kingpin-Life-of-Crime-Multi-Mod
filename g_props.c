@@ -5971,8 +5971,8 @@ void SP_props2_deadgal_headless (edict_t *self)
 
 	if (deathmatch_value && !props->value)
 	{	// auto-remove for deathmatch
-		G_FreeEdict (self);
-		return;
+		//G_FreeEdict (self);
+		//return;
 	}
 
 	self->solid = SOLID_BBOX;

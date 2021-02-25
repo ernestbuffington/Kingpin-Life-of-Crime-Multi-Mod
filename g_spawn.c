@@ -446,6 +446,11 @@ spawn_t	spawns[] = {
 	{"props2_plant_bush", SP_props2_plant_bush},
 	{"props2_boat_animate", SP_props2_boat_animate},
     {"props2_helicopter_animate", SP_props2_helicopter_animate},
+	
+	// somehow was missing
+	{ "info_player_intermission", SP_info_player_deathmatch },
+
+		
     {"props2_car_animate", SP_props2_car_animate},
 	{"props2_car_topdown", SP_props2_car_topdown},
 	{"props2_car_topup", SP_props2_car_topup},
@@ -479,15 +484,21 @@ spawn_t	spawns[] = {
 	{"props3_cut_truck_driver", SP_props3_cut_truck_driver},	
 	{"props3_cut_pinball_guy_animate", SP_props3_cut_pinball_guy_animate},
 	{"lightflare", SP_light},
+	
+	// weapon mods
 	{"pistol_mod_damage",SP_pistol_mod_damage},
 	{"pistol_mod_rof",SP_pistol_mod_rof},
 	{"pistol_mod_reload",SP_pistol_mod_reload},
 	{"hmg_mod_cooling",SP_hmg_mod_cooling},
+	
 	{"sfx_beacon", SP_sfx_beacon},
 	{"refl", SP_refl},
+
+	// bagman shit
 	{"dm_cashspawn", SP_dm_cashspawn},
 	{"dm_safebag", SP_dm_safebag},
 	{"dm_props_banner", SP_dm_props_banner},
+
     {"target_timer", SP_target_timer},
     {"misc_model", SP_misc_model},
 	{NULL, NULL}
@@ -888,9 +899,9 @@ void SpawnEntities (char *mapname, char *entities, char *spawnpoint)
 	//current map
 	gi.dprintf("Loading map: %s\n", mapname);
 
-// BEGIN:	Xatrix/Ridah/Navigator/21-mar-1998
+    // BEGIN: Xatrix/Ridah/Navigator/21-mar-1998
 	NAV_PurgeActiveNodes (level.node_data);					
-// END:		Xatrix/Ridah/Navigator/21-mar-1998
+    // END:	  Xatrix/Ridah/Navigator/21-mar-1998
 
 	gi.FreeTags (TAG_LEVEL);
 	gi.ClearObjectBoundsCached();	// make sure we wipe the cached list
@@ -903,14 +914,14 @@ void SpawnEntities (char *mapname, char *entities, char *spawnpoint)
 	num_object_bounds = 0;
 	memset (g_objbnds, 0, sizeof(g_objbnds));
 
-// BEGIN:	Xatrix/Ridah/Navigator/19-mar-1998
+    // BEGIN: Xatrix/Ridah/Navigator/19-mar-1998
 	// create the node data structure
 	level.node_data = gi.TagMalloc (sizeof (active_node_data_t), TAG_GAME);
-// END:		Xatrix/Ridah/Navigator/19-mar-1998
+    // END:	  Xatrix/Ridah/Navigator/19-mar-1998
 
-// KOOGLEBOT_ADD
+    // KOOGLEBOT_ADD
 	KOOGLESP_FreeBots(); // add hypo_v8
-// KOOGLEBOT_END
+    // KOOGLEBOT_END
 
 
 	// set client fields on player ents
@@ -945,8 +956,8 @@ void SpawnEntities (char *mapname, char *entities, char *spawnpoint)
 				inhibit++;
 				continue;
 			}
-// KOOGLEBOT_ADD
-			//fix for bots only
+            // KOOGLEBOT_ADD
+			// fix for bots only
 			if (!Q_stricmp(level.mapname, "stdm5"))
 			{
 				if (!strcmp(ent->classname, "misc_teleporter_dest")){
@@ -1036,9 +1047,8 @@ void SpawnEntities (char *mapname, char *entities, char *spawnpoint)
 			}
 
 
-// KOOGLEBOT_END
-
-			if (!strcmp(ent->classname, "info_player_deathmatch"))
+            // KOOGLEBOT_END
+ 			if (!strcmp(ent->classname, "info_player_deathmatch"))
 			{
 				if ((!strcmp(level.mapname, "kpdm5") && VectorCompare(ent->s.origin, spawnvecs[0]))
 					|| (!strcmp(level.mapname, "kpdm2") && VectorCompare(ent->s.origin, spawnvecs[4]))
@@ -1148,7 +1158,7 @@ void SpawnEntities (char *mapname, char *entities, char *spawnpoint)
 	}	
 
 
-// Ridah, HACK, fix spawn spots in team_towers
+    // Ridah, HACK, fix spawn spots in team_towers
 	if (!strcmp( level.mapname, "team_towers" ))
 	{
 		edict_t *sp;
@@ -1265,14 +1275,16 @@ void SpawnEntities (char *mapname, char *entities, char *spawnpoint)
 
 	G_FindTeams ();
 
-// BEGIN:	Xatrix/Ridah/Navigator/19-mar-1998
+    // BEGIN: Xatrix/Ridah/Navigator/19-mar-1998
 	NAV_ReadActiveNodes (level.node_data, level.mapname);
-// END:		Xatrix/Ridah/Navigator/19-mar-1998
+    // END:	  Xatrix/Ridah/Navigator/19-mar-1998
 
 	// RAFAEL
 	MDX_Bbox_Init ();
 
 	level.pregameframes = pregameframes;
+	
+	level.num_botloads = 0; // We always start a map with zero bots
 
 	if (allow_map_voting && num_maps)
 	{

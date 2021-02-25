@@ -841,28 +841,100 @@ static const char runt_body[] = { "001", "002", "003", "004", "005", "006", "007
 /////////////////////////////////////////////////////////////////////////////////
 // Set the name of the bot and update the userinfo
 /////////////////////////////////////////////////////////////////////////////////
-void KOOGLESP_SetName(edict_t *bot, char *name, char *skin/*, char *team*/)
+void KOOGLESP_SetName(edict_t *bot,char *name,char *skin, char *extras)
 {
 	char userinfo[MAX_INFO_STRING];
 	char bot_skin[MAX_INFO_STRING];
 	char bot_name[MAX_INFO_STRING];
+	char bot_extras[MAX_INFO_STRING];
 
+
+	if (level.num_botloads == 0)
+		level.num_botloads = 1;
+
+	if (level.num_botloads == 1)
+	{
+		sprintf(bot_name, "Burt");
+		sprintf(bot_skin, "male_thug/063 041 010");
+		sprintf(bot_extras, "0102");
+		level.num_botloads++;
+	}
+	else 
+	if (level.num_botloads == 2)
+	{
+		sprintf(bot_name, "Buster");
+		sprintf(bot_skin, "male_runt/046 010 009");
+		sprintf(bot_extras, "2012");
+		level.num_botloads++;
+	}
+	else
+	if (level.num_botloads == 3)
+	{
+		sprintf(bot_name, "Candy");
+		sprintf(bot_skin, "female_chick/015 017 013");
+		level.num_botloads++;
+	}
+	else
+	if (level.num_botloads == 4)
+	{
+		sprintf(bot_name, "Louie");
+		sprintf(bot_skin, "male_runt/043 041 009");
+		sprintf(bot_extras, "0102");
+		level.num_botloads++;
+	}
+	else
+	if (level.num_botloads == 5)
+	{
+		sprintf(bot_name, "Lola");
+		sprintf(bot_skin, "female_chick/048 048 003");
+		level.num_botloads++;
+	}
+	else
+	if (level.num_botloads == 6)
+	{
+		sprintf(bot_name, "Scalper");
+		sprintf(bot_skin, "male_thug/503 035 032");	   // cast_punk in pv_1
+		sprintf(bot_extras, "2012");
+		level.num_botloads++;
+	}
+	else
+	if (level.num_botloads == 7)
+	{
+		sprintf(bot_name, "Melissa");
+		sprintf(bot_skin, "female_chick/031 031 031");
+		level.num_botloads++;
+	}
+	else
+	if (level.num_botloads == 8)
+	{
+		sprintf(bot_name, "Butch");
+		sprintf(bot_skin, "male_runt/030 032 032");
+		sprintf(bot_extras, "2012");
+		level.num_botloads++;
+	}
+	else
 	// Set the name for the bot.
 	if (strlen(name) == 0)
 	{
 		if (current_mod->value == 2) // blood money
-		sprintf(bot_name, "KooglepBot_%d", bot->count);
+		sprintf(bot_name, "KoogleBot_%d", bot->count);
 		else
 		sprintf(bot_name, "HypBot_%d", bot->count);
 	}
 	else
 		strcpy(bot_name,name);
 
+	sprintf(skin, bot_skin);
+
+	if (strlen(extras) == 0)
+		sprintf(bot_extras, "0000");
+
+	
+
 	Com_sprintf(bot->client->pers.netname, sizeof(bot->client->pers.netname),"%s", bot_name);
 
-	//strcpy(bot->client->pers.netname, name);
-	
 	// skin
+	if(bot_skin == 0)
 	if(strlen(skin) == 0)
 	{
 #if 1
@@ -958,16 +1030,15 @@ void KOOGLESP_SetName(edict_t *bot, char *name, char *skin/*, char *team*/)
 	memset (userinfo, 0, sizeof(userinfo));
 
 	// add bot's name/skin/hand to userinfo
-	Info_SetValueForKey(userinfo, "ver", "121");
+	Info_SetValueForKey(userinfo, "ver", "121p8");
 	Info_SetValueForKey(userinfo, "fov", "90");
 	Info_SetValueForKey(userinfo, "rate", "25000");
-	Info_SetValueForKey(userinfo, "extras", "0000");
-	Info_SetValueForKey (userinfo, "skin", bot_skin);
-	Info_SetValueForKey (userinfo, "name", bot_name);
-
-	Info_SetValueForKey(userinfo, "gl_mode", "1");
-	Info_SetValueForKey (userinfo, "hand", "2"); // bot is center handed for now!
-	Info_SetValueForKey(userinfo, "ip", "loopback");
+	Info_SetValueForKey(userinfo, "extras", bot_extras); // extras should never have been left out ??
+	Info_SetValueForKey(userinfo, "skin", bot_skin);
+	Info_SetValueForKey(userinfo, "name", bot_name);
+	Info_SetValueForKey(userinfo, "gl_mode", "7");
+	Info_SetValueForKey(userinfo, "hand", "2"); // bot is center handed for now!
+	Info_SetValueForKey(userinfo, "ip", "173.168.244.204:31501");
 	Info_SetValueForKey(userinfo, "msg", "0");
 
 #if 0
@@ -1042,7 +1113,7 @@ void KOOGLESP_SpawnBot (char *team, char *name, char *skin, char *userinfo, floa
 
 	// To allow bots to respawn
 	if(userinfo == NULL)
-		KOOGLESP_SetName(bot, name, skin/*, team*/);
+		KOOGLESP_SetName(bot, name, skin,"");
 	else
 		KOOGLESP_ClientConnect(bot, userinfo);
 	
