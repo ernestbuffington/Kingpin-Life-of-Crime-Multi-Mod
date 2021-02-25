@@ -1530,7 +1530,7 @@ void KOOGLEAI_Think(edict_t *self)
 
 	////////////////////////////////////
 	// Find enemies OR items 
-	// hypo serch weps if reloading etc.
+	// hypo search weaps if reloading etc.
 	////////////////////////////////////
 	if (KOOGLEAI_FindEnemy(self))
 	{

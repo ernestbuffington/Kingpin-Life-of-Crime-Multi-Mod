@@ -66,19 +66,19 @@ int special_checking()
 	game_dir = gi.cvar("game", "", 0);
 	dir = game_dir->string[0] ? game_dir->string : "main";
 
-	if (stat(va("%s"DIR_BLOODMONEY"special_checking.ini", dir), &st))	          // check to see if the bloodmoney.ini file exists
-	{																	          // check to see if the bloodmoney.ini file exists
-		gi.error(DIR_BLOODMONEY"special_checking.ini file is missing");		      // check to see if the bloodmoney.ini file exists
-		return false;													          // check to see if the bloodmoney.ini file exists
-	}																	          // check to see if the bloodmoney.ini file exists
+	if (stat(va("%s"DIR_BLOODMONEY"special_checking.ini", dir), &st))	          // check to see if the special_checking.ini file exists
+	{																	          // check to see if the special_checking.ini file exists
+		gi.error(DIR_BLOODMONEY"special_checking.ini file is missing");		      // check to see if the special_checking.ini file exists
+		return false;													          // check to see if the special_checking.ini file exists
+	}																	          // check to see if the special_checking.ini exists
 
-	infile = fopen(va("%s"DIR_BLOODMONEY"special_checking.ini", dir), "r");	       // Open bloodmoney.ini file
-																				   // Open bloodmoney.ini file
-	if (infile == NULL)													           // Open bloodmoney.ini file
-	{																	           // Open bloodmoney.ini file
-		gi.error("Failed to open "DIR_BLOODMONEY"special_checking.ini file");	   // Open bloodmoney.ini file
-		return false;													           // Open bloodmoney.ini file
-	}																	           // Open bloodmoney.ini file
+	infile = fopen(va("%s"DIR_BLOODMONEY"special_checking.ini", dir), "r");	       // Open special_checking.ini file
+																				   // Open special_checking.ini file
+	if (infile == NULL)													           // Open special_checking.ini file
+	{																	           // Open special_checking.ini file
+		gi.error("Failed to open "DIR_BLOODMONEY"special_checking.ini file");	   // Open special_checking.ini file
+		return false;													           // Open special_checking.ini file
+	}																	           // Open special_checking.ini file
 
 	fgetline(infile, buffer);
 
@@ -87,7 +87,7 @@ int special_checking()
 	
 	lasttime = st.st_mtime;
 
-	fgetline(infile, buffer);											   // Get each line frrom the bloodmoney.ini file
+	fgetline(infile, buffer);											          // Get each line frrom the special_checking.ini file
 
 	while (!feof(infile))
 	{
@@ -101,7 +101,7 @@ int special_checking()
 		fgetline(infile, buffer);
 	}
 	fclose(infile);
-	gi.dprintf("Processed "DIR_BLOODMONEY"special_checking.ini file\n");
+	gi.dprintf("Processed "DIR_BLOODMONEY"special_checking.ini file\n");		  // close the special_checking.ini file
 skipini:
 	return OK;
 

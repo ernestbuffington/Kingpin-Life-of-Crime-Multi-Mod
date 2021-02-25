@@ -1,0 +1,1581 @@
+[ Master server at 80.123.28.44:27900
+[ Loaded Game DLL, version 3
+[ ==== Kingpin Init Dedicated Net Settings ====
+[ Mod Signature = 20468716
+[ Processed \ini\bloodmoney\bloodmoney.ini file
+[ Processed \ini\bloodmoney\names.txt ban file (0 bans)
+[ Processed \ini\bloodmoney\ips.txt ban file (0 bans)
+[ Processed \ini\bloodmoney\rcons.txt rconx passwords file (0 passwords)
+[ Processed \ini\bloodmoney\maps.txt map list file (5 maps)
+[ Processed \ini\bloodmoney\special_checking.ini file
+[ Extended game features enabled: GMF_CLIENTPOV GMF_WANT_ALL_DISCONNECTS GMF_CLIENTNOENTS GMF_WANT_COUNTRY
+[ Pinging master server 91.113.54.3:27900
+[ Pinging master server 80.123.28.44:27900
+[ ------- Server Initialization -------
+[ SpawnServer: kpdm2
+[ Wed Feb 24 21:15:25 2021
+[ Loading map: kpdm2
+[ 2 entities inhibited
+[ 0 teams with 0 entities
+[ 0 special teams
+[ -------------------------------------
+[ Ping acknowledge from 91.113.54.3:27900
+[ Sending heartbeat to 91.113.54.3:27900
+[ Sending heartbeat to 80.123.28.44:27900
+[ Server info settings:
+[ mapname             kpdm2
+[ menu system         enabled - Type menu in console!
+[ Koogle Bots         enabled
+[ Kingpin Hook        enabled
+[ Quake II Grapple    enabled
+[ gameround           start in 12
+[ gameruntime         0d 0h 0m 24s
+[ gamemod             Blood Money Mod v1.0
+[ gamedate            Feb 24 2021
+[ gamename            Life Of Crime Multi Mod v2
+[ antilag             1
+[ sv_botskill         2.0
+[ maxclients          46
+[ protocol            32
+[ cheats              0
+[ timelimit           20
+[ fraglimit           30
+[ deathmatch          1
+[ version             kpded 2.1 x86 Nov 17 2019 Win32 RELEASE
+[ hostname            BloodMoney (DeBugVille)
+[ dmflags             788
+[ game                multi
+[ Let the fun begin!
+[  KOOGLE: No node file found, creating new nodes...
+[  KOOGLE: Create nodes done. (Nodes:84 Items:83 Dupes:0)
+[ Server info settings:
+[ mapname             kpdm2
+[ menu system         enabled - Type menu in console!
+[ Koogle Bots         enabled
+[ Kingpin Hook        enabled
+[ Quake II Grapple    enabled
+[ gameround           19:53
+[ gameruntime         0d 0h 0m 38s
+[ gamemod             Blood Money Mod v1.0
+[ gamedate            Feb 24 2021
+[ gamename            Life Of Crime Multi Mod v2
+[ antilag             1
+[ sv_botskill         2.0
+[ maxclients          46
+[ protocol            32
+[ cheats              0
+[ timelimit           20
+[ fraglimit           30
+[ deathmatch          1
+[ version             kpded 2.1 x86 Nov 17 2019 Win32 RELEASE
+[ hostname            BloodMoney (DeBugVille)
+[ dmflags             788
+[ game                multi
+[ Processed \ini\botmatch\botmatch.ini file
+[ Processed \ini\botmatch\names.txt ban file (0 bans)
+[ Processed \ini\botmatch\ips.txt ban file (0 bans)
+[ Processed \ini\botmatch\rcons.txt rconx passwords file (0 passwords)
+[ Processed \ini\botmatch\maps.txt map list file (5 maps)
+[ Bot-Skill set to 3 of 10 (sv_botskill 1.0)
+[ Server info settings:
+[ mapname             kpdm2
+[ menu system         enabled - Type menu in console!
+[ Koogle Bots         enabled
+[ Kingpin Hook        enabled
+[ Quake II Grapple    enabled
+[ gameround           18:53
+[ gameruntime         0d 0h 1m 38s
+[ gamemod             Blood Money Mod v1.0
+[ gamedate            Feb 24 2021
+[ gamename            Life Of Crime Multi Mod v2
+[ antilag             1
+[ sv_botskill         1.0
+[ maxclients          46
+[ protocol            32
+[ cheats              0
+[ timelimit           20
+[ fraglimit           30
+[ deathmatch          1
+[ version             kpded 2.1 x86 Nov 17 2019 Win32 RELEASE
+[ hostname            BloodMoney (DeBugVille)
+[ dmflags             788
+[ game                multi
+[ Server info settings:
+[ mapname             kpdm2
+[ menu system         enabled - Type menu in console!
+[ Koogle Bots         enabled
+[ Kingpin Hook        enabled
+[ Quake II Grapple    enabled
+[ gameround           15:35
+[ gameruntime         0d 0h 4m 56s
+[ gamemod             Blood Money Mod v1.0
+[ gamedate            Feb 24 2021
+[ gamename            Life Of Crime Multi Mod v2
+[ antilag             1
+[ sv_botskill         1.0
+[ maxclients          46
+[ protocol            32
+[ cheats              0
+[ timelimit           20
+[ fraglimit           30
+[ deathmatch          1
+[ version             kpded 2.1 x86 Nov 17 2019 Win32 RELEASE
+[ hostname            BloodMoney (DeBugVille)
+[ dmflags             788
+[ game                multi
+[ Sending heartbeat to 91.113.54.3:27900
+[ Sending heartbeat to 80.123.28.44:27900
+[ Server info settings:
+[ mapname             kpdm2
+[ menu system         enabled - Type menu in console!
+[ Koogle Bots         enabled
+[ Kingpin Hook        enabled
+[ Quake II Grapple    enabled
+[ gameround           14:40
+[ gameruntime         0d 0h 5m 51s
+[ gamemod             Blood Money Mod v1.0
+[ gamedate            Feb 24 2021
+[ gamename            Life Of Crime Multi Mod v2
+[ antilag             1
+[ sv_botskill         1.0
+[ maxclients          46
+[ protocol            32
+[ cheats              0
+[ timelimit           20
+[ fraglimit           30
+[ deathmatch          1
+[ version             kpded 2.1 x86 Nov 17 2019 Win32 RELEASE
+[ hostname            BloodMoney (DeBugVille)
+[ dmflags             788
+[ game                multi
+[ ConnectInfo: \extras\0000\fov\90\gl_mode\10 (1920x1080)\name\Buggsy\rate\25000\scale\0.777\skin\male_runt/010 017 033\ver\121p8\ip\173.168.244.204:31501
+[ Buggsy (173.168.244.204:31501) connected
+[ Buggsy entered the game
+[ Buggsy's Mod files are version: 5
+[ Dropping Buggsy, client issued 'disconnect'.
+[ Buggsy checked out
+[ Sending heartbeat to 91.113.54.3:27900
+[ Sending heartbeat to 80.123.28.44:27900
+[ ConnectInfo: \extras\0000\fov\90\gl_mode\10 (1920x1080)\name\Bugsy Steam\rate\18000\scale\0.777\skin\male_thug/009 019 017\ver\121p8\ip\173.168.244.204:31501
+[ Bugsy Steam (173.168.244.204:31501) connected
+[ Bugsy Steam entered the game
+[ Bugsy Steam's Mod files are version: 5
+[ Vote AddBot by: Bugsy Steam accepted.
+[ KooglepBot_1 (bestwep: Heavy machinegun)
+[ KooglepBot_1 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_1 entered the game
+[ Vote AddBot by: Bugsy Steam accepted.
+[ KooglepBot_2 (bestwep: Heavy machinegun)
+[ KooglepBot_2 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_2 entered the game
+[ Vote AddBot by: Bugsy Steam accepted.
+[ KooglepBot_3 (bestwep: Heavy machinegun)
+[ KooglepBot_3 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_3 entered the game
+[ Vote AddBot by: Bugsy Steam accepted.
+[ KooglepBot_4 (bestwep: Heavy machinegun)
+[ KooglepBot_4 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_4 entered the game
+[ Vote AddBot by: Bugsy Steam accepted.
+[ KooglepBot_5 (bestwep: Tommygun)
+[ KooglepBot_5 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_5 entered the game
+[ Vote AddBot by: Bugsy Steam accepted.
+[ KooglepBot_6 (bestwep: Bazooka)
+[ KooglepBot_6 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_6 entered the game
+[ Vote AddBot by: Bugsy Steam accepted.
+[ KooglepBot_7 (bestwep: Tommygun)
+[ KooglepBot_7 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_7 entered the game
+[ Vote AddBot by: Bugsy Steam accepted.
+[ KooglepBot_8 (bestwep: Heavy machinegun)
+[ KooglepBot_8 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_8 entered the game
+[ KooglepBot_7 tripped on her own grenade.
+[ KooglepBot_2 was mortally wounded by KooglepBot_7's shrapnel
+[ KooglepBot_6 bows to KooglepBot_2's Tommygun
+[ KooglepBot_7 was busted by KooglepBot_5's cap
+[ KooglepBot_2 accepted KooglepBot_6's load
+[ KooglepBot_8 tripped on his own grenade.
+[ KooglepBot_7 bows to KooglepBot_6's Tommygun
+[ KooglepBot_3 was busted by KooglepBot_5's cap
+[ KooglepBot_3 bows to KooglepBot_6's Tommygun
+[ KooglepBot_7 tripped on her own grenade.
+[ KooglepBot_3 was mortally wounded by KooglepBot_7's shrapnel
+[ KooglepBot_6 bows to KooglepBot_8's Tommygun
+[ Dropping Bugsy Steam, client issued 'disconnect'.
+[ Bugsy Steam checked out
+[ KooglepBot_8 was mortally wounded by KooglepBot_2's shrapnel
+[ KooglepBot_3 was mortally wounded by KooglepBot_2's shrapnel
+[ KooglepBot_5 was busted by KooglepBot_1's cap
+[ KooglepBot_3 was busted by KooglepBot_7's cap
+[ KooglepBot_8 accepted KooglepBot_2's load
+[ KooglepBot_7 was busted by KooglepBot_6's cap
+[ KooglepBot_2 bows to KooglepBot_1's Tommygun
+[ KooglepBot_8 tripped on his own grenade.
+[ KooglepBot_5 bows to KooglepBot_1's Tommygun
+[ KooglepBot_2 was mortally wounded by KooglepBot_6's shrapnel
+[ KooglepBot_1 bows to KooglepBot_3's Tommygun
+[ KooglepBot_6 was busted by KooglepBot_1's cap
+[ KooglepBot_6 bows to KooglepBot_3's Tommygun
+[ Sending heartbeat to 91.113.54.3:27900
+[ Sending heartbeat to 80.123.28.44:27900
+[ KooglepBot_2 was mortally wounded by KooglepBot_1's shrapnel
+[ KooglepBot_1 tripped on her own grenade.
+[ ConnectInfo: \extras\0000\fov\90\gl_mode\10 (1920x1080)\name\Bugsy Steam\rate\18000\scale\0.777\skin\male_thug/009 019 017\ver\121p8\ip\173.168.244.204:31501
+[ Bugsy Steam (173.168.244.204:31501) connected
+[ Bugsy Steam entered the game
+[ Bugsy Steam's Mod files are version: 5
+[ KooglepBot_8 was busted by KooglepBot_7's cap
+[ KooglepBot_3 bows to KooglepBot_5's Tommygun
+[ KooglepBot_8 was mortally wounded by KooglepBot_6's shrapnel
+[ KooglepBot_5 accepted Bugsy Steam's load
+[ KooglepBot_4 accepted Bugsy Steam's load
+[ KooglepBot_5 was mortally wounded by KooglepBot_6's shrapnel
+[ KooglepBot_6 bows to Bugsy Steam's Tommygun
+[ KooglepBot_5 bows to Bugsy Steam's Tommygun
+[ KooglepBot_5 bows to Bugsy Steam's Tommygun
+[ KooglepBot_2 accepted KooglepBot_4's load
+[ KooglepBot_4 bows to KooglepBot_3's Tommygun
+[ KooglepBot_1 bows to KooglepBot_3's Tommygun
+[ KooglepBot_5 roasted in Bugsy Steam's torch
+[ KooglepBot_2 roasted in KooglepBot_3's torch
+[ 3 MINUTE WARNING!
+[ KooglepBot_6 roasted in KooglepBot_5's torch
+[ Bugsy Steam was mortally wounded by KooglepBot_4's shrapnel
+[ KooglepBot_7 bows to KooglepBot_8's Tommygun
+[ KooglepBot_3 accepted KooglepBot_2's load
+[ ConnectInfo: \extras\0000\fov\90\gl_mode\7 (1920x1080)\name\yakumo\rate\25000\scale\0.777\skin\female_chick/006 301 3st\ver\121p8\ip\45.148.7.5:31501
+[ yakumo (45.148.7.5:31501) connected
+[ Bugsy Steam was mortally wounded by KooglepBot_4's shrapnel
+[ KooglepBot_4 roasted in KooglepBot_5's torch
+[ yakumo entered the game
+[ yakumo's Mod files are version: 5
+[ KooglepBot_3 bows to Bugsy Steam's Tommygun
+[ KooglepBot_2 accepted KooglepBot_7's load
+[ KooglepBot_7 bows to KooglepBot_5's Tommygun
+[ KooglepBot_1 bows to Bugsy Steam's Tommygun
+[ KooglepBot_3 roasted in KooglepBot_4's torch
+[ KooglepBot_5 bows to Bugsy Steam's Tommygun
+[ KooglepBot_5 bows to Bugsy Steam's Tommygun
+[ Bugsy Steam bows to KooglepBot_8's Tommygun
+[ KooglepBot_6 bows to KooglepBot_3's Tommygun
+[ :Bugsy Steam: hi
+[ KooglepBot_5 roasted in KooglepBot_8's torch
+[ :yakumo: hey
+[ yakumo accepted KooglepBot_5's load
+[ KooglepBot_2 was busted by KooglepBot_7's cap
+[ KooglepBot_4 tripped on his own grenade.
+[ KooglepBot_8 bot stuck, suicides.
+[ KooglepBot_7 was busted by KooglepBot_4's cap
+[ KooglepBot_8 accepted KooglepBot_5's load
+[ KooglepBot_2 bows to KooglepBot_3's Tommygun
+[ KooglepBot_5 bows to yakumo's Tommygun
+[ KooglepBot_1 bows to yakumo's Tommygun
+[ KooglepBot_8 was busted by Bugsy Steam's cap
+[ KooglepBot_3 roasted in KooglepBot_1's torch
+[ KooglepBot_4 was busted by KooglepBot_3's cap
+[ KooglepBot_3 was maimed by yakumo's H.M.G.
+[ KooglepBot_4 roasted in KooglepBot_8's torch
+[ KooglepBot_8 accepted Bugsy Steam's load
+[ KooglepBot_1 bows to KooglepBot_5's Tommygun
+[ Bugsy Steam was mortally wounded by KooglepBot_2's shrapnel
+[ KooglepBot_5 was mortally wounded by KooglepBot_2's shrapnel
+[ KooglepBot_2 was mortally wounded by KooglepBot_1's shrapnel
+[ KooglepBot_6 was maimed by yakumo's H.M.G.
+[ KooglepBot_1 accepted KooglepBot_3's load
+[ KooglepBot_2 was maimed by yakumo's H.M.G.
+[ KooglepBot_8 bows to KooglepBot_1's Tommygun
+[ KooglepBot_4 accepted KooglepBot_3's load
+[ KooglepBot_1 bows to Bugsy Steam's Tommygun
+[ KooglepBot_3 accepted KooglepBot_6's load
+[ KooglepBot_4 roasted in KooglepBot_2's torch
+[ KooglepBot_2 roasted in KooglepBot_4's torch
+[ KooglepBot_5 was maimed by yakumo's H.M.G.
+[ KooglepBot_5 bows to Bugsy Steam's Tommygun
+[ KooglepBot_6 was maimed by yakumo's H.M.G.
+[ KooglepBot_8 was maimed by yakumo's H.M.G.
+[ KooglepBot_1 bows to Bugsy Steam's Tommygun
+[ Bugsy Steam was mortally wounded by KooglepBot_2's shrapnel
+[ KooglepBot_4 was busted by KooglepBot_5's cap
+[ yakumo roasted in KooglepBot_8's torch
+[ Bugsy Steam bows to KooglepBot_6's Tommygun
+[ KooglepBot_2 roasted in KooglepBot_3's torch
+[ KooglepBot_4 couldn't escape yakumo's blast
+[ KooglepBot_2 couldn't escape yakumo's blast
+[ KooglepBot_8 bows to KooglepBot_6's Tommygun
+[ KooglepBot_1 bows to KooglepBot_3's Tommygun
+[ yakumo bows to KooglepBot_3's Tommygun
+[ KooglepBot_5 bows to KooglepBot_8's Tommygun
+[ KooglepBot_7 bows to KooglepBot_4's Tommygun
+[ Bugsy Steam bows to yakumo's Tommygun
+[ KooglepBot_8 bows to KooglepBot_6's Tommygun
+[ KooglepBot_2 bows to KooglepBot_6's Tommygun
+[ KooglepBot_6 accepted KooglepBot_1's load
+[ Sending heartbeat to 91.113.54.3:27900
+[ Sending heartbeat to 80.123.28.44:27900
+[ KooglepBot_5 bot stuck, suicides.
+[ KooglepBot_3 bot stuck, suicides.
+[ KooglepBot_4 bows to KooglepBot_1's Tommygun
+[ KooglepBot_5 bows to KooglepBot_7's Tommygun
+[ KooglepBot_2 tripped on her own grenade.
+[ KooglepBot_1 roasted in KooglepBot_4's torch
+[ KooglepBot_4 roasted in KooglepBot_1's torch
+[ KooglepBot_8 accepted KooglepBot_3's load
+[ TIMELIMIT HIT!
+[  KOOGLE: Resolving all paths done. (285 updated)
+[  KOOGLE: ERROR Can not save node file.
+[  
+[ --== results ==--
+[ map              : kpdm2
+[ botskill(WEB)    : 3
+[ sv_botskill      : 1.0
+[ num score ping deaths acc  fav   name           address               ver 
+[ --- ----- ---- ------ ---- ----- -------------- --------------------- ------
+[   0    15   10      7  169  Tomm Bugsy Steam    173.168.244.204:31501   1.21
+[   1    11  135      3  262   HMG yakumo         45.148.7.5:31501        1.21
+[  38     5    0     15  266  Tomm KooglepBot_8   45.89.125.89:31510      1.21
+[  39     5    0      9  333  Pist KooglepBot_7   45.89.125.89:31510      1.21
+[  40    12    0     10  341  Tomm KooglepBot_6   45.89.125.89:31510      1.21
+[  41    10    0     17  306  Pist KooglepBot_5   45.89.125.89:31510      1.21
+[  42     7    0     12  214  Flam KooglepBot_4   45.89.125.89:31510      1.21
+[  43    14    0     13  288  Tomm KooglepBot_3   45.89.125.89:31510      1.21
+[  44     8    0     17  257    GL KooglepBot_2   45.89.125.89:31510      1.21
+[  45    10    0     11  391  Tomm KooglepBot_1   45.89.125.89:31510      1.21
+[ --==   end   ==--
+[  
+[ :Bugsy Steam: gg
+[ :yakumo: gg
+[ ------- Server Initialization -------
+[ SpawnServer: kpdm5
+[ Wed Feb 24 21:36:26 2021
+[ Loading map: kpdm5
+[ info_player_intermission doesn't have a spawn function
+[ 1 entities inhibited
+[ 0 teams with 0 entities
+[ 0 special teams
+[ -------------------------------------
+[ Bugsy Steam entered the game
+[ Bugsy Steam's Mod files are version: 5
+[ yakumo entered the game
+[ yakumo's Mod files are version: 5
+[ Let the fun begin!
+[  KOOGLE: No node file found, creating new nodes...
+[  KOOGLE: Create nodes done. (Nodes:60 Items:60 Dupes:0)
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by:  accepted.
+[ Vote AddBot by:  accepted.
+[ KooglepBot_1 (bestwep: Tommygun)
+[ KooglepBot_1 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_1 entered the game
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by: KooglepBot_1 accepted.
+[ Vote AddBot by: KooglepBot_1 accepted.
+[ KooglepBot_2 (bestwep: Heavy machinegun)
+[ KooglepBot_2 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_2 entered the game
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by: KooglepBot_1 accepted.
+[ Vote AddBot by: KooglepBot_1 accepted.
+[ KooglepBot_3 (bestwep: Heavy machinegun)
+[ KooglepBot_3 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_3 entered the game
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by: KooglepBot_1 accepted.
+[ Vote AddBot by: KooglepBot_1 accepted.
+[ KooglepBot_4 (bestwep: Bazooka)
+[ KooglepBot_4 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_4 entered the game
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by: KooglepBot_1 accepted.
+[ Vote AddBot by: KooglepBot_1 accepted.
+[ KooglepBot_5 (bestwep: Heavy machinegun)
+[ KooglepBot_5 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_5 entered the game
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by: KooglepBot_1 accepted.
+[ Vote AddBot by: KooglepBot_1 accepted.
+[ KooglepBot_6 (bestwep: Tommygun)
+[ KooglepBot_6 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_6 entered the game
+[ KooglepBot_2 was minced by Bugsy Steam's rocket
+[ yakumo accepted KooglepBot_5's load
+[ Bugsy Steam blew himself up.
+[ :yakumo: 1reconnect 
+[ Dropping yakumo, client issued 'disconnect'.
+[ yakumo checked out
+[ ConnectInfo: \extras\1100\fov\90\gl_mode\7 (1920x1080)\name\yakumo\rate\25000\scale\0.777\skin\male_runt/001 001 001\ver\121p8\ip\45.148.7.5:31501
+[ yakumo (45.148.7.5:31501) connected
+[ Bugsy Steam was minced by KooglepBot_5's rocket
+[ yakumo entered the game
+[ yakumo's Mod files are version: 5
+[ KooglepBot_6 couldn't escape KooglepBot_5's blast
+[ KooglepBot_5 bows to KooglepBot_2's Tommygun
+[ Bugsy Steam bows to KooglepBot_4's Tommygun
+[ yakumo bows to KooglepBot_3's Tommygun
+[ KooglepBot_2 accepted KooglepBot_5's load
+[ KooglepBot_6 was maimed by KooglepBot_1's H.M.G.
+[ KooglepBot_3 accepted yakumo's load
+[ KooglepBot_1 bows to KooglepBot_4's Tommygun
+[ Bugsy Steam was mortally wounded by KooglepBot_2's shrapnel
+[ KooglepBot_2 accepted yakumo's load
+[ KooglepBot_5 was minced by KooglepBot_3's rocket
+[ KooglepBot_3 was minced by Bugsy Steam's rocket
+[ KooglepBot_1 couldn't escape Bugsy Steam's blast
+[ KooglepBot_4 was minced by Bugsy Steam's rocket
+[ KooglepBot_5 couldn't escape KooglepBot_4's blast
+[ KooglepBot_2 bows to KooglepBot_6's Tommygun
+[ KooglepBot_1 was maimed by yakumo's H.M.G.
+[ KooglepBot_5 couldn't escape KooglepBot_4's blast
+[ KooglepBot_4 blew herself up.
+[ Bugsy Steam was maimed by yakumo's H.M.G.
+[ KooglepBot_4 blew herself up.
+[ KooglepBot_2 blew herself up.
+[ Bugsy Steam was maimed by yakumo's H.M.G.
+[ :Bugsy Steam: ;lol
+[ KooglepBot_1 couldn't escape KooglepBot_4's blast
+[ yakumo was minced by KooglepBot_4's rocket
+[ KooglepBot_6 bows to KooglepBot_3's Tommygun
+[ KooglepBot_1 was minced by KooglepBot_4's rocket
+[ KooglepBot_4 blew herself up.
+[ KooglepBot_1 couldn't escape KooglepBot_5's blast
+[ KooglepBot_3 was maimed by KooglepBot_2's H.M.G.
+[ Bugsy Steam was maimed by KooglepBot_2's H.M.G.
+[ KooglepBot_4 was maimed by yakumo's H.M.G.
+[ :Bugsy Steam: lol
+[ KooglepBot_1 bows to KooglepBot_6's Tommygun
+[ KooglepBot_2 was maimed by yakumo's H.M.G.
+[ KooglepBot_3 was maimed by yakumo's H.M.G.
+[ KooglepBot_4 was minced by KooglepBot_1's rocket
+[ KooglepBot_5 blew himself up.
+[ KooglepBot_1 couldn't escape KooglepBot_4's blast
+[ Sending heartbeat to 91.113.54.3:27900
+[ Sending heartbeat to 80.123.28.44:27900
+[ Bugsy Steam was mortally wounded by KooglepBot_3's shrapnel
+[ KooglepBot_5 was minced by KooglepBot_4's rocket
+[ KooglepBot_4 blew herself up.
+[ KooglepBot_1 bows to KooglepBot_6's Tommygun
+[ :Bugsy Steam: specf 
+[ Bugsy Steam became a spectator
+[ KooglepBot_4 bows to KooglepBot_6's Tommygun
+[ KooglepBot_6 was mortally wounded by KooglepBot_4's shrapnel
+[ KooglepBot_4 was minced by KooglepBot_6's rocket
+[ KooglepBot_6 blew himself up.
+[ KooglepBot_3 was mortally wounded by KooglepBot_4's shrapnel
+[ KooglepBot_6 couldn't escape KooglepBot_2's blast
+[ KooglepBot_1 was maimed by yakumo's H.M.G.
+[ KooglepBot_4 bows to KooglepBot_5's Tommygun
+[ KooglepBot_2 couldn't escape KooglepBot_3's blast
+[ KooglepBot_6 bows to KooglepBot_5's Tommygun
+[ KooglepBot_3 was minced by KooglepBot_1's rocket
+[ KooglepBot_1 couldn't escape KooglepBot_2's blast
+[ KooglepBot_4 was minced by yakumo's rocket
+[ KooglepBot_2 was maimed by yakumo's H.M.G.
+[ KooglepBot_6 was maimed by yakumo's H.M.G.
+[ yakumo was minced by KooglepBot_1's rocket
+[ KooglepBot_1 blew himself up.
+[ KooglepBot_5 bows to KooglepBot_3's Tommygun
+[ KooglepBot_4 was minced by KooglepBot_1's rocket
+[ yakumo bows to KooglepBot_3's Tommygun
+[ KooglepBot_2 was minced by KooglepBot_6's rocket
+[ KooglepBot_6 couldn't escape KooglepBot_1's blast
+[ KooglepBot_1 blew himself up.
+[ KooglepBot_5 tripped on his own grenade.
+[ KooglepBot_4 bows to KooglepBot_6's Tommygun
+[ KooglepBot_5 was minced by KooglepBot_2's rocket
+[ KooglepBot_1 was minced by KooglepBot_2's rocket
+[ KooglepBot_2 couldn't escape KooglepBot_1's blast
+[ KooglepBot_6 was maimed by yakumo's H.M.G.
+[ KooglepBot_6 was maimed by yakumo's H.M.G.
+[ KooglepBot_1 was maimed by KooglepBot_5's H.M.G.
+[ KooglepBot_3 was maimed by KooglepBot_5's H.M.G.
+[ KooglepBot_2 was maimed by yakumo's H.M.G.
+[ KooglepBot_4 was maimed by KooglepBot_5's H.M.G.
+[ KooglepBot_6 couldn't escape KooglepBot_1's blast
+[ KooglepBot_3 couldn't escape KooglepBot_2's blast
+[ KooglepBot_1 couldn't escape KooglepBot_2's blast
+[ KooglepBot_5 accepted KooglepBot_6's load
+[ KooglepBot_2 couldn't escape KooglepBot_4's blast
+[ KooglepBot_4 couldn't escape KooglepBot_2's blast
+[ KooglepBot_3 accepted KooglepBot_5's load
+[ KooglepBot_4 couldn't escape KooglepBot_1's blast
+[ KooglepBot_5 couldn't escape KooglepBot_1's blast
+[ KooglepBot_4 couldn't escape KooglepBot_2's blast
+[ KooglepBot_2 blew herself up.
+[ KooglepBot_1 couldn't escape KooglepBot_2's blast
+[ KooglepBot_3 was maimed by KooglepBot_5's H.M.G.
+[ KooglepBot_5 bows to KooglepBot_2's Tommygun
+[ yakumo was minced by KooglepBot_4's rocket
+[ KooglepBot_2 accepted yakumo's load
+[ KooglepBot_1 was minced by KooglepBot_5's rocket
+[ yakumo accepted KooglepBot_3's load
+[ KooglepBot_5 was minced by KooglepBot_4's rocket
+[ KooglepBot_2 was maimed by KooglepBot_4's H.M.G.
+[ KooglepBot_1 was maimed by KooglepBot_4's H.M.G.
+[ KooglepBot_6 was maimed by KooglepBot_4's H.M.G.
+[ KooglepBot_4 couldn't escape yakumo's blast
+[ KooglepBot_3 bows to KooglepBot_5's Tommygun
+[ Server info settings:
+[ mapname             kpdm5
+[ menu system         enabled - Type menu in console!
+[ Koogle Bots         enabled
+[ Kingpin Hook        enabled
+[ Quake II Grapple    enabled
+[ gameround           12:05
+[ gameruntime         0d 0h 29m 28s
+[ gamemod             Blood Money Mod v1.0
+[ gamedate            Feb 24 2021
+[ gamename            Life Of Crime Multi Mod v2
+[ antilag             1
+[ sv_botskill         1.0
+[ maxclients          46
+[ protocol            32
+[ cheats              0
+[ timelimit           20
+[ fraglimit           30
+[ deathmatch          1
+[ version             kpded 2.1 x86 Nov 17 2019 Win32 RELEASE
+[ hostname            BloodMoney (DeBugVille)
+[ dmflags             788
+[ game                multi
+[ KooglepBot_6 bows to KooglepBot_5's Tommygun
+[ KooglepBot_3 couldn't escape yakumo's blast
+[ KooglepBot_4 was minced by KooglepBot_1's rocket
+[ KooglepBot_2 bows to KooglepBot_5's Tommygun
+[ KooglepBot_1 was busted by KooglepBot_6's cap
+[ KooglepBot_5 accepted yakumo's load
+[ KooglepBot_6 couldn't escape KooglepBot_3's blast
+[ KooglepBot_4 couldn't escape KooglepBot_3's blast
+[ yakumo was maimed by KooglepBot_2's H.M.G.
+[ KooglepBot_5 was minced by KooglepBot_3's rocket
+[ Sending heartbeat to 91.113.54.3:27900
+[ Sending heartbeat to 80.123.28.44:27900
+[ KooglepBot_4 was maimed by KooglepBot_2's H.M.G.
+[ KooglepBot_6 couldn't escape KooglepBot_3's blast
+[ KooglepBot_2 was mortally wounded by yakumo's shrapnel
+[ KooglepBot_5 blew himself up.
+[ KooglepBot_3 couldn't escape KooglepBot_2's blast
+[ KooglepBot_2 roasted in KooglepBot_5's torch
+[ KooglepBot_6 bows to KooglepBot_1's Tommygun
+[ KooglepBot_5 roasted in KooglepBot_3's torch
+[ KooglepBot_1 was maimed by KooglepBot_2's H.M.G.
+[ KooglepBot_2 was maimed by yakumo's H.M.G.
+[ KooglepBot_5 roasted in KooglepBot_3's torch
+[ KooglepBot_3 couldn't escape KooglepBot_4's blast
+[ yakumo was busted by KooglepBot_5's cap
+[ KooglepBot_6 accepted KooglepBot_1's load
+[ KooglepBot_2 was minced by KooglepBot_4's rocket
+[ KooglepBot_4 blew herself up.
+[ KooglepBot_3 blew himself up.
+[ KooglepBot_5 was maimed by KooglepBot_6's H.M.G.
+[ KooglepBot_1 was maimed by KooglepBot_6's H.M.G.
+[ KooglepBot_3 bows to KooglepBot_4's Tommygun
+[ yakumo was busted by KooglepBot_5's cap
+[ KooglepBot_5 was minced by KooglepBot_1's rocket
+[ KooglepBot_1 blew himself up.
+[ KooglepBot_3 tripped on his own grenade.
+[ KooglepBot_1 couldn't escape KooglepBot_4's blast
+[ yakumo bows to KooglepBot_6's Tommygun
+[ KooglepBot_5 couldn't escape KooglepBot_4's blast
+[ KooglepBot_4 roasted in KooglepBot_5's torch
+[ KooglepBot_6 was busted by KooglepBot_3's cap
+[ KooglepBot_1 bows to KooglepBot_2's Tommygun
+[ KooglepBot_4 blew herself up.
+[ KooglepBot_2 couldn't escape KooglepBot_4's blast
+[ KooglepBot_1 was minced by KooglepBot_6's rocket
+[ KooglepBot_6 blew himself up.
+[ KooglepBot_4 accepted yakumo's load
+[ KooglepBot_2 was maimed by KooglepBot_3's H.M.G.
+[ KooglepBot_5 couldn't escape KooglepBot_6's blast
+[ KooglepBot_1 was maimed by KooglepBot_3's H.M.G.
+[ yakumo was maimed by KooglepBot_3's H.M.G.
+[ KooglepBot_6 couldn't escape KooglepBot_5's blast
+[ KooglepBot_5 roasted in KooglepBot_2's torch
+[ KooglepBot_4 accepted yakumo's load
+[ yakumo bows to KooglepBot_1's Tommygun
+[ KooglepBot_6 couldn't escape yakumo's blast
+[ KooglepBot_1 bows to KooglepBot_4's Tommygun
+[ yakumo was maimed by KooglepBot_3's H.M.G.
+[ KooglepBot_2 roasted in KooglepBot_5's torch
+[ yakumo was maimed by KooglepBot_3's H.M.G.
+[ KooglepBot_6 couldn't escape KooglepBot_4's blast
+[ KooglepBot_2 couldn't escape KooglepBot_4's blast
+[ KooglepBot_4 accepted yakumo's load
+[ KooglepBot_1 roasted in KooglepBot_5's torch
+[ KooglepBot_6 roasted in KooglepBot_5's torch
+[ KooglepBot_5 was maimed by KooglepBot_3's H.M.G.
+[ KooglepBot_3 was busted by KooglepBot_2's cap
+[ KooglepBot_1 was maimed by KooglepBot_4's H.M.G.
+[ KooglepBot_4 was mortally wounded by KooglepBot_1's shrapnel
+[ KooglepBot_5 was maimed by KooglepBot_2's H.M.G.
+[ KooglepBot_6 was maimed by KooglepBot_2's H.M.G.
+[ KooglepBot_2 bows to KooglepBot_4's Tommygun
+[ KooglepBot_3 bows to KooglepBot_4's Tommygun
+[ KooglepBot_3 accepted KooglepBot_2's load
+[ KooglepBot_4 bows to KooglepBot_1's Tommygun
+[ KooglepBot_1 was maimed by yakumo's H.M.G.
+[ KooglepBot_3 accepted KooglepBot_2's load
+[ KooglepBot_4 was maimed by yakumo's H.M.G.
+[ KooglepBot_2 accepted KooglepBot_6's load
+[ KooglepBot_4 was maimed by yakumo's H.M.G.
+[ KooglepBot_6 couldn't escape yakumo's blast
+[ KooglepBot_3 bows to KooglepBot_1's Tommygun
+[ KooglepBot_2 blew herself up.
+[ KooglepBot_1 was minced by KooglepBot_6's rocket
+[ KooglepBot_3 was maimed by KooglepBot_5's H.M.G.
+[ yakumo was minced by KooglepBot_4's rocket
+[ KooglepBot_4 bows to KooglepBot_6's Tommygun
+[ KooglepBot_6 bows to KooglepBot_1's Tommygun
+[ yakumo bows to KooglepBot_2's Tommygun
+[ KooglepBot_2 was minced by KooglepBot_4's rocket
+[ Sending heartbeat to 91.113.54.3:27900
+[ Sending heartbeat to 80.123.28.44:27900
+[ KooglepBot_3 was maimed by KooglepBot_5's H.M.G.
+[ KooglepBot_6 couldn't escape KooglepBot_4's blast
+[ KooglepBot_3 bows to yakumo's Tommygun
+[ FRAGLIMIT HIT!
+[  KOOGLE: Resolving all paths done. (500 updated)
+[  KOOGLE: ERROR Can not save node file.
+[  
+[ --== results ==--
+[ map              : kpdm5
+[ botskill(WEB)    : 3
+[ sv_botskill      : 1.0
+[ num score ping deaths acc  fav   name           address               ver 
+[ --- ----- ---- ------ ---- ----- -------------- --------------------- ------
+[   0     3    6      8   74    RL Bugsy Steam    173.168.244.204:31501   1.21
+[   1    30  131     16  186   HMG yakumo         45.148.7.5:31501        1.21
+[  40    15    0     28  208  Tomm KooglepBot_6   45.89.125.89:31510      1.21
+[  41    23    0     25  209    RL KooglepBot_5   45.89.125.89:31510      1.21
+[  42    26    0     32  221    RL KooglepBot_4   45.89.125.89:31510      1.21
+[  43    19    0     25  203    RL KooglepBot_3   45.89.125.89:31510      1.21
+[  44    23    0     28  256    RL KooglepBot_2   45.89.125.89:31510      1.21
+[  45    16    0     32  282    RL KooglepBot_1   45.89.125.89:31510      1.21
+[ --==   end   ==--
+[  
+[ :yakumo: gg
+[ :Bugsy Steam: gg
+[ ------- Server Initialization -------
+[ SpawnServer: kpdm3
+[ Wed Feb 24 21:51:15 2021
+[ Loading map: kpdm3
+[ 0 entities inhibited
+[ 0 teams with 0 entities
+[ 0 special teams
+[ -------------------------------------
+[ Bugsy Steam's Mod files are version: 5
+[ yakumo entered the game
+[ yakumo's Mod files are version: 5
+[ Bugsy Steam entered the game
+[ Let the fun begin!
+[  KOOGLE: No node file found, creating new nodes...
+[  KOOGLE: Create nodes done. (Nodes:68 Items:68 Dupes:0)
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by:  accepted.
+[ Vote AddBot by:  accepted.
+[ KooglepBot_1 (bestwep: Bazooka)
+[ KooglepBot_1 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_1 entered the game
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by: KooglepBot_1 accepted.
+[ Vote AddBot by: KooglepBot_1 accepted.
+[ KooglepBot_2 (bestwep: Heavy machinegun)
+[ KooglepBot_2 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_2 entered the game
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by: KooglepBot_1 accepted.
+[ Vote AddBot by: KooglepBot_1 accepted.
+[ KooglepBot_3 (bestwep: Heavy machinegun)
+[ KooglepBot_3 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_3 entered the game
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by: KooglepBot_1 accepted.
+[ Vote AddBot by: KooglepBot_1 accepted.
+[ KooglepBot_4 (bestwep: Heavy machinegun)
+[ KooglepBot_4 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_4 entered the game
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by: KooglepBot_1 accepted.
+[ Vote AddBot by: KooglepBot_1 accepted.
+[ KooglepBot_5 (bestwep: Heavy machinegun)
+[ KooglepBot_5 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_5 entered the game
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by: KooglepBot_1 accepted.
+[ Vote AddBot by: KooglepBot_1 accepted.
+[ KooglepBot_6 (bestwep: Heavy machinegun)
+[ KooglepBot_6 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_6 entered the game
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by: KooglepBot_1 accepted.
+[ Vote AddBot by: KooglepBot_1 accepted.
+[ KooglepBot_7 (bestwep: Heavy machinegun)
+[ KooglepBot_7 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_7 entered the game
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by: KooglepBot_1 accepted.
+[ Vote AddBot by: KooglepBot_1 accepted.
+[ KooglepBot_8 (bestwep: Tommygun)
+[ KooglepBot_8 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_8 entered the game
+[ KooglepBot_1 was mortally wounded by yakumo's shrapnel
+[ yakumo tripped on his own grenade.
+[ KooglepBot_5 was mortally wounded by yakumo's shrapnel
+[ KooglepBot_4 was maimed by yakumo's H.M.G.
+[ KooglepBot_3 tripped on his own grenade.
+[ KooglepBot_2 was maimed by yakumo's H.M.G.
+[ KooglepBot_6 was maimed by yakumo's H.M.G.
+[ KooglepBot_6 was maimed by Bugsy Steam's H.M.G.
+[ KooglepBot_4 was maimed by yakumo's H.M.G.
+[ KooglepBot_2 was maimed by Bugsy Steam's H.M.G.
+[ KooglepBot_6 was maimed by Bugsy Steam's H.M.G.
+[ KooglepBot_7 tripped on his own grenade.
+[ KooglepBot_3 was mortally wounded by KooglepBot_7's shrapnel
+[ KooglepBot_6 was maimed by yakumo's H.M.G.
+[ KooglepBot_8 couldn't escape KooglepBot_1's blast
+[ KooglepBot_7 was mortally wounded by KooglepBot_5's shrapnel
+[ KooglepBot_5 was maimed by yakumo's H.M.G.
+[ KooglepBot_2 was maimed by yakumo's H.M.G.
+[ KooglepBot_4 bows to KooglepBot_6's Tommygun
+[ KooglepBot_6 was maimed by yakumo's H.M.G.
+[ KooglepBot_3 was busted by KooglepBot_8's cap
+[ KooglepBot_2 was maimed by Bugsy Steam's H.M.G.
+[ KooglepBot_8 accepted yakumo's load
+[ KooglepBot_4 was maimed by Bugsy Steam's H.M.G.
+[ KooglepBot_7 accepted yakumo's load
+[ yakumo was mortally wounded by KooglepBot_6's shrapnel
+[ KooglepBot_6 was minced by KooglepBot_1's rocket
+[ KooglepBot_2 was maimed by Bugsy Steam's H.M.G.
+[ yakumo was maimed by KooglepBot_6's H.M.G.
+[ yakumo was maimed by Bugsy Steam's H.M.G.
+[ :Bugsy Steam: lol
+[ KooglepBot_4 accepted KooglepBot_3's load
+[ KooglepBot_1 accepted KooglepBot_3's load
+[ Bugsy Steam was maimed by KooglepBot_6's H.M.G.
+[ KooglepBot_3 couldn't escape KooglepBot_8's blast
+[ KooglepBot_7 was busted by KooglepBot_2's cap
+[ yakumo was minced by KooglepBot_8's rocket
+[ KooglepBot_2 was busted by KooglepBot_3's cap
+[ Bugsy Steam was minced by KooglepBot_8's rocket
+[ KooglepBot_8 blew himself up.
+[ :Bugsy Steam: lol
+[ yakumo was maimed by KooglepBot_6's H.M.G.
+[ KooglepBot_8 couldn't escape yakumo's blast
+[ yakumo was busted by KooglepBot_8's cap
+[ KooglepBot_6 was maimed by yakumo's H.M.G.
+[ KooglepBot_3 was caught by Bugsy Steam's grapple
+[ yakumo was busted by KooglepBot_6's cap
+[ KooglepBot_8 was maimed by KooglepBot_6's H.M.G.
+[ KooglepBot_1 was busted by KooglepBot_5's cap
+[ Sending heartbeat to 91.113.54.3:27900
+[ Sending heartbeat to 80.123.28.44:27900
+[ KooglepBot_6 accepted KooglepBot_7's load
+[ KooglepBot_1 was maimed by Bugsy Steam's H.M.G.
+[ KooglepBot_2 was busted by KooglepBot_5's cap
+[ KooglepBot_3 was maimed by Bugsy Steam's H.M.G.
+[ Bugsy Steam was mortally wounded by KooglepBot_3's shrapnel
+[ KooglepBot_5 was busted by KooglepBot_3's cap
+[ KooglepBot_7 was busted by yakumo's cap
+[ KooglepBot_6 was maimed by KooglepBot_8's H.M.G.
+[ KooglepBot_2 accepted Bugsy Steam's load
+[ KooglepBot_2 accepted Bugsy Steam's load
+[ Bugsy Steam accepted yakumo's load
+[ :Bugsy Steam: lol
+[ KooglepBot_2 accepted yakumo's load
+[ KooglepBot_7 was busted by KooglepBot_3's cap
+[ KooglepBot_8 was busted by KooglepBot_5's cap
+[ KooglepBot_5 was mortally wounded by yakumo's shrapnel
+[ KooglepBot_3 was mortally wounded by yakumo's shrapnel
+[ Bugsy Steam was mortally wounded by yakumo's shrapnel
+[ KooglepBot_6 accepted KooglepBot_7's load
+[ KooglepBot_7 accepted Bugsy Steam's load
+[ Bugsy Steam was mortally wounded by KooglepBot_5's shrapnel
+[ KooglepBot_5 tripped on his own grenade.
+[ KooglepBot_1 was mortally wounded by yakumo's shrapnel
+[ KooglepBot_8 bows to Bugsy Steam's Tommygun
+[ KooglepBot_4 was busted by KooglepBot_5's cap
+[ KooglepBot_5 bows to Bugsy Steam's Tommygun
+[ KooglepBot_7 accepted KooglepBot_3's load
+[ KooglepBot_6 accepted KooglepBot_3's load
+[ Bugsy Steam was maimed by yakumo's H.M.G.
+[ KooglepBot_1 was maimed by yakumo's H.M.G.
+[ KooglepBot_2 was maimed by yakumo's H.M.G.
+[ KooglepBot_5 tripped on his own grenade.
+[ KooglepBot_8 was maimed by yakumo's H.M.G.
+[ KooglepBot_2 accepted KooglepBot_3's load
+[ KooglepBot_7 was maimed by KooglepBot_5's H.M.G.
+[ Bugsy Steam accepted KooglepBot_8's load
+[ KooglepBot_3 accepted KooglepBot_8's load
+[ KooglepBot_4 was busted by KooglepBot_1's cap
+[ KooglepBot_1 was busted by KooglepBot_7's cap
+[ KooglepBot_4 was maimed by yakumo's H.M.G.
+[ KooglepBot_7 was busted by KooglepBot_6's cap
+[ KooglepBot_1 was maimed by yakumo's H.M.G.
+[ KooglepBot_2 was maimed by KooglepBot_5's H.M.G.
+[ KooglepBot_5 was busted by KooglepBot_1's cap
+[ KooglepBot_1 accepted Bugsy Steam's load
+[ KooglepBot_7 accepted KooglepBot_2's load
+[ KooglepBot_8 was mortally wounded by KooglepBot_2's shrapnel
+[ KooglepBot_5 was mortally wounded by KooglepBot_8's shrapnel
+[ KooglepBot_2 was mortally wounded by KooglepBot_8's shrapnel
+[ KooglepBot_3 was busted by KooglepBot_7's cap
+[ KooglepBot_8 was busted by KooglepBot_5's cap
+[ KooglepBot_5 accepted Bugsy Steam's load
+[ KooglepBot_7 was busted by KooglepBot_1's cap
+[ KooglepBot_1 was busted by KooglepBot_6's cap
+[ KooglepBot_3 accepted KooglepBot_8's load
+[ KooglepBot_1 was mortally wounded by Bugsy Steam's shrapnel
+[ KooglepBot_2 tripped on her own grenade.
+[ KooglepBot_5 was mortally wounded by Bugsy Steam's shrapnel
+[ KooglepBot_6 was busted by KooglepBot_5's cap
+[ KooglepBot_3 was maimed by Bugsy Steam's H.M.G.
+[ KooglepBot_2 was maimed by Bugsy Steam's H.M.G.
+[ KooglepBot_4 accepted KooglepBot_8's load
+[ KooglepBot_1 accepted KooglepBot_8's load
+[ Sending heartbeat to 91.113.54.3:27900
+[ Sending heartbeat to 80.123.28.44:27900
+[ KooglepBot_4 was maimed by Bugsy Steam's H.M.G.
+[ KooglepBot_5 was busted by KooglepBot_6's cap
+[ KooglepBot_6 was busted by KooglepBot_7's cap
+[ KooglepBot_4 accepted KooglepBot_8's load
+[ KooglepBot_2 was busted by KooglepBot_3's cap
+[ KooglepBot_1 was busted by KooglepBot_3's cap
+[ yakumo has been idle for over 120 seconds
+[ yakumo became a spectator
+[ KooglepBot_5 tripped on his own grenade.
+[ KooglepBot_3 was mortally wounded by KooglepBot_5's shrapnel
+[ KooglepBot_4 was mortally wounded by KooglepBot_6's shrapnel
+[ KooglepBot_6 accepted KooglepBot_1's load
+[ KooglepBot_3 was mortally wounded by KooglepBot_1's shrapnel
+[ KooglepBot_1 was mortally wounded by KooglepBot_5's shrapnel
+[ KooglepBot_3 accepted KooglepBot_5's load
+[ KooglepBot_7 was busted by KooglepBot_2's cap
+[ KooglepBot_5 was busted by KooglepBot_4's cap
+[ KooglepBot_8 accepted KooglepBot_5's load
+[ KooglepBot_6 was mortally wounded by KooglepBot_4's shrapnel
+[ KooglepBot_4 tripped on her own grenade.
+[ KooglepBot_8 was maimed by Bugsy Steam's H.M.G.
+[ KooglepBot_4 was mortally wounded by KooglepBot_5's shrapnel
+[ KooglepBot_8 accepted KooglepBot_7's load
+[ KooglepBot_6 accepted KooglepBot_5's load
+[ KooglepBot_3 accepted KooglepBot_7's load
+[ KooglepBot_8 accepted KooglepBot_7's load
+[ KooglepBot_2 accepted KooglepBot_7's load
+[ Bugsy Steam accepted KooglepBot_6's load
+[ yakumo entered the game
+[ KooglepBot_3 accepted KooglepBot_5's load
+[ Bugsy Steam bows to KooglepBot_8's Tommygun
+[ KooglepBot_6 was maimed by KooglepBot_5's H.M.G.
+[ KooglepBot_6 was mortally wounded by yakumo's shrapnel
+[ KooglepBot_1 was mortally wounded by yakumo's shrapnel
+[ yakumo accepted KooglepBot_7's load
+[ KooglepBot_4 tripped on her own grenade.
+[ KooglepBot_7 was mortally wounded by KooglepBot_2's shrapnel
+[ KooglepBot_2 tripped on her own grenade.
+[ KooglepBot_8 was busted by KooglepBot_3's cap
+[ KooglepBot_3 accepted yakumo's load
+[ KooglepBot_1 accepted yakumo's load
+[ FRAGLIMIT HIT!
+[  KOOGLE: Resolving all paths done. (313 updated)
+[  KOOGLE: ERROR Can not save node file.
+[  
+[ --== results ==--
+[ map              : kpdm3
+[ botskill(WEB)    : 3
+[ sv_botskill      : 1.0
+[ num score ping deaths acc  fav   name           address               ver 
+[ --- ----- ---- ------ ---- ----- -------------- --------------------- ------
+[   0    23    5     10  196   HMG Bugsy Steam    173.168.244.204:31501   1.21
+[   1    30  133      9  201   HMG yakumo         45.148.7.5:31501        1.21
+[  38    14    0     15  284  Shot KooglepBot_8   45.89.125.89:31510      1.21
+[  39    10    0     14  332  Shot KooglepBot_7   45.89.125.89:31510      1.21
+[  40    12    0     18  278  Pist KooglepBot_6   45.89.125.89:31510      1.21
+[  41    15    0     14  351  Pist KooglepBot_5   45.89.125.89:31510      1.21
+[  42     0    0     15  220  Pist KooglepBot_4   45.89.125.89:31510      1.21
+[  43    11    0     17  361  Pist KooglepBot_3   45.89.125.89:31510      1.21
+[  44     3    0     19  233  Pist KooglepBot_2   45.89.125.89:31510      1.21
+[  45     7    0     16  279  Pist KooglepBot_1   45.89.125.89:31510      1.21
+[ --==   end   ==--
+[  
+[ :Bugsy Steam: gg
+[ :yakumo: gg
+[ ------- Server Initialization -------
+[ SpawnServer: kpdm4
+[ Wed Feb 24 22:04:18 2021
+[ Loading map: kpdm4
+[ 1 entities inhibited
+[ 0 teams with 0 entities
+[ 0 special teams
+[ -------------------------------------
+[ Bugsy Steam entered the game
+[ Bugsy Steam's Mod files are version: 5
+[ yakumo entered the game
+[ yakumo's Mod files are version: 5
+[ Let the fun begin!
+[  KOOGLE: No node file found, creating new nodes...
+[  KOOGLE: Create nodes done. (Nodes:128 Items:128 Dupes:0)
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by:  accepted.
+[ Vote AddBot by:  accepted.
+[ KooglepBot_1 (bestwep: Heavy machinegun)
+[ KooglepBot_1 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_1 entered the game
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by: KooglepBot_1 accepted.
+[ Vote AddBot by: KooglepBot_1 accepted.
+[ KooglepBot_2 (bestwep: Heavy machinegun)
+[ KooglepBot_2 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_2 entered the game
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by: KooglepBot_1 accepted.
+[ Vote AddBot by: KooglepBot_1 accepted.
+[ KooglepBot_3 (bestwep: Tommygun)
+[ KooglepBot_3 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_3 entered the game
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by: KooglepBot_1 accepted.
+[ Vote AddBot by: KooglepBot_1 accepted.
+[ KooglepBot_4 (bestwep: Heavy machinegun)
+[ KooglepBot_4 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_4 entered the game
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by: KooglepBot_1 accepted.
+[ Vote AddBot by: KooglepBot_1 accepted.
+[ KooglepBot_5 (bestwep: Heavy machinegun)
+[ KooglepBot_5 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_5 entered the game
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by: KooglepBot_1 accepted.
+[ Vote AddBot by: KooglepBot_1 accepted.
+[ KooglepBot_6 (bestwep: Bazooka)
+[ KooglepBot_6 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_6 entered the game
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by: KooglepBot_1 accepted.
+[ Vote AddBot by: KooglepBot_1 accepted.
+[ KooglepBot_7 (bestwep: Tommygun)
+[ KooglepBot_7 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_7 entered the game
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by: KooglepBot_1 accepted.
+[ Vote AddBot by: KooglepBot_1 accepted.
+[ KooglepBot_8 (bestwep: Bazooka)
+[ KooglepBot_8 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_8 entered the game
+[ KooglepBot_2 roasted in KooglepBot_5's torch
+[ KooglepBot_6 roasted in KooglepBot_5's torch
+[ Sending heartbeat to 91.113.54.3:27900
+[ Sending heartbeat to 80.123.28.44:27900
+[ KooglepBot_5 roasted in KooglepBot_6's torch
+[ KooglepBot_4 was busted by Bugsy Steam's cap
+[ KooglepBot_8 was maimed by KooglepBot_1's H.M.G.
+[ Bugsy Steam was minced by yakumo's rocket
+[ KooglepBot_6 roasted in KooglepBot_2's torch
+[ KooglepBot_8 was mortally wounded by yakumo's shrapnel
+[ KooglepBot_6 roasted in KooglepBot_2's torch
+[ KooglepBot_2 roasted in KooglepBot_6's torch
+[ KooglepBot_3 bows to yakumo's Tommygun
+[ KooglepBot_2 roasted in KooglepBot_3's torch
+[ KooglepBot_5 bows to yakumo's Tommygun
+[ Bugsy Steam blew himself up.
+[ KooglepBot_3 couldn't escape KooglepBot_8's blast
+[ KooglepBot_5 bows to Bugsy Steam's Tommygun
+[ KooglepBot_2 was minced by KooglepBot_8's rocket
+[ KooglepBot_2 bows to KooglepBot_4's Tommygun
+[ KooglepBot_4 bows to Bugsy Steam's Tommygun
+[ KooglepBot_7 was maimed by yakumo's H.M.G.
+[ KooglepBot_3 was minced by KooglepBot_8's rocket
+[ KooglepBot_8 accepted KooglepBot_5's load
+[ KooglepBot_2 bows to Bugsy Steam's Tommygun
+[ KooglepBot_5 was minced by KooglepBot_7's rocket
+[ KooglepBot_2 couldn't escape KooglepBot_7's blast
+[ KooglepBot_6 bows to KooglepBot_4's Tommygun
+[ Bugsy Steam couldn't escape KooglepBot_7's blast
+[ KooglepBot_7 bows to KooglepBot_8's Tommygun
+[ KooglepBot_1 accepted KooglepBot_3's load
+[ KooglepBot_2 accepted KooglepBot_3's load
+[ KooglepBot_4 was maimed by yakumo's H.M.G.
+[ KooglepBot_5 accepted KooglepBot_3's load
+[ KooglepBot_8 was maimed by yakumo's H.M.G.
+[ KooglepBot_1 accepted KooglepBot_3's load
+[ KooglepBot_2 blew himself up.
+[ KooglepBot_4 blew herself up.
+[ KooglepBot_6 roasted in KooglepBot_5's torch
+[ yakumo was minced by KooglepBot_8's rocket
+[ KooglepBot_5 roasted in KooglepBot_4's torch
+[ KooglepBot_6 roasted in KooglepBot_4's torch
+[ KooglepBot_8 couldn't escape KooglepBot_2's blast
+[ KooglepBot_7 couldn't escape KooglepBot_2's blast
+[ Bugsy Steam bows to KooglepBot_5's Tommygun
+[ KooglepBot_4 bows to KooglepBot_6's Tommygun
+[ KooglepBot_6 was maimed by KooglepBot_3's H.M.G.
+[ KooglepBot_2 was busted by Bugsy Steam's cap
+[ KooglepBot_4 bows to KooglepBot_8's Tommygun
+[ Bugsy Steam bows to KooglepBot_3's Tommygun
+[ KooglepBot_6 accepted KooglepBot_7's load
+[ KooglepBot_5 bows to KooglepBot_3's Tommygun
+[ KooglepBot_3 couldn't escape KooglepBot_5's blast
+[ KooglepBot_5 was busted by KooglepBot_3's cap
+[ KooglepBot_6 couldn't escape KooglepBot_8's blast
+[ KooglepBot_7 was mortally wounded by yakumo's shrapnel
+[ KooglepBot_3 accepted KooglepBot_5's load
+[ KooglepBot_7 accepted KooglepBot_5's load
+[ KooglepBot_1 was minced by KooglepBot_8's rocket
+[ KooglepBot_3 was minced by KooglepBot_8's rocket
+[ KooglepBot_8 blew himself up.
+[ KooglepBot_2 was busted by Bugsy Steam's cap
+[ KooglepBot_5 was mortally wounded by yakumo's shrapnel
+[ KooglepBot_2 couldn't escape yakumo's blast
+[ KooglepBot_1 accepted yakumo's load
+[ KooglepBot_8 was minced by KooglepBot_6's rocket
+[ KooglepBot_6 blew himself up.
+[ KooglepBot_3 accepted yakumo's load
+[ KooglepBot_6 accepted yakumo's load
+[ KooglepBot_5 accepted yakumo's load
+[ KooglepBot_1 bows to KooglepBot_4's Tommygun
+[ KooglepBot_3 blew herself up.
+[ KooglepBot_2 couldn't escape KooglepBot_3's blast
+[ KooglepBot_6 roasted in yakumo's torch
+[ KooglepBot_5 roasted in yakumo's torch
+[ KooglepBot_1 couldn't escape KooglepBot_8's blast
+[ KooglepBot_3 roasted in yakumo's torch
+[ Bugsy Steam roasted in KooglepBot_1's torch
+[ KooglepBot_8 blew himself up.
+[ yakumo roasted in KooglepBot_1's torch
+[ KooglepBot_7 was minced by KooglepBot_2's rocket
+[ KooglepBot_5 couldn't escape KooglepBot_2's blast
+[ KooglepBot_2 bows to KooglepBot_4's Tommygun
+[ KooglepBot_5 was minced by KooglepBot_1's rocket
+[ KooglepBot_4 accepted KooglepBot_5's load
+[ Bugsy Steam bows to KooglepBot_7's Tommygun
+[ KooglepBot_7 bows to KooglepBot_3's Tommygun
+[ KooglepBot_5 blew himself up.
+[ KooglepBot_2 couldn't escape KooglepBot_5's blast
+[ yakumo was busted by KooglepBot_5's cap
+[ KooglepBot_4 bows to Bugsy Steam's Tommygun
+[ Sending heartbeat to 91.113.54.3:27900
+[ Sending heartbeat to 80.123.28.44:27900
+[ KooglepBot_1 was minced by KooglepBot_2's rocket
+[ KooglepBot_2 couldn't escape KooglepBot_1's blast
+[ KooglepBot_7 accepted KooglepBot_6's load
+[ KooglepBot_5 bows to Bugsy Steam's Tommygun
+[ Bugsy Steam roasted in KooglepBot_2's torch
+[ yakumo was maimed by KooglepBot_4's H.M.G.
+[ KooglepBot_2 accepted KooglepBot_7's load
+[ KooglepBot_8 roasted in KooglepBot_7's torch
+[ KooglepBot_4 was mortally wounded by yakumo's shrapnel
+[ KooglepBot_1 bows to KooglepBot_6's Tommygun
+[ KooglepBot_7 bows to KooglepBot_3's Tommygun
+[ KooglepBot_4 roasted in KooglepBot_7's torch
+[ KooglepBot_4 couldn't escape KooglepBot_2's blast
+[ KooglepBot_3 couldn't escape KooglepBot_2's blast
+[ Bugsy Steam bows to KooglepBot_1's Tommygun
+[ KooglepBot_7 roasted in yakumo's torch
+[ KooglepBot_5 couldn't escape KooglepBot_2's blast
+[ KooglepBot_3 couldn't escape yakumo's blast
+[ yakumo couldn't escape KooglepBot_2's blast
+[ KooglepBot_2 roasted in yakumo's torch
+[ Bugsy Steam was minced by KooglepBot_2's rocket
+[ KooglepBot_2 blew himself up.
+[ KooglepBot_7 was minced by KooglepBot_5's rocket
+[ Bugsy Steam was maimed by KooglepBot_8's H.M.G.
+[ KooglepBot_8 was maimed by KooglepBot_2's H.M.G.
+[ KooglepBot_7 couldn't escape yakumo's blast
+[ KooglepBot_4 tripped on her own grenade.
+[ KooglepBot_8 accepted yakumo's load
+[ yakumo bows to KooglepBot_3's Tommygun
+[ KooglepBot_2 was maimed by KooglepBot_5's H.M.G.
+[ KooglepBot_2 bows to KooglepBot_3's Tommygun
+[ KooglepBot_1 couldn't escape Bugsy Steam's blast
+[ KooglepBot_5 was maimed by KooglepBot_4's H.M.G.
+[ KooglepBot_2 was mortally wounded by yakumo's shrapnel
+[ yakumo bows to KooglepBot_3's Tommygun
+[ KooglepBot_4 was maimed by KooglepBot_5's H.M.G.
+[ KooglepBot_3 was maimed by KooglepBot_5's H.M.G.
+[ KooglepBot_1 accepted yakumo's load
+[ KooglepBot_4 was maimed by KooglepBot_5's H.M.G.
+[ yakumo was mortally wounded by KooglepBot_2's shrapnel
+[ KooglepBot_2 tripped on his own grenade.
+[ yakumo was minced by Bugsy Steam's rocket
+[ KooglepBot_4 was maimed by KooglepBot_5's H.M.G.
+[ KooglepBot_1 was maimed by KooglepBot_5's H.M.G.
+[ KooglepBot_6 bows to KooglepBot_7's Tommygun
+[ KooglepBot_2 bows to KooglepBot_8's Tommygun
+[ KooglepBot_3 was minced by yakumo's rocket
+[ yakumo blew himself up.
+[ KooglepBot_5 bows to KooglepBot_8's Tommygun
+[ KooglepBot_5 was mortally wounded by yakumo's shrapnel
+[ KooglepBot_1 was minced by Bugsy Steam's rocket
+[ KooglepBot_4 was minced by Bugsy Steam's rocket
+[ KooglepBot_8 accepted KooglepBot_2's load
+[ KooglepBot_5 bows to KooglepBot_7's Tommygun
+[ Bugsy Steam roasted in KooglepBot_3's torch
+[ Bugsy Steam bows to KooglepBot_8's Tommygun
+[ KooglepBot_5 couldn't escape yakumo's blast
+[ KooglepBot_2 was minced by yakumo's rocket
+[ KooglepBot_5 bows to Bugsy Steam's Tommygun
+[ KooglepBot_1 tripped on her own grenade.
+[ KooglepBot_8 accepted KooglepBot_5's load
+[ KooglepBot_5 was maimed by yakumo's H.M.G.
+[ Bugsy Steam was busted by KooglepBot_8's cap
+[ yakumo was busted by KooglepBot_4's cap
+[ KooglepBot_2 was mortally wounded by KooglepBot_1's shrapnel
+[ Sending heartbeat to 91.113.54.3:27900
+[ Sending heartbeat to 80.123.28.44:27900
+[ KooglepBot_6 was maimed by KooglepBot_4's H.M.G.
+[ Bugsy Steam was minced by yakumo's rocket
+[ FRAGLIMIT HIT!
+[  KOOGLE: Resolving all paths done. (372 updated)
+[  KOOGLE: ERROR Can not save node file.
+[  
+[ --== results ==--
+[ map              : kpdm4
+[ botskill(WEB)    : 3
+[ sv_botskill      : 1.0
+[ num score ping deaths acc  fav   name           address               ver 
+[ --- ----- ---- ------ ---- ----- -------------- --------------------- ------
+[   0    12    5     15  150  Tomm Bugsy Steam    173.168.244.204:31501   1.21
+[   1    30  133     11  242    RL yakumo         45.148.7.5:31501        1.21
+[  38    13    0     13  302    RL KooglepBot_8   45.89.125.89:31510      1.21
+[  39    10    0     12  277  Tomm KooglepBot_7   45.89.125.89:31510      1.21
+[  40     5    0     14  295  Tomm KooglepBot_6   45.89.125.89:31510      1.21
+[  41    18    0     23  300   HMG KooglepBot_5   45.89.125.89:31510      1.21
+[  42     8    0     16  381  Tomm KooglepBot_4   45.89.125.89:31510      1.21
+[  43    15    0     13  367  Tomm KooglepBot_3   45.89.125.89:31510      1.21
+[  44    13    0     26  198    RL KooglepBot_2   45.89.125.89:31510      1.21
+[  45     6    0     13  179    RL KooglepBot_1   45.89.125.89:31510      1.21
+[ --==   end   ==--
+[  
+[ :yakumo: gg
+[ :Bugsy Steam: gg
+[ ------- Server Initialization -------
+[ SpawnServer: kpdm1
+[ Wed Feb 24 22:16:15 2021
+[ Loading map: kpdm1
+[ info_player_intermission doesn't have a spawn function
+[ info_player_intermission doesn't have a spawn function
+[ 0 entities inhibited
+[ 0 teams with 0 entities
+[ 0 special teams
+[ -------------------------------------
+[ Bugsy Steam entered the game
+[ Bugsy Steam's Mod files are version: 5
+[ yakumo entered the game
+[ yakumo's Mod files are version: 5
+[ Dropping yakumo, client issued 'disconnect'.
+[ yakumo checked out
+[ ConnectInfo: \extras\1100\fov\90\gl_mode\7 (1920x1080)\name\yakumo\rate\25000\scale\0.777\skin\male_runt/001 001 001\ver\121p8\ip\45.148.7.5:31501
+[ yakumo (45.148.7.5:31501) connected
+[ yakumo entered the game
+[ yakumo's Mod files are version: 5
+[ Let the fun begin!
+[  KOOGLE: No node file found, creating new nodes...
+[  KOOGLE: Create nodes done. (Nodes:83 Items:82 Dupes:0)
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by:  accepted.
+[ Vote AddBot by:  accepted.
+[ KooglepBot_1 (bestwep: Tommygun)
+[ KooglepBot_1 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_1 entered the game
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by: KooglepBot_1 accepted.
+[ Vote AddBot by: KooglepBot_1 accepted.
+[ KooglepBot_2 (bestwep: Tommygun)
+[ KooglepBot_2 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_2 entered the game
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by: KooglepBot_1 accepted.
+[ Vote AddBot by: KooglepBot_1 accepted.
+[ KooglepBot_3 (bestwep: Bazooka)
+[ KooglepBot_3 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_3 entered the game
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by: KooglepBot_1 accepted.
+[ Vote AddBot by: KooglepBot_1 accepted.
+[ KooglepBot_4 (bestwep: Heavy machinegun)
+[ KooglepBot_4 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_4 entered the game
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by: KooglepBot_1 accepted.
+[ Vote AddBot by: KooglepBot_1 accepted.
+[ KooglepBot_5 (bestwep: Tommygun)
+[ KooglepBot_5 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_5 entered the game
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by: KooglepBot_1 accepted.
+[ Vote AddBot by: KooglepBot_1 accepted.
+[ KooglepBot_6 (bestwep: Bazooka)
+[ KooglepBot_6 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_6 entered the game
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by: KooglepBot_1 accepted.
+[ Vote AddBot by: KooglepBot_1 accepted.
+[ KooglepBot_7 (bestwep: Heavy machinegun)
+[ KooglepBot_7 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_7 entered the game
+[ Bugsy Steam has requested to add a bot.
+[ 
+[ PLEASE VOTE
+[ 
+[ Add Bot by: KooglepBot_1 accepted.
+[ Vote AddBot by: KooglepBot_1 accepted.
+[ KooglepBot_8 (bestwep: Heavy machinegun)
+[ KooglepBot_8 (45.89.125.89:31510) connected from Botville
+[ KooglepBot_8 entered the game
+[ KooglepBot_1 bows to KooglepBot_5's Tommygun
+[ KooglepBot_6 was maimed by yakumo's H.M.G.
+[ KooglepBot_8 bows to Bugsy Steam's Tommygun
+[ KooglepBot_4 was maimed by yakumo's H.M.G.
+[ Bugsy Steam bows to KooglepBot_2's Tommygun
+[ KooglepBot_7 accepted KooglepBot_1's load
+[ Bugsy Steam was minced by KooglepBot_8's rocket
+[ KooglepBot_6 was maimed by yakumo's H.M.G.
+[ KooglepBot_5 was maimed by yakumo's H.M.G.
+[ KooglepBot_5 was minced by KooglepBot_8's rocket
+[ KooglepBot_4 accepted Bugsy Steam's load
+[ KooglepBot_2 was busted by KooglepBot_6's cap
+[ KooglepBot_2 was maimed by yakumo's H.M.G.
+[ KooglepBot_1 was maimed by yakumo's H.M.G.
+[ yakumo was minced by KooglepBot_8's rocket
+[ KooglepBot_4 was busted by KooglepBot_2's cap
+[ KooglepBot_2 bows to KooglepBot_5's Tommygun
+[ KooglepBot_8 was maimed by yakumo's H.M.G.
+[ KooglepBot_1 bows to KooglepBot_6's Tommygun
+[ KooglepBot_7 was busted by KooglepBot_3's cap
+[ KooglepBot_2 accepted Bugsy Steam's load
+[ KooglepBot_5 accepted Bugsy Steam's load
+[ KooglepBot_6 bows to KooglepBot_7's Tommygun
+[ KooglepBot_1 accepted KooglepBot_8's load
+[ KooglepBot_8 accepted KooglepBot_1's load
+[ KooglepBot_7 bows to KooglepBot_2's Tommygun
+[ KooglepBot_4 bows to KooglepBot_6's Tommygun
+[ KooglepBot_6 bows to KooglepBot_3's Tommygun
+[ KooglepBot_2 bows to KooglepBot_5's Tommygun
+[ KooglepBot_3 accepted Bugsy Steam's load
+[ KooglepBot_7 accepted Bugsy Steam's load
+[ KooglepBot_2 bows to KooglepBot_5's Tommygun
+[ KooglepBot_7 was maimed by yakumo's H.M.G.
+[ Bugsy Steam was maimed by yakumo's H.M.G.
+[ KooglepBot_3 accepted KooglepBot_2's load
+[ KooglepBot_2 accepted Bugsy Steam's load
+[ KooglepBot_4 accepted KooglepBot_6's load
+[ KooglepBot_7 was maimed by yakumo's H.M.G.
+[ KooglepBot_8 accepted KooglepBot_6's load
+[ KooglepBot_4 was maimed by yakumo's H.M.G.
+[ KooglepBot_5 bows to KooglepBot_2's Tommygun
+[ KooglepBot_5 accepted Bugsy Steam's load
+[ KooglepBot_3 was maimed by yakumo's H.M.G.
+[ Bugsy Steam was maimed by yakumo's H.M.G.
+[ KooglepBot_7 accepted KooglepBot_6's load
+[ yakumo bows to KooglepBot_8's Tommygun
+[ KooglepBot_4 was busted by Bugsy Steam's cap
+[ KooglepBot_8 bows to yakumo's Tommygun
+[ KooglepBot_3 bows to KooglepBot_2's Tommygun
+[ KooglepBot_1 bows to KooglepBot_2's Tommygun
+[ yakumo bows to KooglepBot_5's Tommygun
+[ KooglepBot_5 accepted KooglepBot_7's load
+[ KooglepBot_6 was busted by Bugsy Steam's cap
+[ yakumo bows to KooglepBot_7's Tommygun
+[ KooglepBot_2 bows to KooglepBot_6's Tommygun
+[ KooglepBot_4 was busted by KooglepBot_3's cap
+[ KooglepBot_7 bows to KooglepBot_8's Tommygun
+[ KooglepBot_8 bows to Bugsy Steam's Tommygun
+[ KooglepBot_2 bows to KooglepBot_5's Tommygun
+[ KooglepBot_4 bows to KooglepBot_6's Tommygun
+[ KooglepBot_5 accepted yakumo's load
+[ yakumo bows to KooglepBot_8's Tommygun
+[ KooglepBot_1 was busted by KooglepBot_5's cap
+[ KooglepBot_8 bows to KooglepBot_2's Tommygun
+[ KooglepBot_2 bows to KooglepBot_4's Tommygun
+[ Bugsy Steam was busted by yakumo's cap
+[ KooglepBot_1 bows to KooglepBot_6's Tommygun
+[ KooglepBot_4 bows to KooglepBot_6's Tommygun
+[ KooglepBot_3 was busted by KooglepBot_7's cap
+[ KooglepBot_7 was busted by KooglepBot_5's cap
+[ yakumo bows to KooglepBot_8's Tommygun
+[ KooglepBot_3 bows to KooglepBot_2's Tommygun
+[ Sending heartbeat to 91.113.54.3:27900
+[ Sending heartbeat to 80.123.28.44:27900
+[ KooglepBot_6 bows to KooglepBot_2's Tommygun
+[ KooglepBot_5 accepted Bugsy Steam's load
+[ KooglepBot_2 bows to KooglepBot_1's Tommygun
+[ KooglepBot_4 accepted Bugsy Steam's load
+[ KooglepBot_1 bows to yakumo's Tommygun
+[ KooglepBot_7 bows to yakumo's Tommygun
+[ yakumo was busted by KooglepBot_6's cap
+[ KooglepBot_2 accepted Bugsy Steam's load
+[ KooglepBot_6 bows to KooglepBot_3's Tommygun
+[ KooglepBot_5 bows to KooglepBot_3's Tommygun
+[ KooglepBot_4 bows to KooglepBot_8's Tommygun
+[ KooglepBot_1 bows to KooglepBot_3's Tommygun
+[ KooglepBot_3 bows to KooglepBot_2's Tommygun
+[ KooglepBot_6 accepted yakumo's load
+[ KooglepBot_4 bows to KooglepBot_2's Tommygun
+[ KooglepBot_5 bows to KooglepBot_8's Tommygun
+[ KooglepBot_4 bows to KooglepBot_1's Tommygun
+[ KooglepBot_3 accepted KooglepBot_7's load
+[ KooglepBot_5 accepted yakumo's load
+[ Bugsy Steam accepted KooglepBot_7's load
+[ KooglepBot_2 bows to KooglepBot_1's Tommygun
+[ KooglepBot_1 was busted by KooglepBot_5's cap
+[ KooglepBot_3 bows to KooglepBot_4's Tommygun
+[ KooglepBot_4 bows to KooglepBot_5's Tommygun
+[ Bugsy Steam bows to KooglepBot_8's Tommygun
+[ yakumo bows to KooglepBot_5's Tommygun
+[ KooglepBot_5 accepted KooglepBot_1's load
+[ KooglepBot_8 bows to KooglepBot_6's Tommygun
+[ KooglepBot_2 accepted KooglepBot_7's load
+[ KooglepBot_4 bows to KooglepBot_3's Tommygun
+[ yakumo accepted KooglepBot_7's load
+[ KooglepBot_5 accepted Bugsy Steam's load
+[ KooglepBot_3 bows to KooglepBot_1's Tommygun
+[ KooglepBot_1 was busted by KooglepBot_8's cap
+[ KooglepBot_2 accepted Bugsy Steam's load
+[ KooglepBot_8 bows to yakumo's Tommygun
+[ Bugsy Steam bows to KooglepBot_6's Tommygun
+[ yakumo bows to KooglepBot_2's Tommygun
+[ KooglepBot_4 accepted KooglepBot_7's load
+[ KooglepBot_6 accepted KooglepBot_1's load
+[ KooglepBot_1 accepted KooglepBot_8's load
+[ Bugsy Steam bows to KooglepBot_2's Tommygun
+[ KooglepBot_5 accepted KooglepBot_7's load
+[ KooglepBot_5 bows to KooglepBot_8's Tommygun
+[ KooglepBot_2 bows to Bugsy Steam's Tommygun
+[ KooglepBot_7 was busted by KooglepBot_6's cap
+[ Bugsy Steam couldn't escape KooglepBot_4's blast
+[ KooglepBot_1 bows to KooglepBot_3's Tommygun
+[ yakumo accepted KooglepBot_7's load
+[ KooglepBot_2 was minced by KooglepBot_4's rocket
+[ KooglepBot_5 bows to KooglepBot_4's Tommygun
+[ KooglepBot_2 was busted by KooglepBot_6's cap
+[ KooglepBot_6 accepted KooglepBot_7's load
+[ KooglepBot_4 accepted KooglepBot_1's load
+[ Bugsy Steam was maimed by yakumo's H.M.G.
+[ KooglepBot_6 bows to KooglepBot_2's Tommygun
+[ KooglepBot_7 was maimed by yakumo's H.M.G.
+[ KooglepBot_5 bows to KooglepBot_6's Tommygun
+[ Bugsy Steam was minced by KooglepBot_3's rocket
+[ KooglepBot_2 bows to KooglepBot_1's Tommygun
+[ KooglepBot_6 bows to KooglepBot_8's Tommygun
+[ KooglepBot_4 bows to KooglepBot_8's Tommygun
+[ KooglepBot_8 couldn't escape KooglepBot_3's blast
+[ KooglepBot_1 bows to KooglepBot_7's Tommygun
+[ KooglepBot_5 was maimed by yakumo's H.M.G.
+[ KooglepBot_6 accepted Bugsy Steam's load
+[ KooglepBot_3 bows to KooglepBot_2's Tommygun
+[ Bugsy Steam was maimed by yakumo's H.M.G.
+[ KooglepBot_2 bows to KooglepBot_4's Tommygun
+[ KooglepBot_7 bows to KooglepBot_5's Tommygun
+[ KooglepBot_4 bows to KooglepBot_8's Tommygun
+[ KooglepBot_1 was maimed by yakumo's H.M.G.
+[ KooglepBot_6 accepted Bugsy Steam's load
+[ KooglepBot_3 bows to KooglepBot_8's Tommygun
+[ KooglepBot_8 accepted Bugsy Steam's load
+[ Bugsy Steam accepted KooglepBot_7's load
+[ KooglepBot_1 was maimed by yakumo's H.M.G.
+[ yakumo bows to KooglepBot_7's Tommygun
+[ KooglepBot_3 bows to KooglepBot_5's Tommygun
+[ KooglepBot_8 accepted KooglepBot_4's load
+[ KooglepBot_7 bows to KooglepBot_6's Tommygun
+[ Bugsy Steam bows to KooglepBot_6's Tommygun
+[ KooglepBot_8 couldn't escape yakumo's blast
+[ KooglepBot_4 accepted KooglepBot_2's load
+[ KooglepBot_2 accepted KooglepBot_7's load
+[ KooglepBot_3 bows to KooglepBot_5's Tommygun
+[ KooglepBot_7 accepted KooglepBot_1's load
+[ KooglepBot_6 was maimed by Bugsy Steam's H.M.G.
+[ KooglepBot_5 bows to KooglepBot_6's Tommygun
+[ KooglepBot_4 accepted KooglepBot_1's load
+[ KooglepBot_7 bows to KooglepBot_6's Tommygun
+[ KooglepBot_2 bows to yakumo's Tommygun
+[ KooglepBot_4 bows to KooglepBot_5's Tommygun
+[ KooglepBot_5 accepted yakumo's load
+[ FRAGLIMIT HIT!
+[  KOOGLE: Resolving all paths done. (325 updated)
+[  KOOGLE: ERROR Can not save node file.
+[  
+[ --== results ==--
+[ map              : kpdm1
+[ botskill(WEB)    : 3
+[ sv_botskill      : 1.0
+[ num score ping deaths acc  fav   name           address               ver 
+[ --- ----- ---- ------ ---- ----- -------------- --------------------- ------
+[   0    21    5     15  158  Shot Bugsy Steam    173.168.244.204:31501   1.21
+[   1    30  132     12  186   HMG yakumo         45.148.7.5:31501        1.21
+[  38    18    0     13  247  Tomm KooglepBot_8   45.89.125.89:31510      1.21
+[  39    16    0     16  244  Shot KooglepBot_7   45.89.125.89:31510      1.21
+[  40    20    0     15  268  Tomm KooglepBot_6   45.89.125.89:31510      1.21
+[  41    15    0     20  236  Tomm KooglepBot_5   45.89.125.89:31510      1.21
+[  42     7    0     23  192  Tomm KooglepBot_4   45.89.125.89:31510      1.21
+[  43    10    0     14  226  Tomm KooglepBot_3   45.89.125.89:31510      1.21
+[  44    17    0     22  229  Tomm KooglepBot_2   45.89.125.89:31510      1.21
+[  45    12    0     16  252  Shot KooglepBot_1   45.89.125.89:31510      1.21
+[ --==   end   ==--
+[  
+[ :Bugsy Steam: tgg
+[ :yakumo: gg
+[ ------- Server Initialization -------
+[ SpawnServer: kpdm5
+[ Wed Feb 24 22:25:02 2021
+[ Loading map: kpdm5
+[ info_player_intermission doesn't have a spawn function
+[ 1 entities inhibited
+[ 0 teams with 0 entities
+[ 0 special teams
+[ -------------------------------------
+[ Bugsy Steam entered the game
+[ Bugsy Steam's Mod files are version: 5
+[ yakumo entered the game
+[ yakumo's Mod files are version: 5
+[ :yakumo: k im off
+[ :Bugsy Steam: rigwer that
+[ Sending heartbeat to 91.113.54.3:27900
+[ Sending heartbeat to 80.123.28.44:27900
+[ :Bugsy Steam: take care bro
+[ Let the fun begin!
+[  KOOGLE: No node file found, creating new nodes...
+[  KOOGLE: Create nodes done. (Nodes:60 Items:60 Dupes:0)
+[ :yakumo: you to
+[ Dropping yakumo, client issued 'disconnect'.
+[ yakumo checked out
+[ :Bugsy Steam: cu soon
+[ Server info settings:
+[ mapname             kpdm5
+[ menu system         enabled - Type menu in console!
+[ Koogle Bots         enabled
+[ Kingpin Hook        enabled
+[ Quake II Grapple    enabled
+[ gameround           19:07
+[ gameruntime         0d 1h 11m 4s
+[ gamemod             Blood Money Mod v1.0
+[ gamedate            Feb 24 2021
+[ gamename            Life Of Crime Multi Mod v2
+[ antilag             1
+[ sv_botskill         1.0
+[ maxclients          46
+[ protocol            32
+[ cheats              0
+[ timelimit           20
+[ fraglimit           30
+[ deathmatch          1
+[ version             kpded 2.1 x86 Nov 17 2019 Win32 RELEASE
+[ hostname            BloodMoney (DeBugVille)
+[ dmflags             788
+[ game                multi
+[ Bugsy Steam has been idle for over 120 seconds
+[ Bugsy Steam became a spectator
+[ Sending heartbeat to 91.113.54.3:27900
+[ Sending heartbeat to 80.123.28.44:27900
+[ Sending heartbeat to 91.113.54.3:27900
+[ Sending heartbeat to 80.123.28.44:27900
+[ Sending heartbeat to 91.113.54.3:27900
+[ Sending heartbeat to 80.123.28.44:27900
+[ Server info settings:
+[ mapname             kpdm5
+[ menu system         enabled - Type menu in console!
+[ Koogle Bots         enabled
+[ Kingpin Hook        enabled
+[ Quake II Grapple    enabled
+[ gameround           4:53
+[ gameruntime         0d 1h 25m 18s
+[ gamemod             Blood Money Mod v1.0
+[ gamedate            Feb 24 2021
+[ gamename            Life Of Crime Multi Mod v2
+[ antilag             1
+[ sv_botskill         1.0
+[ maxclients          46
+[ protocol            32
+[ cheats              0
+[ timelimit           20
+[ fraglimit           30
+[ deathmatch          1
+[ version             kpded 2.1 x86 Nov 17 2019 Win32 RELEASE
+[ hostname            BloodMoney (DeBugVille

@@ -1,1 +1,71 @@
-﻿E:\Programming Piles (x86)\Microsoft Visual Studio\2019\MSBuild\Microsoft\VC\v160\Microsoft.CppClean.targets(77,5): warning : Access to the path 'h:\kingpin\multi\gamex86.dll' is denied.
+﻿  file.c
+  file_botmen_ini.c
+  file_comp_ini.c
+  file_coop_ini.c
+  file_curse_ini.c
+  file_dogmod_ini.c
+  file_genocide_ini.c
+  file_godfather_ini.c
+  file_gunrace_ini.c
+  file_hitmen_ini.c
+  file_hitmen_teams_ini.c
+  file_insanity_ini.c
+  file_insomnia_ini.c
+  file_kpq2_ini.c
+  file_kpz_ini.c
+  file_assault_ini.c
+  file_bloodmoney_ini.c
+  file_botmatch_ini.c
+  file_sgm_ini.c
+  p_grapple.c
+  Generating Code...
+  Compiling...
+  g_ai.c
+  g_cast.c
+  g_chase.c
+  g_cmds.c
+  g_combat.c
+  g_func.c
+  g_hitmen_mod.c
+  g_items.c
+  g_props.c
+  g_main.c
+  g_misc.c
+  g_phys.c
+  g_save.c
+  g_spawn.c
+  g_svcmds.c
+  g_target.c
+  g_teamplay.c
+  g_trigger.c
+  g_utils.c
+  g_weapon.c
+  Generating Code...
+  Compiling...
+  kooglebot_ai.c
+  kooglebot_cmds.c
+  kooglebot_compress.c
+  kooglebot_items.c
+  kooglebot_movement.c
+  kooglebot_nodes.c
+  kooglebot_spawn.c
+  lan_play_settings.c
+  m_bbox.c
+  m_move.c
+  p_client.c
+  p_hook.c
+  p_hud.c
+  p_view.c
+  p_weapon.c
+  q_shared.c
+  tourney.c
+  unlagged.c
+  vehicles.c
+  voice.c
+  Generating Code...
+  Compiling...
+  voice_bitch.c
+  voice_punk.c
+  Generating Code...
+     Creating library .\Release\gamex86.lib and object .\Release\gamex86.exp
+  game.vcxproj -> H:\Kingpin\multi\gamex86.dll

@@ -1,4 +1,36 @@
 [ Master server at 80.123.28.44:27900
-[ Can't find map 'kpdm2'
-[ Sending shutdown to 188.23.66.210:27900
+[ Loaded Game DLL, version 3
+[ ==== Kingpin Init Dedicated Net Settings ====
+[ Mod Signature = 45898884
+[ Processed \ini\botmatch\botmatch.ini file
+[ Processed \ini\botmatch\names.txt ban file (0 bans)
+[ Processed \ini\botmatch\ips.txt ban file (0 bans)
+[ Processed \ini\botmatch\rcons.txt rconx passwords file (0 passwords)
+[ Processed \ini\botmatch\maps.txt map list file (5 maps)
+[ Processed \ini\bloodmoney\special_checking.ini file
+[ Extended game features enabled: GMF_CLIENTPOV GMF_WANT_ALL_DISCONNECTS GMF_CLIENTNOENTS GMF_WANT_COUNTRY
+[ Pinging master server 91.113.54.3:27900
+[ Pinging master server 80.123.28.44:27900
+[ ------- Server Initialization -------
+[ SpawnServer: kpdm2
+[ Wed Feb 24 07:39:27 2021
+[ Loading map: kpdm2
+[ 2 entities inhibited
+[ 0 teams with 0 entities
+[ 0 special teams
+[ -------------------------------------
+[ Ping acknowledge from 91.113.54.3:27900
+[ Sending heartbeat to 91.113.54.3:27900
+[ Sending heartbeat to 80.123.28.44:27900
+[ Let the fun begin!
+[  ACE: No node file found, creating new nodes...
+[  ACE: Create nodes done. (Nodes:84 Items:83 Dupes:0)
+[ Bot-Skill set to 3 of 10 (sv_botskill 1.0)
+[ Sending shutdown to 91.113.54.3:27900
 [ Sending shutdown to 80.123.28.44:27900
+[  KOOGLE: Resolving all paths done. (1 updated)
+[  KOOGLE: ERROR Can not save node file.
+[ ==== ShutdownGame ====
+
+[  KOOGLE: ERROR Can not save node file.
+[ ==== ShutdownGame ====

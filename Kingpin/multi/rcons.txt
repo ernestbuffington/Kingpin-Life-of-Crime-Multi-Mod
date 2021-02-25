@@ -1,2 +1,0 @@
-// list the personalized rcon (rconx) passwords here
-// 1 password per line (31 characters max length)

@@ -839,34 +839,11 @@ void UpdateTime()
 {
 	char buf[32] = " ";
 	
-	// snap, new uptime display in serverinfo START
-	if (uptime_days == 0 && uptime_hours == 0 && uptime_minutes == 0 && uptime_seconds == 0)
-	{
-		uptime_days = (int)days->value;
-		uptime_hours = (int)hours->value;
-		uptime_minutes = (int)minutes->value;
-		uptime_seconds = (int)seconds->value;
-	}
-
-	if (level.framenum % 10 == 0) {
-		if (++uptime_seconds == 60) {
-			uptime_seconds = 0;
-			if (++uptime_minutes == 60) {
-				uptime_minutes = 0;
-				if (++uptime_hours == 24) {
-					uptime_hours = 0;
-					uptime_days++;
-				}
-			}
-		}
-	}
-	// snap, new uptime display in serverinfo END
-
-	sprintf(buf2, "%dd %dh %dm %ds", uptime_days, uptime_hours, uptime_minutes, uptime_seconds);
-	gi.cvar_set("gameruntime", buf2);
 	
 	if (level.lastactive < 0)
-	strcpy(buf, "waiting");
+	{
+		strcpy(buf, "waiting");
+	}
 	else if (level.modeset == MATCHCOUNT)
 	{
 		int t =	((150 - (level.framenum - level.startframe)) / 10);

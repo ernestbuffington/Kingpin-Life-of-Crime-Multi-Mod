@@ -1,2 +1,0 @@
-// list the names of players you want to ban from entering the server here
-// 1 name per line
