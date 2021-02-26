@@ -1401,6 +1401,7 @@ qboolean KOOGLECM_Commands(edict_t *ent)
 		if (nodes[node].type != BOTNODE_MOVE
 			&& nodes[node].type != BOTNODE_JUMP
 			&& nodes[node].type != BOTNODE_LADDER
+			&& nodes[node].type != BOTNODE_DUCKING
 			&& nodes[node].type != BOTNODE_GRAPPLE)
 			return true;
 

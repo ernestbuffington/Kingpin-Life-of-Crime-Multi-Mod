@@ -307,16 +307,23 @@ void ServerCommand (void)
 		SVCmd_WriteIP_f ();
 
    // KOOGLEBOT_ADD
-	else if (Q_stricmp(cmd, "acedebug") == 0 || Q_stricmp(cmd, "debug") == 0 || Q_stricmp(cmd, "koogledebug") == 0 || Q_stricmp(cmd, "botdebug") == 0 || Q_stricmp(cmd, "debugbot") == 0)
+	else 
+	if (Q_stricmp(cmd, "acedebug") == 0 || Q_stricmp(cmd, "debug") == 0 || Q_stricmp(cmd, "koogledebug") == 0 || Q_stricmp(cmd, "botdebug") == 0 || Q_stricmp(cmd, "debugbot") == 0)
 	{
 		if (strcmp(gi.argv(2), "on") == 0)
 		{
-			safe_bprintf(PRINT_MEDIUM, "KOOGLE: Debug Mode On\n");
+			safe_bprintf(PRINT_MEDIUM, "Kpded2: KOOGLE: Debug Mode On\n");
 			KOOGLECM_BotDebug(true);
 		}
 		else
+		if (strcmp(gi.argv(2), "off") == 0)
 		{
-			safe_bprintf(PRINT_MEDIUM, "KOOGLE: Debug Mode Off\n");
+			safe_bprintf(PRINT_MEDIUM, "Kpded2: KOOGLE: Debug Mode Off\n");
+			KOOGLECM_BotDebug(false);
+		}
+		else
+		{
+			safe_bprintf(PRINT_MEDIUM, "Kpded2: KOOGLE: Debug Mode Off\n");
 			KOOGLECM_BotDebug(false);
 		}
 	}

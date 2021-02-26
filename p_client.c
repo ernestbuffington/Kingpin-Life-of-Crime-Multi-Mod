@@ -1768,14 +1768,14 @@ void Teamplay_AutoJoinTeam( edict_t *self );
 void ClientBeginDeathmatch (edict_t *ent)
 {
 	int		save;
-// KOOGLEBOT_ADD
+    // KOOGLEBOT_ADD
 	static char current_map[55];
-// KOOGLEBOT_END
+    // KOOGLEBOT_END
 
 	save = ent->client->showscores;
 	G_InitEdict (ent);
-// HYPOV8_ADD	//if ((level.modeset == DM_PRE_MATCH) || (level.modeset == DM_MATCH_RUNNING))
-	//hypov8 could be used to rejoin and use old stats? or cleared on exit?
+    // HYPOV8_ADD	//if ((level.modeset == DM_PRE_MATCH) || (level.modeset == DM_MATCH_RUNNING))
+	// hypov8 could be used to rejoin and use old stats? or cleared on exit?
 	if ((ent->client->pers.spectator != SPECTATING && (level.modeset == PUBLIC || level.modeset == PUBLICSPAWN || level.modeset == MATCHSPAWN)) || ent->client->ps.pmove.pm_type >= PM_DEAD || ent->client->resp.enterframe == level.framenum)
 	{
 		if (ent->client->resp.enterframe == level.framenum)
@@ -1792,15 +1792,15 @@ void ClientBeginDeathmatch (edict_t *ent)
 				Teamplay_AutoJoinTeam( ent );
 		}
 
-// KOOGLEBOT_ADD
+        // KOOGLEBOT_ADD
 		if (level.modeset == MATCH || level.modeset == PUBLIC
 		|| level.modeset == MATCHSPAWN || level.modeset == PUBLICSPAWN) //free???
 		{
 			if(teamplay->value == 0)
-				if (ent->inuse && ent->client->pers.spectator != SPECTATING)
-					KOOGLEIT_PlayerAdded(ent); //only add to bot list if player can enter game
-		}									//also called in match begin
-// KOOGLEBOT_END
+			if (ent->inuse && ent->client->pers.spectator != SPECTATING)
+			KOOGLEIT_PlayerAdded(ent); // only add to bot list if player can enter game
+		}							   // also called in match begin
+        // KOOGLEBOT_END
 
 		// locate ent at a spawn point
 		PutClientInServer (ent);
@@ -1817,17 +1817,16 @@ void ClientBeginDeathmatch (edict_t *ent)
 	}
 	if (!teamplay->value && ent->client->pers.spectator != SPECTATING && level.modeset != PUBLICSPAWN)
 	{
-		safe_bprintf(PRINT_HIGH, "%s entered the game\n", ent->client->pers.netname);
+		safe_bprintf(PRINT_HIGH, "%s is in the house!\n", ent->client->pers.netname);
 	}
 
 	if (save && ent->solid == SOLID_NOT)
-		ent->client->showscores = save;
-// KOOGLEBOT_ADD
+	ent->client->showscores = save;
+    // KOOGLEBOT_ADD
 	if (ent->kooglebot.is_bot)
-		ent->client->showscores = NO_SCOREBOARD;
-// KOOGLEBOT_END
+	ent->client->showscores = NO_SCOREBOARD;
+    // KOOGLEBOT_END
 }
-
 
 /*
 ===========
@@ -1841,13 +1840,13 @@ void ClientBegin (edict_t *ent)
 {
 	char *a;
 
-// Papa - either show rejoin or MOTD scoreboards
+    // Papa - either show rejoin or MOTD scoreboards
 	if (ent->client->showscores != SCORE_REJOIN || !level.player_num)
 		ent->client->showscores = (level.modeset == ENDGAMEVOTE ? SCORE_MAP_VOTE : SCORE_MOTD);
 
-// KOOGLEBOT_ADD //new kpded.exe
+    // KOOGLEBOT_ADD //new kpded2.exe
 	if (ent->kooglebot.is_bot)
-		ent->client->showscores = NO_SCOREBOARD;
+	ent->client->showscores = NO_SCOREBOARD;
 	else
 	{
 		if (!ent->client->pers.is_ready)
@@ -1856,7 +1855,9 @@ void ClientBegin (edict_t *ent)
 			//ent->client->pers.is_ready = true;
 		}
 	}
-// KOOGLEBOT_END
+    // KOOGLEBOT_END
+	
+	// keep admin status from map to map!
 	if (keep_admin_status)
 	{
 		edict_t *admin = GetAdmin();
@@ -1876,7 +1877,9 @@ void ClientBegin (edict_t *ent)
 		}
 	}
 	else
-		ent->client->pers.admin = NOT_ADMIN;
+	ent->client->pers.admin = NOT_ADMIN;
+	
+	// rconx
 	a = gi.cvar("rconx", "", 0)->string;
 	if (a[0])
 	{
@@ -1902,7 +1905,7 @@ void ClientBegin (edict_t *ent)
 	}
 
 	if (!(ent->kooglebot.is_bot))
-		check_version(ent); // check client version
+	check_version(ent); // check client version so client can be forced to download any new pak updates REDOWNLOAD
 
 	{
 		InitClientResp (ent->client);
@@ -1943,9 +1946,9 @@ void ClientUserinfoChanged (edict_t *ent, char *userinfo)
 	}
 
 	if (!ent->client->resp.enterframe)
-		Info_SetValueForKey(userinfo, "msg", "0");
+	Info_SetValueForKey(userinfo, "msg", "0"); // NULL if not a player!
 
-	// set name
+	// set the motherfuckers name
 	s = Info_ValueForKey (userinfo, "name");
 	if (ent->client->pers.netname[0] || !ent->client->resp.enterframe)
 	{
@@ -1954,12 +1957,13 @@ void ClientUserinfoChanged (edict_t *ent, char *userinfo)
 		{
 			s2 = s;
 			while ((s2 = strchr(s2, '%')) != 0) // HYPOV8_ADD !=0
-				*s2 = ' ';
+			*s2 = ' ';
 			update = true;
 		}
 		a = strlen(s);
-		if (a > 15)	// only 13 chars are shown in scoreboard //hypov8 13 woot!!!!!!!!
+		if (a > 15)	// only 13 chars are shown in scoreboard //hypo_v8 13 woot!!!!!!!!
 			a = 15;
+		
 		while (--a >= 0)
 		{
 			if (s[a] > ' ')
@@ -1968,7 +1972,7 @@ void ClientUserinfoChanged (edict_t *ent, char *userinfo)
 		if (a < 0) // blank name
 		{
 			if (ent->client->pers.netname[0])
-				s = ent->client->pers.netname; // keep the existing name
+			s = ent->client->pers.netname; // keep the existing name
 			else
 			s = NAME_BLANK_STR;
 			update = true;
@@ -1982,12 +1986,13 @@ void ClientUserinfoChanged (edict_t *ent, char *userinfo)
 			}
 
 			if (CheckNameBan(s))
-				KICKENT(ent,"%s is being kicked because they're banned!\n");
+			KICKENT(ent,"%s is being kicked because they're banned!\n");
 
 			{
 				// stop name clashes
 				edict_t		*cl_ent;
 				int i;
+				
 				for (i=0 ; i<game.maxclients ; i++)
 				{
 					cl_ent = g_edicts + 1 + i;
@@ -2005,7 +2010,7 @@ void ClientUserinfoChanged (edict_t *ent, char *userinfo)
 						else
 							safe_cprintf(ent, PRINT_HIGH, "Another player on the server is already using this name\n");
 						if (ent->client->pers.netname[0])
-							s = ent->client->pers.netname; // keep the existing name
+						s = ent->client->pers.netname; // keep the existing name
 						else
 						s = NAME_CLASH_STR;
 						update = true;
@@ -2034,22 +2039,24 @@ void ClientUserinfoChanged (edict_t *ent, char *userinfo)
 			}
 		}
 		if (update)
-			Info_SetValueForKey(userinfo, "name", s);
+		Info_SetValueForKey(userinfo, "name", s);
 	}
+	
 	if (s != ent->client->pers.netname)
-		strcpy(ent->client->pers.netname, s);
+	strcpy(ent->client->pers.netname, s);
 
 	// set skin
 	if (level.framenum < (ent->client->move_frame + 10))
 	{
 		s = Info_ValueForKey(ent->client->pers.userinfo, "skin");
 		if (s[0])
-			Info_SetValueForKey(userinfo, "skin", s);
+		Info_SetValueForKey(userinfo, "skin", s);
 	}
+	
 	s = Info_ValueForKey (userinfo, "skin");
 	kp_strlwr(s);
 
-	if (teamplay->value)
+	if(teamplay->value)
 	{
 		// NOTE: skin order is "HEAD BODY LEGS"
 		char *skin, *body, *legs;
@@ -2057,25 +2064,8 @@ void ClientUserinfoChanged (edict_t *ent, char *userinfo)
 		int i, valid, model_index;
 
 		// Hard-coded skin sets for each model
-
 		static char *valid_models[] = { "female_chick", "male_thug", "male_runt", NULL };
-/*		static char *valid_skinsets[][2][2][2] =
 
-			// ordering here is {"LEGS", "BODY"}
-			{
-				{	// Bitch
-					{{"056","057"}, {"056","058"}},		// Team 1
-					{{"033","032"}, {"031","031"}}		// Team 2
-				},
-				{	// Thug
-					{{"057","056"}, {"058","091"}},
-					{{"031","031"}, {"032","035"}}
-				},
-				{	// Runt
-					{{"058","056"}, {"057","056"}},
-					{{"031","030"}, {"032","031"}}
-				}
-			};*/
 		static char *valid_skinsets[][2][2] =
 
 			// ordering here is {"LEGS", "BODY"}
@@ -2212,7 +2202,7 @@ void ClientUserinfoChanged (edict_t *ent, char *userinfo)
 	// handedness
 	s = Info_ValueForKey (userinfo, "hand");
 	if (s[0])
-		ent->client->pers.hand = atoi(s);
+	ent->client->pers.hand = atoi(s);
 
 	// client exe version
 	s = Info_ValueForKey(userinfo, "ver");
@@ -2226,9 +2216,9 @@ void ClientUserinfoChanged (edict_t *ent, char *userinfo)
 	}
 
 	if (ent->kooglebot.is_bot)
-		s = "45.89.125.89:31510";
+	s = "173.168.244.204:31501";
 	else
-		s = ent->client->pers.ip;
+	s = ent->client->pers.ip;
 
 	if (strlen(s))
 	{
@@ -2277,8 +2267,6 @@ void ClientUserinfoChanged (edict_t *ent, char *userinfo)
 
 }
 
-
-
 /*
 ===========
 ClientConnect
@@ -2304,11 +2292,14 @@ qboolean ClientConnect (edict_t *ent, char *userinfo)
 
 	// check to see if they are on the banned IP list
 	value = Info_ValueForKey (userinfo, "ip");
-	if (!value[0]) return false;
+	
+	if(!value[0]) 
+	return false;
+	
 	if (SV_FilterPacket(value))
 	{
 		if (kpded2)
-			Info_SetValueForKey(userinfo, "rejmsg", "Banned."); // reason to give the client
+		Info_SetValueForKey(userinfo, "rejmsg", "Banned."); // reason to give the client
 		return false;
 	}
 
@@ -2348,20 +2339,19 @@ qboolean ClientConnect (edict_t *ent, char *userinfo)
 	// client exe version
 	value = Info_ValueForKey (userinfo, "ver");
 	if (value[0])
-		ent->client->pers.version = atoi(value);
+	ent->client->pers.version = atoi(value);
 	else	// assume client is old version
-		ent->client->pers.version = 100;
+	ent->client->pers.version = 100;
 
 	ent->client->resp.enterframe = 0;
 	ent->client->move_frame = ent->client->resp.name_change_frame = -80;  //just to be sure
 	ClientUserinfoChanged (ent, userinfo);
 
-
-// KOOGLEBOT_ADD
+    // KOOGLEBOT_ADD
 	if (!ent->kooglebot.is_bot || (ent->kooglebot.is_bot && level.bots_spawned))
 	{
-// KOOGLEBOT_END
-		//print in develope console
+        // KOOGLEBOT_END
+		// print in developer console
 		if (ent->client->pers.country[0]) //GeoIP2
 			gi.dprintf("%s (%s) connected from %s\n", ent->client->pers.netname, ent->client->pers.ip, ent->client->pers.country);
 		else
@@ -2373,28 +2363,28 @@ qboolean ClientConnect (edict_t *ent, char *userinfo)
 			if ((doot->client->pers.admin == ADMIN) || doot->client->pers.rconx[0])
 			{
 				if (ent->client->pers.country[0]) //GeoIP2
-					safe_cprintf(doot, PRINT_CHAT, "%s (%s) connected from %s\n", ent->client->pers.netname, ent->client->pers.ip, ent->client->pers.country);
+				safe_cprintf(doot, PRINT_CHAT, "%s (%s) connected from %s\n", ent->client->pers.netname, ent->client->pers.ip, ent->client->pers.country);
 				else
-					safe_cprintf(doot, PRINT_CHAT, "%s (%s) connected\n", ent->client->pers.netname, ent->client->pers.ip);
+				safe_cprintf(doot, PRINT_CHAT, "%s (%s) connected\n", ent->client->pers.netname, ent->client->pers.ip);
 			}
 			else
 			{
 				if (ent->client->pers.country[0]) //GeoIP2
-					safe_cprintf(doot, PRINT_CHAT, "%s connected from %s\n", ent->client->pers.netname, ent->client->pers.country);
+				safe_cprintf(doot, PRINT_CHAT, "%s connected from %s\n", ent->client->pers.netname, ent->client->pers.country);
 				else
-					safe_cprintf(doot, PRINT_CHAT, "%s connected\n", ent->client->pers.netname);
+				safe_cprintf(doot, PRINT_CHAT, "%s connected\n", ent->client->pers.netname);
 			}
 		}
 	}
 
-// KOOGLEBOT_ADD
+    // KOOGLEBOT_ADD
 	if (!ent->kooglebot.is_bot)
-// KOOGLEBOT_END
+    // KOOGLEBOT_END
 	{
 		if (teamplay->value)
-			ent->client->pers.spectator = SPECTATING;
+		ent->client->pers.spectator = SPECTATING;
 		else
-			ent->client->pers.spectator = PLAYING;
+		ent->client->pers.spectator = PLAYING;
 	}
 
 	// check to see if a player was disconnected
@@ -2408,14 +2398,14 @@ qboolean ClientConnect (edict_t *ent, char *userinfo)
 	ent->client->pers.lastpacket = curtime;
 	level.lastactive = level.framenum;
 
-// KOOGLEBOT_ADD
+    // KOOGLEBOT_ADD
 	if (ent->kooglebot.is_bot)
 	{
 		ent->client->pers.is_bot = true;
 		ent->client->pers.spectator = PLAYING;
 		ent->client->showscores = NO_SCOREBOARD;
 	}
-// KOOGLEBOT_END
+    // KOOGLEBOT_END
 
 	return true;
 }
@@ -2439,9 +2429,9 @@ void ClientDisconnect (edict_t *ent)
 	if (ent->inuse)
 	{
 		if (ent->solid != SOLID_NOT) 
-			DropCash(ent);
+		DropCash(ent);
 		if (ent->client->resp.vote == CALLED_VOTE)
-			level.voteset = NO_VOTES;
+		level.voteset = NO_VOTES;
 
 		playernum = ent - g_edicts - 1;
 
@@ -2457,16 +2447,19 @@ void ClientDisconnect (edict_t *ent)
 			playerlist[level.player_num].stole = ent->client->resp.stole;
 			playerlist[level.player_num].acchit = ent->client->resp.acchit;
 			playerlist[level.player_num].accshot = ent->client->resp.accshot;
+			
 			for (i=0; i<8; i++)
-				playerlist[level.player_num].fav[i] = ent->client->resp.fav[i];
+			playerlist[level.player_num].fav[i] = ent->client->resp.fav[i];
+			
 			playerlist[level.player_num].team = ent->client->pers.team;
 			playerlist[level.player_num].time = ent->client->resp.time;
 			strcpy (playerlist[level.player_num].player, level.playerskins[playernum]);
+			
 			if (teamplay->value)
 			{
 				char *p = strrchr(playerlist[level.player_num].player, '/');
 				if (!p) goto skiplist; // shouldn't happen but just in case
-				memset(p+5, ' ', 7); // ignore body+legs
+				memset(p+5, ' ', 7);   // ignore body+legs
 			}
 			level.player_num++;
 		}
@@ -2499,7 +2492,8 @@ skiplist:
 		ent->inuse = false;
 
 		playerskin(playernum, "");
-// KOOGLEBOT_ADD
+        
+		// KOOGLEBOT_ADD
 		if (level.modeset == MATCH || level.modeset == PUBLIC
 		|| level.modeset == MATCHSPAWN || level.modeset == PUBLICSPAWN)
 		{
@@ -2513,7 +2507,7 @@ skiplist:
 			ent->client->pers.connected = 0;
 			return;
 		}
-// KOOGLEBOT_END
+        // KOOGLEBOT_END
 		
 		
 	}
@@ -2521,7 +2515,7 @@ skiplist:
 	if (kpded2 && ent->client->ping < 0)
 		safe_bprintf(PRINT_HIGH, "%s is reconnecting\n", ent->client->pers.netname);
 	else
-		safe_bprintf(PRINT_HIGH, ent->client->pers.connected < 0 ? "%s cancelled connecting\n" : "%s checked out\n", ent->client->pers.netname);
+		safe_bprintf(PRINT_HIGH, ent->client->pers.connected < 0 ? "%s cancelled connecting\n" : "%s hauled ass!\n", ent->client->pers.netname);
 
 	ent->classname = "disconnected";
 	ent->client->pers.connected = 0;
@@ -2550,7 +2544,7 @@ trace_t	PM_trace (vec3_t start, vec3_t mins, vec3_t maxs, vec3_t end)
 		return gi.trace (start, mins, maxs, end, pm_passent, MASK_DEADSOLID);
 }
 
-unsigned CheckBlock (void *b, int c)
+unsigned CheckBlock (void *b,int c)
 {
 	int	v,i;
 	v = 0;
@@ -2558,6 +2552,7 @@ unsigned CheckBlock (void *b, int c)
 		v+= ((byte *)b)[i];
 	return v;
 }
+
 void PrintPmove (pmove_t *pm)
 {
 	unsigned	c1, c2;
@@ -2630,15 +2625,16 @@ void ClientThink (edict_t *ent, usercmd_t *ucmd)
 		if (ucmd->upmove && 5 < (level.framenum - ent->client->chase_frame))
 		{
 			ent->client->chase_frame = level.framenum;
+			
 			if (ent->client->chasemode == LOCKED_CHASE)
-				ent->client->chasemode = FREE_CHASE;
+			ent->client->chasemode = FREE_CHASE;
 			else if(ent->client->chasemode == FREE_CHASE)
-				ent->client->chasemode = EYECAM_CHASE;
+			ent->client->chasemode = EYECAM_CHASE;
 			else
-				ent->client->chasemode = LOCKED_CHASE;
+			ent->client->chasemode = LOCKED_CHASE;
 			if (ent->client->prechase_ps.fov)
 			{
-				if (ent->client->chasemode == FREE_CHASE) //hypov8 todo: check this
+				if (ent->client->chasemode == FREE_CHASE) //hypo_v8 todo: check this
 				{
 					ent->client->prechase_ps.pmove.delta_angles[PITCH] = ANGLE2SHORT(ent->client->ps.viewangles[PITCH] - ent->client->resp.cmd_angles[PITCH] + 10);
 					ent->client->prechase_ps.pmove.delta_angles[YAW] = ANGLE2SHORT(ent->client->ps.viewangles[YAW] - ent->client->resp.cmd_angles[YAW]);
@@ -2647,6 +2643,7 @@ void ClientThink (edict_t *ent, usercmd_t *ucmd)
 			}
 			ent->client->resp.scoreboard_frame = 0;
 		}//end snap
+		
 		if (ent->solid != SOLID_NOT || ent->client->chase_target->solid == SOLID_NOT)
 		{	// stop chasing
 			ChaseStop(ent);
@@ -2670,22 +2667,25 @@ void ClientThink (edict_t *ent, usercmd_t *ucmd)
 	if (ent->movetype == MOVETYPE_NOCLIP)
 		client->ps.pmove.pm_type = PM_SPECTATOR;
 
-	// Ridah, Hovercars
-	else if (ent->flags & FL_HOVERCAR)
+	// Ridah, Hovercars with janky side pipes
+	else 
+	if (ent->flags & FL_HOVERCAR)
 	{
 		ent->viewheight = 0;
 		client->ps.pmove.pm_type = PM_HOVERCAR;
 
 		ent->s.renderfx |= RF_REFL_MAP;		// FIXME: remove this once this flag is set in .mdx
 	}
-	else if (ent->flags & FL_HOVERCAR_GROUND)
+	else 
+	if (ent->flags & FL_HOVERCAR_GROUND)
 	{
 		ent->viewheight = 0;
 		client->ps.pmove.pm_type = PM_HOVERCAR_GROUND;
 
 		ent->s.renderfx |= RF_REFL_MAP;		// FIXME: remove this once this flag is set in .mdx
 	}
-	else if (ent->flags & FL_BIKE)
+	else 
+	if (ent->flags & FL_BIKE)
 	{
 		client->ps.pmove.pm_type = PM_BIKE;
 
@@ -2703,7 +2703,8 @@ void ClientThink (edict_t *ent, usercmd_t *ucmd)
 
 		VectorCopy( ent->velocity, bike_premove_vel );
 	}
-	else if (ent->flags & FL_CAR)
+	else 
+	if (ent->flags & FL_CAR)
 	{
 		// Cars don't use client-side prediction
 
@@ -2736,10 +2737,12 @@ void ClientThink (edict_t *ent, usercmd_t *ucmd)
 	}
 	// done.
 
-	else if (ent->s.modelindex != 255)
-		client->ps.pmove.pm_type = PM_GIB;
-	else if (ent->deadflag)
-		client->ps.pmove.pm_type = PM_DEAD;
+	else 
+	if (ent->s.modelindex != 255)
+	client->ps.pmove.pm_type = PM_GIB;
+	else 
+	if (ent->deadflag)
+	client->ps.pmove.pm_type = PM_DEAD;
 	else
 	{
 
@@ -2792,7 +2795,7 @@ chasing:
 
 	//MH:
 	if (ent->deadflag && !(ent->svflags & SVF_NOCLIENT) && !ent->groundentity && pm.groundentity && !pm.waterlevel && -ent->velocity[2] >= 100)
-		BodyImpactSound(ent, pm.footsteptype, -ent->velocity[2]);
+	BodyImpactSound(ent, pm.footsteptype, -ent->velocity[2]);
 	
 	for (i=0 ; i<3 ; i++)
 	{
@@ -2811,20 +2814,28 @@ chasing:
 		int rval;
 
 		rval = rand()%100;
-		if (rval > 66)	
+		if (rval > 66)
+		{
 			gi.sound(ent, CHAN_VOICE, gi.soundindex("*jump1.wav"), 1, ATTN_NORM, 0);
-		else if (rval > 33)
+		}
+		else 
+		if (rval > 33)
+		{
 			gi.sound(ent, CHAN_VOICE, gi.soundindex("*jump2.wav"), 1, ATTN_NORM, 0);
+		}
 		else
+		{
 			gi.sound(ent, CHAN_VOICE, gi.soundindex("*jump3.wav"), 1, ATTN_NORM, 0);
+		}
 			
-// BEGIN Snap, bunnyhop
+        // BEGIN Snap, bunnyhop
 		if (((int)dmflags->value & DF_NO_BUNNY) && client->land_framenum == level.framenum) // they did a doublejump
 		{
 			if (client->strafejump_count == 0)
-				client->firstjump_frame = level.framenum;
+			client->firstjump_frame = level.framenum;
 			client->strafejump_count++;
 			client->land_framenum--;  // so they wont be equal
+			
 			if (client->strafejump_count == 2)
 			{
 				if (client->firstjump_frame >= level.framenum - 50) // they are bunnyhopping
@@ -2844,26 +2855,33 @@ chasing:
 	if (!ent->groundentity && pm.groundentity) // client landing
 	{
 		client->land_framenum = level.framenum;
-
 	}
-// END Snap
+    // END Snap
 
-
-// KOOGLEBOT_ADD
-	//normal move
+    // KOOGLEBOT_ADD
+	// normal move
 	if (ent->kooglebot.PM_Jumping && ent->groundentity && pm.groundentity)
+	{
 		ent->kooglebot.PM_Jumping = 0;
+		ent->kooglebot.isCrouching = false;
+	}
 
-	//start jump
-	else if (ent->groundentity && !pm.groundentity && (pm.cmd.upmove >= 10) && (pm.waterlevel == 0))
-		ent->kooglebot.PM_Jumping = 1;
+	// start jump
+	else 
+	if (ent->groundentity && !pm.groundentity && (pm.cmd.upmove >= 10) && (pm.waterlevel == 0))
+	{
+	   ent->kooglebot.PM_Jumping = 1;
+	   ent->kooglebot.isCrouching = false;
+	}
 
-	//landing
-	else if (!ent->groundentity && pm.groundentity)
+	// landing
+	else 
+	if (!ent->groundentity && pm.groundentity)
+	{
 		ent->kooglebot.PM_Jumping = 2;
-// KOOGLEBOT_END
-
-
+		ent->kooglebot.isCrouching = false;
+	}
+    // KOOGLEBOT_END
 
 #if 0 //!DEMO
 	// bikestuff
@@ -3014,8 +3032,9 @@ chasing:
 	ent->waterlevel = pm.waterlevel;
 	ent->watertype = pm.watertype;
 	ent->groundentity = pm.groundentity;
-	if (pm.groundentity)
-	{
+	
+if(pm.groundentity)
+{
 		ent->groundentity_linkcount = pm.groundentity->linkcount;
 
 		// if standing on an AI, get off
@@ -3026,7 +3045,7 @@ chasing:
 			if (pm.groundentity->maxs[2] == pm.groundentity->cast_info.standing_max_z)
 			{	// duck
 				if (pm.groundentity->cast_info.move_crouch_down)
-					pm.groundentity->cast_info.currentmove = pm.groundentity->cast_info.move_crouch_down;
+				pm.groundentity->cast_info.currentmove = pm.groundentity->cast_info.move_crouch_down;
 				pm.groundentity->maxs[2] = DUCKING_MAX_Z;
 			}
 
@@ -3034,7 +3053,7 @@ chasing:
 			pm.groundentity->cast_info.avoid( pm.groundentity, ent, false );
 
 		}
-	}
+}
 
 #if 0 //MH
 	if (ent->deadflag)
@@ -3052,17 +3071,15 @@ chasing:
 		VectorCopy (pm.viewangles, client->ps.viewangles);
 	}
 
-	// q2 grapple add
+	// q2 grapple add TheGhost
 	if (client->kpq2_grapple)
-	{
-		KPQ2GrapplePull(client->kpq2_grapple);
-	}
+	KPQ2GrapplePull(client->kpq2_grapple);
 	// end
 
 	gi.linkentity (ent);
 
 	if (ent->movetype != MOVETYPE_NOCLIP)
-		G_TouchTriggers (ent);
+	G_TouchTriggers (ent);
 
 	// touch other objects
 	for (i=0 ; i<pm.numtouch ; i++)
@@ -3152,22 +3169,22 @@ car_resume:
 		}
 	}
 
-// BEGIN HITMEN
+    // BEGIN HITMEN
 	// Do we need to add some health or ammo ?
 	if (sv_hitmen->value /*enable_hitmen*/)
-		Hm_Check_Timers(ent);
-// END
+	Hm_Check_Timers(ent);
+    // END HITMEN
 
-// KOOGLEBOT_ADD 
+    // KOOGLEBOT_ADD 
 	if (!ent->kooglebot.is_bot)
 	{
 		if (ent->kooglebot.PM_Jumping)
-			KOOGLEND_PathMap(ent, true);	// hypov8 auto generate path for bots
+		KOOGLEND_PathMap(ent, true);	// hypo_v8 auto generate path for bots
 		ent->kooglebot.PM_Jumping = 0;
 	}
 	else
 		ent->client->flashlight = false; //skip flastlight
-// KOOGLEBOT_END
+    // KOOGLEBOT_END
 
 	Think_FlashLight (ent);
 

@@ -1335,7 +1335,7 @@ void KOOGLEMV_Move(edict_t *self, usercmd_t *ucmd)
 	// Crouch Mother Fucker  // TheGhost add
 	///////////////////////////
 	if (current_node_type == BOTNODE_DUCKING || next_node_type == BOTNODE_DUCKING)
-		ucmd->upmove = -400;
+		ucmd->upmove = BOT_CROUCH_VEL;
 
 	////////////////////////////////////////////////////////
 	// Grapple
@@ -1686,7 +1686,7 @@ void KOOGLEMV_Move(edict_t *self, usercmd_t *ucmd)
 #if 1
 	//hypov8 add. if node just above us, jump. fix missplaced nodes
 	if (self->groundentity && self->kooglebot.moveDirVel < 15  &&!self->kooglebot.isMovingUpPushed
-		 &&(next_node_type == BOTNODE_MOVE|| next_node_type == BOTNODE_ITEM))
+		 &&(next_node_type == BOTNODE_MOVE || next_node_type == BOTNODE_ITEM))
 	{
 		float height = (nodes[self->kooglebot.node_next].origin[2] - (self->s.origin[2] + BOTNODE_SHIFT));
 		float distToTarget = VectorDistanceFlat(self->s.origin, nodes[self->kooglebot.node_next].origin);

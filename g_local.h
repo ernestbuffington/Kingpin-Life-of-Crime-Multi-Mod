@@ -1774,7 +1774,8 @@ struct gclient_s
 	int			land_framenum;
 	int			strafejump_count;
 	int			firstjump_frame;
-
+	int			crouch_framenum;
+	int			crouch_count;
 #if 1 //MH: Score
 	// frag/deposit messages
 	int			message_frame;

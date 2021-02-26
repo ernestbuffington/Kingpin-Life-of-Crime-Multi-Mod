@@ -1075,7 +1075,7 @@ G_SetClientFrame
 ===============
 */
 
-void G_SetClientFrame (edict_t *ent)
+void G_SetClientFrame(edict_t *ent)
 {
 #define WEAPON_NONE		0
 #define WEAPON_MELEE	1
@@ -1089,26 +1089,27 @@ void G_SetClientFrame (edict_t *ent)
 	int			weapontype;
 	int	oldframe, oldend;
 
-// Ridah, Hovercars
+    // Ridah, Hovercars
 	if (ent->flags & (FL_HOVERCAR | FL_HOVERCAR_GROUND | FL_BIKE))
 	{	// always frame 0, use visiblity for model_parts to represent damage
 		ent->s.frame = 0;
 		return;
 	}
-// done.
+    // done.
 
 //	if (ent->s.modelindex != 255)
 //		return;		// not in the player model
 
 	client = ent->client;
-// HYPOV8_ADD
+    // HYPOV8_ADD
 	if (client->pers.spectator == SPECTATING)//add hypov8
 		return;
-// HYPOV8_END
-	if (client->ps.pmove.pm_flags & PMF_DUCKED)
-		duck = true;
+    // HYPOV8_END
+	
+	if(client->ps.pmove.pm_flags & PMF_DUCKED)
+	duck = true;
 	else
-		duck = false;
+	duck = false;
 
 	VectorCopy( ent->velocity, vel );
 	vel[2] = 0;
@@ -1285,12 +1286,23 @@ newanim:
 		}
 		client->anim_priority = ANIM_JUMP;
 //		if (ent->s.frame != FRAME_jump_07)
-			ent->s.frame = FRAME_jump_01;
+		ent->s.frame = FRAME_jump_01;
 		client->anim_end = FRAME_jump_07;
+	
+		if (level.bot_debug_mode)
+		{
+			if (ent->s.frame == FRAME_jump_01)
+			{
+				KOOGLEND_AddNode(ent, BOTNODE_JUMP, false);  // drop a jump node if in BOT DEBUG MODE!
+				gi.sound(ent, CHAN_VOICE, gi.soundindex("misc/menu1.wav"), 1, ATTN_NORM, 0);
+				gi.dprintf("DROPPING JUMP NODE\n");
+			}
+		}
 	}
-	else if (run)
+	else 
+	if(run)
 	{	// running
-		if (duck)
+		if(duck) //1
 		{
 			if (run < 0)
 			{
@@ -1301,6 +1313,16 @@ newanim:
 				case WEAPON_PISTOL:
 					ent->s.frame = FRAME_p_crch_walk_06;
 					client->anim_end = FRAME_p_crch_walk_01;
+					
+					if (level.bot_debug_mode)
+					{
+						if (ent->s.frame == FRAME_p_crch_walk_06)
+						{
+							KOOGLEND_AddNode(ent, BOTNODE_DUCKING, false);  // drop a crouch node if in BOT DEBUG MODE!
+							gi.sound(ent, CHAN_VOICE, gi.soundindex("misc/menu1.wav"), 1, ATTN_NORM, 0);
+							gi.dprintf("DROPPING CROUCH NODE\n");
+						}
+					}
 					break;
 
 				case WEAPON_MELEE:
@@ -1309,6 +1331,17 @@ newanim:
 				default:
 					ent->s.frame = FRAME_crch_shuf_05;
 					client->anim_end = FRAME_crch_shuf_01;
+
+					if (level.bot_debug_mode)
+					{
+						if (ent->s.frame == FRAME_crch_shuf_05)
+						{
+							KOOGLEND_AddNode(ent, BOTNODE_DUCKING, false);  // drop a crouch node if in BOT DEBUG MODE!
+							gi.sound(ent, CHAN_VOICE, gi.soundindex("misc/menu1.wav"), 1, ATTN_NORM, 0);
+							gi.dprintf("DROPPING CROUCH NODE\n");
+						}
+					}
+
 				}
 			}
 			else
@@ -1318,6 +1351,16 @@ newanim:
 				case WEAPON_PISTOL:
 					ent->s.frame = FRAME_p_crch_walk_01;
 					client->anim_end = FRAME_p_crch_walk_06;
+
+					if (level.bot_debug_mode)
+					{
+						if (ent->s.frame == FRAME_p_crch_walk_01)
+						{
+							KOOGLEND_AddNode(ent, BOTNODE_DUCKING, false);  // drop a crouch node if in BOT DEBUG MODE!
+							gi.sound(ent, CHAN_VOICE, gi.soundindex("misc/menu1.wav"), 1, ATTN_NORM, 0);
+							gi.dprintf("DROPPING CROUCH NODE\n");
+						}
+					}
 					break;
 
 				case WEAPON_MELEE:
@@ -1326,6 +1369,17 @@ newanim:
 				default:
 					ent->s.frame = FRAME_crch_shuf_01;
 					client->anim_end = FRAME_crch_shuf_05;
+
+					if (level.bot_debug_mode)
+					{
+						if (ent->s.frame == FRAME_crch_shuf_01)
+						{
+							KOOGLEND_AddNode(ent, BOTNODE_DUCKING, false);  // drop a crouch node if in BOT DEBUG MODE!
+							gi.sound(ent, CHAN_VOICE, gi.soundindex("misc/menu1.wav"), 1, ATTN_NORM, 0);
+							gi.dprintf("DROPPING CROUCH NODE\n");
+						}
+					}
+
 				}
 			}
 		}
@@ -1492,20 +1546,42 @@ newanim:
 			}
 		}
 	}
-	else if (slide)
+	else 
+	if(slide)
 	{	// strafing
-		if (duck)
+		if(duck) //2
 		{
 			switch (weapontype)
 			{
 			case WEAPON_PISTOL:
 				ent->s.frame = FRAME_p_crch_walk_01;
 				client->anim_end = FRAME_p_crch_walk_06;
+
+				if (level.bot_debug_mode)
+				{
+					if (ent->s.frame == FRAME_p_crch_walk_01)
+					{
+						KOOGLEND_AddNode(ent, BOTNODE_DUCKING, false);  // drop a crouch node if in BOT DEBUG MODE!
+						gi.sound(ent, CHAN_VOICE, gi.soundindex("misc/menu1.wav"), 1, ATTN_NORM, 0);
+						gi.dprintf("DROPPING CROUCH NODE\n");
+					}
+				}
 				break;
 
 			default:
 				ent->s.frame = FRAME_crch_shuf_01;
 				client->anim_end = FRAME_crch_shuf_05;
+
+				if (level.bot_debug_mode)
+				{
+					if (ent->s.frame == FRAME_crch_shuf_01)
+					{
+						KOOGLEND_AddNode(ent, BOTNODE_DUCKING, false);  // drop a crouch node if in BOT DEBUG MODE!
+						gi.sound(ent, CHAN_VOICE, gi.soundindex("misc/menu1.wav"), 1, ATTN_NORM, 0);
+						gi.dprintf("DROPPING CROUCH NODE\n");
+					}
+				}
+
 			}
 		}
 		else
@@ -1585,7 +1661,7 @@ newanim:
 
 		client->anim_priority = ANIM_ATTACK;
 
-		if (duck)
+		if(duck) //3
 		{
 			switch (weapontype)
 			{
@@ -1594,12 +1670,32 @@ newanim:
 			case WEAPON_PISTOL:
 				ent->s.frame = FRAME_p_crch_sht_01;
 				client->anim_end = FRAME_p_crch_sht_05;
+
+				if (level.bot_debug_mode)
+				{
+					if (ent->s.frame == FRAME_p_crch_sht_01)
+					{
+						KOOGLEND_AddNode(ent, BOTNODE_DUCKING, false);  // drop a crouch node if in BOT DEBUG MODE!
+						gi.sound(ent, CHAN_VOICE, gi.soundindex("misc/menu1.wav"), 1, ATTN_NORM, 0);
+						gi.dprintf("DROPPING CROUCH NODE\n");
+					}
+				}
 				break;
 
 			case WEAPON_NONE:
 			case WEAPON_GENERIC:
 				ent->s.frame = FRAME_crouch_shoot_01;
 				client->anim_end = FRAME_crouch_shoot_06;
+
+				if (level.bot_debug_mode)
+				{
+					if (ent->s.frame == FRAME_crouch_shoot_01)
+					{
+						KOOGLEND_AddNode(ent, BOTNODE_DUCKING, false);  // drop a crouch node if in BOT DEBUG MODE!
+						gi.sound(ent, CHAN_VOICE, gi.soundindex("misc/menu1.wav"), 1, ATTN_NORM, 0);
+						gi.dprintf("DROPPING CROUCH NODE\n");
+					}
+				}
 				break;
 			}
 		}
@@ -1637,18 +1733,38 @@ attack:
 	else
 	{	// standing
 
-		if (duck)
+		if(duck) //4
 		{
-			switch (weapontype)
+			switch(weapontype)
 			{
 			case WEAPON_GENERIC:
 				ent->s.frame = FRAME_tg_crch_rdy_01;
 				client->anim_end = FRAME_tg_crch_rdy_27;
+
+				if (level.bot_debug_mode)
+				{
+					if (ent->s.frame == FRAME_tg_crch_rdy_01)
+					{
+						KOOGLEND_AddNode(ent, BOTNODE_DUCKING, false);  // drop a crouch node if in BOT DEBUG MODE!
+						gi.sound(ent, CHAN_VOICE, gi.soundindex("misc/menu1.wav"), 1, ATTN_NORM, 0);
+						gi.dprintf("DROPPING CROUCH NODE\n");
+					}
+				}
 				break;
 
 			default:
 				ent->s.frame = FRAME_1p_crch_rdy_01;
 				client->anim_end = FRAME_1p_crch_rdy_18;
+
+				if (level.bot_debug_mode)
+				{
+					if (ent->s.frame == FRAME_1p_crch_rdy_01)
+					{
+						KOOGLEND_AddNode(ent, BOTNODE_DUCKING, false);  // drop a crouch node if in BOT DEBUG MODE!
+						gi.sound(ent, CHAN_VOICE, gi.soundindex("misc/menu1.wav"), 1, ATTN_NORM, 0);
+						gi.dprintf("DROPPING CROUCH NODE\n");
+					}
+				}
 			}
 		}
 		else

@@ -3773,7 +3773,6 @@ void ClientCommand (edict_t *ent)
 
 	else if (Q_stricmp (cmd, "motd") == 0)
 		Cmd_MOTD_f(ent);
-
 	//taunt commands
 	else if (Q_stricmp (cmd, "kingpin") == 0) 
 		Cmd_Key_f(ent,KINGPIN); 

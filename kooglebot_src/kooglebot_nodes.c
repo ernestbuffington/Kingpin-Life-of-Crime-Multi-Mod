@@ -671,6 +671,7 @@ void KOOGLEND_PathMap(edict_t *self, qboolean check_jump)
 			&&	self->velocity[2] > 100 && self->kooglebot.pm_last_node != INVALID
 			&& (nodes[self->kooglebot.pm_last_node].type == BOTNODE_MOVE
 			|| nodes[self->kooglebot.pm_last_node].type == BOTNODE_ITEM
+			|| nodes[self->kooglebot.pm_last_node].type == BOTNODE_DUCKING
 			|| nodes[self->kooglebot.pm_last_node].type == BOTNODE_JUMP)
 			)
 		{
@@ -750,6 +751,7 @@ void KOOGLEND_PathMap(edict_t *self, qboolean check_jump)
 		if (self->kooglebot.pm_last_node != INVALID
 			&& (nodes[self->kooglebot.pm_last_node].type == BOTNODE_MOVE
 			|| nodes[self->kooglebot.pm_last_node].type == BOTNODE_ITEM
+			|| nodes[self->kooglebot.pm_last_node].type == BOTNODE_DUCKING
 			|| nodes[self->kooglebot.pm_last_node].type == BOTNODE_JUMP))
 		{
 			float distToLastNode = VectorDistanceFlat(self->s.origin, nodes[self->kooglebot.pm_last_node].origin);
