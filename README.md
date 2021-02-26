@@ -1,5 +1,5 @@
 # Kingpin Life Of Crime Multi Mod v2.0 Introduction 
-This is a multi mod and allows you to pick which mod you want to play dureing intermission, much like map voting.<br>
+This is a multi mod and allows you to pick which mod you want to play during intermission, much like map voting.<br>
 TODO: Add All Blood Money Mod Features<br>
 TODO: Add Mod Vote Features<br> 
 
