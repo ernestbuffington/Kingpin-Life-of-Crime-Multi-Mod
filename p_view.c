@@ -200,8 +200,8 @@ void SV_CalcViewOffset (edict_t *ent)
 	float		ratio;
 	float		delta;
 	vec3_t		v;
-// HYPOV8_ADD
-	//add hypov8 stop view bob when spectating. awfulll with high ping
+    // HYPO_V8 ADD
+	// add hypov8 stop view bob when spectating. awfulll with high ping
 	if (ent->client->pers.spectator == SPECTATING && ent->client->chase_target == NULL)
 	{
 		//if (ent->client->chase_target == NULL)
@@ -213,7 +213,7 @@ void SV_CalcViewOffset (edict_t *ent)
 		VectorCopy(v , ent->client->ps.viewoffset);
 		return;
 	}
-// HYPOV8_END
+    // HYPO_V8 END
 
 //===================================
 
@@ -383,8 +383,8 @@ void SV_CalcGunOffset (edict_t *ent)
 //	float	delta;
 
 	// gun angles from bobbing
-	ent->client->ps.gunangles[ROLL] = xyspeed * bobfracsin * 0.001; //hypov8 reduced. was .005
-	ent->client->ps.gunangles[YAW] = xyspeed * bobfracsin * 0.002;	//hypov8 reduced. was 0.01
+	ent->client->ps.gunangles[ROLL] = xyspeed * bobfracsin * 0.001; //hypo_v8 reduced. was .005
+	ent->client->ps.gunangles[YAW] = xyspeed * bobfracsin * 0.002;	//hypo_v8 reduced. was 0.01
 	if (bobcycle & 1)
 	{
 		ent->client->ps.gunangles[ROLL] = -ent->client->ps.gunangles[ROLL];
@@ -954,7 +954,7 @@ void G_SetClientEffects (edict_t *ent)
 	
 	if (ent->client->invincible_framenum > level.framenum)
 	{
-// HYPOV8_ADD
+       // HYPO_V8 ADD
 		remaining = ent->client->invincible_framenum - level.framenum;
 		if (remaining < 2 /*|| (remaining & 4)*/ ) 
 		{
@@ -967,7 +967,7 @@ void G_SetClientEffects (edict_t *ent)
 			ent->s.effects |= EF_COLOR_SHELL;
 			ent->s.renderfx |= RF_SHELL_RED;
 		}
-// HYPOV8_END
+       // HYPO_V8 END
 	}
 
 	// show cheaters!!!
@@ -1101,10 +1101,11 @@ void G_SetClientFrame(edict_t *ent)
 //		return;		// not in the player model
 
 	client = ent->client;
-    // HYPOV8_ADD
-	if (client->pers.spectator == SPECTATING)//add hypov8
+    
+	// HYPO_V8 ADD
+	if (client->pers.spectator == SPECTATING)
 		return;
-    // HYPOV8_END
+    // HYPO_V8 END
 	
 	if(client->ps.pmove.pm_flags & PMF_DUCKED)
 	duck = true;
@@ -1237,6 +1238,18 @@ void G_SetClientFrame(edict_t *ent)
 					if (ent->s.frame < FRAME_clmb_loop_01 || (ent->s.frame >= FRAME_clmb_loop_09))
 					{
 						ent->s.frame = FRAME_clmb_loop_01;
+					
+						// TheGhost start 2/26/2021 4:11am
+						if (level.bot_debug_mode)
+						{
+							if (ent->s.frame == FRAME_clmb_loop_01)
+							{
+								KOOGLEND_AddNode(ent, BOTNODE_LADDER, false);  // drop a ladder node if in BOT DEBUG MODE!
+								gi.sound(ent, CHAN_VOICE, gi.soundindex("misc/menu1.wav"), 1, ATTN_NORM, 0);
+								gi.dprintf("DROPPING LADDER NODE\n");
+							}
+						}
+						// TheGhost end 2/26/2021 4:11am
 					}
 					else
 					{
@@ -1289,6 +1302,7 @@ newanim:
 		ent->s.frame = FRAME_jump_01;
 		client->anim_end = FRAME_jump_07;
 	
+		// TheGhost start 2/26/2021 4:11am
 		if (level.bot_debug_mode)
 		{
 			if (ent->s.frame == FRAME_jump_01)
@@ -1298,6 +1312,7 @@ newanim:
 				gi.dprintf("DROPPING JUMP NODE\n");
 			}
 		}
+		// TheGhost end 2/26/2021 4:11am
 	}
 	else 
 	if(run)
@@ -1314,6 +1329,7 @@ newanim:
 					ent->s.frame = FRAME_p_crch_walk_06;
 					client->anim_end = FRAME_p_crch_walk_01;
 					
+					// TheGhost start 2/26/2021 4:11am
 					if (level.bot_debug_mode)
 					{
 						if (ent->s.frame == FRAME_p_crch_walk_06)
@@ -1323,6 +1339,7 @@ newanim:
 							gi.dprintf("DROPPING CROUCH NODE\n");
 						}
 					}
+					// TheGhost end 2/26/2021 4:11am
 					break;
 
 				case WEAPON_MELEE:
@@ -1332,6 +1349,7 @@ newanim:
 					ent->s.frame = FRAME_crch_shuf_05;
 					client->anim_end = FRAME_crch_shuf_01;
 
+					// TheGhost start 2/26/2021 4:11am
 					if (level.bot_debug_mode)
 					{
 						if (ent->s.frame == FRAME_crch_shuf_05)
@@ -1341,6 +1359,7 @@ newanim:
 							gi.dprintf("DROPPING CROUCH NODE\n");
 						}
 					}
+					// TheGhost start 2/26/2021 4:11am
 
 				}
 			}
@@ -1352,6 +1371,7 @@ newanim:
 					ent->s.frame = FRAME_p_crch_walk_01;
 					client->anim_end = FRAME_p_crch_walk_06;
 
+					// TheGhost start 2/26/2021 4:11am
 					if (level.bot_debug_mode)
 					{
 						if (ent->s.frame == FRAME_p_crch_walk_01)
@@ -1361,6 +1381,7 @@ newanim:
 							gi.dprintf("DROPPING CROUCH NODE\n");
 						}
 					}
+					// TheGhost end 2/26/2021 4:11am
 					break;
 
 				case WEAPON_MELEE:
@@ -1370,6 +1391,7 @@ newanim:
 					ent->s.frame = FRAME_crch_shuf_01;
 					client->anim_end = FRAME_crch_shuf_05;
 
+					// TheGhost start 2/26/2021 4:11am
 					if (level.bot_debug_mode)
 					{
 						if (ent->s.frame == FRAME_crch_shuf_01)
@@ -1379,6 +1401,7 @@ newanim:
 							gi.dprintf("DROPPING CROUCH NODE\n");
 						}
 					}
+					// TheGhost end 2/26/2021 4:11am
 
 				}
 			}
@@ -1557,6 +1580,7 @@ newanim:
 				ent->s.frame = FRAME_p_crch_walk_01;
 				client->anim_end = FRAME_p_crch_walk_06;
 
+				// TheGhost start 2/26/2021 4:11am
 				if (level.bot_debug_mode)
 				{
 					if (ent->s.frame == FRAME_p_crch_walk_01)
@@ -1566,12 +1590,14 @@ newanim:
 						gi.dprintf("DROPPING CROUCH NODE\n");
 					}
 				}
+				// TheGhost start 2/26/2021 4:11am
 				break;
 
 			default:
 				ent->s.frame = FRAME_crch_shuf_01;
 				client->anim_end = FRAME_crch_shuf_05;
 
+				// TheGhost start 2/26/2021 4:11am
 				if (level.bot_debug_mode)
 				{
 					if (ent->s.frame == FRAME_crch_shuf_01)
@@ -1581,7 +1607,7 @@ newanim:
 						gi.dprintf("DROPPING CROUCH NODE\n");
 					}
 				}
-
+				// TheGhost end 2/26/2021 4:11am
 			}
 		}
 		else
@@ -1671,6 +1697,7 @@ newanim:
 				ent->s.frame = FRAME_p_crch_sht_01;
 				client->anim_end = FRAME_p_crch_sht_05;
 
+				// TheGhost start 2/26/2021 4:11am
 				if (level.bot_debug_mode)
 				{
 					if (ent->s.frame == FRAME_p_crch_sht_01)
@@ -1680,6 +1707,7 @@ newanim:
 						gi.dprintf("DROPPING CROUCH NODE\n");
 					}
 				}
+				// TheGhost end 2/26/2021 4:11am
 				break;
 
 			case WEAPON_NONE:
@@ -1687,6 +1715,7 @@ newanim:
 				ent->s.frame = FRAME_crouch_shoot_01;
 				client->anim_end = FRAME_crouch_shoot_06;
 
+				// TheGhost start 2/26/2021 4:11am
 				if (level.bot_debug_mode)
 				{
 					if (ent->s.frame == FRAME_crouch_shoot_01)
@@ -1696,6 +1725,7 @@ newanim:
 						gi.dprintf("DROPPING CROUCH NODE\n");
 					}
 				}
+				// TheGhost end 2/26/2021 4:11am
 				break;
 			}
 		}
@@ -1741,6 +1771,7 @@ attack:
 				ent->s.frame = FRAME_tg_crch_rdy_01;
 				client->anim_end = FRAME_tg_crch_rdy_27;
 
+				// TheGhost start 2/26/2021 4:11am
 				if (level.bot_debug_mode)
 				{
 					if (ent->s.frame == FRAME_tg_crch_rdy_01)
@@ -1750,12 +1781,14 @@ attack:
 						gi.dprintf("DROPPING CROUCH NODE\n");
 					}
 				}
+				// TheGhost end 2/26/2021 4:11am
 				break;
 
 			default:
 				ent->s.frame = FRAME_1p_crch_rdy_01;
 				client->anim_end = FRAME_1p_crch_rdy_18;
 
+				// TheGhost start 2/26/2021 4:11am
 				if (level.bot_debug_mode)
 				{
 					if (ent->s.frame == FRAME_1p_crch_rdy_01)
@@ -1765,6 +1798,7 @@ attack:
 						gi.dprintf("DROPPING CROUCH NODE\n");
 					}
 				}
+				// TheGhost end 2/26/2021 4:11am
 			}
 		}
 		else
