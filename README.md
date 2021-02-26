@@ -17,9 +17,9 @@ TODO: Add a special load feture for MrDamage as his server uses toons and chat b
 10.	Added auto Pak config for people who join the server.
 11.	Added seperate Lan Config.
 12.	Added Blood Moeny v1.0 Mod
-13.	Added Hitmen Hook.
-14.	Added Q2 Lithium Grapple.
-15.	Added Mod switch to server config. 
+13.	Added Hitmen Hook. This can be turned on and off for each Mod...
+14.	Added Q2 Lithium Grapple. This can be turned on and off for each Mod... 
+15.	Added Mod switch to server config. Used to setup specific Mod servers... i.e. set current_mod 1 for Botmatch | set current_mod 2 for BloodMoney.  
 
 # Build and Test
 TODO: Describe and show how to build your code and run the tests. 
