@@ -69,7 +69,7 @@
 #include "../m_player.h" 	 // player animations
 #include "kooglebot.h"		 // kooglebot header file
 
-#include "../g_hitmen_mod.h" // hitmen header
+#include "../hitmen_src/g_hitmen_mod.h" // hitmen header
 
 /////////////////////////////////////////////////////////////////////////////////
 // Had to add this function in this version for some reason.

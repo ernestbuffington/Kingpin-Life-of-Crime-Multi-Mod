@@ -27,7 +27,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #endif
 
 // BEGIN HITMEN
-#include "g_hitmen_mod.h"
+#include "hitmen_src/g_hitmen_mod.h"	// hitmen header file
 // END
 field_t fields[] = {
 	{"classname", FOFS(classname), F_LSTRING},

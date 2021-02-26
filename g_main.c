@@ -23,7 +23,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "voice_bitch.h"
 #include "voice_punk.h"
 
-#include "g_hitmen_mod.h"  // hitmen
+#include "hitmen_src/g_hitmen_mod.h"
 
 //#include "stdlog.h"      // StdLog
 //#include "gslog.h"       // StdLog

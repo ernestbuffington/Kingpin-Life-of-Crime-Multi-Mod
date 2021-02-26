@@ -66,7 +66,7 @@
 
 #include "../g_local.h"         // main game header file
 #include "kooglebot.h"			// kooglebot header file
-#include "../g_hitmen_mod.h"	// hitmen header file
+#include "../hitmen_src/g_hitmen_mod.h"	// hitmen header file
 
 vec3_t KOOGLEBOT_Look_Out; //hypov8 global var
 

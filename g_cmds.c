@@ -3378,7 +3378,7 @@ void ClientCommand (edict_t *ent)
 {
 	char	*cmd;
 	int	  ver_ok;
-//gi.dprintf("cmd: %s [%s]\n",gi.argv(0), gi.args());
+//  gi.dprintf("cmd: %s [%s]\n",gi.argv(0), gi.args());
 
 	if (!ent->inuse)
 		return;		// not fully in game yet
@@ -3391,7 +3391,8 @@ void ClientCommand (edict_t *ent)
 	cmd = gi.argv(0);
 
 	// snap - get version info from client
-	if (!strcmp(cmd, ver_check)) {
+	if (!strcmp(cmd, ver_check)) 
+	{
 
 		int current_client_version = 4;  // set this to the minimum required client version
 
@@ -3476,8 +3477,10 @@ void ClientCommand (edict_t *ent)
 		{
 #if 1       //HYPODEBUG
 			int c = atoi(cmd + 3);
+			
 			if (c != ent->client->resp.checked)
-				return;
+			return;
+			
 			if (c & 1)
 			{
 				// $vid_gamma $gl_picmip $intensity $gl_maxtexsize
@@ -3505,9 +3508,9 @@ void ClientCommand (edict_t *ent)
 							KICKENT(ent, "%s is being kicked for using a lighting cheat!\n");
 						}
 						else
-				{
-					KICKENT(ent, "%s is being kicked for using a texture cheat!\n");
-				}
+				        {
+					        KICKENT(ent, "%s is being kicked for using a texture cheat!\n");
+				        }
 					}
 				}
 			}
@@ -3549,10 +3552,10 @@ void ClientCommand (edict_t *ent)
 					else
 						ent->client->pers.polyblender = (v == 2);
 				}
-					}
+			}
 #endif
 			ent->client->resp.checked += 100;
-				}
+		}
 
 		return;
 	}

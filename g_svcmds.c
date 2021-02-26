@@ -27,7 +27,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #endif
 // END
 
-void	Svcmd_Test_f (void)
+void Svcmd_Test_f (void)
 {
 	safe_cprintf(NULL, PRINT_HIGH, "Svcmd_Test_f()\n");
 }
@@ -71,8 +71,8 @@ typedef struct
 
 #define	MAX_IPFILTERS	1024
 
-ipfilter_t	ipfilters[MAX_IPFILTERS];
-int			numipfilters;
+ipfilter_t ipfilters[MAX_IPFILTERS];
+int numipfilters;
 
 /*
 =================
@@ -291,9 +291,8 @@ of the parameters
 */
 void ServerCommand (void)
 {
-	char	*cmd;
-
-	cmd = gi.argv(1);
+	char *cmd;
+ 	cmd = gi.argv(1);
 
 	if (Q_stricmp (cmd, "test") == 0)
 		Svcmd_Test_f ();
@@ -305,8 +304,7 @@ void ServerCommand (void)
 		SVCmd_ListIP_f ();
 	else if (Q_stricmp (cmd, "writeip") == 0)
 		SVCmd_WriteIP_f ();
-
-   // KOOGLEBOT_ADD
+    // KOOGLEBOT_ADD
 	else 
 	if (Q_stricmp(cmd, "acedebug") == 0 || Q_stricmp(cmd, "debug") == 0 || Q_stricmp(cmd, "koogledebug") == 0 || Q_stricmp(cmd, "botdebug") == 0 || Q_stricmp(cmd, "debugbot") == 0)
 	{
@@ -327,17 +325,14 @@ void ServerCommand (void)
 			KOOGLECM_BotDebug(false);
 		}
 	}
-
-
-	else if (Q_stricmp(cmd, "addbot") == 0)
+ 	else if (Q_stricmp(cmd, "addbot") == 0)
 		KOOGLECM_BotAdd(gi.argv(2), gi.argv(3), gi.argv(4), gi.argv(5)); //add skill
 	else if (Q_stricmp(cmd, "removebot") == 0 || Q_stricmp(cmd, "removebots") == 0 || Q_stricmp(cmd, "rbot") == 0)
 		KOOGLESP_RemoveBot(gi.argv(2), true);
 	else if (Q_stricmp(cmd, "savenodes") == 0 || Q_stricmp(cmd, "savenode") == 0)
 		KOOGLEND_SaveNodes();
 	// KOOGLEBOT_END
-
-	else if (!Q_stricmp(cmd,"banip")) 
+ 	else if (!Q_stricmp(cmd,"banip")) 
 		Cmd_BanDicks_f(NULL, 1);
 	else if (!Q_stricmp(cmd,"listbans")) 
 		Cmd_ListBans_f(NULL);

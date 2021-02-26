@@ -68,7 +68,7 @@
 
 #include "../g_local.h"         // main game header file
 #include "kooglebot.h"			// kooglebot header file
-#include "../g_hitmen_mod.h"	// hitmen header file
+#include "../hitmen_src/g_hitmen_mod.h"	// hitmen header file
 
 int	num_players;
 int num_items;

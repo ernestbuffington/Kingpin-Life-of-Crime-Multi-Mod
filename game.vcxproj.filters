@@ -22,9 +22,6 @@
     <ClCompile Include="kooglebot_src\kooglebot_spawn.c">
       <Filter>Kingpin Multi Mod\Mods\Koogle Bot Source</Filter>
     </ClCompile>
-    <ClCompile Include="g_hitmen_mod.c">
-      <Filter>Kingpin Multi Mod\Mods\Hitmen Mod</Filter>
-    </ClCompile>
     <ClCompile Include="p_hook.c">
       <Filter>Kingpin Multi Mod\Mods\Hook &amp; Grapple</Filter>
     </ClCompile>
@@ -45,9 +42,6 @@
     </ClCompile>
     <ClCompile Include="voice_punk.c">
       <Filter>Kingpin Multi Mod\C Files</Filter>
-    </ClCompile>
-    <ClCompile Include="unlagged.c">
-      <Filter>Kingpin Multi Mod\Mods\Unlagged</Filter>
     </ClCompile>
     <ClCompile Include="tourney.c">
       <Filter>Kingpin Multi Mod\Mods\Monkey Mod</Filter>
@@ -142,12 +136,6 @@
     <ClCompile Include="file_godfather_ini.c">
       <Filter>Kingpin Multi Mod\Mods\GodFather Mod</Filter>
     </ClCompile>
-    <ClCompile Include="file_hitmen_ini.c">
-      <Filter>Kingpin Multi Mod\Mods\Hitmen Mod</Filter>
-    </ClCompile>
-    <ClCompile Include="file_hitmen_teams_ini.c">
-      <Filter>Kingpin Multi Mod\Mods\Hitmen Mod</Filter>
-    </ClCompile>
     <ClCompile Include="file_insanity_ini.c">
       <Filter>Kingpin Multi Mod\Mods\Insanity Mod</Filter>
     </ClCompile>
@@ -169,14 +157,8 @@
     <ClCompile Include="file_assault_ini.c">
       <Filter>Kingpin Multi Mod\Mods\Assault Mod</Filter>
     </ClCompile>
-    <ClCompile Include="file_bloodmoney_ini.c">
-      <Filter>Kingpin Multi Mod\Mods\Blood Money Mod</Filter>
-    </ClCompile>
     <ClCompile Include="file_botmatch_ini.c">
       <Filter>Kingpin Multi Mod\Mods\Botmatch Mod</Filter>
-    </ClCompile>
-    <ClCompile Include="lan_play_settings.c">
-      <Filter>Kingpin Multi Mod\Mods\Monkey Mod</Filter>
     </ClCompile>
     <ClCompile Include="p_grapple.c">
       <Filter>Kingpin Multi Mod\Mods\Hook &amp; Grapple</Filter>
@@ -186,6 +168,24 @@
     </ClCompile>
     <ClCompile Include="g_cmds.c">
       <Filter>Kingpin Multi Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="bloodmoney_src\file_bloodmoney_ini.c">
+      <Filter>Kingpin Multi Mod\Mods\Blood Money Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="unlagged_src\unlagged.c">
+      <Filter>Kingpin Multi Mod\Mods\Unlagged</Filter>
+    </ClCompile>
+    <ClCompile Include="hitmen_src\g_hitmen_mod.c">
+      <Filter>Kingpin Multi Mod\Mods\Hitmen Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="hitmen_src\file_hitmen_ini.c">
+      <Filter>Kingpin Multi Mod\Mods\Hitmen Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="hitmen_src\file_hitmen_teams_ini.c">
+      <Filter>Kingpin Multi Mod\Mods\Hitmen Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="g_lan_play_settings.c">
+      <Filter>Kingpin Multi Mod\Mods\Monkey Mod</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -242,6 +242,9 @@
     </ClInclude>
     <ClInclude Include="p_grapple.h">
       <Filter>Kingpin Multi Mod\Mods\Hook &amp; Grapple</Filter>
+    </ClInclude>
+    <ClInclude Include="hitmen_src\g_hitmen_mod.h">
+      <Filter>Kingpin Multi Mod\Mods\Hitmen Mod</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

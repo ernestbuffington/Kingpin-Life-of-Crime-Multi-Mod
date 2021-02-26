@@ -35,7 +35,7 @@
 //--------------------------------------------------------------------
 
 #include "g_local.h"
-#include "g_hitmen_mod.h"
+#include "hitmen_src/g_hitmen_mod.h"
 
 // this is the same as function P_ProjectSource in p_weapons.c except it 
 // projects the offset distance in reverse since hook is launched with 

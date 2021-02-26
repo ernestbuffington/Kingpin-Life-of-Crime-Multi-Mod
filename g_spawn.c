@@ -887,7 +887,7 @@ void SpawnEntities (char *mapname, char *entities, char *spawnpoint)
 	if (kpded2)
 	{
 		// make the Monkey Mod image downloadable (with kpded2)
-		//dlindex("pics/mmod/mascot.tga");
+		dlindex("pics/mmod/mascot.tga");
 		if (teamplay->value)
 		{
 			// and the team indicators
@@ -1290,17 +1290,21 @@ void SpawnEntities (char *mapname, char *entities, char *spawnpoint)
 	{
 		// prepare map vote options now to make the map pics downloadable (with kpded2)
 		SetupMapVote();
+		
 		if (kpded2)
 		{
 			int i;
 			for (i=1; i<=level.num_vote_set; i++)
 			{
 				char buf[MAX_QPATH];
-				//hypov8 note: should pics/ be /pics/. configstrings conflict in exe. prevents precached image?
-				//either short image name OR full name including leading fwd slash
-								Com_sprintf(buf, sizeof(buf), "pics/%s.pcx", maplist[level.vote_set[i]]);
+				// hypo_v8 note: should pics/ be /pics/. configstrings conflict in exe. prevents precached image?
+				// either short image name OR full name including leading fwd slash
+				Com_sprintf(buf, sizeof(buf), "pics/%s.pcx", maplist[level.vote_set[i]]);
+				
 				if (file_exist(buf)) // not all maps have a pic so check it exists
+				{
 					dlindex(buf);
+				}
 				else
 				{
 					level.vote_nopic[i] = true;
@@ -1592,7 +1596,7 @@ void SP_worldspawn (edict_t *ent)
 	SetItemNames ();
 
 	if (st.nextmap)
-		strcpy (level.nextmap, st.nextmap);
+	strcpy (level.nextmap, st.nextmap);
 
 	// make some data visible to the server
 
@@ -1600,7 +1604,7 @@ void SP_worldspawn (edict_t *ent)
 	gi.configstring (CS_CDTRACK, va("%i", ent->sounds) );
 
 	if (ent->message && ent->message[0])
-		gi.configstring (CS_NAME, ent->message);
+	gi.configstring (CS_NAME, ent->message);
 
 	gi.configstring (CS_DENSITY, va("%f", st.fogdensity));
 	gi.configstring (CS_FOGVAL, va("%f %f %f", st.fogval[0], st.fogval[1], st.fogval[2]));
@@ -1610,9 +1614,9 @@ void SP_worldspawn (edict_t *ent)
 	gi.configstring (CS_FOGVAL2, va("%f %f %f", st.fogval2[0], st.fogval2[1], st.fogval2[2]));
 
 	if (st.sky && st.sky[0])
-		gi.configstring (CS_SKY, st.sky);
+	gi.configstring (CS_SKY, st.sky);
 	else
-		gi.configstring (CS_SKY, "sr");
+	gi.configstring (CS_SKY, "sr");
 
 	gi.configstring (CS_MAXCLIENTS, va("%i", (int)(maxclients->value) ) );
 
@@ -1654,25 +1658,25 @@ void SP_worldspawn (edict_t *ent)
 
 	// sexed sounds
 
-	gi.soundindex ("*death1.wav");
-	gi.soundindex ("*death2.wav");
-	gi.soundindex ("*death3.wav");
-	gi.soundindex ("*death4.wav");
+	gi.soundindex ("*death1.wav");		// dying
+	gi.soundindex ("*death2.wav");		// dying
+	gi.soundindex ("*death3.wav");		// dying
+	gi.soundindex ("*death4.wav");		// dying
 	//gi.soundindex("*fall1.wav"); //q2
 	//gi.soundindex("*fall2.wav"); //q2
 	gi.soundindex ("*gurp1.wav");		// drowning damage
-	gi.soundindex ("*gurp2.wav");	
+	gi.soundindex ("*gurp2.wav");		// drowning damage
 	gi.soundindex ("*jump1.wav");		// player jump
 	gi.soundindex ("*jump2.wav");		// player jump
 	gi.soundindex ("*jump3.wav");		// player jump
-	gi.soundindex ("*pain25_1.wav");
-	gi.soundindex ("*pain25_2.wav");
-	gi.soundindex ("*pain50_1.wav");
-	gi.soundindex ("*pain50_2.wav");
-	gi.soundindex ("*pain75_1.wav");
-	gi.soundindex ("*pain75_2.wav");
-	gi.soundindex ("*pain100_1.wav");
-	gi.soundindex ("*pain100_2.wav");
+	gi.soundindex ("*pain25_1.wav");	// player pain
+	gi.soundindex ("*pain25_2.wav");	// player pain
+	gi.soundindex ("*pain50_1.wav");	// player pain
+	gi.soundindex ("*pain50_2.wav");	// player pain
+	gi.soundindex ("*pain75_1.wav");	// player pain
+	gi.soundindex ("*pain75_2.wav");	// player pain
+	gi.soundindex ("*pain100_1.wav");	// player pain
+	gi.soundindex ("*pain100_2.wav");	// player pain
 
 	//-------------------
 
@@ -1710,7 +1714,7 @@ void SP_worldspawn (edict_t *ent)
 	gi.modelindex("models/weapons/grapple/hook/tris.md2"); // 2/2/2021 1:58am - q2 grapple TheGhost
 	gi.modelindex("models/items/hook/hook.mdx");		   // 2/2/2021 1:58am - Kp Hook added hitmen TheGhost
 
-	gi.soundindex("VotewithaBullet1.wav");  // Vote with a bullete
+	gi.soundindex("VotewithaBullet1.wav");  // Vote with a bulette
 	gi.soundindex("end_game.wav");          // GAME OVER
 	gi.soundindex("3_minute_warning.wav");  // 3 Minute Warning
 	

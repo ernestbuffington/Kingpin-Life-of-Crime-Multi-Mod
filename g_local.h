@@ -1774,8 +1774,6 @@ struct gclient_s
 	int			land_framenum;
 	int			strafejump_count;
 	int			firstjump_frame;
-	int			crouch_framenum;
-	int			crouch_count;
 #if 1 //MH: Score
 	// frag/deposit messages
 	int			message_frame;
@@ -1805,28 +1803,27 @@ struct gclient_s
 
 // MORAL values
 // these effect willingness to fight until death, attack unprovoked, etc
-#define	MORAL_RANDOM	0			// engine will assign a random value upon spawning (using formula, so it's the same each time the level loads)
-#define	MORAL_COWARD	1
-#define	MORAL_HAPPY		2
-#define	MORAL_NORMAL	3
-#define	MORAL_AGGRESSIVE	4
-#define	MORAL_BESERK	5
-#define	MORAL_HEROIC	6
-#define	MORAL_PSYCOTIC	7
+#define	MORAL_RANDOM	 0			// engine will assign a random value upon spawning (using formula, so it's the same each time the level loads)
+#define	MORAL_COWARD	 1
+#define	MORAL_HAPPY		 2
+#define	MORAL_NORMAL	 3
+#define	MORAL_AGGRESSIVE 4
+#define	MORAL_BESERK	 5
+#define	MORAL_HEROIC	 6
+#define	MORAL_PSYCOTIC	 7
 
-#define	MORAL_MAX		7
+#define	MORAL_MAX		 7
 
+#define	ACC_GREEN		 0
+#define	ACC_POOR		 1
+#define	ACC_NORMAL		 2
+#define	ACC_SEASONED	 3
+#define ACC_VETERAN		 4
+#define ACC_ELITE		 5
 
-#define	ACC_GREEN		0
-#define	ACC_POOR		1
-#define	ACC_NORMAL		2
-#define	ACC_SEASONED	3
-#define ACC_VETERAN		4
-#define ACC_ELITE		5
-
-#define	GENDER_NONE		0
-#define	GENDER_MALE		1
-#define	GENDER_FEMALE	2
+#define	GENDER_NONE		 0
+#define	GENDER_MALE		 1
+#define	GENDER_FEMALE	 2
 
 struct edict_s
 {
@@ -1981,13 +1978,13 @@ struct edict_s
 	active_node_data_t	*active_node_data;	// points to the active node data of the current unit
 // END:		Xatrix/Ridah/Navigator/17-mar-1998
 
-// KOOGLEBOT_ADD
+    // KOOGLEBOT_ADD
 	kooglebot_t kooglebot; // hypo_v8 was messy. moved this to a seperate group
-// KOOGLEBOT_END
+    // KOOGLEBOT_END
 
-//HYPOV8
+    //HYPO_V8 ADD
 	qboolean hasSelectedPistol;// hypo_v8 stop auto switch (clientinfo??)
-//END
+    //HYPO_V8 END
 
 // JOSEPH 19-MAR-99
 	vec3_t  rotate;

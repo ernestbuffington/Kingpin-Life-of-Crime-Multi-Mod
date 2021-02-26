@@ -108,9 +108,11 @@ again:
 		if (deathmatch_value || VectorDistance( g_edicts[1].s.origin, self->s.origin ) < 1024)
 		{
 			if ((other && other->client) || self->client)
-				gi.sound( self, CHAN_VOICE | CHAN_RELIABLE, (voice_table[ entry ].soundindex ? voice_table[ entry ].soundindex - 1 : (voice_table[ entry ].soundindex = 1 + gi.soundindex ( voice_table[ entry ].filename )) - 1 ), 1.0, 1, 0 );
+				//gi.sound( self, CHAN_VOICE | CHAN_RELIABLE, (voice_table[ entry ].soundindex ? voice_table[ entry ].soundindex - 1 : (voice_table[ entry ].soundindex = 1 + gi.soundindex ( voice_table[ entry ].filename )) - 1 ), 1.0, 1, 0 );
+				gi.sound(self, CHAN_RELIABLE, (voice_table[entry].soundindex ? voice_table[entry].soundindex - 1 : (voice_table[entry].soundindex = 1 + gi.soundindex(voice_table[entry].filename)) - 1), 1.0, 1, 0);
 			else
-				gi.sound( self, CHAN_VOICE | CHAN_RELIABLE, (voice_table[ entry ].soundindex ? voice_table[ entry ].soundindex - 1 : (voice_table[ entry ].soundindex = 1 + gi.soundindex ( voice_table[ entry ].filename )) - 1 ), 0.2, 1, 0 );
+				//gi.sound( self, CHAN_VOICE | CHAN_RELIABLE, (voice_table[ entry ].soundindex ? voice_table[ entry ].soundindex - 1 : (voice_table[ entry ].soundindex = 1 + gi.soundindex ( voice_table[ entry ].filename )) - 1 ), 0.2, 1, 0 );
+				gi.sound(self, CHAN_RELIABLE, (voice_table[entry].soundindex ? voice_table[entry].soundindex - 1 : (voice_table[entry].soundindex = 1 + gi.soundindex(voice_table[entry].filename)) - 1), 0.2, 1, 0);
 
 			voice_table[ entry ].gameinc_soundindex = gameinc;
 		}
@@ -135,7 +137,7 @@ again:
 
 	self->last_talk_time = level.time;
 
-// JOSEPH 2-FEB-99 
+    // JOSEPH 2-FEB-99 
 	if (other && other->client)
 	{
 		other->client->ps.stats[STAT_HUD_ENEMY_TALK] = voice_table[ entry ].type;
