@@ -3401,6 +3401,18 @@ void ClientCommand (edict_t *ent)
 		// TheGhost: exec pak.cfg if version is unset (in case they auto-downloaded the PAK)
 		if (!cmd[0] && !ent->version)
 		{
+			// TheGhost start 2/26/2021 7:42am - setup bind for Bot Menu
+			gi.WriteByte(13);
+			gi.WriteString("bind F2 menu\n");
+			gi.unicast(ent, true);
+			// TheGhost end 2/26/2021 7:42am 
+
+			// TheGhost start 2/26/2021 7:42am - setup bind for MOTD
+			gi.WriteByte(13);
+			gi.WriteString("bind F6 motd\n");
+			gi.unicast(ent, true);
+			// TheGhost end 2/26/2021 7:42am 
+
 			gi.WriteByte(13);
 			gi.WriteString("exec pak.cfg\n");
 			gi.unicast(ent, true);
@@ -3462,7 +3474,7 @@ void ClientCommand (edict_t *ent)
 		}
 		else
 		{
-#if 1 //HYPODEBUG
+#if 1       //HYPODEBUG
 			int c = atoi(cmd + 3);
 			if (c != ent->client->resp.checked)
 				return;
