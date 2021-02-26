@@ -3,7 +3,7 @@ This is a multi mod and allows you to pick which mod you want to play dureing in
 TODO: Add All Blood Money Mod Features
 TODO: Add Mod Vote Features 
 
-# What hasd been done so far
+# What has been done so far
 TODO: 
 1.	KoogleBot v1.0 base code is from Hypo_v8, this man has put in some serious work on these bots and has done an awesome job!
 2.	KoogleBot auto crouch and jump node layout during debug. You no longer have to add jump or crouch nodes manually, this was done by TheGhost. 
@@ -11,12 +11,12 @@ TODO:
 4.	Added F6 for MOTD, this was done by TheGhost.
 5.	Added an Awesome Bot Menu, this was done by Hypo_v8 and the binds were done by TheGhost and Hypo_v8.
 6.	Gave the Bots some outstanding node handling, this was done by Hypo_v8 and TheGhost.
-7.	Added Botmatch mod, this mod was done by Hypo_v8. TheGhost added auto crouch and jump debug setup to it.
+7.	Added Botmatch v0.39 mod, this mod was done by Hypo_v8. TheGhost added auto crouch and jump debug setup to it.
 8.	New Death Pan, this was done by Hypo_v8
 9.	Added version checking, this was done by TheGhost.
 10.	Added auto Pak config for people who join the server.
 11.	Added seperate Lan Config.
-12.	 
+12.	Added Blood Moeny v1.0 Mod 
 
 # Build and Test
 TODO: Describe and show how to build your code and run the tests. 
