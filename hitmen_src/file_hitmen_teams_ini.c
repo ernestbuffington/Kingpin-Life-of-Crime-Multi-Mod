@@ -1,5 +1,6 @@
-#include "../g_local.h"
-#include "../file.h"
+#include "../../g_local.h"
+#include "../../file.h"
+#include "g_hitmen_mod.h"
 #include <stdio.h>
 #include <sys/stat.h>
 
