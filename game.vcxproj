@@ -82,7 +82,7 @@
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ded2+webmin|Win32'">
-    <OutDir>H:\Kingpin\main/</OutDir>
+    <OutDir>..\..\multi/</OutDir>
     <IntDir>.\Debug/</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
@@ -135,7 +135,7 @@
       <LinkDLL>true</LinkDLL>
       <SubSystem>Windows</SubSystem>
       <IgnoreSpecificDefaultLibraries>LIBC;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <OutputFile>$(OutDir)gamex86.dll</OutputFile>
+      <OutputFile>..\multi\gamex86.dll</OutputFile>
       <ImportLibrary>.\Release\gamex86.lib</ImportLibrary>
       <BaseAddress>0x20000000</BaseAddress>
       <AdditionalDependencies>winmm.lib;navlib\navlib.lib;%(AdditionalDependencies)</AdditionalDependencies>

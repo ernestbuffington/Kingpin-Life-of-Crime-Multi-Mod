@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>H:\Kingpin\multi\gamex86.dll</FullPath>
+      <FullPath>H:\Kingpin\gamex86.dll</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
