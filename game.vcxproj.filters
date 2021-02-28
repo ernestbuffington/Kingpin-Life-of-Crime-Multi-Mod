@@ -49,71 +49,50 @@
     <ClCompile Include="file.c">
       <Filter>Kingpin Multi Mod\Mods\Monkey Mod</Filter>
     </ClCompile>
-    <ClCompile Include="g_main.c">
-      <Filter>Kingpin Multi Mod</Filter>
-    </ClCompile>
-    <ClCompile Include="g_save.c">
-      <Filter>Kingpin Multi Mod</Filter>
-    </ClCompile>
-    <ClCompile Include="g_spawn.c">
-      <Filter>Kingpin Multi Mod</Filter>
-    </ClCompile>
-    <ClCompile Include="g_svcmds.c">
-      <Filter>Kingpin Multi Mod</Filter>
-    </ClCompile>
-    <ClCompile Include="p_hud.c">
-      <Filter>Kingpin Multi Mod</Filter>
-    </ClCompile>
-    <ClCompile Include="p_view.c">
-      <Filter>Kingpin Multi Mod</Filter>
-    </ClCompile>
     <ClCompile Include="g_chase.c">
       <Filter>Kingpin Multi Mod\Mods\Snap Chase Cam</Filter>
     </ClCompile>
     <ClCompile Include="g_combat.c">
-      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+      <Filter>Kingpin Multi Mod\Mods\gamex86</Filter>
     </ClCompile>
     <ClCompile Include="g_func.c">
-      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+      <Filter>Kingpin Multi Mod\Mods\gamex86</Filter>
     </ClCompile>
     <ClCompile Include="g_items.c">
-      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+      <Filter>Kingpin Multi Mod\Mods\gamex86</Filter>
     </ClCompile>
     <ClCompile Include="g_misc.c">
-      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+      <Filter>Kingpin Multi Mod\Mods\gamex86</Filter>
     </ClCompile>
     <ClCompile Include="g_phys.c">
-      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+      <Filter>Kingpin Multi Mod\Mods\gamex86</Filter>
     </ClCompile>
     <ClCompile Include="g_props.c">
-      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+      <Filter>Kingpin Multi Mod\Mods\gamex86</Filter>
     </ClCompile>
     <ClCompile Include="g_target.c">
-      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+      <Filter>Kingpin Multi Mod\Mods\gamex86</Filter>
     </ClCompile>
     <ClCompile Include="g_teamplay.c">
-      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+      <Filter>Kingpin Multi Mod\Mods\gamex86</Filter>
     </ClCompile>
     <ClCompile Include="g_trigger.c">
-      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+      <Filter>Kingpin Multi Mod\Mods\gamex86</Filter>
     </ClCompile>
     <ClCompile Include="g_utils.c">
-      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+      <Filter>Kingpin Multi Mod\Mods\gamex86</Filter>
     </ClCompile>
     <ClCompile Include="g_weapon.c">
-      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+      <Filter>Kingpin Multi Mod\Mods\gamex86</Filter>
     </ClCompile>
     <ClCompile Include="m_bbox.c">
-      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+      <Filter>Kingpin Multi Mod\Mods\gamex86</Filter>
     </ClCompile>
     <ClCompile Include="m_move.c">
-      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
-    </ClCompile>
-    <ClCompile Include="q_shared.c">
-      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+      <Filter>Kingpin Multi Mod\Mods\gamex86</Filter>
     </ClCompile>
     <ClCompile Include="p_weapon.c">
-      <Filter>Kingpin Multi Mod\Mods\Server Files</Filter>
+      <Filter>Kingpin Multi Mod\Mods\gamex86</Filter>
     </ClCompile>
     <ClCompile Include="file_botmen_ini.c">
       <Filter>Kingpin Multi Mod\Mods\Botmen Mod</Filter>
@@ -163,12 +142,6 @@
     <ClCompile Include="p_grapple.c">
       <Filter>Kingpin Multi Mod\Mods\Hook &amp; Grapple</Filter>
     </ClCompile>
-    <ClCompile Include="p_client.c">
-      <Filter>Kingpin Multi Mod</Filter>
-    </ClCompile>
-    <ClCompile Include="g_cmds.c">
-      <Filter>Kingpin Multi Mod</Filter>
-    </ClCompile>
     <ClCompile Include="bloodmoney_src\file_bloodmoney_ini.c">
       <Filter>Kingpin Multi Mod\Mods\Blood Money Mod</Filter>
     </ClCompile>
@@ -186,6 +159,33 @@
     </ClCompile>
     <ClCompile Include="g_lan_play_settings.c">
       <Filter>Kingpin Multi Mod\Mods\Monkey Mod</Filter>
+    </ClCompile>
+    <ClCompile Include="g_cmds.c">
+      <Filter>Kingpin Multi Mod\Mods\gamex86</Filter>
+    </ClCompile>
+    <ClCompile Include="g_main.c">
+      <Filter>Kingpin Multi Mod\Mods\gamex86</Filter>
+    </ClCompile>
+    <ClCompile Include="g_save.c">
+      <Filter>Kingpin Multi Mod\Mods\gamex86</Filter>
+    </ClCompile>
+    <ClCompile Include="g_spawn.c">
+      <Filter>Kingpin Multi Mod\Mods\gamex86</Filter>
+    </ClCompile>
+    <ClCompile Include="g_svcmds.c">
+      <Filter>Kingpin Multi Mod\Mods\gamex86</Filter>
+    </ClCompile>
+    <ClCompile Include="p_client.c">
+      <Filter>Kingpin Multi Mod\Mods\gamex86</Filter>
+    </ClCompile>
+    <ClCompile Include="p_hud.c">
+      <Filter>Kingpin Multi Mod\Mods\gamex86</Filter>
+    </ClCompile>
+    <ClCompile Include="p_view.c">
+      <Filter>Kingpin Multi Mod\Mods\gamex86</Filter>
+    </ClCompile>
+    <ClCompile Include="q_shared.c">
+      <Filter>Kingpin Multi Mod\Mods\gamex86</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -278,9 +278,6 @@
     <Filter Include="Config Files\main Config Files">
       <UniqueIdentifier>{b89f4669-2c6e-4985-b1b3-9edb0a015403}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Kingpin Multi Mod\Mods\Server Files">
-      <UniqueIdentifier>{2f66d252-a6c3-4253-a983-42686f44c3d0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Kingpin Multi Mod\Mods\Snap Chase Cam">
       <UniqueIdentifier>{ad38b418-da21-4f51-9e66-2aff67015331}</UniqueIdentifier>
     </Filter>
@@ -334,6 +331,9 @@
     </Filter>
     <Filter Include="Kingpin Multi Mod\Mods\Hook &amp; Grapple">
       <UniqueIdentifier>{2fcd7dce-da2e-4207-908a-a3116d5c83cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kingpin Multi Mod\Mods\gamex86">
+      <UniqueIdentifier>{2f66d252-a6c3-4253-a983-42686f44c3d0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

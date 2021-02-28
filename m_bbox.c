@@ -23,8 +23,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //
 // M_BBOX.C
 //
-#define		MAX_MDX_BBOX_ENTITIES	32	// theoretically, this should be MAX_MODEL_PARTS * MAX_MODELPART_OBJECTS
-										// but that would be too many, so we have to compromise
+#define MAX_MDX_BBOX_ENTITIES 32 // theoretically, this should be MAX_MODEL_PARTS * MAX_MODELPART_OBJECTS
+								 // but that would be too many, so we have to compromise
 
 edict_t		*mdx_bbox[MAX_MDX_BBOX_ENTITIES];
 
@@ -49,7 +49,7 @@ void MDX_Bbox_Init (void)
 
 }
 
-int			bbox_cnt;
+int bbox_cnt;
 
 trace_t MDX_HitCheck (edict_t *targ, edict_t *inflictor, edict_t *attacker, vec3_t dir, vec3_t point, vec3_t normal, int damage, int knockback, int dflags, int mod, vec3_t end)
 {
