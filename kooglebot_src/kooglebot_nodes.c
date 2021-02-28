@@ -97,8 +97,8 @@ short show_path_to = -1;
 botnode_t nodes[MAX_BOTNODES]; 
 short path_table[MAX_BOTNODES][MAX_BOTNODES];
 
-//hypov8 global trigger_push
-//qboolean UseTrigPushConnect;
+// hypo_v8 global trigger_push
+// qboolean UseTrigPushConnect;
 
 /////////////////////////////////////////////////////////////////////////////////
 // NODE INFORMATION FUNCTIONS
@@ -113,7 +113,7 @@ int KOOGLEND_FindCost(short from, short to)
 	int cost=1; // Shortest possible is 1
 
 	// If we can not get there then return invalid
-	if (path_table[from][to] == INVALID) //hypo skiped? why? added short to int
+	if (path_table[from][to] == INVALID) // hypo_v8 skiped? why? added short to int
 		return INVALID;
 
 	// Otherwise check the path and return the cost
@@ -147,11 +147,10 @@ float VectorDistanceFlat(vec3_t vec1, vec3_t vec2)
 	vec3_t	vec, vec1_, vec2_;
 	VectorCopy(vec1, vec1_);
 	VectorCopy(vec2, vec2_);
-	vec1_[2] = vec2_[2] = 0; // hypo remove height from distance
+	vec1_[2] = vec2_[2] = 0; // hypo_v8 remove height from distance
 	VectorSubtract(vec1_, vec2_, vec);
 	return VectorLength(vec);
 }
-
 
 /////////////////////////////////////////////////////////////////////////////////
 // Find the closest node to the player within a certain range
@@ -172,17 +171,18 @@ short KOOGLEND_FindClosestReachableNode(edict_t *self, int range, short type)
 
 	VectorCopy(self->mins,mins);
 	VectorCopy(self->maxs,maxs);
-	mins[0] = mins[1] = -15; //add hypov8: item bbox size. player hits wall
+	mins[0] = mins[1] = -15; // add hypo_v8: item bbox size. player hits wall
 	maxs[0] = maxs[1] = 15;
 
 	
 	// For Ladders, do not worry so much about reachability
-	if(type == BOTNODE_LADDER || type == BOTNODE_GRAPPLE) {
+	if(type == BOTNODE_LADDER || type == BOTNODE_GRAPPLE || type == BOTNODE_DUCKING)
+	{
 		VectorCopy(vec3_origin,maxs);
 		VectorCopy(vec3_origin,mins);
 	}
 	else
-		mins[2] += 18; //Stepsize.
+		mins[2] += 18; // Stepsize.
 
 	rng = (float)(range * range); // square range for distance comparison (eliminate sqrt)	
 	
@@ -206,11 +206,11 @@ short KOOGLEND_FindClosestReachableNode(edict_t *self, int range, short type)
 					node = i;
 					closest = dist;
 				}
-				else //hypov8 crouch? simple check. flat ground.
+				else // hypo_v8 crouch? simple check. flat ground.
 				{
 					VectorCopy(self->maxs, maxs);
 					VectorCopy(self->mins, mins);
-					maxs[2] = 24; //crouch //-24
+					maxs[2] = 24; // crouch // -24
 
 					// visible crouching?
 					tr = gi.trace(self->s.origin, mins, maxs, nodeShiftDn, self, /*MASK_OPAQUE*/ MASK_BOT_SOLID_FENCE);
@@ -218,9 +218,20 @@ short KOOGLEND_FindClosestReachableNode(edict_t *self, int range, short type)
 					{
 						node = i;
 						closest = dist;
+					
+						if (self->kooglebot.isCrouching == true)
+						{
+							node = KOOGLEND_FindClosestReachableNode(node, BOTNODE_DENSITY, BOTNODE_DUCKING);
+							if (node == INVALID) // we need to drop a crouch node
+								node = KOOGLEND_AddNode(node, BOTNODE_DUCKING, false);
+
+							KOOGLEND_UpdateNodeEdge(self->kooglebot.isCrouching, node, false, false, true, false);
+							self->kooglebot.pm_last_node = node;
+							self->kooglebot.isCrouching = false; // after we drop node tell system I'm not crouching anymore??
+						}
 					}
-					else if (self->groundentity && self->groundentity->use != Use_Plat
-						&& (nodeShiftDn[2] + 18) > self->s.origin[0]) //hypov8 jump?
+					else 
+					if (self->groundentity && self->groundentity->use != Use_Plat && (nodeShiftDn[2] + 18) > self->s.origin[0]) // hypo_v8 jump?
 					{
 						vec3_t  jumpHeight;
 						VectorCopy(self->s.origin, jumpHeight);
@@ -352,13 +363,16 @@ qboolean KOOGLEND_FollowPath(edict_t *self)
 	}
 		
 	//hypov8 check plat. fix for plat with hand rails
-	if (nodes[self->kooglebot.node_current].type == BOTNODE_PLATFORM)	{
+	if (nodes[self->kooglebot.node_current].type == BOTNODE_PLATFORM)	
+	{
 		int i;
-		for (i = 0; i < num_items; i++)		{
-			if (item_table[i].node == self->kooglebot.node_current)			{
+		for (i = 0; i < num_items; i++)		
+		{
+			if (item_table[i].node == self->kooglebot.node_current)			
+			{
 				if (item_table[i].ent && item_table[i].ent->moveinfo.state == STATE_TOP)
 					isPlatTop = true;
-				break; //found.
+				break; // found.
 			}
 		}
 	}
@@ -366,8 +380,6 @@ qboolean KOOGLEND_FollowPath(edict_t *self)
 	//shift player up. all nodes are at 32 units
 	VectorCopy(self->s.origin, playerOrg);
 	playerOrg[2] += 8; //shift up!
-
-
 
 	// Are we there yet?
 	if (nextNodeType != BOTNODE_GRAPPLE)
