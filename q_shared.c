@@ -24,8 +24,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 vec3_t vec3_origin = {0,0,0};
 
-//============================================================================
-
 #ifdef _WIN32
 #pragma optimize( "", off )
 #endif
@@ -119,8 +117,6 @@ void RotatePointAroundVector( vec3_t dst, const vec3_t dir, const vec3_t point, 
 #pragma optimize( "", on )
 #endif
 
-
-
 void AngleVectors (vec3_t angles, vec3_t forward, vec3_t right, vec3_t up)
 {
 	float		angle;
@@ -156,7 +152,6 @@ void AngleVectors (vec3_t angles, vec3_t forward, vec3_t right, vec3_t up)
 		up[2] = cr*cp;
 	}
 }
-
 
 void ProjectPointOnPlane( vec3_t dst, const vec3_t p, const vec3_t normal )
 {
@@ -212,8 +207,6 @@ void PerpendicularVector( vec3_t dst, const vec3_t src )
 	VectorNormalize( dst );
 }
 
-
-
 /*
 ================
 R_ConcatRotations
@@ -240,7 +233,6 @@ void R_ConcatRotations (float in1[3][3], float in2[3][3], float out[3][3])
 	out[2][2] = in1[2][0] * in2[0][2] + in1[2][1] * in2[1][2] +
 				in1[2][2] * in2[2][2];
 }
-
 
 /*
 ================
@@ -274,9 +266,6 @@ void R_ConcatTransforms (float in1[3][4], float in2[3][4], float out[3][4])
 	out[2][3] = in1[2][0] * in2[0][3] + in1[2][1] * in2[1][3] +
 				in1[2][2] * in2[2][3] + in1[2][3];
 }
-
-
-//============================================================================
 
 /*
 float Q_fabs (float f)
@@ -341,10 +330,8 @@ float anglemod(float a)
 	a = (360.0/65536) * ((int)(a*(65536/360.0)) & 65535);
 	return a;
 }
-
 	int		i;
 	vec3_t	corners[2];
-
 
 // this is the slow, general version
 int BoxOnPlaneSide2 (vec3_t emins, vec3_t emaxs, struct cplane_s *p)
@@ -708,7 +695,6 @@ void AddPointToBounds (vec3_t v, vec3_t mins, vec3_t maxs)
 	}
 }
 
-
 int VectorCompare (vec3_t v1, vec3_t v2)
 {
 	if (v1[0] != v2[0] || v1[1] != v2[1] || v1[2] != v2[2])
@@ -716,7 +702,6 @@ int VectorCompare (vec3_t v1, vec3_t v2)
 			
 	return 1;
 }
-
 
 vec_t VectorNormalize (vec3_t v)
 {
@@ -839,7 +824,6 @@ void VectorScale (vec3_t in, vec_t scale, vec3_t out)
 	out[2] = in[2]*scale;
 }
 
-
 int Q_log2(int val)
 {
 	int answer=0;
@@ -847,10 +831,6 @@ int Q_log2(int val)
 		answer++;
 	return answer;
 }
-
-
-
-//====================================================================================
 
 /*
 ============
@@ -950,7 +930,6 @@ void COM_FilePath (char *in, char *out)
 	strncpy (out,in, s-in);
 	out[s-in] = 0;
 }
-
 
 /*
 ==================
@@ -1089,8 +1068,6 @@ void Swap_Init (void)
 
 }
 
-
-
 /*
 ============
 va
@@ -1202,7 +1179,6 @@ skipwhite:
 	return com_token;
 }
 
-
 char *COM_Parse256 (char **data_p)
 {
 	int		c;
@@ -1298,8 +1274,6 @@ void Com_PageInMemory (byte *buffer, int size)
 		paged_total += buffer[i];
 }
 
-
-
 /*
 ============================================================================
 
@@ -1350,8 +1324,6 @@ int Q_strcasecmp (const char *s1, const char *s2)
 	return Q_strncasecmp (s1, s2, 99999);
 }
 
-
-
 void Com_sprintf (char *dest, int size, char *fmt, ...)
 {
 	int		len;
@@ -1392,7 +1364,7 @@ Searches the string for the given
 key and returns the associated value, or an empty string.
 ===============
 */
-char *Info_ValueForKey (char *s, char *key)
+char *Info_ValueForKey(char *s,char *key)
 {
 	char	pkey[512];
 	static	char value[2][512];	// use two buffers so compares
@@ -1434,7 +1406,7 @@ char *Info_ValueForKey (char *s, char *key)
 	}
 }
 
-void Info_RemoveKey (char *s, char *key)
+void Info_RemoveKey(char *s,char *key)
 {
 	char	*start;
 	char	pkey[512];
@@ -1483,7 +1455,6 @@ void Info_RemoveKey (char *s, char *key)
 
 }
 
-
 /*
 ==================
 Info_Validate
@@ -1492,7 +1463,7 @@ Some characters are illegal in info strings because they
 can mess up the server's parsing
 ==================
 */
-qboolean Info_Validate (char *s)
+qboolean Info_Validate(char *s)
 {
 	char	*skin;
 	qboolean validstr = true;
@@ -1505,7 +1476,7 @@ qboolean Info_Validate (char *s)
 
 	skin = Info_ValueForKey (s, "skin");
 
-	if (!skin || ((pskin = strrchr(skin, '/')))==0) // HYPOV8_ADD !=0
+	if (!skin || ((pskin = strrchr(skin, '/'))) == 0) // HYPO_V8 ADD !=0
 	{
 		return false;
 	}
@@ -1515,7 +1486,7 @@ qboolean Info_Validate (char *s)
 	}
 	else
 	{
-		if ((pskin = strstr(skin, "/"))==0) // HYPOV8_ADD !=0
+		if ((pskin = strstr(skin, "/")) == 0) // HYPO_V8 1111`ADD !=0
 			return false;
 		if (pskin == skin)
 			return false;
@@ -1578,8 +1549,6 @@ void Info_SetValueForKey (char *s, char *key, char *value)
 	*s = 0;
 }
 
-//====================================================================
-
 #ifdef _WIN32
 #include <windows.h>
 #else
@@ -1611,9 +1580,7 @@ int Sys_Milliseconds()
 		secbase = tp.tv_sec;
 		return tp.tv_usec/1000;
 	}
-
-	curtime = (tp.tv_sec - secbase)*1000 + tp.tv_usec/1000;
+ 	curtime = (tp.tv_sec - secbase)*1000 + tp.tv_usec/1000;
 #endif
-
-	return curtime;
+ 	return curtime;
 }

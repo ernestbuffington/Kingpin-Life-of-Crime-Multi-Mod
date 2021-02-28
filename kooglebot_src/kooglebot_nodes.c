@@ -632,12 +632,41 @@ static qboolean KOOGLEND_PM_CheckForLadder(edict_t *self)
 
 qboolean KOOGLEND_CheckForCrouch(edict_t *self)
 {
-	////////////////////////////////////////////////////////
-	// Turn Crouching Off
-	///////////////////////////////////////////////////////
-	if (self->kooglebot.isCrouching == true)
+	short closest_node;
+
+	if (self->kooglebot.isCrouching == true && self->kooglebot.pm_last_node != INVALID && (nodes[self->kooglebot.pm_last_node].type == BOTNODE_DUCKING))
+	{
+		float distToTarget = VectorDistanceFlat(self->s.origin, nodes[self->kooglebot.pm_last_node].origin);
+
+		closest_node = KOOGLEND_FindClosestReachableNode(self, BOTNODE_DENSITY_HALVE, BOTNODE_DUCKING);
+
+		if (closest_node == INVALID)
+			closest_node = KOOGLEND_AddNode(self, BOTNODE_JUMP, false);
+
 		self->kooglebot.isCrouching = false;
 
+		KOOGLEND_UpdateNodeEdge(self->kooglebot.pm_last_node, closest_node, true, true, false, false);
+		self->kooglebot.pm_last_node = closest_node; // set visited to last
+		return true;
+	}
+
+	if (self->kooglebot.isCrouching == false && self->kooglebot.pm_last_node != INVALID && (nodes[self->kooglebot.pm_last_node].type == BOTNODE_MOVE))
+	{
+		float distToTarget = VectorDistanceFlat(self->s.origin, nodes[self->kooglebot.pm_last_node].origin);
+
+		closest_node = KOOGLEND_FindClosestReachableNode(self, BOTNODE_DENSITY_HALVE, BOTNODE_DUCKING);
+
+		if (closest_node == INVALID)
+			closest_node = KOOGLEND_AddNode(self, BOTNODE_DUCKING, false);
+
+		self->kooglebot.isCrouching = true;
+
+		KOOGLEND_UpdateNodeEdge(self->kooglebot.pm_last_node, closest_node, true, true, false, false);
+		self->kooglebot.pm_last_node = closest_node; // set visited to last
+		return true;
+	}
+
+	self->kooglebot.isCrouching = false;
 	return false;
 }
 

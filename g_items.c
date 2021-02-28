@@ -1462,13 +1462,13 @@ and for each item in each client's inventory.
 */
 void PrecacheItem (gitem_t *it)
 {
-	char	*s, *start;
-	char	data[MAX_QPATH];
-	int		len;
+	char *s, *start;
+	char data[MAX_QPATH];
+	int len;
 	gitem_t	*ammo;
 
 	if (!it)
-		return;
+	return;
 
 	if (it->pickup_sound)
 		gi.soundindex (it->pickup_sound);
@@ -1484,38 +1484,41 @@ void PrecacheItem (gitem_t *it)
 	{
 		ammo = FindItem (it->ammo);
 		if (ammo != it)
-			PrecacheItem (ammo);
+		PrecacheItem (ammo);
 	}
 
 	// parse the space seperated precache string for other items
 	s = it->precaches;
+
 	if (!s || !s[0])
-		return;
+	return;
 
 	while (*s)
 	{
 		start = s;
+		
 		while (*s && *s != ' ')
-			s++;
+		s++;
 
 		len = s-start;
+		
 		if (len >= MAX_QPATH || len < 5)
-			gi.error ("PrecacheItem: %s has bad precache string", it->classname);
+		{
+			len = '\0';
+			gi.error("PrecacheItem: %s has bad precache string", it->classname);
+		}
+		
 		memcpy (data, start, len);
-		data[len] = 0;
+		data[len] = '\0';
+		
 		if (*s)
-			s++;
+		s++;
 
 		// determine type based on extension
 		if (!strcmp(data+len-3, "md2"))
-			gi.modelindex (data);
-		
-		// RAFAEL
-		// weapon mdx
+		    gi.modelindex (data);
 		else if (!strcmp (data+len-3, "mdx"))
-		{
 			gi.modelindex (data);
-		}
 		else if (!strcmp(data+len-3, "sp2"))
 			gi.modelindex (data);
 		else if (!strcmp(data+len-3, "wav"))

@@ -298,14 +298,6 @@ void InitGame(void)
 
 		current_mod = gi.cvar("current_mod", "0", CVAR_LATCH); // add TheGhost
 		
-		gi.dprintf("Mod Signature = %i\n", current_mod);
-		
-		if (current_mod->value == 1)
-		{
-			//gi.cvar_set("current_mod", "1");
-			//gi.cvar("current_mod", "1", CVAR_LATCH | CVAR_SERVERINFO);
-		}
-
 		// botmatch has 2 modes - Hitmen and No Hitmen
 		if ((current_mod->value == 1) && (sv_hitmen->value == 1))
 			gi.cvar("gamemod", MOD4" "MODV4, CVAR_SERVERINFO);		       // Hitmen multimod
